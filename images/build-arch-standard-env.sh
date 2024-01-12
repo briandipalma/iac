@@ -22,6 +22,8 @@ buildah run "$image" -- pacman -S --noconfirm ripgrep
 buildah run "$image" -- pacman -S --noconfirm starship
 buildah run "$image" -- pacman -S --noconfirm tealdeer
 buildah run "$image" -- pacman -S --noconfirm ttf-jetbrains-mono
+# To allow copy/paste to/from host clipboard
+buildah run "$image" -- pacman -S --noconfirm xsel
 
 buildah run "$image" -- pacman -S --noconfirm jdk11-openjdk
 buildah run "$image" -- pacman -S --noconfirm nodejs-lts-hydrogen
