@@ -1,5 +1,11 @@
-name: Build development image
-on: [push]
+name: Build and push development image
+on:
+  push:
+    paths:
+      - "**.Containerfile"
+  schedule:
+    # At 5:15 on a Sunday
+    - cron: "15 5 * * 7"
 
 jobs:
   build:
@@ -14,7 +20,7 @@ jobs:
         uses: redhat-actions/buildah-build@v2
         with:
           image: env
-          tags: ${{ github.sha }}
+          tags: latest ${{ github.sha }}
           containerfiles: |
             ./images/env.Containerfile
 
@@ -27,6 +33,3 @@ jobs:
           registry: docker.io/${{ github.actor }}
           username: ${{ github.actor }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
-
-      - name: Print image url
-        run: echo "Image pushed to ${{ steps.push-to-docker.outputs.registry-paths }}"
