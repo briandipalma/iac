@@ -13,7 +13,7 @@ jobs:
         id: build-image
         uses: redhat-actions/buildah-build@v2
         with:
-          image: ${{ github.actor }}/env
+          image: env
           tags: ${{ github.sha }}
           containerfiles: |
             ./images/env.Containerfile
