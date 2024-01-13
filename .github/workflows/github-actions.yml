@@ -5,7 +5,7 @@ on:
       - "**.Containerfile"
   schedule:
     # At 5:15 on a Sunday
-    - cron: "15 5 * * 7"
+    - cron: "15 5 * * 0"
 
 jobs:
   build:
