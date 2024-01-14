@@ -16,12 +16,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Get current date
+        id: date
+        uses: Kaven-Universe/github-action-current-date-time@v1
+        with:
+          format: "YYYY-MM-DD"
+
       - name: Buildah Action
         id: build-image
         uses: redhat-actions/buildah-build@v2
         with:
           image: env
-          tags: latest ${{ github.sha }}
+          tags: latest ${{ steps.date.outputs.time }}-${{ github.sha }}
           containerfiles: |
             ./images/env.Containerfile
 
