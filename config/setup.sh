@@ -8,3 +8,4 @@ ln -sf ~/dev/iac/config/kitty/ ~/.config/
 ln -sf ~/dev/iac/config/lazygit/ ~/.config/
 ln -sf ~/dev/iac/config/lsd/ ~/.config/
 ln -sf ~/dev/iac/config/nvim/ ~/.config/
+ln -sf ~/dev/iac/config/starship.toml ~/.config/
