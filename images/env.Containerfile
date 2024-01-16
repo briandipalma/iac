@@ -13,3 +13,4 @@ RUN pacman -Sq --noconfirm jdk11-openjdk nodejs-lts-hydrogen
 RUN pacman -Sq --noconfirm pnpm chromium
 # Required by karma chrome launcher
 ENV CHROME_BIN=/usr/sbin/chromium
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
