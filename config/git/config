@@ -1,0 +1,111 @@
+[alias]
+  a = add
+  ap = add -p
+  b = branch
+  c = commit -v
+  ca = commit --amend
+  cm = commit -vm
+  caf = "!git commit --amend --no-edit; git push --force-with-lease"
+  co = checkout
+  d = diff
+  fp = fetch -p
+  l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev --date=relative
+  pl = pull
+  pu = push
+  puf = push --force-with-lease
+  rbm = rebase master
+  rbc = rebase --continue
+  s = status
+  sp = stash pop
+  st = stash
+  sa = submodule add
+  # What commits have been created by the last command e.g. after a pull
+  new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+  # ----------------- BRANCHES --------------------------- #
+  # List "my" branches - where I made the last commit
+  mb = "!git log --branches --no-walk --remotes=origin --author=1597820+briandipalma@users.noreply.github.com"
+  # Rename a branch, run from main/master
+  # $1 is the old branch name
+  # $2 is the new branch name
+  rn = "!f() { \
+          git branch -m $1 $2; \
+          git push origin :$1 $2; \
+          git push origin -u $2; \
+        }; f"
+  # Purge merged branches
+  pm = "!f() { \
+          git branch --merged | grep -v -E \"master|main|develop|^\\+\" | xargs git branch -d; \
+        }; f"
+  # Remove a remote branch, use fzf to list the available branches
+  # $BN is the remote branch selected when using fzf
+  rd = "!f() { \
+          BN=$(git log --branches --no-walk --remotes=origin --author=1597820+briandipalma@users.noreply.github.com --format=%D | awk '{print $1}' | sed 's/,$//' | sed 's/^origin\\///' | fzf --height 15 --reverse); \
+          git push origin -d $BN; \
+        }; f"
+  # ----------------- WORKTREES -------------------------- #
+  # Add a worktree and open a new kitty tab for that worktree
+  # $1 is the new worktree
+  wa = "!f() { \
+          git worktree add -b $1 ../$1 $2; \
+          kitty @ launch --type=tab --cwd=$(realpath ../$1); \
+        }; f"
+  # Remove a worktree and associated branch, use fzf to list the available worktrees
+  # $WT is the worktree selected when using fzf
+  wr = "!f() { \
+          WT=$(fd --type d --max-depth 1 . ../ | fzf --height 15 --reverse); \
+          git worktree remove $WT; \
+          git branch --delete $(basename $WT); \
+        }; f"
+  wl = worktree list
+  # Branch a worktree from a non main/master branch
+  # $1 is the new branch
+  # $2 is the source branch
+  wb = "!f() { \
+          git worktree add -b $1 ../$1 origin/$2; \
+          kitty @ launch --type=tab --cwd=$(realpath ../$1); \
+        }; f"
+  # Checkout a branch into a worktree, for e.g. code reviews, open kitty tab for worktree
+  # $1 is the branch to checkout
+  wco = "!f() { \
+           git worktree add -b $1 ../$1 origin/$1; \
+           kitty @ launch --type=tab --cwd=$(realpath ../$1); \
+         }; f"
+
+[credential]
+    helper = store --file ~/dev/my-data/.git-credentials
+
+[fetch]
+  prune = true
+
+[push]
+  default = simple
+
+[user]
+  name = Brian Di Palma
+  email = 1597820+briandipalma@users.noreply.github.com
+
+[pull]
+  ff = only
+
+[diff]
+  colorMoved = default
+  algorithm = patience
+
+[pager]
+  diff = delta
+  show = delta
+  log = delta
+  blame = delta
+  grep = delta
+  reflog = delta
+
+[interactive]
+  diffFilter = delta --color-only
+
+[merge]
+  conflictstyle = diff3
+
+[delta]
+  features = side-by-side line-numbers decorations
+  syntax-theme = Solarized (light)
+  navigate = true
