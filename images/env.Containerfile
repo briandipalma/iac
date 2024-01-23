@@ -8,8 +8,10 @@ RUN pacman -Sq --noconfirm git git-delta lazygit
 RUN pacman -Sq --noconfirm lsd neovim ripgrep starship 
 RUN pacman -Sq --noconfirm tealdeer terraform
 
-# Complile nvim treesitter, telescope-fzf-native
+# Complile nvim treesitter
 RUN pacman -Sq --noconfirm gcc
+# Complile telescope-fzf-native
+RUN pacman -Sq --noconfirm make
 
 # To allow copy/paste to/from host clipboard
 RUN pacman -Sq --noconfirm xsel
