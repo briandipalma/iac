@@ -12,6 +12,8 @@ RUN pacman -Sq --noconfirm tealdeer terraform
 RUN pacman -Sq --noconfirm gcc
 # Complile telescope-fzf-native
 RUN pacman -Sq --noconfirm make
+# Required by mason.nvim
+RUN pacman -Sq --noconfirm npm
 
 # To allow copy/paste to/from host clipboard
 RUN pacman -Sq --noconfirm xsel
