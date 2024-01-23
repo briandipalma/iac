@@ -12,8 +12,6 @@ RUN pacman -Sq --noconfirm tealdeer terraform
 RUN pacman -Sq --noconfirm gcc
 # Complile telescope-fzf-native
 RUN pacman -Sq --noconfirm make
-# Required by mason.nvim
-RUN pacman -Sq --noconfirm npm
 
 # To allow copy/paste to/from host clipboard
 RUN pacman -Sq --noconfirm xsel
@@ -25,6 +23,9 @@ RUN pacman -Sq --noconfirm ttf-jetbrains-mono
 # Web app development
 RUN pacman -Sq --noconfirm nodejs-lts-iron 
 RUN pacman -Sq --noconfirm pnpm chromium
+
+# Required by mason.nvim
+RUN pacman -Sq --noconfirm npm
 
 # Required by karma chrome launcher
 ENV CHROME_BIN=/usr/sbin/chromium
