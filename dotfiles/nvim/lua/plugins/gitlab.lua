@@ -15,7 +15,13 @@ return {
 		local config = {
 			config_path = "/home/brian/dev/my-data/",
 			attachment_dir = "/home/brian/Pictures/Screenshots",
+			reviewer_settings = {
+				diffview = {
+					imply_local = true,
+				},
+			},
 			popup = {
+				backup_register = "+",
 				perform_action = "<leader>ms",
 				perform_linewise_action = "<leader>ml",
 				width = "80%",
