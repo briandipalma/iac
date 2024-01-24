@@ -7,6 +7,8 @@ RUN pacman -Sq --noconfirm bat bottom dust fd fish fzf
 RUN pacman -Sq --noconfirm git git-delta lazygit
 RUN pacman -Sq --noconfirm lsd neovim ripgrep starship 
 RUN pacman -Sq --noconfirm tealdeer terraform
+# Safer rm
+RUN pacman -Sq --noconfirm trash-cli
 
 # Complile nvim treesitter
 RUN pacman -Sq --noconfirm gcc
