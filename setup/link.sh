@@ -21,7 +21,3 @@ else
 	echo "Kitty host config file for $HOSTNAME does *not* exist, linking personal config."
 	ln -sf ~/dev/iac/dotfiles/kitty/personal.startup.conf ~/.config/kitty/host-config.conf
 fi
-
-# Container tools
-
-ln -sf /usr/bin/distrobox-host-exec ~/.local/bin/podman
