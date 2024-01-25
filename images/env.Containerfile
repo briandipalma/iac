@@ -3,6 +3,7 @@ FROM docker.io/library/archlinux:latest
 RUN pacman -Syuq --noconfirm
 
 # CLI utilities
+RUN pacman -Sq --noconfirm ansible
 RUN pacman -Sq --noconfirm bat bottom dust fd fish fzf 
 RUN pacman -Sq --noconfirm git git-delta lazygit
 RUN pacman -Sq --noconfirm lsd neovim ripgrep starship 
@@ -36,6 +37,8 @@ ENV CHROME_BIN=/usr/sbin/chromium
 RUN pacman -Sq --noconfirm jdk21-openjdk
 # Web app and backend development
 RUN pacman -Sq --noconfirm jdk11-openjdk
+
+RUN ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/podman
 
 # Web app servers and backend development
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
