@@ -1,0 +1,47 @@
+- name: Install linux_workstation packages
+  hosts: linux_workstations
+  tasks:
+    - name: Install Audacious
+      community.general.flatpak:
+        name: org.atheme.audacious
+        method: user
+
+    - name: Install Chrome
+      community.general.flatpak:
+        name: com.google.Chrome
+        method: user
+
+    - name: Install Flatseal
+      community.general.flatpak:
+        name: com.github.tchx84.Flatseal
+        method: user
+
+    - name: Install Heroic Games Launcher
+      community.general.flatpak:
+        name: com.heroicgameslauncher.hgl
+        method: user
+
+    - name: Install Krita
+      community.general.flatpak:
+        name: org.kde.krita
+        method: user
+
+    - name: Install Remmina
+      community.general.flatpak:
+        name: org.remmina.Remmina
+        method: user
+
+    - name: Install Steam
+      community.general.flatpak:
+        name: com.valvesoftware.Steam
+        method: user
+
+    - name: Install virt-viewer
+      community.general.flatpak:
+        name: org.virt_manager.virt-viewer
+        method: user
+
+    - name: Install VLC
+      community.general.flatpak:
+        name: org.videolan.VLC
+        method: user

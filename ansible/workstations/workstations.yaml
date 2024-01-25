@@ -1,0 +1,3 @@
+---
+- name: Include a play after another play
+  ansible.builtin.import_playbook: playbooks/linux_packages.yaml
