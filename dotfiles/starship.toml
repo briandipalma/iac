@@ -1,5 +1,10 @@
+right_format = '$cmd_duration$time$jobs$sudo'
+
 # Git can be quite slow in large repositories
 command_timeout = 1000
+
+[time]
+disabled = false
 
 [directory]
 fish_style_pwd_dir_length = 3

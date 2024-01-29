@@ -1,9 +1,10 @@
 alias cat=bat
-alias lg=lazygit
-alias v=nvim
-alias vim=nvim
-alias g=git
-alias icat="kitty +kitten icat"
 alias d="delta"
 alias dk="kitty +kitten diff"
+alias g=git
+alias icat="kitty +kitten icat"
+alias lg=lazygit
+alias rm=trash-put
 alias s="kitty +kitten ssh"
+alias v=nvim
+alias vim=nvim
