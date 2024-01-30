@@ -41,8 +41,9 @@ RUN pacman -Sq --noconfirm jdk11-openjdk
 # Link to host podman
 RUN ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/podman
 
-# Create missing locales
-RUN locale-gen en_IE.UTF-8
+# Create required locales
+RUN sed -i 's/#en_IE.UTF-8/en_IE.UTF-8/' /etc/locale.gen
+RUN locale-gen
 
 # Web app servers and backend development
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
