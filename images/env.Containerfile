@@ -38,7 +38,11 @@ RUN pacman -Sq --noconfirm jdk21-openjdk
 # Web app and backend development
 RUN pacman -Sq --noconfirm jdk11-openjdk
 
+# Link to host podman
 RUN ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/podman
+
+# Create missing locales
+RUN locale-gen en_IE.UTF-8
 
 # Web app servers and backend development
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
