@@ -6,5 +6,4 @@ alias icat="kitty +kitten icat"
 alias lg=lazygit
 alias rm=trash-put
 alias s="kitty +kitten ssh"
-alias v=nvim
 alias vim=nvim
