@@ -1,8 +1,4 @@
-# A minimal left prompt
-format = """$container$directory$character"""
-
-# move the rest of the prompt to the right
-right_format = """$all"""
+right_format = '$cmd_duration$time$jobs$sudo'
 
 # Git can be quite slow in large repositories
 command_timeout = 1000
@@ -11,7 +7,7 @@ command_timeout = 1000
 disabled = false
 
 [directory]
-fish_style_pwd_dir_length = 1
+fish_style_pwd_dir_length = 3
 
 [memory_usage]
 disabled = false
