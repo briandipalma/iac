@@ -1,0 +1,7 @@
+#! /bin/bash
+
+branch_checkout=$3
+
+if [ $branch_checkout -gt 0 ]; then
+	pnpm i
+fi

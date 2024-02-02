@@ -5,22 +5,20 @@
       ansible.builtin.file:
         path: "{{ lookup('env', 'HOME') }}/dev/"
         state: directory
-        mode: 0775
+        mode: "0775"
 
-    - name: Checkout front-end
+    - name: Checkout IaC
       ansible.builtin.git:
-        repo: git@gitlab.caplin.com:front-end/mono.git
-        accept_hostkey: true
-        dest: "{{ lookup('env', 'HOME') }}/dev/m/mono"
-
-    - name: Checkout FXAPI
-      ansible.builtin.git:
-        repo: git@gitlab.caplin.com:integration/fx-integration-api.git
-        accept_hostkey: true
-        dest: "{{ lookup('env', 'HOME') }}/dev/fx-integration-api"
+        repo: git@github.com:briandipalma/iac.git
+        dest: "{{ lookup('env', 'HOME') }}/dev/iac"
 
     - name: Checkout my-data
       ansible.builtin.git:
         repo: git@github.com:briandipalma/my-data.git
-        accept_hostkey: true
         dest: "{{ lookup('env', 'HOME') }}/dev/my-data"
+
+    - name: Copy post-checkout hook
+      ansible.builtin.copy:
+        src: post-checkout
+        dest: "{{ lookup('env', 'HOME') }}/dev/m/mono/.git/hooks/"
+        mode: "0775"

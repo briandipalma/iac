@@ -10,6 +10,7 @@ ln -sf ~/dev/iac/dotfiles/kitty/ ~/.config/
 ln -sf ~/dev/iac/dotfiles/lazygit/ ~/.config/
 ln -sf ~/dev/iac/dotfiles/lsd/ ~/.config/
 ln -sf ~/dev/iac/dotfiles/nvim/ ~/.config/
+ln -sf ~/dev/iac/dotfiles/ssh/config ~/.ssh/config
 ln -sf ~/dev/iac/dotfiles/starship.toml ~/.config/
 
 HOSTNAME=$(hostname)
