@@ -38,8 +38,9 @@ RUN pacman -Sq --noconfirm jdk21-openjdk
 # Web app and backend development
 RUN pacman -Sq --noconfirm jdk11-openjdk
 
-# Link to host podman
+# Link to host programs
 RUN ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/podman
+RUN ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/flatpak
 
 # Create required locales
 RUN sed -i 's/#en_IE.UTF-8/en_IE.UTF-8/' /etc/locale.gen
