@@ -1,0 +1,26 @@
+- name: Clone git repos
+  hosts: linux_workstations
+  tasks:
+    - name: Create dev directory
+      ansible.builtin.file:
+        path: "{{ lookup('env', 'HOME') }}/dev/"
+        state: directory
+        mode: 0775
+
+    - name: Checkout front-end
+      ansible.builtin.git:
+        repo: git@gitlab.caplin.com:front-end/mono.git
+        accept_hostkey: true
+        dest: "{{ lookup('env', 'HOME') }}/dev/m/mono"
+
+    - name: Checkout FXAPI
+      ansible.builtin.git:
+        repo: git@gitlab.caplin.com:integration/fx-integration-api.git
+        accept_hostkey: true
+        dest: "{{ lookup('env', 'HOME') }}/dev/fx-integration-api"
+
+    - name: Checkout my-data
+      ansible.builtin.git:
+        repo: git@github.com:briandipalma/my-data.git
+        accept_hostkey: true
+        dest: "{{ lookup('env', 'HOME') }}/dev/my-data"

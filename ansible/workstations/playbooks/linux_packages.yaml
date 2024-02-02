@@ -31,6 +31,11 @@
         name: org.remmina.Remmina
         method: user
 
+    - name: Install Slack
+      community.general.flatpak:
+        name: com.slack.Slack
+        method: user
+
     - name: Install Steam
       community.general.flatpak:
         name: com.valvesoftware.Steam
