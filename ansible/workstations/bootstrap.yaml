@@ -1,0 +1,21 @@
+---
+tasks:
+  - name: Create dev directory
+    ansible.builtin.file:
+      path: "{{ lookup('env', 'HOME') }}/dev/"
+      state: directory
+      mode: "0775"
+
+  - name: Checkout IaC
+    ansible.builtin.git:
+      repo: git@github.com:briandipalma/iac.git
+      accept_newhostkey: true
+      update: false
+      dest: "{{ lookup('env', 'HOME') }}/dev/iac"
+
+  - name: Checkout my-data
+    ansible.builtin.git:
+      repo: git@github.com:briandipalma/my-data.git
+      accept_newhostkey: true
+      update: false
+      dest: "{{ lookup('env', 'HOME') }}/dev/my-data"
