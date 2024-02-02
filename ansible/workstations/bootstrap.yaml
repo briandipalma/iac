@@ -1,6 +1,5 @@
 - name: Bootstrap workstations
   hosts: all
-  connection: local
   tasks:
     - name: Create dev directory
       ansible.builtin.file:

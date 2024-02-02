@@ -20,7 +20,7 @@
 4. From container run Ansible workstation bootstrap playbook.
 
    ```bash
-   ansible-pull --url https://github.com/briandipalma/iac.git ansible/workstations/bootstrap.yaml
+   ansible-pull --url https://github.com/briandipalma/iac.git --inventory ansible/workstations/inventory.ini ansible/workstations/bootstrap.yaml
    ```
 
 5. Run the `links.sh` script in this repo/directory.
