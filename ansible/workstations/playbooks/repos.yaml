@@ -10,12 +10,24 @@
     - name: Checkout IaC
       ansible.builtin.git:
         repo: git@github.com:briandipalma/iac.git
+        accept_newhostkey: true
         dest: "{{ lookup('env', 'HOME') }}/dev/iac"
 
     - name: Checkout my-data
       ansible.builtin.git:
         repo: git@github.com:briandipalma/my-data.git
+        accept_newhostkey: true
         dest: "{{ lookup('env', 'HOME') }}/dev/my-data"
+
+    - name: Checkout front-end
+      ansible.builtin.git:
+        repo: git@gitlab.caplin.com:front-end/mono.git
+        dest: "{{ lookup('env', 'HOME') }}/dev/m/mono"
+
+    - name: Checkout FXAPI
+      ansible.builtin.git:
+        repo: git@gitlab.caplin.com:integration/fx-integration-api.git
+        dest: "{{ lookup('env', 'HOME') }}/dev/fx-integration-api"
 
     - name: Copy post-checkout hook
       ansible.builtin.copy:
