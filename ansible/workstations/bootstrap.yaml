@@ -1,5 +1,5 @@
 - name: Bootstrap workstations
-  hosts: localhost
+  hosts: all
   connection: local
   tasks:
     - name: Create dev directory
