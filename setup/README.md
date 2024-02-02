@@ -3,8 +3,9 @@
 ## Pre-setup
 
 1. `HOME` environmental variable is used during repo setup, verify it's correct.
-2. Verify `flatpak` is already installed.
-3. Upgrade host OS with package manager. Reboot.
+2. Verify hostname is in Ansible inventory.
+3. Verify `flatpak` is already installed.
+4. Upgrade host OS with package manager. Reboot.
 
 ## Setup
 
