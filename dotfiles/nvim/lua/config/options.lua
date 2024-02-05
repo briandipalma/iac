@@ -6,7 +6,6 @@ local set = vim.opt
 set.list = false -- Don't display whitespace characters
 set.scrolloff = 100 -- Number of lines buffer to keep above and below cursor line when scrolling
 
-set.wrap = true -- Wrap text
 set.breakindentopt = "shift:2" -- Wrapped line's beginning will be shifted to emphasize line continuation
 set.linebreak = true -- Wrap long lines on whole words not the last character that fits on the screen
 set.showbreak = "↳" -- String to put at start of wrapped lines
