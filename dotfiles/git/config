@@ -46,8 +46,8 @@
   # Add a worktree and open a new kitty tab for that worktree
   # $1 is the new worktree
   wa = "!f() { \
-          git worktree add -b $1 ../$1 $2; \
-          kitty @ launch --type=tab --cwd=$(realpath ../$1); \
+          git worktree add -b $1 ../$1; \
+          kitten @ send-text cd ../$1\\\\r; \
         }; f"
   # Remove a worktree and associated branch, use fzf to list the available worktrees
   # $WT is the worktree selected when using fzf
@@ -62,13 +62,13 @@
   # $2 is the source branch
   wb = "!f() { \
           git worktree add -b $1 ../$1 origin/$2; \
-          kitty @ launch --type=tab --cwd=$(realpath ../$1); \
+          kitten @ send-text cd ../$1\\\\r; \
         }; f"
   # Checkout a branch into a worktree, for e.g. code reviews, open kitty tab for worktree
   # $1 is the branch to checkout
   wco = "!f() { \
            git worktree add -b $1 ../$1 origin/$1; \
-           kitty @ launch --type=tab --cwd=$(realpath ../$1); \
+           kitten @ send-text cd ../$1\\\\r; \
          }; f"
 
 [fetch]
