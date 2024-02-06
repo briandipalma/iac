@@ -2,6 +2,7 @@
 
 # Dotfiles
 
+ln -sf ~/dev/iac/dotfiles/autostart/ ~/.config/
 ln -sf ~/dev/iac/dotfiles/bat/ ~/.config/
 ln -sf ~/dev/iac/dotfiles/bottom/ ~/.config/
 ln -sf ~/dev/iac/dotfiles/fish/ ~/.config/
