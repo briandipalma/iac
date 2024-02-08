@@ -1,6 +1,6 @@
 FROM docker.io/library/archlinux:latest
 
-RUN pacman -Syuq --noconfirm
+RUN pacman --sync --refresh
 
 # CLI utilities
 RUN pacman -Sq --noconfirm ansible
