@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    name: Build development image
+    name: Build development images
     runs-on: ubuntu-latest
 
     steps:
@@ -21,6 +21,25 @@ jobs:
         uses: Kaven-Universe/github-action-current-date-time@v1
         with:
           format: "YYYY-MM-DD"
+
+      - name: Build base image
+        id: build-base-image
+        uses: redhat-actions/buildah-build@v2
+        with:
+          image: base
+          tags: latest ${{ steps.date.outputs.time }}-${{ github.sha }}
+          containerfiles: |
+            ./images/base.Containerfile
+
+      - name: Push base to Docker
+        id: push-to-docker
+        uses: redhat-actions/push-to-registry@v2
+        with:
+          image: ${{ steps.build-base-image.outputs.image }}
+          tags: ${{ steps.build-base-image.outputs.tags }}
+          registry: docker.io/${{ github.actor }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
 
       - name: Buildah Action
         id: build-image
