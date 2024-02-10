@@ -32,7 +32,7 @@ jobs:
             ./images/base.Containerfile
 
       - name: Push base to Docker
-        id: push-to-docker
+        id: push-base-to-docker
         uses: redhat-actions/push-to-registry@v2
         with:
           image: ${{ steps.build-base-image.outputs.image }}

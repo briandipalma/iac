@@ -2,24 +2,50 @@ FROM docker.io/library/archlinux:latest
 
 RUN pacman --sync --refresh
 
-# CLI utilities
-RUN pacman -Sq --noconfirm bat bottom dust fd fish fzf 
-RUN pacman -Sq --noconfirm git git-delta lazygit
-RUN pacman -Sq --noconfirm lsd neovim ripgrep starship 
-RUN pacman -Sq --noconfirm tealdeer
-RUN pacman -Sq --noconfirm trash-cli
-
-# Complile nvim treesitter
-RUN pacman -Sq --noconfirm gcc
-# Complile telescope-fzf-native
-RUN pacman -Sq --noconfirm make
-
-# To allow copy/paste to/from host clipboard
-RUN pacman -Sq --noconfirm xsel
-
-# Export from container
-RUN pacman -Sq --noconfirm kitty
-RUN pacman -Sq --noconfirm ttf-jetbrains-mono
+# Install all the packages distrobox installs on init to speed up first enter
+RUN pacman -S --noconfirm bash \
+			bash-completion \
+			bc \
+			curl \
+			diffutils \
+			findutils \
+			glibc \
+			gnupg \
+			inetutils \
+			keyutils \
+			less \
+			lsof \
+			man-db \
+			man-pages \ \
+			mlocate \
+			mtr \
+			ncurses \
+			nss-mdns \
+			openssh \
+			pigz \
+			pinentry \
+			procps-ng \
+			rsync \
+			shadow \
+			sudo \
+			tcpdump \
+			time \
+			traceroute \
+			tree \
+			tzdata \
+			unzip \
+			util-linux \
+			util-linux-libs \
+			vte-common \
+			wget \
+			words \
+			xorg-xauth \
+			zip \
+			mesa \
+			opengl-driver \
+			vulkan-intel \
+			vte-common \
+			vulkan-radeon
 
 # Link to host programs
 RUN ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/podman
