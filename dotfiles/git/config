@@ -43,12 +43,6 @@
           git push origin -d $BN; \
         }; f"
   # ----------------- WORKTREES -------------------------- #
-  # Add a worktree and open a new kitty tab for that worktree
-  # $1 is the new worktree
-  wa = "!f() { \
-          git worktree add -b $1 ../$1; \
-          kitten @ send-text cd ../$1\\\\r; \
-        }; f"
   # Remove a worktree and associated branch, use fzf to list the available worktrees
   # $WT is the worktree selected when using fzf
   wr = "!f() { \
@@ -57,13 +51,6 @@
           git branch --delete $(basename $WT); \
         }; f"
   wl = worktree list
-  # Branch a worktree from a non main/master branch
-  # $1 is the new branch
-  # $2 is the source branch
-  wb = "!f() { \
-          git worktree add -b $1 ../$1 origin/$2; \
-          kitten @ send-text cd ../$1\\\\r; \
-        }; f"
 
 [fetch]
   prune = true
