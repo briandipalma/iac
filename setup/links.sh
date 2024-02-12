@@ -13,6 +13,7 @@ ln -sf ~/dev/iac/dotfiles/lsd/ ~/.config/
 ln -sf ~/dev/iac/dotfiles/nvim/ ~/.config/
 ln -sf ~/dev/iac/dotfiles/ssh/config ~/.ssh/config
 ln -sf ~/dev/iac/dotfiles/starship.toml ~/.config/
+ln -sf ~/dev/iac/dotfiles/wezterm/ ~/.config/
 
 HOSTNAME=$(hostname)
 
