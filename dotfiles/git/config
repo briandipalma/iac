@@ -64,12 +64,6 @@
           git worktree add -b $1 ../$1 origin/$2; \
           kitten @ send-text cd ../$1\\\\r; \
         }; f"
-  # Checkout a branch into a worktree, for e.g. code reviews, open kitty tab for worktree
-  # $1 is the branch to checkout
-  wco = "!f() { \
-           git worktree add -b $1 ../$1 origin/$1; \
-           kitten @ send-text cd ../$1\\\\r; \
-         }; f"
 
 [fetch]
   prune = true
