@@ -3,10 +3,8 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 config.color_scheme = "rose-pine-dawn"
-config.font_size = 11.5
 config.hide_tab_bar_if_only_one_tab = true
 
-config.default_cwd = wezterm.home_dir .. "/dev/iac"
 config.default_prog = { "distrobox", "enter", "env" }
 
 config.keys = {
@@ -19,7 +17,7 @@ config.keys = {
 	{
 		key = "_",
 		mods = "CTRL|SHIFT",
-		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+		action = wezterm.action.SplitPane({ direction = "Down", size = { Cells = 15 } }),
 	},
 	-- Closing panes/windows
 	{
@@ -58,6 +56,7 @@ config.keys = {
 	{ key = "RightArrow", mods = "CTRL|SHIFT", action = wezterm.action.AdjustPaneSize({ "Right", 1 }) },
 	{ key = "UpArrow", mods = "CTRL|SHIFT", action = wezterm.action.AdjustPaneSize({ "Up", 1 }) },
 	{ key = "DownArrow", mods = "CTRL|SHIFT", action = wezterm.action.AdjustPaneSize({ "Down", 1 }) },
+	{ key = "m", mods = "CTRL|SHIFT", action = wezterm.action.TogglePaneZoomState },
 	-- Launch programs
 	{
 		key = "F3",
@@ -86,5 +85,14 @@ config.keys = {
 		}),
 	},
 }
+
+local hostname = wezterm.hostname()
+
+config.default_cwd = wezterm.home_dir .. "/dev/iac"
+
+if hostname == "brian-pop-os-pc-specialist" then
+	config.font_size = 11.5
+	config.default_cwd = wezterm.home_dir .. "/dev/m/mono"
+end
 
 return config
