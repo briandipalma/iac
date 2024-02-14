@@ -15,6 +15,8 @@ RUN pacman -Sq --noconfirm trash-cli
 RUN pacman -Sq --noconfirm gcc
 # Complile telescope-fzf-native
 RUN pacman -Sq --noconfirm make
+# GitLab.nvim
+RUN pacman -Sq --noconfirm go
 
 # To allow copy/paste to/from host clipboard
 RUN pacman -Sq --noconfirm xsel
