@@ -1,9 +1,7 @@
 alias cat=bat
 alias d="delta"
-alias dk="kitty +kitten diff"
 alias g=git
-alias icat="kitty +kitten icat"
+alias icat="flatpak run org.wezfurlong.wezterm imgcat"
 alias lg=lazygit
 alias rm=trash-put
-alias s="kitty +kitten ssh"
 alias vim=nvim

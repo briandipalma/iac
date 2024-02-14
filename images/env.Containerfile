@@ -21,10 +21,6 @@ RUN pacman -Sq --noconfirm go
 # To allow copy/paste to/from host clipboard
 RUN pacman -Sq --noconfirm xsel
 
-# Export from container
-RUN pacman -Sq --noconfirm kitty
-RUN pacman -Sq --noconfirm ttf-jetbrains-mono
-
 # Web app development
 RUN pacman -Sq --noconfirm nodejs-lts-iron 
 RUN pacman -Sq --noconfirm pnpm chromium

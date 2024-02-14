@@ -90,18 +90,3 @@
       community.general.dconf:
         key: "/org/gnome/nautilus/preferences/default-folder-viewer"
         value: "'list-view'"
-
-    - name: Custom keybinding 0 - command
-      community.general.dconf:
-        key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command"
-        value: "'distrobox-enter -n env -e kitty'"
-
-    - name: Custom keybinding 0 - name
-      community.general.dconf:
-        key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name"
-        value: "'Launch kitty env'"
-
-    - name: Custom keybinding 0 - binding
-      community.general.dconf:
-        key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding"
-        value: "'<Super>u'"
