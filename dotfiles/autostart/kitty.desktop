@@ -1,5 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Kitty autostart
-Exec=distrobox-enter -n env -e kitty
-Comment=Start Kitty on desktop start

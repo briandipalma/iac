@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Wezterm autostart
+Exec=flatpak run org.wezfurlong.wezterm
+Comment=Start Wezterm on desktop start
