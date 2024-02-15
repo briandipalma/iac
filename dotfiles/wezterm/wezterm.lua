@@ -51,6 +51,12 @@ config.keys = {
 		mods = "CTRL|SHIFT",
 		action = wezterm.action.ActivatePaneDirection("Right"),
 	},
+	-- Work around for `Ctrl-Shift+2` bug
+	{
+		key = '"',
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.ActivateTab(1),
+	},
 	-- Resize panes
 	{ key = "LeftArrow", mods = "CTRL|SHIFT", action = wezterm.action.AdjustPaneSize({ "Left", 1 }) },
 	{ key = "RightArrow", mods = "CTRL|SHIFT", action = wezterm.action.AdjustPaneSize({ "Right", 1 }) },
@@ -59,29 +65,61 @@ config.keys = {
 	{ key = "m", mods = "CTRL|SHIFT", action = wezterm.action.TogglePaneZoomState },
 	-- Launch programs
 	{
-		key = "F3",
-		action = wezterm.action.SpawnCommandInNewWindow({
-			args = { "distrobox", "enter", "env", "--", "nvim index.md && git pull" },
-			cwd = wezterm.home_dir .. "/dev/my-data/wiki/",
+		key = "F1",
+		action = wezterm.action.SpawnCommandInNewTab({
+			args = { "distrobox", "enter", "env" },
+			cwd = wezterm.home_dir .. "/dev/m/mono/",
+		}),
+	},
+	{
+		key = "F2",
+		action = wezterm.action.SpawnCommandInNewTab({
+			args = { "distrobox", "enter", "env" },
+			cwd = wezterm.home_dir .. "/dev/fx-integration-api/",
 		}),
 	},
 	{
 		key = "F5",
-		action = wezterm.action.SpawnCommandInNewWindow({
+		action = wezterm.action.SpawnCommandInNewTab({
+			args = { "distrobox", "enter", "env" },
+			cwd = wezterm.home_dir,
+		}),
+	},
+	{
+		key = "F6",
+		action = wezterm.action_callback(function(window)
+			local tab = window:mux_window():spawn_tab({
+				args = { "distrobox", "enter", "env", "--", "nvim index.md && git pull" },
+				cwd = wezterm.home_dir .. "/dev/my-data/wiki/",
+			})
+
+			tab:set_title("wiki")
+		end),
+	},
+	{
+		key = "F7",
+		action = wezterm.action.SpawnCommandInNewTab({
 			args = { "distrobox", "enter", "env", "--", "nvim && git pull" },
 			cwd = wezterm.home_dir .. "/dev/iac/",
 		}),
 	},
 	{
-		key = "F6",
-		action = wezterm.action.SpawnCommandInNewWindow({
-			args = { "distrobox", "enter", "env", "--", "btm" },
+		key = "F8",
+		action = wezterm.action.SpawnCommandInNewTab({
+			args = { "distrobox", "enter", "env", "--", "nvim && git pull" },
+			cwd = wezterm.home_dir .. "/dev/proxomox-services/",
 		}),
 	},
 	{
-		key = "F7",
-		action = wezterm.action.SpawnCommandInNewWindow({
+		key = "F11",
+		action = wezterm.action.SpawnCommandInNewTab({
 			args = { "distrobox", "enter", "env", "--", "lazygit" },
+		}),
+	},
+	{
+		key = "F12",
+		action = wezterm.action.SpawnCommandInNewTab({
+			args = { "distrobox", "enter", "env", "--", "btm" },
 		}),
 	},
 }
