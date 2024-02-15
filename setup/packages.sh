@@ -1,8 +1,6 @@
 #! /bin/bash
 
-HOSTNAME=$(hostname)
-personalWorkstations=("brians-xps13-popos")
-workWorkstations=("brian-pop-os-pc-specialist")
+source inventory.sh
 
 flatpak install -y flathub com.github.tchx84.Flatseal
 flatpak install -y flathub com.google.Chrome
