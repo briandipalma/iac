@@ -3,7 +3,6 @@ FROM docker.io/library/archlinux:latest
 RUN pacman --sync --refresh
 
 # CLI utilities
-RUN pacman -Sq --noconfirm ansible
 RUN pacman -Sq --noconfirm bat bottom dust fd fish fzf 
 RUN pacman -Sq --noconfirm git git-delta lazygit
 RUN pacman -Sq --noconfirm lsd neovim ripgrep starship 
