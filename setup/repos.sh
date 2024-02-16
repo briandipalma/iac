@@ -16,6 +16,7 @@ token=$(cat $DEV_DIR/my-data/gitlab_secret)
 
 if [[ ! -d $DEV_DIR/m/mono && ${workWorkstations[@]} =~ $HOSTNAME ]]; then
 	git clone https://briand:${token}@gitlab.caplin.com/front-end/mono.git $DEV_DIR/m/mono
+	cp ./files/post-checkout $DEV_DIR/m/mono/.git/hooks/
 fi
 
 if [[ ! -d $DEV_DIR/fx-integration-api && ${workWorkstations[@]} =~ $HOSTNAME ]]; then
