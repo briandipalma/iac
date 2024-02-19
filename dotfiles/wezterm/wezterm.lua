@@ -5,6 +5,7 @@ local config = wezterm.config_builder()
 config.color_scheme = "rose-pine-dawn"
 config.hide_tab_bar_if_only_one_tab = true
 
+config.adjust_window_size_when_changing_font_size = false
 config.default_prog = { "distrobox", "enter", "env" }
 
 config.keys = {
@@ -87,14 +88,10 @@ config.keys = {
 	},
 	{
 		key = "F6",
-		action = wezterm.action_callback(function(window)
-			local tab = window:mux_window():spawn_tab({
-				args = { "distrobox", "enter", "env", "--", "nvim index.md && git pull" },
-				cwd = wezterm.home_dir .. "/dev/my-data/wiki/",
-			})
-
-			tab:set_title("wiki")
-		end),
+		action = wezterm.action.SpawnCommandInNewTab({
+			args = { "distrobox", "enter", "env", "--", "nvim index.md && git pull" },
+			cwd = wezterm.home_dir .. "/dev/my-data/wiki/",
+		}),
 	},
 	{
 		key = "F7",
@@ -121,6 +118,11 @@ config.keys = {
 		action = wezterm.action.SpawnCommandInNewTab({
 			args = { "distrobox", "enter", "env", "--", "btm" },
 		}),
+	},
+	{
+		key = "D",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.ShowDebugOverlay,
 	},
 }
 
