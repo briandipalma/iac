@@ -104,7 +104,7 @@ config.keys = {
 		key = "F8",
 		action = wezterm.action.SpawnCommandInNewTab({
 			args = { "distrobox", "enter", "env", "--", "nvim && git pull" },
-			cwd = wezterm.home_dir .. "/dev/proxomox-services/",
+			cwd = wezterm.home_dir .. "/dev/proxmox-services/",
 		}),
 	},
 	{
