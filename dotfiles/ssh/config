@@ -1,2 +1,5 @@
 Host *
   StrictHostKeyChecking accept-new
+
+Host *
+  User root
