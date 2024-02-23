@@ -1,4 +1,4 @@
-FROM docker.io/library/archlinux:latest
+FROM docker.io/archlinux/archlinux:latest
 
 RUN pacman --sync --refresh
 
