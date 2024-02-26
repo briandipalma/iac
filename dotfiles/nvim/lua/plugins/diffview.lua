@@ -33,6 +33,11 @@ return {
 			"<cmd>DiffviewOpen origin/HEAD...HEAD<cr>",
 			desc = "Review current branch versus remote HEAD",
 		},
+		{
+			"<leader>dp",
+			"<cmd>DiffviewOpen HEAD~<cr>",
+			desc = "Review current commit versus its parent",
+		},
 	},
 	opts = {
 		view = {
