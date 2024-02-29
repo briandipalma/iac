@@ -1,3 +1,20 @@
+local async = require("plenary.async")
+
+local function neogit_action(popup, action, args)
+	return function()
+		local popup_action = require("neogit.popups." .. popup .. ".actions")[action]
+		local fake_popup = {
+			get_arguments = function()
+				return args
+			end,
+		}
+
+		async.run(function()
+			popup_action(fake_popup)
+		end, function() end)
+	end
+end
+
 return {
 	"NeogitOrg/neogit",
 	dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" },
@@ -25,13 +42,13 @@ return {
 		},
 		{
 			"<leader>gc",
-			function()
-				local neogit = require("neogit")
-
-				neogit.open({})
-				neogit.open({ "commit" })
-			end,
-			desc = "Commit changes",
+			neogit_action("commit", "commit", { "--verbose" }),
+			desc = "Commit staged changes",
+		},
+		{
+			"<leader>ga",
+			neogit_action("commit", "amend", { "--no-edit" }),
+			desc = "Amend commit, no message edit",
 		},
 		{
 			"<leader>gs",
