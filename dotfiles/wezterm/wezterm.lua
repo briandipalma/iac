@@ -108,6 +108,12 @@ config.keys = {
 		}),
 	},
 	{
+		key = "F9",
+		action = wezterm.action.SpawnCommandInNewTab({
+			cwd = wezterm.home_dir .. "/dev/ansible/",
+		}),
+	},
+	{
 		key = "F11",
 		action = wezterm.action.SpawnCommandInNewTab({
 			args = { "distrobox", "enter", "env", "--", "lazygit" },
