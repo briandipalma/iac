@@ -1,0 +1,8 @@
+[Unit]
+Description=SyncThingy Daemon
+
+[Service]
+ExecStart=flatpak run com.github.zocker_160.SyncThingy
+
+[Install]
+WantedBy=default.target
