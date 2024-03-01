@@ -23,10 +23,14 @@ if [ -d ~/dev/my-data/$HOSTNAME/syncthing/ ]; then
 	ln -sf ~/dev/my-data/$HOSTNAME/syncthing ~/.var/app/com.github.zocker_160.SyncThingy/config/
 fi
 
-if [ -d ~/dev/my-data/$HOSTNAME/wireguard/ ]; then
-	echo "Linking wireguard config, invoking sudo"
-	sudo ln -sf ~/dev/my-data/$HOSTNAME/wireguard /etc/
+if [ -d ~/wireguard/ ]; then
+	echo "Moving WireGuard config, invoking sudo"
+	sudo mv ~/wireguard /etc/
+	sudo chown -R root /etc/wireguard
+	sudo chgrp -R root /etc/wireguard
 	# Remove any group or others permissions, only owner (root) is able to read files
 	sudo chmod go= /etc/wireguard/private.key
 	sudo chmod go= /etc/wireguard/wg0.conf
+else
+	echo "No WireGuard configuration found"
 fi
