@@ -21,10 +21,4 @@ if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
 	flatpak install -y flathub com.valvesoftware.Steam
 	flatpak install -y flathub org.darktable.Darktable
 	flatpak install -y flathub org.kde.digikam
-
-	systemctl --user enable dropbox
-	systemctl --user start dropbox
-
-	systemctl --user enable syncthing
-	systemctl --user start syncthing
 fi
