@@ -16,7 +16,7 @@ ln -sf ~/dev/iac/dotfiles/starship.toml ~/.config/
 ln -sf ~/dev/iac/dotfiles/wezterm/ ~/.config/
 
 if [ -d ~/dev/iac/dotfiles/$HOSTNAME/autostart/ ]; then
-	ln -sf ~/dev/iac/dotfiles/$HOSTNAME/autostart/ ~/.config/
+	ln -sf ~/dev/iac/dotfiles/$HOSTNAME/autostart ~/.config/
 fi
 
 if [ -d ~/dev/my-data/$HOSTNAME/syncthing/ ]; then
