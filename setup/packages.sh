@@ -21,4 +21,5 @@ if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
 	flatpak install -y flathub com.valvesoftware.Steam
 	flatpak install -y flathub org.darktable.Darktable
 	flatpak install -y flathub org.kde.digikam
+	sudo apt install wireguard
 fi
