@@ -1,17 +1,17 @@
 # Workstation setup
 
-Use work login name for work machines e.g. `briand` instead of `brian`.
+Account name should be `brian` or `briand` for work machines.
 Upgrade host OS with package manager. Reboot.
-Copy over host SSH and WireGuard config. Setup SSH key, verify you can connect
-to GitHub.
+Copy over host SSH and WireGuard config.
+Setup SSH key, verify you can connect to GitHub.
 Set the correct hostname e.g.
 
 ```bash
 sudo hostnamectl set-hostname brians-xps13-popos
 ```
 
-Install `flatpak` (may already be installed by OS package manager)
-Install `podman` (via OS package manager)
+Install `flatpak` (may already be installed by OS package manager).
+Install `podman` (via OS package manager).
 Install `distrobox` (via install script).
 
 ```bash
@@ -37,32 +37,7 @@ Now in a **host** terminal and from the `~dev/iac/setup` directory run:
 - `links.sh`
 - `gnome.sh`
 
-Reboot
+Reboot.
 In a **host** terminal and from the `~dev/iac/setup` directory run `images.sh`.
-
-## Pre-setup
-
-1. `HOME` environmental variable is used during repo setup, verify it's correct.
-2. Verify hostname is in Ansible inventory.
-3. Verify `flatpak` is already installed.
-4. Upgrade host OS with package manager. Reboot.
-
-## Setup
-
-1. Setup host SSH key.
-2. Install `podman` and `distrobox`.
-3. Pull dev container image.
-
-   ```bash
-   distrobox create --name env --image docker.io/briandipalma/env:latest
-   distrobox enter env
-   ```
-
-4. From container run Ansible workstation bootstrap playbook.
-
-   ```bash
-   ansible-pull --url https://github.com/briandipalma/iac.git --inventory ansible/workstations/inventory.ini ansible/workstations/bootstrap.yaml
-   ```
-
-5. Run the `links.sh` script in this repo/directory.
-6. Run Ansible workstation playbook.
+Login to your browser account and setup bookmarks/tabs/pinned tabs.
+Install browser extensions.
