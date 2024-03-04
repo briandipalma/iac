@@ -8,6 +8,7 @@ flatpak install -y flathub io.github.seadve.Kooha
 flatpak install -y flathub org.remmina.Remmina
 flatpak install -y flathub org.virt_manager.virt-viewer
 flatpak install -y flathub org.wezfurlong.wezterm
+sudo apt -y install devilspie2
 
 if [[ ${workWorkstations[@]} =~ $HOSTNAME ]]; then
 	flatpak install -y flathub com.slack.Slack
@@ -22,5 +23,5 @@ if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
 	flatpak install -y flathub org.darktable.Darktable
 	flatpak install -y flathub org.kde.digikam
 	flatpak install -y flathub org.mozilla.Thunderbird
-	sudo apt install wireguard
+	sudo apt -y install wireguard
 fi
