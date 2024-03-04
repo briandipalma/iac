@@ -1,9 +1,0 @@
----
-- name: Linux packages
-  ansible.builtin.import_playbook: playbooks/linux_packages.yaml
-
-- name: GNOME settings
-  ansible.builtin.import_playbook: playbooks/gnome.yaml
-
-- name: Repos
-  ansible.builtin.import_playbook: playbooks/repos.yaml
