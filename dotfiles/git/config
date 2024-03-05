@@ -52,6 +52,9 @@
         }; f"
   wl = worktree list
 
+[credential]
+    helper = store --file ~/dev/my-data/.git-credentials
+
 [fetch]
   prune = true
 
