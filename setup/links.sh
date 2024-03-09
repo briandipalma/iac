@@ -24,6 +24,10 @@ if [ -d ~/dev/my-data/$HOSTNAME/syncthing/ ]; then
 	ln -sf ~/dev/my-data/$HOSTNAME/syncthing ~/.var/app/com.github.zocker_160.SyncThingy/config/
 fi
 
+if [ -f ~/dev/my-data/$HOSTNAME/fish_history ]; then
+	ln -sf ~/dev/my-data/$HOSTNAME/fish_history ~/.local/share/fish/fish_history
+fi
+
 if [ -d ~/wireguard/ ]; then
 	echo "Moving WireGuard config, invoking sudo"
 	sudo mv ~/wireguard /etc/
