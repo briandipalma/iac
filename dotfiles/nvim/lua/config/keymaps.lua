@@ -4,8 +4,8 @@ local fullScreenSize = { width = 1, height = 0.95 }
 local set = vim.keymap.set
 
 -- lazygit, make it full screen, rest is the same as default
-vim.keymap.set("n", "<leader>gG", function()
-	Util.float_term({ "lazygit" }, { cwd = Util.get_root(), esc_esc = false, size = fullScreenSize })
+set("n", "<leader>gG", function()
+	Util.terminal({ "lazygit" }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false, size = fullScreenSize })
 end, { desc = "Lazygit (root dir)" })
 
 -- Normal mode mappings --
