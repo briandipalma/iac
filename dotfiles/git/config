@@ -68,25 +68,22 @@
 [pull]
   ff = only
 
-[diff]
-  colorMoved = default
-  algorithm = patience
+## Delta/diffing config
 
-[pager]
-  diff = delta
-  show = delta
-  log = delta
-  blame = delta
-  grep = delta
-  reflog = delta
+[core]
+    pager = delta
 
 [interactive]
-  diffFilter = delta --color-only
-
-[merge]
-  conflictstyle = diff3
+    diffFilter = delta --color-only
 
 [delta]
-  features = side-by-side line-numbers decorations
-  syntax-theme = Solarized (light)
-  navigate = true
+    navigate = true    # use n and N to move between diff sections
+    light = true
+    line-numbers = true
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+    algorithm = histogram
