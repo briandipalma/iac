@@ -9,8 +9,12 @@ return {
 	},
 	opts = {
 		defaults = {
-			layout_config = { height = 0.9, width = 0.9, vertical = { preview_height = 0.65 } },
+			cache_picker = { num_pickers = 10, limit_entries = 10 },
+			-- You need to set padding to 0 to make telescope take up 100% width...
+			-- https://github.com/nvim-telescope/telescope.nvim/issues/2508
+			layout_config = { height = 0.9, width = { padding = 0 }, vertical = { preview_height = 0.65 } },
 			layout_strategy = "vertical",
+			wrap_results = true,
 			mappings = {
 				i = {
 					["<a-d>"] = function(...)
@@ -25,7 +29,6 @@ return {
 					end,
 				},
 			},
-			cache_picker = { num_pickers = 10, limit_entries = 10 },
 		},
 		pickers = {
 			lsp_references = { fname_width = 100 },
