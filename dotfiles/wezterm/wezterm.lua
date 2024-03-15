@@ -89,28 +89,22 @@ config.keys = {
 	{
 		key = "F6",
 		action = wezterm.action.SpawnCommandInNewTab({
-			args = { "distrobox", "enter", "env", "--", "nvim index.md && git pull" },
+			args = { "distrobox", "enter", "env", "--", "nvim", "index.md" },
 			cwd = wezterm.home_dir .. "/dev/my-data/wiki/",
 		}),
 	},
 	{
 		key = "F7",
 		action = wezterm.action.SpawnCommandInNewTab({
-			args = { "distrobox", "enter", "env", "--", "nvim && git pull" },
+			args = { "distrobox", "enter", "env", "--", "nvim" },
 			cwd = wezterm.home_dir .. "/dev/iac/",
 		}),
 	},
 	{
 		key = "F8",
 		action = wezterm.action.SpawnCommandInNewTab({
-			args = { "distrobox", "enter", "env", "--", "nvim && git pull" },
+			args = { "distrobox", "enter", "env", "--", "nvim" },
 			cwd = wezterm.home_dir .. "/dev/proxmox-services/",
-		}),
-	},
-	{
-		key = "F9",
-		action = wezterm.action.SpawnCommandInNewTab({
-			cwd = wezterm.home_dir .. "/dev/ansible/",
 		}),
 	},
 	{
