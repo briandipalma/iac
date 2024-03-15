@@ -51,6 +51,11 @@ return {
 			desc = "Amend commit, no message edit",
 		},
 		{
+			"<leader>gw",
+			neogit_action("commit", "reword", { "--verbose" }),
+			desc = "Reword commit",
+		},
+		{
 			"<leader>gs",
 			function()
 				local neogit = require("neogit")
