@@ -18,8 +18,7 @@ RUN pacman -Sq --noconfirm make
 # To allow copy/paste to/from host clipboard
 RUN pacman -Sq --noconfirm xsel
 
-# Required by mason.nvim
-RUN pacman -Sq --noconfirm npm
+RUN pacman -Sq --noconfirm nodejs-lts-iron 
 
 # Link to host programs
 RUN ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/podman

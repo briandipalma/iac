@@ -4,7 +4,6 @@ FROM docker.io/briandipalma/base:latest
 RUN pacman -Sq --noconfirm go
 
 # Web app development
-RUN pacman -Sq --noconfirm nodejs-lts-iron 
 RUN pacman -Sq --noconfirm pnpm chromium
 
 # Required by karma chrome launcher
