@@ -41,21 +41,40 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
-      - name: Buildah Action
-        id: build-image
+      - name: Build admin image
+        id: build-admin-image
         uses: redhat-actions/buildah-build@v2
         with:
-          image: env
+          image: admin
           tags: latest ${{ steps.date.outputs.time }}-${{ github.sha }}
           containerfiles: |
-            ./images/env.Containerfile
+            ./images/admin.Containerfile
 
-      - name: Push To Docker
-        id: push-to-docker
+      - name: Push admin to Docker
+        id: push-admin-to-docker
         uses: redhat-actions/push-to-registry@v2
         with:
-          image: ${{ steps.build-image.outputs.image }}
-          tags: ${{ steps.build-image.outputs.tags }}
+          image: ${{ steps.build-admin-image.outputs.image }}
+          tags: ${{ steps.build-admin-image.outputs.tags }}
+          registry: docker.io/${{ github.actor }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+
+      - name: Build work image
+        id: build-work-image
+        uses: redhat-actions/buildah-build@v2
+        with:
+          image: work
+          tags: latest ${{ steps.date.outputs.time }}-${{ github.sha }}
+          containerfiles: |
+            ./images/work.Containerfile
+
+      - name: Push work to Docker
+        id: push-work-to-docker
+        uses: redhat-actions/push-to-registry@v2
+        with:
+          image: ${{ steps.build-work-image.outputs.image }}
+          tags: ${{ steps.build-work-image.outputs.tags }}
           registry: docker.io/${{ github.actor }}
           username: ${{ github.actor }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
