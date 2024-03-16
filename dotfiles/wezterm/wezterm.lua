@@ -6,7 +6,7 @@ config.color_scheme = "rose-pine-dawn"
 config.hide_tab_bar_if_only_one_tab = true
 
 config.adjust_window_size_when_changing_font_size = false
-config.default_prog = { "distrobox", "enter", "env" }
+config.default_prog = { "distrobox", "enter", "base" }
 
 config.keys = {
 	-- Create panes
@@ -68,55 +68,55 @@ config.keys = {
 	{
 		key = "F1",
 		action = wezterm.action.SpawnCommandInNewTab({
-			args = { "distrobox", "enter", "env" },
+			args = { "distrobox", "enter", "work" },
 			cwd = wezterm.home_dir .. "/dev/m/mono/",
 		}),
 	},
 	{
 		key = "F2",
 		action = wezterm.action.SpawnCommandInNewTab({
-			args = { "distrobox", "enter", "env" },
+			args = { "distrobox", "enter", "work" },
 			cwd = wezterm.home_dir .. "/dev/fx-integration-api/",
 		}),
 	},
 	{
 		key = "F5",
 		action = wezterm.action.SpawnCommandInNewTab({
-			args = { "distrobox", "enter", "env" },
+			args = { "distrobox", "enter", "base" },
 			cwd = wezterm.home_dir,
 		}),
 	},
 	{
 		key = "F6",
 		action = wezterm.action.SpawnCommandInNewTab({
-			args = { "distrobox", "enter", "env", "--", "nvim", "index.md" },
+			args = { "distrobox", "enter", "base", "--", "nvim", "index.md" },
 			cwd = wezterm.home_dir .. "/dev/my-data/wiki/",
 		}),
 	},
 	{
 		key = "F7",
 		action = wezterm.action.SpawnCommandInNewTab({
-			args = { "distrobox", "enter", "env", "--", "nvim" },
+			args = { "distrobox", "enter", "base", "--", "nvim" },
 			cwd = wezterm.home_dir .. "/dev/iac/",
 		}),
 	},
 	{
 		key = "F8",
 		action = wezterm.action.SpawnCommandInNewTab({
-			args = { "distrobox", "enter", "env", "--", "nvim" },
+			args = { "distrobox", "enter", "admin", "--", "nvim" },
 			cwd = wezterm.home_dir .. "/dev/proxmox-services/",
 		}),
 	},
 	{
 		key = "F11",
 		action = wezterm.action.SpawnCommandInNewTab({
-			args = { "distrobox", "enter", "env", "--", "lazygit" },
+			args = { "distrobox", "enter", "base", "--", "lazygit" },
 		}),
 	},
 	{
 		key = "F12",
 		action = wezterm.action.SpawnCommandInNewTab({
-			args = { "distrobox", "enter", "env", "--", "btm" },
+			args = { "distrobox", "enter", "base", "--", "btm" },
 		}),
 	},
 	{
@@ -133,6 +133,7 @@ config.default_cwd = wezterm.home_dir .. "/dev/iac"
 if hostname == "brian-pop-os-pc-specialist" then
 	config.font_size = 11.5
 	config.default_cwd = wezterm.home_dir .. "/dev/m/mono"
+	config.default_prog = { "distrobox", "enter", "work" }
 end
 
 return config

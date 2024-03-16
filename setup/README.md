@@ -15,11 +15,11 @@ Install `podman` (via OS package manager).
 Install `distrobox` (via install script).
 
 ```bash
-distrobox create --name env --image docker.io/briandipalma/env:latest
+distrobox create --name base --image docker.io/briandipalma/base:latest
 ```
 
 ```bash
-distrobox enter env
+distrobox enter base
 ```
 
 Create and `cd` into `~/dev/` directory.

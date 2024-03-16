@@ -10,10 +10,10 @@ Then build your new Distrobox containers
 
 Then enter your new Distrobox container
 
-`distrobox enter env`
+`distrobox enter base`
 
 Using the name in the `distrobox.ini` file
 
 ## Building locally
 
-`buildah build -f env.Containerfile`
+`buildah build -f base.Containerfile`
