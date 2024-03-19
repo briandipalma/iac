@@ -4,6 +4,7 @@ source inventory.sh
 
 flatpak install -y flathub com.github.tchx84.Flatseal
 flatpak install -y flathub com.google.Chrome
+flatpak install -y flathub info.smplayer.SMPlayer
 flatpak install -y flathub io.github.seadve.Kooha
 flatpak install -y flathub org.remmina.Remmina
 flatpak install -y flathub org.virt_manager.virt-viewer
