@@ -31,6 +31,7 @@ return {
 			},
 		},
 		pickers = {
+			live_grep = { additional_args = { "--hidden" } },
 			lsp_references = { fname_width = 100 },
 			lsp_definitions = { fname_width = 100 },
 		},
