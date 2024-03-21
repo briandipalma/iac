@@ -14,3 +14,6 @@ disabled = false
 
 [container]
 style = 'bold red'
+
+[os]
+disabled = false
