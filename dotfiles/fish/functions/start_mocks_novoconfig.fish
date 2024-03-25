@@ -1,0 +1,4 @@
+function start_mocks_novoconfig
+    podman login gitlab.caplin.com:5050 -u briand -p $(cat ~/dev/my-data/gitlab_secret)
+    podman run --pull=newer --rm -p 18080:18080 -p 15001:15001 -p 15002:15002 -v ~/Downloads/licenses/:/app/DeploymentFramework/global_config/licenses --mount=type=bind,source={$HOME}/dev/fx-integration-api/MockAdapter/Blade/Liberator/etc,destination=/app/DeploymentFramework/kits/MockAdapter/MockAdapter-0.0.0-main/Liberator/etc --mount=type=bind,source={$HOME}/dev/fx-integration-api/MockAdapter/Blade/Transformer/etc,destination=/app/DeploymentFramework/kits/MockAdapter/MockAdapter-0.0.0-main/Transformer/etc --mount=type=bind,source={$HOME}/dev/fx-integration-api/MockAdapter/Blade/DataSource/etc,destination=/app/DeploymentFramework/kits/MockAdapter/MockAdapter-0.0.0-main/DataSource/etc gitlab.caplin.com:5050/integration/fx-integration-api/mocks-novoconfig
+end
