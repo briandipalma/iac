@@ -1,14 +1,12 @@
 ---
 gui:
   expandFocusedSidePanel: true
-  portraitMode: "always"
-  nerdFontsVersion: "3"
   theme:
-    activeBorderColor:
-      - yellow
-      - bold
     selectedLineBgColor:
       - black
+  showCommandLog: false
+  nerdFontsVersion: "3"
+  portraitMode: "always"
 
 git:
   paging:
