@@ -1,5 +1,7 @@
 ---
 gui:
+  expandFocusedSidePanel: true
+  portraitMode: "always"
   nerdFontsVersion: "3"
   theme:
     activeBorderColor:
@@ -18,5 +20,8 @@ customCommands:
     command: "git push --force-with-lease -u origin {{.CheckedOutBranch.Name}}"
     context: "global"
     loadingText: "Pushing changes using force-with-lease"
+
+os:
+  editPreset: "nvim-remote"
 
 startuppopupversion: 1

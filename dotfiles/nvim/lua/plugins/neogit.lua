@@ -32,7 +32,7 @@ return {
 	},
 	keys = {
 		{
-			"<leader>gg",
+			"<leader>gn",
 			function()
 				local neogit = require("neogit")
 
@@ -54,16 +54,6 @@ return {
 			"<leader>gw",
 			neogit_action("commit", "reword", { "--verbose" }),
 			desc = "Reword commit",
-		},
-		{
-			"<leader>gs",
-			function()
-				local neogit = require("neogit")
-
-				neogit.open({})
-				neogit.open({ "stash" })
-			end,
-			desc = "Stashes popup",
 		},
 		{
 			"<leader>gr",

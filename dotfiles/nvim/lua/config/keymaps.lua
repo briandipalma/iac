@@ -1,18 +1,10 @@
-local Util = require("lazyvim.util")
-
-local fullScreenSize = { width = 1, height = 0.95 }
 local set = vim.keymap.set
-
--- lazygit, make it full screen, rest is the same as default
-set("n", "<leader>gG", function()
-	Util.terminal({ "lazygit" }, { cwd = Util.root.git(), esc_esc = false, ctrl_hjkl = false, size = fullScreenSize })
-end, { desc = "Lazygit (root dir)" })
 
 -- Normal mode mappings --
 
 set("n", "<leader>fp", function()
 	vim.cmd.e(vim.fn.getreg("+"))
-end, { desc = "Open pasted file path" })
+end, { desc = "Open Pasted File Path" })
 
 -- Select all
 set("n", "<C-a>", "gg<S-v>G")

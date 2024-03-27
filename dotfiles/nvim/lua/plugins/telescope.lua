@@ -1,8 +1,6 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	keys = {
-		-- disable the git status keymap, neogit stash uses it
-		{ "<leader>gs", false },
 		-- disable the search git commits keymap, neogit commit uses it
 		{ "<leader>gc", false },
 		{ "<leader>dc", "<cmd>Telescope git_commits<CR>", desc = "Search all commits" },
