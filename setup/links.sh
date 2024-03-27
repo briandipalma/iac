@@ -15,6 +15,7 @@ ln -sf ~/dev/iac/dotfiles/nvim ~/.config/
 ln -sf ~/dev/iac/dotfiles/ssh/config ~/.ssh/config
 ln -sf ~/dev/iac/dotfiles/starship.toml ~/.config/
 ln -sf ~/dev/iac/dotfiles/wezterm ~/.config/
+ln -sf ~/dev/iac/dotfiles/yakuakerc ~/.config/
 
 if [ -d ~/dev/iac/dotfiles/$HOSTNAME/autostart/ ]; then
 	ln -sf ~/dev/iac/dotfiles/$HOSTNAME/autostart ~/.config/

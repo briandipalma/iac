@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Yakuake autostart
+Exec=yakuake
+Comment=Start Yakuake on desktop start

@@ -10,6 +10,7 @@ flatpak install -y flathub org.remmina.Remmina
 flatpak install -y flathub org.virt_manager.virt-viewer
 flatpak install -y flathub org.wezfurlong.wezterm
 sudo apt -y install devilspie2
+sudo apt -y install yakuake
 
 if [[ ${workWorkstations[@]} =~ $HOSTNAME ]]; then
 	flatpak install -y flathub com.slack.Slack
