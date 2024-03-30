@@ -17,6 +17,7 @@ if [[ ${workWorkstations[@]} =~ $HOSTNAME ]]; then
 fi
 
 if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
+	flatpak install -y flathub com.discordapp.Discord
 	flatpak install -y flathub com.dropbox.Client
 	flatpak install -y flathub com.github.taiko2k.tauonmb
 	flatpak install -y flathub com.github.zocker_160.SyncThingy
