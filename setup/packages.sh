@@ -28,3 +28,8 @@ if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
 	flatpak install -y flathub org.mozilla.Thunderbird
 	sudo apt -y install wireguard
 fi
+
+if [ ! -e ~/.local/bin/kanata ]; then
+	curl --location --output ~/.local/bin/kanata https://github.com/jtroo/kanata/releases/download/v1.5.0/kanata
+	chmod +x ~/.local/bin/kanata
+fi
