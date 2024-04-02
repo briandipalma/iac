@@ -9,15 +9,10 @@ end, { desc = "Open Pasted File Path" })
 -- Select all
 set("n", "<C-a>", "gg<S-v>G")
 
--- Insert mode mappings --
-
--- Escape without taking fingers from home row
-set("i", "jk", "<Esc>")
-
 -- Visual mode mappings --
 
 -- Don't replace register value when pasting over text
-set("v", "p", '"_dP')
+set("x", "p", '"_dP')
 
 -- Normal and Visual mappings --
 
