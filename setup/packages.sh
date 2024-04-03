@@ -30,6 +30,6 @@ if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
 fi
 
 if [ ! -e ~/.local/bin/kanata ]; then
-	curl --location --output ~/.local/bin/kanata https://github.com/jtroo/kanata/releases/download/v1.5.0/kanata
+	curl --location --output ~/.local/bin/kanata --create-dirs https://github.com/jtroo/kanata/releases/download/v1.5.0/kanata
 	chmod +x ~/.local/bin/kanata
 fi
