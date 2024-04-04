@@ -108,15 +108,15 @@ config.keys = {
 		}),
 	},
 	{
-		key = "F11",
+		key = "F10",
 		action = wezterm.action.SpawnCommandInNewTab({
-			args = { "distrobox", "enter", "base", "--", "lazygit" },
+			args = { "distrobox", "enter", "base", "--", "btm" },
 		}),
 	},
 	{
-		key = "F12",
+		key = "F11",
 		action = wezterm.action.SpawnCommandInNewTab({
-			args = { "distrobox", "enter", "base", "--", "btm" },
+			args = { "distrobox", "enter", "base", "--", "lazygit" },
 		}),
 	},
 	{
