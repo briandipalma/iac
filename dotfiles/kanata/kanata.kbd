@@ -1,9 +1,27 @@
-(defsrc
-      esc
-      caps
+(defcfg
+  process-unmapped-keys yes
+)
+
+;; Defines the order of keys that the deflayer entries will operate on
+(defsrc 
+  esc
+                  y u i o p
+  caps            h j k l ;
+          c       n m , . /
 )
 
 (deflayer default
-      caps
-      esc
+  caps
+                  _ _ _ _ _
+  esc             _ _ _ _ _
+          @c      _ _ _ _ _
+)
+
+(defalias c (tap-hold 200 200 c (layer-toggle nav)))
+
+(deflayer nav
+  _
+                  _    _    _    _    _
+  _               left down up   rght _
+          _       home pgdn pgup end  _
 )
