@@ -10,18 +10,40 @@
           c       n m , . /
 )
 
+(defalias
+  c (tap-hold 200 200 c (layer-toggle nav))
+  caps (tap-hold 200 200 esc (layer-toggle mouse))
+)
+
 (deflayer default
   caps
                   _ _ _ _ _
-  esc             _ _ _ _ _
+  @caps           _ _ _ _ _
           @c      _ _ _ _ _
 )
-
-(defalias c (tap-hold 200 200 c (layer-toggle nav)))
 
 (deflayer nav
   _
                   _    _    _    _    _
   _               left down up   rght _
           _       home pgdn pgup end  _
+)
+
+(defalias
+  ma← (movemouse-accel-left 5 1000 1 5)
+  ma↓ (movemouse-accel-down 5 1000 1 5)
+  ma↑ (movemouse-accel-up 5 1000 1 5)
+  ma→ (movemouse-accel-right 5 1000 1 5)
+
+  mwl (mwheel-left 50 120)
+  mwd (mwheel-down 50 120)
+  mwu (mwheel-up 50 120)
+  mwr (mwheel-right 50 120)
+)
+
+(deflayer mouse
+  _
+                  mlft mmid mrgt _    _
+  _               @ma← @ma↓ @ma↑ @ma→ _
+          _       @mwl @mwd @mwu @mwr _
 )
