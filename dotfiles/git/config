@@ -42,14 +42,6 @@
           BN=$(git log --branches --no-walk --remotes=origin --author=1597820+briandipalma@users.noreply.github.com --format=%D | awk '{print $1}' | sed 's/,$//' | sed 's/^origin\\///' | fzf --height 15 --reverse); \
           git push origin -d $BN; \
         }; f"
-  # ----------------- WORKTREES -------------------------- #
-  # Remove a worktree and associated branch, use fzf to list the available worktrees
-  # $WT is the worktree selected when using fzf
-  wr = "!f() { \
-          WT=$(fd --type d --max-depth 1 . ../ | fzf --height 15 --reverse); \
-          git worktree remove $WT; \
-          git branch --delete $(basename $WT); \
-        }; f"
   wl = worktree list
 
 [credential]
