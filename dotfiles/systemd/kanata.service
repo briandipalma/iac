@@ -1,0 +1,10 @@
+[Unit]
+Description=Kanata keyboard remapper
+Documentation=https://github.com/jtroo/kanata
+
+[Service]
+ExecStart=kanata --cfg /etc/kanata.kbd
+User=kanata
+
+[Install]
+WantedBy=default.target

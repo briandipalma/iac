@@ -7,7 +7,6 @@ ln -sf ~/dev/iac/dotfiles/bottom ~/.config/
 ln -sf ~/dev/iac/dotfiles/devilspie2 ~/.config/
 ln -sf ~/dev/iac/dotfiles/fish ~/.config/
 ln -sf ~/dev/iac/dotfiles/git ~/.config/
-ln -sf ~/dev/iac/dotfiles/kanata ~/.config/
 ln -sf ~/dev/iac/dotfiles/lazygit ~/.config/
 ln -sf ~/dev/iac/dotfiles/lsd ~/.config/
 ln -sf ~/dev/iac/dotfiles/nvim ~/.config/

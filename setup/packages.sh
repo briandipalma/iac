@@ -39,7 +39,17 @@ if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
 	fi
 fi
 
-if [ ! -e ~/.local/bin/kanata ]; then
-	curl --location --output ~/.local/bin/kanata --create-dirs https://github.com/jtroo/kanata/releases/download/v1.5.0/kanata
-	chmod +x ~/.local/bin/kanata
+if [ ! -e /usr/bin/kanata ]; then
+	sudo curl --location --output /usr/bin/kanata --create-dirs https://github.com/jtroo/kanata/releases/download/v1.5.0/kanata
+	sudo chmod +x /usr/bin/kanata
+
+	sudo groupadd uinput
+	sudo useradd -g uinput -G input kanata
+
+	sudo cp ~/dev/iac/dotfiles/udev/60-uinput.rules /lib/udev/rules.d/
+	sudo cp ~/dev/iac/dotfiles/kanata/kanata.kbd /etc/kanata.kbd
+
+	sudo cp ~/dev/iac/dotfiles/systemd/kanata.service /etc/systemd/system
+	sudo systemctl start kanata
+	sudo systemctl enable kanata
 fi
