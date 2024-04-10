@@ -28,7 +28,7 @@
 (defalias
   cap  (tap-hold 200 200 esc  (layer-toggle mouse))
   lalt (tap-hold 200 200 lalt (layer-toggle nav))
-  spc  (tap-hold 200 200 spc  (layer-toggle sym))
+  spc  (tap-hold 200 250 spc  (layer-toggle sym))
 )
 
 (deflayer nav
@@ -61,11 +61,22 @@
   _    _    _              _              _    _
 )
 
+(defvar
+  amp S-7
+  exc S-1
+  lbc S-[
+  rbc S-]
+  uds S--
+  lps S-9
+  rps S-0
+  dlr S-4
+)
+
 (deflayer sym
   _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    S-[  [    _    _    ]    S-]  _    _    _    _
+  _    _    _    _    $dlr _    _    $amp $exc _    _    _    _    _
+  _    _    $lps $lbc [    grv  $uds ]    $rbc $rps _    _    _
   _    _    _    _    _    _    _    _    _    _    _    _    _
   _    _    _              _              _    _
 )
