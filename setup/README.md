@@ -32,9 +32,9 @@ git clone git@github.com:briandipalma/iac.git
 Run `repos.sh` from the `~/dev/iac/setup` directory, `exit` container.  
 Now in a **host** terminal and from the `~dev/iac/setup` directory run:
 
+- `links.sh`
 - `packages.sh`
 - Start up SyncThingy and then shut it down, give it `Background` permission
-- `links.sh`
 - `gnome.sh`
 
 Reboot.  

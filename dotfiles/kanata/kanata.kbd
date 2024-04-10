@@ -1,4 +1,4 @@
-;; Add back in Alt - Left Arrow for browser back 
+;; Add back in Alt - Left Arrow for browser back
 
 (defcfg
   process-unmapped-keys yes
