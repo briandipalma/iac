@@ -21,11 +21,11 @@ return {
 				},
 			},
 			popup = {
-				backup_register = "+",
 				perform_action = "<leader>ms",
 				perform_linewise_action = "<leader>ml",
 				width = "80%",
 				comment = { opacity = 0.8 },
+				temp_registers = { "+" },
 			},
 			discussion_tree = { position = "bottom" },
 			discussion_sign_and_diagnostic = {
