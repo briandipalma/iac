@@ -5,38 +5,40 @@
   log-layer-changes yes
 )
 
-;; Defines the order of keys that the `deflayer` entries will operate on
+;; Defines the order of keys that the `deflayer` entries below will operate on
+;;
+;; Good keyboards should have a max of 6 columns, 4 rows and a ~3 thumb keys 
+;; per hand, so I ignore anything extra and try to map keys outside that limit
+;; onto a layer.
 (defsrc
-  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    ret
-  caps a    s    d    f    g    h    j    k    l    ;    '    \
-  lsft nubs z    x    c    v    b    n    m    ,    .    /    rsft
+  grv  1    2    3    4    5    6    7    8    9    0    -
+  tab  q    w    e    r    t    y    u    i    o    p    [
+  caps a    s    d    f    g    h    j    k    l    ;    '
+  lsft nubs z    x    c    v    b    n    m    ,    .    /
   lctl lmet lalt           spc            ralt rctl
 )
 
 ;; First defined layer is the starting layer
 (deflayer starting
-  caps _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  @cap _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    @lalt          @spc           _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  @cap _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    @lat           @spc           @rat _
 )
 
 (defalias
-  cap  (tap-hold 200 200 esc  (layer-toggle mouse))
-  lalt (tap-hold 200 200 lalt (layer-toggle nav))
-  spc  (tap-hold 200 250 spc  (layer-toggle sym))
+  cap (tap-hold 200 200 esc  (layer-toggle mouse))
+  lat (tap-hold 200 200 lalt (layer-toggle nav))
+  spc (tap-hold 200 250 spc  (layer-toggle sym))
+  rat (tap-hold 200 200 ralt (layer-toggle fun))
 )
 
 (deflayer nav
-  _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    left down up   rght _    _    _ 
-  _    _    _    _    _    _    _    home pgdn pgup end  _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    left down up   rght _    _    
+  _    _    _    _    _    _    _    home pgdn pgup end  _
   _    _    _              _              _    _
 )
 
@@ -53,30 +55,44 @@
 )
 
 (deflayer mouse
-  _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    mlft mmid mrgt _    _    _    _    _
-  _    _    _    _    _    _    @ma← @ma↓ @ma↑ @ma→ _    _    _
-  _    _    _    _    _    _    _    @mwl @mwd @mwu @mwr _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  @cw  _    _    _    _    _    mlft mmid mrgt _    _    _
+  _    _    _    _    _    _    @ma← @ma↓ @ma↑ @ma→ _    _
+  _    _    _    _    _    _    _    @mwl @mwd @mwu @mwr _
   _    _    _              _              _    _
 )
 
+(defalias
+  cw   (caps-word 3000)
+)
+
 (defvar
-  amp S-7
+  rps S-0
   exc S-1
+  dlr S-4
+  per S-5
+  crt S-6
+  amp S-7
+  str S-8
+  lps S-9
+  pls S-=
   lbc S-[
   rbc S-]
   uds S--
-  lps S-9
-  rps S-0
-  dlr S-4
 )
 
 (deflayer sym
-  _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    $dlr _    _    $amp $exc _    _    _    _    _
-  _    _    $lps $lbc [    grv  $uds ]    $rbc $rps _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    eql  $dlr $pls _    $amp $exc _    $per _
+  _    bksl $lps $lbc [    grv  $uds ]    $rbc $rps $str _
+  _    _    _    _    $crt _    _    _    _    _    _    _
+  _    _    _              _              _    _
+)
+
+(deflayer fun
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    f7   f8   f9   _    _    _    _    _    _
+  _    _    _    f4   f5   f6   _    _    _    _    _    _
+  _    _    _    f1   f2   f3   _    _    _    _    _    _
   _    _    _              _              _    _
 )
