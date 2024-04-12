@@ -7,24 +7,27 @@
 
 ;; Defines the order of keys that the `deflayer` entries below will operate on
 ;;
-;; Good keyboards should have a max of 6 columns, 4 rows and a ~3 thumb keys 
-;; per hand, so I ignore anything extra and try to map keys outside that limit
-;; onto a layer.
+;; Good keyboards should be split, have a max of 6 columns, 4 rows and ~3 thumb 
+;; keys per hand, ignore anything extra and try to map keys outside that limit
+;; into a layer
+;;
+;; Chop down a standard UK QWERTY keyboard to fit into that limit, all the
+;; layers take this as their template.
 (defsrc
-  grv  1    2    3    4    5    6    7    8    9    0    -
-  tab  q    w    e    r    t    y    u    i    o    p    [
-  caps a    s    d    f    g    h    j    k    l    ;    '
-  lsft nubs z    x    c    v    b    n    m    ,    .    /
-  lctl lmet lalt           spc            ralt rctl
+  grv  1    2    3    4    5          6    7    8    9    0    -
+  tab  q    w    e    r    t          y    u    i    o    p    [
+  caps a    s    d    f    g          h    j    k    l    ;    '
+  nubs z    x    c    v    b          n    m    ,    .    /    rsft
+  lctl lmet lalt                spc             ralt           rctl
 )
 
 ;; First defined layer is the starting layer
 (deflayer starting
-  _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _
-  @cap _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    @lat           @spc           @rat _
+  _    _    _    _    _    _          _    _    _    _    _    _
+  _    _    _    _    _    _          _    _    _    _    _    _
+  @cap _    _    _    _    _          _    _    _    _    _    _
+  _    _    _    _    _    _          _    _    _    _    _    _
+  _    _    @lat                @spc            @rat           _
 )
 
 (defalias
@@ -35,11 +38,11 @@
 )
 
 (deflayer nav
-  _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    left down up   rght _    _    
-  _    _    _    _    _    _    _    home pgdn pgup end  _
-  _    _    _              _              _    _
+  _    _    _    _    _    _          _    _    _    _    _    _
+  _    _    _    _    _    _          _    _    _    _    _    _
+  _    _    _    _    _    _          left down up   rght _    _    
+  _    _    _    _    _    _          home pgdn pgup end  _    _
+  _    _    _                   _               _             _
 )
 
 (defalias
@@ -55,11 +58,11 @@
 )
 
 (deflayer mouse
-  _    _    _    _    _    _    _    _    _    _    _    _
-  @cw  _    _    _    _    _    mlft mmid mrgt _    _    _
-  _    _    _    _    _    _    @ma← @ma↓ @ma↑ @ma→ _    _
-  _    _    _    _    _    _    _    @mwl @mwd @mwu @mwr _
-  _    _    _              _              _    _
+  _    _    _    _    _    _          _    _    _    _    _    _
+  @cw  _    _    _    _    _          mlft mmid mrgt _    _    _
+  _    _    _    _    _    _          @ma← @ma↓ @ma↑ @ma→ _    _
+  _    _    _    _    _    _          @mwl @mwd @mwu @mwr _    _
+  _    _    _                   _               _              _
 )
 
 (defalias
@@ -67,32 +70,39 @@
 )
 
 (defvar
-  rps S-0
-  exc S-1
-  dlr S-4
-  per S-5
-  crt S-6
-  amp S-7
-  str S-8
-  lps S-9
-  pls S-=
-  lbc S-[
-  rbc S-]
-  uds S--
+  rps S-0  ;; ) Right parenthesis
+  exc S-1  ;; ! Exclamation mark
+  dlr S-4  ;; $ Dollar
+  per S-5  ;; % Percent
+  crt S-6  ;; ^ Caret or circumflex
+  amp S-7  ;; & Ampersand
+  ask S-8  ;; * Asterisk
+  lps S-9  ;; ( Left parenthesis
+  pls S-=  ;; + Plus
+  lbc S-[  ;; { Left curly bracket
+  rbc S-]  ;; } Right curly bracket
+  uds S--  ;; _ Underscore
+  qtm S-/  ;; ? Question mark
+  num bksl ;; # Number sign - on US keyboards it's where backslash is
 )
 
+;; Symbols are placed based on their action in Neovim, left/backward 
+;; movement/operation symbols are on the left hand, right/forward 
+;; movement/operation symbols are on the right
+;; Generally home and row above are movement operators and bottom row are non 
+;; movement operators
 (deflayer sym
-  _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    eql  $dlr $pls _    $amp $exc _    $per _
-  _    bksl $lps $lbc [    grv  $uds ]    $rbc $rps $str _
-  _    _    _    _    $crt _    _    _    _    _    _    _
-  _    _    _              _              _    _
+  _    _    _    _    _    _          _    _    _    _    _    _
+  _    _    _    _    _    $crt       _    $per _    _    _    _
+  $qtm $ask [    $lbc $lps $uds       $dlr $rps $rbc ]    $num /
+  _    _    _    $exc grv  _          $pls eql  $amp _    _    _
+  _    _    _              _                    _              _
 )
 
 (deflayer fun
-  _    _    _    _    _    _    _    _    _    _    _    _
-  _    f12  f7   f8   f9   _    _    _    _    _    _    _
-  _    f11  f4   f5   f6   _    _    _    _    _    _    _
-  _    f10  f1   f2   f3   _    _    _    _    _    _    _
-  _    _    _              _              _    _
+  _    _    _    _    _    _          _    _    _    _    _    _
+  _    f12  f7   f8   f9   _          _    _    _    _    _    _
+  _    f11  f4   f5   f6   _          _    _    _    _    _    _
+  _    f10  f1   f2   f3   _          _    _    _    _    _    _
+  _    _    _                   _               _              _
 )
