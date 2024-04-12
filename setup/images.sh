@@ -16,6 +16,8 @@ if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
 		--name admin \
 		--pull \
 		--pre-init-hooks "SHELL=/usr/bin/fish"
+
+	distrobox enter admin
 fi
 
 if [[ ${workWorkstations[@]} =~ $HOSTNAME ]]; then
