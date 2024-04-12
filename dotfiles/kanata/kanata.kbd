@@ -1,5 +1,3 @@
-;; Add back in Alt - Left Arrow for browser back
-
 (defcfg
   process-unmapped-keys yes
   log-layer-changes yes
@@ -40,7 +38,7 @@
 (deflayer nav
   _    _    _    _    _    _          _    _    _    _    _    _
   _    _    _    _    _    _          _    _    _    _    _    _
-  _    _    _    _    _    _          left down up   rght _    _    
+  _    lmet lalt _    _    _          left down up   rght _    _    
   _    _    _    _    _    _          home pgdn pgup end  _    _
   _    _    _                   _               _             _
 )
