@@ -16,20 +16,28 @@
   tab  q    w    e    r    t          y    u    i    o    p    [
   caps a    s    d    f    g          h    j    k    l    ;    '
   nubs z    x    c    v    b          n    m    ,    .    /    rsft
-  lctl lmet lalt                spc             ralt           rctl
+  lctl lmet lalt                spc                  ralt rmet rctl
 )
 
 ;; First defined layer is the starting layer
 (deflayer starting
   _    _    _    _    _    _          _    _    _    _    _    _
   _    _    _    _    _    _          _    _    _    _    _    _
-  @cap _    _    _    _    _          _    _    _    _    _    _
+  @cap @a   @s   @d   @f   _          _    @j   @k   @l   @scn _
   _    _    _    _    _    _          _    _    _    _    _    _
-  _    _    @lat                @spc            @rat           _
+  _    _    @lat                @spc                 @rat _    _
 )
 
 (defalias
   cap (tap-hold 200 200 esc  (layer-toggle mouse))
+  f   (tap-hold 200 250 f    lsft)
+  d   (tap-hold 200 250 d    lctl)
+  s   (tap-hold 200 250 s    lalt)
+  a   (tap-hold 200 250 a    lmet)
+  j   (tap-hold 200 250 j    rsft)
+  k   (tap-hold 200 250 k    rctl)
+  l   (tap-hold 200 250 l    ralt)
+  scn (tap-hold 200 250 scln rmet)
   lat (tap-hold 200 200 lalt (layer-toggle nav))
   spc (tap-hold 200 250 spc  (layer-toggle sym))
   rat (tap-hold 200 200 ralt (layer-toggle fun))
@@ -38,9 +46,9 @@
 (deflayer nav
   _    _    _    _    _    _          _    _    _    _    _    _
   _    _    _    _    _    _          _    _    _    _    _    _
-  _    lmet lalt _    _    _          left down up   rght _    _    
+  _    lmet lalt lctl lsft _          left down up   rght _    _    
   _    _    _    _    _    _          home pgdn pgup end  _    _
-  _    _    _                   _               _             _
+  _    _    _                   _                    _    _    _
 )
 
 (defalias
@@ -60,7 +68,7 @@
   @cw  _    _    _    _    _          mlft mmid mrgt _    _    _
   _    _    _    _    _    _          @ma← @ma↓ @ma↑ @ma→ _    _
   _    _    _    _    _    _          @mwl @mwd @mwu @mwr _    _
-  _    _    _                   _               _              _
+  _    _    _                   _                    _    _    _
 )
 
 (defalias
@@ -94,7 +102,7 @@
   _    _    _    _    _    $crt       _    $per _    _    _    _
   $qtm $ask [    $lbc $lps $uds       $dlr $rps $rbc ]    $num /
   _    _    _    $exc grv  _          $pls eql  $amp _    _    _
-  _    _    _              _                    _              _
+  _    _    _                   _                    _    _    _
 )
 
 (deflayer fun
@@ -102,5 +110,5 @@
   _    f12  f7   f8   f9   _          _    _    _    _    _    _
   _    f11  f4   f5   f6   _          _    _    _    _    _    _
   _    f10  f1   f2   f3   _          _    _    _    _    _    _
-  _    _    _                   _               _              _
+  _    _    _                   _                    _    _    _
 )
