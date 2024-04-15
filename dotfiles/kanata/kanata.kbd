@@ -38,16 +38,16 @@
   k   (tap-hold 200 250 k    rctl)
   l   (tap-hold 200 250 l    lalt)
   scn (tap-hold 200 250 scln lmet)
-  lat (tap-hold 200 200 lalt (layer-toggle nav))
+  lat (tap-hold 200 200 bspc (layer-toggle nav))
   spc (tap-hold 200 250 spc  (layer-toggle sym))
-  rat (tap-hold 200 200 ralt (layer-toggle fun))
+  rat (tap-hold 200 200 ret  (layer-toggle fun))
 )
 
 (deflayer nav
   _    _    _    _    _    _          _    _    _    _    _    _
   _    _    _    _    _    _          _    _    _    _    _    _
   _    lmet lalt lctl lsft _          left down up   rght _    _    
-  _    _    _    _    _    _          home pgdn pgup end  _    _
+  _    _    del  _    _    _          home pgdn pgup end  _    _
   _    _    _                   _                    _    _    _
 )
 
@@ -107,8 +107,8 @@
 
 (deflayer fun
   _    _    _    _    _    _          _    _    _    _    _    _
-  _    f12  f7   f8   f9   _          _    _    _    _    _    _
-  _    f11  f4   f5   f6   _          _    _    _    _    _    _
+  _    f12  f7   f8   f9   _          _    _    _    _    prnt _
+  _    f11  f4   f5   f6   _          _    vold volu mute _    _
   _    f10  f1   f2   f3   _          _    _    _    _    _    _
   _    _    _                   _                    _    _    _
 )
