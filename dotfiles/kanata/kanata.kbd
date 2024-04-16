@@ -24,12 +24,13 @@
   _    _    _    _    _    _          _    _    _    _    _    _
   _    _    _    _    _    _          _    _    _    _    _    _
   @cap @a   @s   @d   @f   _          _    @j   @k   @l   @scn _
-  _    _    _    _    _    _          _    _    _    _    _    _
+  @cw  _    _    _    _    _          _    _    _    _    _    _
   _    _    @lat                @spc                 @rat _    _
 )
 
 (defalias
   cap (tap-hold 200 200 esc  (layer-toggle mouse))
+  cw  (caps-word 3000)
   f   (tap-hold 200 250 f    lsft)
   d   (tap-hold 200 250 d    lctl)
   s   (tap-hold 200 250 s    lalt)
@@ -65,43 +66,46 @@
 
 (deflayer mouse
   _    _    _    _    _    _          _    _    _    _    _    _
-  @cw  _    _    _    _    _          mlft mmid mrgt _    _    _
+  _    _    _    _    _    _          mlft mmid mrgt _    _    _
   _    _    _    _    _    _          @ma← @ma↓ @ma↑ @ma→ _    _
   _    _    _    _    _    _          @mwl @mwd @mwu @mwr _    _
   _    _    _                   _                    _    _    _
 )
 
-(defalias
-  cw   (caps-word 3000)
-)
-
 (defvar
-  rps S-0  ;; ) Right parenthesis
-  exc S-1  ;; ! Exclamation mark
-  dlr S-4  ;; $ Dollar
-  per S-5  ;; % Percent
-  crt S-6  ;; ^ Caret or circumflex
-  amp S-7  ;; & Ampersand
-  ask S-8  ;; * Asterisk
-  lps S-9  ;; ( Left parenthesis
-  pls S-=  ;; + Plus
-  lbc S-[  ;; { Left curly bracket
-  rbc S-]  ;; } Right curly bracket
-  uds S--  ;; _ Underscore
-  qtm S-/  ;; ? Question mark
-  num bksl ;; # Number sign - on US keyboards it's where backslash is
+  rps S-0    ;; ) Right parenthesis
+  exc S-1    ;; ! Exclamation mark
+  dlr S-4    ;; $ Dollar
+  per S-5    ;; % Percent
+  crt S-6    ;; ^ Caret or circumflex
+  amp S-7    ;; & Ampersand
+  ask S-8    ;; * Asterisk
+  lps S-9    ;; ( Left parenthesis
+  pls S-=    ;; + Plus
+  lbc S-[    ;; { Left curly bracket
+  rbc S-]    ;; } Right curly bracket
+  uds S--    ;; _ Underscore
+  qtm S-/    ;; ? Question mark
+  tld S-\    ;; Tilda
+  vrb S-nubs ;; Vertical bar
+  num bksl   ;; # Number sign - on US keyboards it's where backslash is
+  dqm S-2    ;; Double quotation marks
+  eur RA-4   ;; Euro
+  gbp S-3    ;; £
+  ats S-'    ;; @
+  lst S-,    ;; <
+  grt S-.    ;; >
 )
 
-;; Symbols are placed based on their action in Neovim, left/backward 
-;; movement/operation symbols are on the left hand, right/forward 
+;; Symbols in the home row are placed based on their action in Neovim, 
+;; left/backward movement/operation symbols are on the left hand, right/forward 
 ;; movement/operation symbols are on the right
-;; Generally home and row above are movement operators and bottom row are non 
-;; movement operators
+;; Other symbols are placed near their location on a default UK layout
 (deflayer sym
   _    _    _    _    _    _          _    _    _    _    _    _
-  _    _    _    _    _    $crt       _    $per _    _    _    _
+  grv  $exc $dqm $gbp $eur $per       $crt $amp eql  $pls $ats $tld
   $qtm $ask [    $lbc $lps $uds       $dlr $rps $rbc ]    $num /
-  _    _    _    $exc grv  _          $pls eql  $amp _    _    _
+  nubs $vrb _    _    _    _          _    _    $lst $grt _    _
   _    _    _                   _                    _    _    _
 )
 
