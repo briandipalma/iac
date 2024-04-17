@@ -95,6 +95,8 @@
   ats S-'    ;; @
   lst S-,    ;; <
   grt S-.    ;; >
+  cln S-;    ;; :
+  mns -      ;; Minus
 )
 
 ;; Symbols in the home row are placed based on their action in Neovim, 
@@ -103,9 +105,9 @@
 ;; Other symbols are placed near their location on a default UK layout
 (deflayer sym
   _    _    _    _    _    _          _    _    _    _    _    _
-  grv  $exc $dqm $gbp $eur $per       $crt $amp eql  $pls $ats $tld
+  grv  $exc $dqm $gbp $eur $per       $crt $amp $mns eql  $pls $ats
   $qtm $ask [    $lbc $lps $uds       $dlr $rps $rbc ]    $num /
-  nubs $vrb _    _    _    _          _    _    $lst $grt _    _
+  nubs $vrb _    _    _    _          _    _    $lst $grt $cln $tld
   _    _    _                   _                    _    _    _
 )
 
