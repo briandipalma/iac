@@ -29,7 +29,7 @@
 )
 
 (defalias
-  cap (tap-hold 200 200 esc  (layer-toggle mouse))
+  cap (tap-hold 200 200 esc  (layer-while-held mouse))
   cw  (caps-word 3000)
   f   (tap-hold 200 250 f    lsft)
   d   (tap-hold 200 250 d    lctl)
@@ -39,9 +39,9 @@
   k   (tap-hold 200 250 k    rctl)
   l   (tap-hold 200 250 l    lalt)
   scn (tap-hold 200 250 scln lmet)
-  lat (tap-hold 200 200 bspc (layer-toggle nav))
-  spc (tap-hold 200 250 spc  (layer-toggle sym))
-  rat (tap-hold 200 200 ret  (layer-toggle fun))
+  lat (tap-hold 200 200 bspc (layer-while-held nav))
+  spc (tap-hold 200 250 spc  (layer-while-held sym))
+  rat (tap-hold 200 200 ret  (layer-while-held fun))
 )
 
 (deflayer nav
