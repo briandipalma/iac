@@ -103,7 +103,7 @@ config.keys = {
 	{
 		key = "F8",
 		action = wezterm.action.SpawnCommandInNewTab({
-			args = { "distrobox", "enter", "admin", "--", "nvim" },
+			args = { "distrobox", "enter", "admin" },
 			cwd = wezterm.home_dir .. "/dev/proxmox-services/",
 		}),
 	},
