@@ -1,6 +1,9 @@
+;; More easily spot misaligned keys/layers
+;; vim: cursorcolumn
+
 (defcfg
   process-unmapped-keys yes
-  log-layer-changes yes
+  log-layer-changes no
 )
 
 ;; Defines the order of keys that the `deflayer` entries below will operate on
@@ -16,7 +19,7 @@
   tab  q    w    e    r    t          y    u    i    o    p    [
   caps a    s    d    f    g          h    j    k    l    ;    '
   nubs z    x    c    v    b          n    m    ,    .    /    rsft
-  lctl lmet lalt                spc                  ralt rmet rctl
+            lalt                spc                  ralt
 )
 
 ;; First defined layer is the starting layer
@@ -24,13 +27,13 @@
   _    _    _    _    _    _          _    _    _    _    _    _
   _    _    _    _    _    _          _    _    _    _    _    _
   @cap @a   @s   @d   @f   _          _    @j   @k   @l   @scn @sqt
-  @cw  _    _    _    _    _          _    _    _    _    _    @rsf
-  _    _    @lat                @spc                 @rat _    _
+  @ibs _    _    _    _    _          _    _    _    _    _    @rsf
+            @lat                @spc                 @rat
 )
 
 (defalias
   cap (tap-hold 200 200 esc  (layer-while-held mouse))
-  cw  (caps-word 3000)
+  ibs (caps-word 3000)
   f   (tap-hold 200 250 f    lsft)
   d   (tap-hold 200 250 d    lctl)
   s   (tap-hold 200 250 s    lalt)
@@ -40,18 +43,18 @@
   l   (tap-hold 200 250 l    lalt)
   scn (tap-hold 200 250 scln lmet)
   rsf (tap-hold 200 250 del  rsft)
-  sqt (tap-hold 200 200 '    (layer-while-held numbers))
+  sqt (tap-hold 200 200 '    (layer-while-held misc))
   lat (tap-hold 200 200 bspc (layer-while-held nav))
-  spc (tap-hold 200 250 spc  (layer-while-held sym))
-  rat (tap-hold 200 200 ret  (layer-while-held fun))
+  spc (tap-hold 200 250 spc  (layer-while-held symbols))
+  rat (tap-hold 200 200 ret  (layer-while-held numbers))
 )
 
 (deflayer nav
   _    _    _    _    _    _          _    _    _    _    _    _
   _    _    _    _    _    _          _    _    _    _    _    _
   _    lmet lalt lctl lsft _          left down up   rght _    _    
-  _    _    del  _    _    _          home pgdn pgup end  _    _
-  _    _    _                   _                    _    _    _
+  _    _    _    _    _    _          home pgdn pgup end  _    _
+            _                   _                    _
 )
 
 (defalias
@@ -71,7 +74,7 @@
   _    _    _    _    _    _          mlft mmid mrgt _    _    _
   _    _    _    _    _    _          @ma← @ma↓ @ma↑ @ma→ _    _
   _    _    _    _    _    _          @mwl @mwd @mwu @mwr _    _
-  _    _    _                   _                    _    _    _
+            _                   _                    _
 )
 
 (defvar
@@ -105,26 +108,26 @@
 ;; left/backward movement/operation symbols are on the left hand, right/forward 
 ;; movement/operation symbols are on the right
 ;; Other symbols are placed near their location on a default UK layout
-(deflayer sym
+(deflayer symbols
   _    _    _    _    _    _          _    _    _    _    _    _
   grv  $exc $dqm $gbp $eur $per       $crt $amp $mns eql  $pls $ats
   $qtm $ask [    $lbc $lps $uds       $dlr $rps $rbc ]    $num /
   nubs $vrb _    _    _    _          _    _    $lst $grt $cln $tld
-  _    _    _                   _                    _    _    _
+            _                   _                    _
 )
 
-(deflayer fun
+(deflayer misc
   _    _    _    _    _    _          _    _    _    _    _    _
   _    f12  f7   f8   f9   _          _    _    _    _    prnt _
   _    f11  f4   f5   f6   _          _    vold volu mute _    _
-  _    f10  f1   f2   f3   _          _    _    _    _    _    _
-  _    _    _                   _                    _    _    _
+  _    f10  f1   f2   f3   _          _    brdn bru  _    _    _
+            _                   _                    _
 )
 
 (deflayer numbers
   _    _    _    _    _    _          _    _    _    _    _    _
-  _    _    7    8    9    _          _    _    _    _    prnt _
-  _    0    4    5    6    _          _    vold volu mute _    _
+  _    _    7    8    9    _          _    _    _    _    _    _
+  _    0    4    5    6    _          _    rsft rctl lalt lmet _
   _    _    1    2    3    _          _    _    _    _    _    _
-  _    _    _                   _                    _    _    _
+            _                   _                    _
 )
