@@ -12,7 +12,6 @@ return {
 			-- https://github.com/nvim-telescope/telescope.nvim/issues/2508
 			layout_config = { height = 0.9, width = { padding = 0 }, vertical = { preview_height = 0.65 } },
 			layout_strategy = "vertical",
-			wrap_results = true,
 			mappings = {
 				i = {
 					["<a-d>"] = function(...)
@@ -27,6 +26,12 @@ return {
 					end,
 				},
 			},
+			path_display = {
+				filename_first = {
+					reverse_directories = false,
+				},
+			},
+			wrap_results = true,
 		},
 		pickers = {
 			live_grep = { additional_args = { "--hidden" } },
