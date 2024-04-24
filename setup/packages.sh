@@ -40,7 +40,7 @@ if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
 fi
 
 if [ ! -e /usr/bin/kanata ]; then
-	sudo curl --location --output /usr/bin/kanata https://github.com/jtroo/kanata/releases/download/v1.5.0/kanata
+	sudo curl --location --output /usr/bin/kanata https://github.com/jtroo/kanata/releases/download/v1.6.0/kanata
 	sudo chmod +x /usr/bin/kanata
 
 	sudo groupadd uinput

@@ -3,6 +3,7 @@
 
 (defcfg
   process-unmapped-keys yes
+  block-unmapped-keys yes
   log-layer-changes no
 )
 
@@ -24,10 +25,10 @@
 
 ;; First defined layer is the starting layer
 (deflayer starting
-  _    _    _    _    _    _          _    _    _    _    _    _
-  _    _    _    _    _    _          _    _    _    _    _    _
-  @cap @a   @s   @d   @f   _          _    @j   @k   @l   @scn @sqt
-  @ibs _    _    _    _    _          _    _    _    _    _    @rsf
+  grv  1    2    3    4    5          6    7    8    9    0    -
+  tab  q    w    e    r    t          y    u    i    o    p    [
+  @cap @a   @s   @d   @f   g          h    @j   @k   @l   @scn @sqt
+  @ibs z    x    c    v    b          n    m    ,    .    /    @rsf
             @lat                @spc                 @rat
 )
 
