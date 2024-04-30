@@ -3,15 +3,18 @@
 
 (defcfg
   process-unmapped-keys yes
+  ;; Block keys outside the ideal keyboard size/limit, build muscle memory
   block-unmapped-keys yes
   log-layer-changes no
+  ;; Don't crash if keyboard isn't connect on startup
+  linux-continue-if-no-devs-found yes
 )
 
 ;; Defines the order of keys that the `deflayer` entries below will operate on
 ;;
 ;; Good keyboards should be split, have a max of 6 columns, 4 rows and ~3 thumb 
-;; keys per hand, ignore anything extra and try to map keys outside that limit
-;; into a layer
+;; keys per hand, to reduce movement from the home row ignore anything extra 
+;; and try to map keys outside that limit into a layer
 ;;
 ;; Chop down a standard UK QWERTY keyboard to fit into that limit, all the
 ;; layers take this as their template.
@@ -32,22 +35,47 @@
             @lat                @spc                 @rat
 )
 
+(defvar
+  ;; tap-timeout
+  tt 210
+  ;; hold-timeout
+  ht 220
+)
+
 (defalias
-  cap (tap-hold 200 200 esc  (layer-while-held mouse))
-  ibs (caps-word 3000)
-  f   (tap-hold 200 250 f    lsft)
-  d   (tap-hold 200 250 d    lctl)
-  s   (tap-hold 200 250 s    lalt)
-  a   (tap-hold 200 250 a    lmet)
-  j   (tap-hold 200 250 j    rsft)
-  k   (tap-hold 200 250 k    rctl)
-  l   (tap-hold 200 250 l    lalt)
-  scn (tap-hold 200 250 scln lmet)
-  rsf (tap-hold 200 250 del  rsft)
-  sqt (tap-hold 200 200 '    (layer-while-held misc))
-  lat (tap-hold 200 200 bspc (layer-while-held nav))
-  spc (tap-hold 200 250 spc  (layer-while-held symbols))
-  rat (tap-hold 200 200 ret  (layer-while-held numbers))
+  ;; Home row mods
+  f   (tap-hold $tt $ht f    lsft)
+  d   (tap-hold $tt $ht d    lctl)
+  s   (tap-hold $tt $ht s    lalt)
+  a   (tap-hold $tt $ht a    lmet)
+  j   (tap-hold $tt $ht j    rsft)
+  k   (tap-hold $tt $ht k    rctl)
+  l   (tap-hold $tt $ht l    lalt)
+  scn (tap-hold $tt $ht scln lmet)
+
+  ;; Move useful keys closer and add layers
+  cap (tap-hold $tt $ht esc  (layer-while-held vim-nav))
+  ibs (tap-hold $tt $ht (caps-word 3000) (layer-while-held mouse))
+  lat (tap-hold $tt $ht bspc (layer-while-held nav))
+  spc (tap-hold $tt $ht spc  (layer-while-held symbols))
+  rat (tap-hold $tt $ht ret  (layer-while-held numbers))
+  rsf (tap-hold $tt $ht del  rsft)
+  sqt (tap-hold $tt $ht '    (layer-while-held misc))
+)
+
+(deflayer vim-nav
+  _    _    _    _    _    _          _    _    _    _    _    _
+  _    _    _    _    _    _          _    _    _    _    _    _
+  _    _    _    _    _    _          _    @prd @nxd _    _    _
+  _    _    _    _    _    _          _    @pql @nql _    _    _
+            _                   _                    _
+)
+
+(defalias
+  prd (macro [ d)
+  nxd (macro ] d)
+  pql (macro [ q)
+  nql (macro ] q)
 )
 
 (deflayer nav
@@ -55,6 +83,14 @@
   _    _    _    _    _    _          _    _    _    _    _    _
   _    lmet lalt lctl lsft _          left down up   rght _    _    
   _    _    _    _    _    _          home pgdn pgup end  _    _
+            _                   _                    _
+)
+
+(deflayer mouse
+  _    _    _    _    _    _          _    _    _    _    _    _
+  _    _    @pql @nql _    _          mlft mmid mrgt _    _    _
+  _    _    @prd @nxd _    _          @ma← @ma↓ @ma↑ @ma→ _    _
+  _    _    _    _    _    _          @mwl @mwd @mwu @mwr _    _
             _                   _                    _
 )
 
@@ -68,14 +104,6 @@
   mwd (mwheel-down 50 120)
   mwu (mwheel-up 50 120)
   mwr (mwheel-right 50 120)
-)
-
-(deflayer mouse
-  _    _    _    _    _    _          _    _    _    _    _    _
-  _    _    _    _    _    _          mlft mmid mrgt _    _    _
-  _    _    _    _    _    _          @ma← @ma↓ @ma↑ @ma→ _    _
-  _    _    _    _    _    _          @mwl @mwd @mwu @mwr _    _
-            _                   _                    _
 )
 
 (defvar
