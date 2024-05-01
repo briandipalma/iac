@@ -37,9 +37,9 @@
 
 (defvar
   ;; tap-timeout
-  tt 210
+  tt 200
   ;; hold-timeout
-  ht 220
+  ht 230
 )
 
 (defalias
@@ -65,15 +65,17 @@
 
 (deflayer vim-nav
   _    _    _    _    _    _          _    _    _    _    _    _
-  _    _    _    _    _    _          _    _    _    _    _    _
-  _    _    _    _    _    _          _    @prd @nxd _    _    _
+  _    _    _    _    _    _          _    @phk @nhk _    _    _
+  _    _    _    _    _    _          _    @pdg @ndg _    _    _
   _    _    _    _    _    _          _    @pql @nql _    _    _
             _                   _                    _
 )
 
 (defalias
-  prd (macro [ d)
-  nxd (macro ] d)
+  phk (macro [ h)
+  nhk (macro ] h)
+  pdg (macro [ d)
+  ndg (macro ] d)
   pql (macro [ q)
   nql (macro ] q)
 )
@@ -88,8 +90,8 @@
 
 (deflayer mouse
   _    _    _    _    _    _          _    _    _    _    _    _
-  _    _    @pql @nql _    _          mlft mmid mrgt _    _    _
-  _    _    @prd @nxd _    _          @ma← @ma↓ @ma↑ @ma→ _    _
+  _    _    _    _    _    _          mlft mmid mrgt _    _    _
+  _    _    _    _    _    _          @ma← @ma↓ @ma↑ @ma→ _    _
   _    _    _    _    _    _          @mwl @mwd @mwu @mwr _    _
             _                   _                    _
 )
@@ -140,7 +142,7 @@
 (deflayer symbols
   _    _    _    _    _    _          _    _    _    _    _    _
   grv  $exc $dqm $gbp $eur $per       $crt $amp $mns eql  $pls $ats
-  $qtm $ask [    $lbc $lps $uds       $dlr $rps $rbc ]    $num /
+  $qtm $num [    $lbc $lps $uds       $dlr $rps $rbc ]    $ask /
   nubs $vrb _    _    _    _          _    _    $lst $grt $cln $tld
             _                   _                    _
 )
