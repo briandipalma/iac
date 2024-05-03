@@ -55,7 +55,7 @@
 
   ;; Move useful keys closer and add layers
   cap (tap-hold $tt $ht esc  (layer-while-held vim-nav))
-  ibs (tap-hold $tt $ht (caps-word 3000) (layer-while-held mouse))
+  ibs (tap-hold $tt $ht (caps-word 10000) (layer-while-held mouse))
   lat (tap-hold $tt $ht bspc (layer-while-held nav))
   spc (tap-hold $tt $ht spc  (layer-while-held symbols))
   rat (tap-hold $tt $ht ret  (layer-while-held numbers))
@@ -66,12 +66,14 @@
 (deflayer vim-nav
   _    _    _    _    _    _          _    _    _    _    _    _
   _    _    _    _    _    _          _    @phk @nhk _    _    _
-  _    _    _    _    _    _          _    @pdg @ndg _    _    _
+  _    _    _    @prf @nrf _          _    @pdg @ndg _    _    _
   _    _    _    _    _    _          _    @pql @nql _    _    _
             _                   _                    _
 )
 
 (defalias
+  prf (macro [ [)
+  nrf (macro ] ])
   phk (macro [ h)
   nhk (macro ] h)
   pdg (macro [ d)
