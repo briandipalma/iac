@@ -65,13 +65,15 @@
 
 (deflayer vim-nav
   _    _    _    _    _    _          _    _    _    _    _    _
-  _    _    _    _    _    _          _    @phk @nhk _    _    _
+  _    _    _    @pca @nca _          _    @phk @nhk _    _    _
   _    _    _    @prf @nrf _          _    @pdg @ndg _    _    _
   _    _    _    _    _    _          _    @pql @nql _    _    _
             _                   _                    _
 )
 
 (defalias
+  pca (macro [ c)
+  nca (macro ] c)
   prf (macro [ [)
   nrf (macro ] ])
   phk (macro [ h)
