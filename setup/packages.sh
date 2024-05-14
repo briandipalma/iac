@@ -12,6 +12,8 @@ flatpak install -y flathub org.wezfurlong.wezterm
 sudo apt -y install devilspie2
 sudo apt -y install yakuake
 
+xdg-mime default info.smplayer.SMPlayer.desktop video/mp4
+
 if [[ ${workWorkstations[@]} =~ $HOSTNAME ]]; then
 	flatpak install -y flathub com.slack.Slack
 fi
