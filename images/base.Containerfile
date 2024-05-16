@@ -6,7 +6,7 @@ RUN pacman --sync --refresh
 RUN pacman -Sq --noconfirm bat bottom dust fd fish fzf 
 RUN pacman -Sq --noconfirm git git-delta lazygit
 RUN pacman -Sq --noconfirm lsd neovim ripgrep starship 
-RUN pacman -Sq --noconfirm tealdeer
+RUN pacman -Sq --noconfirm tealdeer yazi
 # Safer rm
 RUN pacman -Sq --noconfirm trash-cli
 
