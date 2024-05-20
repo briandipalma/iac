@@ -63,6 +63,30 @@
   sqt (tap-hold $tt $ht '    (layer-while-held misc))
 )
 
+(deflayer nav
+  _    _    _    _    _    _          _    _    _    _    _    _
+  _    _    _    _    _    _          _    _    _    _    _    _
+  _    @osm @osa @osc @oss @osg       left down up   rght bspc _
+  _    _    _    _    _    _          home pgdn pgup end  del  _
+            _                   _                    _
+)
+
+(deflayer numbers
+  _    _    _    _    _    _          _    _    _    _    _    _
+  _    _    7    8    9    _          _    _    _    _    _    _
+  _    0    4    5    6    _          _    @oss @osc @osa @osm _
+  _    _    1    2    3    _          _    _    _    _    _    _
+            _                   _                    _
+)
+
+(defalias
+  osm (one-shot-press 2000 lmet)
+  osa (one-shot-press 2000 lalt)
+  osc (one-shot-press 2000 lctl)
+  oss (one-shot-press 2000 lsft)
+  osg (one-shot-press 2000 ralt)
+)
+
 (deflayer vim-nav
   _    _    _    _    _    _          _    _    _    _    _    _
   _    _    _    @pca @nca _          _    @phk @nhk _    _    _
@@ -82,34 +106,6 @@
   ndg (macro ] d)
   pql (macro [ q)
   nql (macro ] q)
-)
-
-(deflayer nav
-  _    _    _    _    _    _          _    _    _    _    _    _
-  _    _    _    _    _    _          _    _    _    _    _    _
-  _    lmet lalt lctl lsft _          left down up   rght _    _    
-  _    _    _    _    _    _          home pgdn pgup end  _    _
-            _                   _                    _
-)
-
-(deflayer mouse
-  _    _    _    _    _    _          _    _    _    _    _    _
-  _    _    _    _    _    _          mlft mmid mrgt _    _    _
-  _    _    _    _    _    _          @ma← @ma↓ @ma↑ @ma→ _    _
-  _    _    _    _    _    _          @mwl @mwd @mwu @mwr _    _
-            _                   _                    _
-)
-
-(defalias
-  ma← (movemouse-accel-left 5 1000 1 5)
-  ma↓ (movemouse-accel-down 5 1000 1 5)
-  ma↑ (movemouse-accel-up 5 1000 1 5)
-  ma→ (movemouse-accel-right 5 1000 1 5)
-
-  mwl (mwheel-left 50 120)
-  mwd (mwheel-down 50 120)
-  mwu (mwheel-up 50 120)
-  mwr (mwheel-right 50 120)
 )
 
 (defvar
@@ -159,10 +155,22 @@
             _                   _                    _
 )
 
-(deflayer numbers
+(deflayer mouse
   _    _    _    _    _    _          _    _    _    _    _    _
-  _    _    7    8    9    _          _    _    _    _    _    _
-  _    0    4    5    6    _          _    rsft rctl lalt lmet _
-  _    _    1    2    3    _          _    _    _    _    _    _
+  _    _    _    _    _    _          mlft mmid mrgt _    _    _
+  _    _    _    _    _    _          @ma← @ma↓ @ma↑ @ma→ _    _
+  _    _    _    _    _    _          @mwl @mwd @mwu @mwr _    _
             _                   _                    _
+)
+
+(defalias
+  ma← (movemouse-accel-left 5 1000 1 5)
+  ma↓ (movemouse-accel-down 5 1000 1 5)
+  ma↑ (movemouse-accel-up 5 1000 1 5)
+  ma→ (movemouse-accel-right 5 1000 1 5)
+
+  mwl (mwheel-left 50 120)
+  mwd (mwheel-down 50 120)
+  mwu (mwheel-up 50 120)
+  mwr (mwheel-right 50 120)
 )
