@@ -30,9 +30,9 @@
 (deflayer starting
   grv  1    2    3    4    5          6    7    8    9    0    -
   tab  q    w    e    r    t          y    u    i    o    p    [
-  @cap @a   @s   @d   @f   g          h    @j   @k   @l   @scn @sqt
-  @ibs z    x    c    v    b          n    m    ,    .    /    @rsf
-            @lat                @spc                 @rat
+  @vin @a   @s   @d   @f   g          h    @j   @k   @l   @scn @fun
+  @mos z    x    c    v    b          n    m    ,    .    del  rsft
+            @nav                @sym                 @num
 )
 
 (defvar
@@ -43,31 +43,32 @@
 )
 
 (defalias
-  ;; Home row mods
-  f   (tap-hold $tt $ht f    lsft)
-  d   (tap-hold $tt $ht d    lctl)
-  s   (tap-hold $tt $ht s    lalt)
+  ;; Home row mods - left hand
   a   (tap-hold $tt $ht a    lmet)
+  s   (tap-hold $tt $ht s    lalt)
+  d   (tap-hold $tt $ht d    lctl)
+  f   (tap-hold $tt $ht f    lsft)
+
+  ;; Home row mods - right hand
   j   (tap-hold $tt $ht j    rsft)
   k   (tap-hold $tt $ht k    rctl)
   l   (tap-hold $tt $ht l    lalt)
   scn (tap-hold $tt $ht scln lmet)
 
   ;; Move useful keys closer and add layers
-  cap (tap-hold $tt $ht esc  (layer-while-held vim-nav))
-  ibs (tap-hold $tt $ht (caps-word 10000) (layer-while-held mouse))
-  lat (tap-hold $tt $ht bspc (layer-while-held nav))
-  spc (tap-hold $tt $ht spc  (layer-while-held symbols))
-  rat (tap-hold $tt $ht ret  (layer-while-held numbers))
-  rsf (tap-hold $tt $ht del  rsft)
-  sqt (tap-hold $tt $ht '    (layer-while-held misc))
+  sym (tap-hold $tt $ht spc  (layer-while-held symbols))
+  num (tap-hold $tt $ht ret  (layer-while-held numbers))
+  nav (tap-hold $tt $ht bspc (layer-while-held nav))
+  fun (tap-hold $tt $ht '    (layer-while-held function))
+  vin (tap-hold $tt $ht esc  (layer-while-held vim-nav))
+  mos (tap-hold $tt $ht (caps-word 10000) (layer-while-held mouse))
 )
 
 (deflayer nav
   _    _    _    _    _    _          _    _    _    _    _    _
   _    _    _    _    _    _          _    _    _    _    _    _
-  _    @osm @osa @osc @oss @osg       left down up   rght bspc _
-  _    _    _    _    _    _          home pgdn pgup end  del  _
+  _    @osm @osa @osc @oss @osg       left down up   rght _    _
+  _    _    _    _    _    _          home pgdn pgup end  _    _
             _                   _                    _
 )
 
@@ -85,27 +86,6 @@
   osc (one-shot-press 2000 lctl)
   oss (one-shot-press 2000 lsft)
   osg (one-shot-press 2000 ralt)
-)
-
-(deflayer vim-nav
-  _    _    _    _    _    _          _    _    _    _    _    _
-  _    _    _    @pca @nca _          _    @phk @nhk _    _    _
-  _    _    _    @prf @nrf _          _    @pdg @ndg _    _    _
-  _    _    _    _    _    _          _    @pql @nql _    _    _
-            _                   _                    _
-)
-
-(defalias
-  pca (macro [ c)
-  nca (macro ] c)
-  prf (macro [ [)
-  nrf (macro ] ])
-  phk (macro [ h)
-  nhk (macro ] h)
-  pdg (macro [ d)
-  ndg (macro ] d)
-  pql (macro [ q)
-  nql (macro ] q)
 )
 
 (defvar
@@ -143,16 +123,37 @@
   _    _    _    _    _    _          _    _    _    _    _    _
   grv  $exc $dqm $gbp $eur $per       $crt $amp $mns eql  $pls $ats
   $qtm $num [    $lbc $lps $uds       $dlr $rps $rbc ]    $ask /
-  nubs $vrb _    _    _    _          _    _    $lst $grt $cln $tld
+  nubs $vrb _    _    _    _          _    '    $lst $grt $cln $tld
             _                   _                    _
 )
 
-(deflayer misc
+(deflayer function
   _    _    _    _    _    _          _    _    _    _    _    _
   _    f12  f7   f8   f9   _          _    _    _    _    prnt _
   _    f11  f4   f5   f6   _          _    vold volu mute _    _
   _    f10  f1   f2   f3   _          _    brdn bru  _    _    _
             _                   _                    _
+)
+
+(deflayer vim-nav
+  _    _    _    _    _    _          _    _    _    _    _    _
+  _    _    _    @pca @nca _          _    @phk @nhk _    _    _
+  _    _    _    @prf @nrf _          _    @pdg @ndg _    _    _
+  _    _    _    _    _    _          _    @pql @nql _    _    _
+            _                   _                    _
+)
+
+(defalias
+  pca (macro [ c)
+  nca (macro ] c)
+  prf (macro [ [)
+  nrf (macro ] ])
+  phk (macro [ h)
+  nhk (macro ] h)
+  pdg (macro [ d)
+  ndg (macro ] d)
+  pql (macro [ q)
+  nql (macro ] q)
 )
 
 (deflayer mouse
