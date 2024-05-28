@@ -29,9 +29,9 @@
 ;; First defined layer is the starting layer
 (deflayer starting
   grv  1    2    3    4    5          6    7    8    9    0    -
-  tab  q    w    e    r    t          y    u    i    o    p    [
+  tab  q    w    e    r    t          y    u    i    o    p    del
   @vin @a   @s   @d   @f   g          h    @j   @k   @l   @scn @fun
-  @mos z    x    c    v    b          n    m    ,    .    del  rsft
+  @mos z    x    c    v    b          n    m    ,    .    /    @cwr
             @nav                @sym                 @num
 )
 
@@ -56,12 +56,14 @@
   scn (tap-hold $tt $ht scln lmet)
 
   ;; Move useful keys closer and add layers
+  oss (one-shot-press 2000 lsft)
   sym (tap-hold $tt $ht spc  (layer-while-held symbols))
   num (tap-hold $tt $ht ret  (layer-while-held numbers))
   nav (tap-hold $tt $ht bspc (layer-while-held nav))
   fun (tap-hold $tt $ht '    (layer-while-held function))
   vin (tap-hold $tt $ht esc  (layer-while-held vim-nav))
-  mos (tap-hold $tt $ht (caps-word 10000) (layer-while-held mouse))
+  cwr (caps-word 10000)
+  mos (tap-hold $tt $ht @oss (layer-while-held mouse))
 )
 
 (deflayer nav
@@ -84,7 +86,6 @@
   osm (one-shot-press 2000 lmet)
   osa (one-shot-press 2000 lalt)
   osc (one-shot-press 2000 lctl)
-  oss (one-shot-press 2000 lsft)
   osg (one-shot-press 2000 ralt)
 )
 
