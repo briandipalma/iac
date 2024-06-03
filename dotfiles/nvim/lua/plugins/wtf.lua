@@ -4,16 +4,8 @@ return {
 	opts = {},
 	keys = {
 		{
-			"gw",
-			mode = { "n", "x" },
-			function()
-				require("wtf").ai()
-			end,
-			desc = "Debug diagnostic with AI",
-		},
-		{
 			mode = { "n" },
-			"gW",
+			"gw",
 			function()
 				require("wtf").search()
 			end,
