@@ -31,6 +31,7 @@ dconf write /org/gnome/shell/extensions/dash-to-dock/extend-height false
 dconf write /org/gnome/desktop/interface/show-battery-percentage true
 dconf write /org/gnome/nautilus/preferences/default-folder-viewer "'list-view'"
 dconf write /org/gnome/nautilus/preferences/click-policy "'single'"
+dconf write /org/gnome/desktop/screensaver/lock-enabled false
 
 # Custom keybindings
 
