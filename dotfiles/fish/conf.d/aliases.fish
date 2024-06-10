@@ -5,4 +5,5 @@ alias icat="flatpak run org.wezfurlong.wezterm imgcat"
 alias lg=lazygit
 alias rm=trash-put
 alias s="ssh"
+alias y=yazi
 alias vim=nvim
