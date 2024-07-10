@@ -7,6 +7,7 @@ config.hide_tab_bar_if_only_one_tab = true
 
 config.adjust_window_size_when_changing_font_size = false
 config.default_prog = { "distrobox", "enter", "base" }
+config.warn_about_missing_glyphs = false
 
 config.keys = {
 	-- Create panes
