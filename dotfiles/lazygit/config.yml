@@ -1,11 +1,13 @@
 ---
 gui:
   expandFocusedSidePanel: true
+  enlargedSideViewLocation: top
   theme:
     selectedLineBgColor:
       - black
   showCommandLog: false
   nerdFontsVersion: "3"
+  windowSize: "half"
   portraitMode: "always"
 
 git:
