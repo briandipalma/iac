@@ -24,4 +24,9 @@ customCommands:
 os:
   editPreset: "nvim-remote"
 
+keybinding:
+  files:
+    amendLastCommit: a
+    toggleStagedAll: A
+
 startuppopupversion: 1
