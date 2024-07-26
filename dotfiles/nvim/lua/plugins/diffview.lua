@@ -45,7 +45,7 @@ return {
 			file_history = { winbar_info = true },
 			merge_tool = { layout = "diff3_mixed" },
 		},
-		file_panel = { listing_style = "list", win_config = file_panel_win_config },
+		file_panel = { win_config = file_panel_win_config },
 		file_history_panel = { win_config = file_panel_win_config },
 		commit_log_panel = { win_config = { border = border } },
 		default_args = {
