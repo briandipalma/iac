@@ -79,3 +79,5 @@
 [diff]
     colorMoved = default
     algorithm = histogram
+    renames = copies
+    renameLimit = 500
