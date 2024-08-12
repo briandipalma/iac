@@ -1,10 +1,5 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	keys = {
-		-- disable the search git commits keymap, neogit commit uses it
-		{ "<leader>gc", false },
-		{ "<leader>dc", "<cmd>Telescope git_commits<CR>", desc = "Search all commits" },
-	},
 	opts = {
 		defaults = {
 			cache_picker = { num_pickers = 10, limit_entries = 10 },

@@ -13,8 +13,7 @@ return {
 		}
 
 		opts.theme = "rose-pine"
-		opts.options.disabled_filetypes.winbar =
-			{ "dashboard", "NeogitStatus", "DiffviewFiles", "Trouble", "NeogitCommitMessage" }
+		opts.options.disabled_filetypes.winbar = { "dashboard", "DiffviewFiles", "Trouble" }
 		opts.winbar = winbar_conf
 		opts.inactive_winbar = winbar_conf
 	end,
