@@ -10,3 +10,8 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.bo.makeprg = "npx tsc --project " .. project_root
 	end,
 })
+
+vim.api.nvim_create_autocmd(
+	{ "FocusLost", "ModeChanged", "TextChanged", "BufEnter" },
+	{ desc = "autosave", pattern = "*", command = "silent! update" }
+)
