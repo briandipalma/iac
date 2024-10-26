@@ -58,3 +58,8 @@ if [ ! -e /usr/bin/kanata ]; then
   sudo systemctl start kanata
   sudo systemctl enable kanata
 fi
+
+# To easily install Linux/Windows/macOS VMs
+sudo apt-add-repository ppa:flexiondotorg/quickemu
+sudo apt update
+sudo apt install quickemu
