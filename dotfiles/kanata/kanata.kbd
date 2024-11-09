@@ -62,7 +62,7 @@
   nav (tap-hold $tt $ht bspc (layer-while-held nav))
   fun (tap-hold $tt $ht '    (layer-while-held function))
   vin (tap-hold $tt $ht esc  (layer-while-held vim-nav))
-  cwr (caps-word 10000)
+  cwr (caps-word-toggle 10000)
   mos (tap-hold $tt $ht @oss (layer-while-held mouse))
 )
 
