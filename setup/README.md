@@ -7,7 +7,7 @@ Setup SSH key, verify you can connect to GitHub.
 Set the correct hostname e.g.
 
 ```bash
-sudo hostnamectl set-hostname brians-xps13-popos
+sudo hostnamectl set-hostname brians-infinitybookpro14-popos
 ```
 
 Install `flatpak` (may already be installed by OS package manager).  
