@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=com.dropbox.Client
+Exec=flatpak run com.dropbox.Client
+X-Flatpak=com.dropbox.Client

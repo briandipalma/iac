@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Firefox autostart
+Exec=firefox
+Comment=Start Firefox on desktop start

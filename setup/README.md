@@ -31,6 +31,7 @@ git clone git@github.com:briandipalma/iac.git
 
 Add the machine hostname to the `~/dev/iac/setup/inventory.sh` file if it's not there.
 Run `repos.sh` from the `~/dev/iac/setup` directory, `exit` container.  
+Create autostart, fish_history etc directories used in `links.sh` script for new hostname.
 Now in a **host** terminal and from the `~dev/iac/setup` directory run:
 
 - `links.sh`

@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Thunderbird autostart
+Exec=flatpak run org.mozilla.Thunderbird
+Comment=Start Thunderbird on desktop start
