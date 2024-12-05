@@ -16,7 +16,7 @@ RUN pacman -Sq --noconfirm gcc
 RUN pacman -Sq --noconfirm make
 
 # To allow copy/paste to/from host clipboard
-RUN pacman -Sq --noconfirm xsel
+RUN pacman -Sq --noconfirm xsel wlroots
 
 # mason.nvim uses npm to update language-servers
 RUN pacman -Sq --noconfirm nodejs-lts-iron npm
