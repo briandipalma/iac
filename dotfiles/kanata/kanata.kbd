@@ -8,6 +8,9 @@
   log-layer-changes no
   ;; Don't crash if keyboard isn't connect on startup
   linux-continue-if-no-devs-found yes
+  linux-dev-names-exclude (
+    "Keebart sofle_choc_pro"
+  )
 )
 
 ;; Defines the order of keys that the `deflayer` entries below will operate on
@@ -63,7 +66,6 @@
   fun (tap-hold $tt $ht '    (layer-while-held function))
   vin (tap-hold $tt $ht esc  (layer-while-held vim-nav))
   cwr (caps-word-toggle 10000)
-  mos (tap-hold $tt $ht @oss (layer-while-held mouse))
 )
 
 (deflayer nav
@@ -122,25 +124,17 @@
 ;; Other symbols are placed near their location on a default UK layout
 (deflayer symbols
   _    _    _    _    _    _          _    _    _    _    _    _
-  grv  $exc $dqm $gbp $eur $per       $crt $amp $mns eql  $pls $ats
+  _    $exc $dqm $gbp $eur $per       $crt $amp $mns eql  $pls _ 
   $qtm $num [    $lbc $lps $uds       $dlr $rps $rbc ]    $ask /
-  nubs $vrb _    _    _    _          _    '    $lst $grt $cln $tld
+  _    nubs $vrb $ats grv  _          $tld '    $lst $grt $cln _
             _                   _                    _
 )
 
 (deflayer function
   _    _    _    _    _    _          _    _    _    _    _    _
-  _    f12  f7   f8   f9   _          _    _    _    _    prnt _
-  _    f11  f4   f5   f6   _          _    vold volu mute _    _
-  _    f10  f1   f2   f3   _          _    brdn bru  _    _    _
-            _                   _                    _
-)
-
-(deflayer vim-nav
-  _    _    _    _    _    _          _    _    _    _    _    _
-  _    _    _    @pca @nca _          _    @phk @nhk _    _    _
-  _    _    _    @prf @nrf _          _    @pdg @ndg _    _    _
-  _    _    _    _    _    _          _    @pql @nql _    _    _
+  _    _    f7   f8   f9   f12        _    _    _    _    _    _
+  _    prnt f4   f5   f6   f11        _    vold volu mute _    _
+  _    _    f1   f2   f3   f10        _    brdn bru  _    _    _
             _                   _                    _
 )
 
@@ -157,22 +151,11 @@
   nql (macro ] q)
 )
 
-(deflayer mouse
+(deflayer vim-nav
   _    _    _    _    _    _          _    _    _    _    _    _
-  _    _    _    _    _    _          mlft mmid mrgt _    _    _
-  _    _    _    _    _    _          @ma← @ma↓ @ma↑ @ma→ _    _
-  _    _    _    _    _    _          @mwl @mwd @mwu @mwr _    _
+  _    _    _    @pca @nca _          _    @nhk @phk _    _    _
+  _    _    _    @prf @nrf _          _    @ndg @pdg _    _    _
+  _    _    _    _    _    _          _    @nql @pql _    _    _
             _                   _                    _
 )
 
-(defalias
-  ma← (movemouse-accel-left 5 1000 1 5)
-  ma↓ (movemouse-accel-down 5 1000 1 5)
-  ma↑ (movemouse-accel-up 5 1000 1 5)
-  ma→ (movemouse-accel-right 5 1000 1 5)
-
-  mwl (mwheel-left 50 120)
-  mwd (mwheel-down 50 120)
-  mwu (mwheel-up 50 120)
-  mwr (mwheel-right 50 120)
-)
