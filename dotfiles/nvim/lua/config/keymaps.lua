@@ -19,3 +19,10 @@ set("x", "p", '"_dP')
 -- Increment/Decrement
 set({ "n", "v" }, "+", "<C-a>")
 set({ "n", "v" }, "-", "<C-x>")
+
+-- Terminal mappings --
+
+-- Escape from terminal mode, for fzf-lua which runs in a terminal buffer
+set("t", "<M-e>", "<C-\\><C-N>")
+-- Escape from terminal mode and paste the + register, for fzf-lua which runs in a terminal buffer
+set("t", "<M-p>", '<C-\\><C-N>"+pi')
