@@ -32,7 +32,9 @@ return {
 			},
 		}
 
-		require("gitlab").setup(config)
+		if vim.fn.executable("go") == 1 then
+			require("gitlab").setup(config)
+		end
 	end,
 	keys = {
 		{
