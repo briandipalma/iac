@@ -1,32 +1,26 @@
----
 gui:
-  expandFocusedSidePanel: true
-  enlargedSideViewLocation: top
-  theme:
-    selectedLineBgColor:
-      - black
-  showCommandLog: false
-  nerdFontsVersion: "3"
-  windowSize: "half"
-  portraitMode: "always"
-
+    expandFocusedSidePanel: true
+    enlargedSideViewLocation: top
+    theme:
+        selectedLineBgColor:
+            - black
+    showCommandLog: false
+    nerdFontsVersion: "3"
+    screenMode: "half"
+    portraitMode: "always"
 git:
-  paging:
-    colorArg: always
-    pager: delta --paging=never
-
+    paging:
+        colorArg: always
+        pager: delta --paging=never
 customCommands:
-  - key: "P"
-    command: "git push --force-with-lease -u origin {{.CheckedOutBranch.Name}}"
-    context: "global"
-    loadingText: "Pushing changes using force-with-lease"
-
+    - key: "P"
+      command: "git push --force-with-lease -u origin {{.CheckedOutBranch.Name}}"
+      context: "global"
+      loadingText: "Pushing changes using force-with-lease"
 os:
-  editPreset: "nvim-remote"
-
+    editPreset: "nvim-remote"
 keybinding:
-  files:
-    amendLastCommit: a
-    toggleStagedAll: A
-
+    files:
+        amendLastCommit: a
+        toggleStagedAll: A
 startuppopupversion: 1
