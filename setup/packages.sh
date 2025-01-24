@@ -44,7 +44,7 @@ if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
   fi
 fi
 
-if [ ! -e /usr/bin/kanata ]; then
+if [[ ! -e /usr/bin/kanata && ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
   sudo curl --location --output /usr/bin/kanata https://github.com/jtroo/kanata/releases/download/v1.7.0/kanata
   sudo chmod +x /usr/bin/kanata
 
