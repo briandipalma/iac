@@ -3,8 +3,6 @@
 
 (defcfg
   process-unmapped-keys yes
-  ;; Block keys outside the ideal keyboard size/limit, build muscle memory
-  block-unmapped-keys yes
   log-layer-changes no
   ;; Don't crash if keyboard isn't connect on startup
   linux-continue-if-no-devs-found yes
