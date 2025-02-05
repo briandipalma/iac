@@ -2,14 +2,25 @@
 
 source inventory.sh
 
+# Control flatpak permissions
 flatpak install -y flathub com.github.tchx84.Flatseal
 flatpak install -y flathub com.google.Chrome
+# Play video files
 flatpak install -y flathub info.smplayer.SMPlayer
+# Play audio files
+flatpak install -y flathub com.github.taiko2k.tauonmb
+# Record desktop/webcam audio/video
 flatpak install -y flathub com.obsproject.Studio
+# Remote desktop access
 flatpak install -y flathub org.remmina.Remmina
 flatpak install -y flathub org.virt_manager.virt-viewer
+# Main terminal
 flatpak install -y flathub org.wezfurlong.wezterm
+# Graphics/screenshot editor
+flatpak install -y flathub org.kde.krita
+# Order programs onto workspaces in X11
 sudo apt -y install devilspie2
+# Drop down terminal for host
 sudo apt -y install yakuake
 
 # File type handling
@@ -24,7 +35,6 @@ fi
 if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
   flatpak install -y flathub com.discordapp.Discord
   flatpak install -y flathub com.dropbox.Client
-  flatpak install -y flathub com.github.taiko2k.tauonmb
   flatpak install -y flathub com.github.zocker_160.SyncThingy
   flatpak install -y flathub com.heroicgameslauncher.hgl
   flatpak install -y flathub com.valvesoftware.Steam
