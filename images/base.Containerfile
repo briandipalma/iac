@@ -24,6 +24,7 @@ RUN pacman -Sq --noconfirm nodejs-lts-iron npm
 # Link to host programs
 RUN ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/podman
 RUN ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/flatpak
+RUN ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/docker
 
 # Create required locales
 RUN sed -i 's/#en_IE.UTF-8/en_IE.UTF-8/' /etc/locale.gen

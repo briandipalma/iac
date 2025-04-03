@@ -10,8 +10,9 @@ Set the correct hostname e.g.
 sudo hostnamectl set-hostname brians-infinitybookpro14-popos
 ```
 
-Install `flatpak` (may already be installed by OS package manager).  
+Install `flatpak` (via OS package manager).
 Install `podman` (via OS package manager).  
+Install `docker` (via OS package manager).
 Install `distrobox` (via install script).
 
 ```bash
@@ -31,7 +32,8 @@ git clone git@github.com:briandipalma/iac.git
 
 Add the machine hostname to the `~/dev/iac/setup/inventory.sh` file if it's not there.
 Run `repos.sh` from the `~/dev/iac/setup` directory, `exit` container.  
-Create autostart, fish_history etc directories used in `links.sh` script for new hostname.
+Create autostart, fish_history etc directories used in `links.sh` script for
+new hostname.
 Now in a **host** terminal and from the `~dev/iac/setup` directory run:
 
 - `links.sh`
