@@ -1,5 +1,7 @@
 #! /bin/bash
 
+source inventory.sh
+
 # Common configuration
 
 ln -sf ~/dev/iac/dotfiles/bat ~/.config/
@@ -31,4 +33,9 @@ fi
 if [ -d ~/dev/my-data/$HOSTNAME/syncthing/ ]; then
   mkdir -p ~/.var/app/com.github.zocker_160.SyncThingy/config
   ln -sf ~/dev/my-data/$HOSTNAME/syncthing ~/.var/app/com.github.zocker_160.SyncThingy/config/
+fi
+
+if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
+  mkdir -p ~/.config/rclone
+  ln -sf ~/dev/my-data/rclone.conf ~/.config/rclone/rclone.conf
 fi

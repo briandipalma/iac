@@ -1,4 +1,4 @@
 FROM docker.io/briandipalma/base:latest
 
 # CLI utilities
-RUN pacman -Sq --noconfirm terraform ansible
+RUN pacman -Sq --noconfirm terraform ansible rclone
