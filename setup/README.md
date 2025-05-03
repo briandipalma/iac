@@ -4,6 +4,7 @@ Account name should be `brian` or `briand` for work machines.
 Upgrade host OS with package manager. Reboot.  
 Copy over host SSH and WireGuard config.  
 Setup SSH key, verify you can connect to GitHub.  
+New SSH keys need to be copied to servers.
 Set the correct hostname e.g.
 
 ```bash
