@@ -5,6 +5,8 @@ source inventory.sh
 # Control flatpak permissions
 flatpak install -y flathub com.github.tchx84.Flatseal
 flatpak install -y flathub com.google.Chrome
+# Image viewer
+flatpak install flathub io.github.woelper.Oculante
 # Play video files
 flatpak install -y flathub info.smplayer.SMPlayer
 # Play audio files
@@ -29,6 +31,8 @@ xdg-mime default info.smplayer.SMPlayer.desktop video/x-matroska
 xdg-mime default info.smplayer.SMPlayer.desktop video/vnd.avi
 xdg-mime default info.smplayer.SMPlayer.desktop video/mp2t
 xdg-mime default com.github.taiko2k.tauonmb.desktop audio/flac
+xdg-mime default info.smplayer.SMPlayer.desktop video/quicktime
+xdg-mime default io.github.woelper.Oculante.desktop image/webp
 
 if [[ ${workWorkstations[@]} =~ $HOSTNAME ]]; then
   flatpak install -y flathub com.slack.Slack
@@ -38,6 +42,7 @@ if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
   flatpak install -y flathub com.discordapp.Discord
   flatpak install -y flathub com.dropbox.Client
   flatpak install -y flathub com.github.zocker_160.SyncThingy
+  flatpak install -y flathub net.davidotek.pupgui2
   flatpak install -y flathub com.heroicgameslauncher.hgl
   flatpak install -y flathub com.valvesoftware.Steam
   flatpak install -y flathub org.darktable.Darktable
@@ -57,7 +62,7 @@ if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
 fi
 
 if [[ ! -e /usr/bin/kanata && ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
-  sudo curl --location --output /usr/bin/kanata https://github.com/jtroo/kanata/releases/download/v1.8.0/kanata
+  sudo curl --location --output /usr/bin/kanata https://github.com/jtroo/kanata/releases/download/v1.8.1/kanata
   sudo chmod +x /usr/bin/kanata
 
   sudo groupadd uinput
