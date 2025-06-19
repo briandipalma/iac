@@ -10,7 +10,7 @@ RUN pacman -Sq --noconfirm pnpm chromium
 ENV CHROME_BIN=/usr/sbin/chromium
 
 # Web app and backend development
-RUN pacman -Sq --noconfirm jdk17-openjdk
+RUN pacman -Sq --noconfirm jdk17-openjdk jdk21-openjdk
 
 # Web app servers and backend development
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
