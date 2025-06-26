@@ -37,7 +37,7 @@
 )
 
 (defvar
-  ;; tap-timeout
+  ;; tap-repress-timeout
   tt 200
   ;; hold-timeout
   ht 230
