@@ -48,6 +48,7 @@ if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
   flatpak install -y flathub org.darktable.Darktable
   flatpak install -y flathub org.kde.digikam
   flatpak install -y flathub org.mozilla.Thunderbird
+  flatpak install flathub org.musicbrainz.Picard
   sudo apt -y install wireguard
 
   if [ -d ~/wireguard/ ]; then
