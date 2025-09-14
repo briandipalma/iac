@@ -12,6 +12,7 @@ flatpak install -y flathub info.smplayer.SMPlayer
 # Play audio files
 flatpak install -y flathub com.github.taiko2k.tauonmb
 # Record desktop/webcam audio/video
+flatpak install -y flathub com.dec05eba.gpu_screen_recorder
 flatpak install -y flathub com.obsproject.Studio
 # Remote desktop access
 flatpak install -y flathub org.remmina.Remmina
