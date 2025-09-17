@@ -21,10 +21,16 @@ flatpak install -y flathub org.virt_manager.virt-viewer
 flatpak install -y flathub org.wezfurlong.wezterm
 # Graphics/screenshot editor
 flatpak install -y flathub org.kde.krita
+
+sudo apt-get update
 # Order programs onto workspaces in X11
 sudo apt -y install devilspie2
 # Drop down terminal for host
 sudo apt -y install yakuake
+# To easily install Linux/Windows/macOS VMs
+sudo apt-add-repository ppa:flexiondotorg/quickemu
+sudo apt update
+sudo apt install quickemu
 
 # File type handling
 xdg-mime default info.smplayer.SMPlayer.desktop video/mp4
@@ -35,10 +41,9 @@ xdg-mime default com.github.taiko2k.tauonmb.desktop audio/flac
 xdg-mime default info.smplayer.SMPlayer.desktop video/quicktime
 xdg-mime default io.github.woelper.Oculante.desktop image/webp
 
-if [[ ${workWorkstations[@]} =~ $HOSTNAME ]]; then
-  flatpak install -y flathub com.slack.Slack
-fi
-
+##
+## Personal workstations
+##
 if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
   flatpak install -y flathub com.discordapp.Discord
   flatpak install -y flathub com.dropbox.Client
@@ -80,7 +85,22 @@ if [[ ! -e /usr/bin/kanata && ${personalWorkstations[@]} =~ $HOSTNAME || "$1" ==
   sudo systemctl enable kanata
 fi
 
-# To easily install Linux/Windows/macOS VMs
-sudo apt-add-repository ppa:flexiondotorg/quickemu
-sudo apt update
-sudo apt install quickemu
+##
+## Work workstations
+##
+if [[ ! -e /usr/share/keyrings/netbird-archive-keyring.gpg && ${workWorkstations[@]} =~ $HOSTNAME ]]; then
+  sudo apt-get install ca-certificates curl gnupg -y
+  curl -sSL https://pkgs.netbird.io/debian/public.key | sudo gpg --dearmor --output /usr/share/keyrings/netbird-archive-keyring.gpg
+  echo 'deb [signed-by=/usr/share/keyrings/netbird-archive-keyring.gpg] https://pkgs.netbird.io/debian stable main' | sudo tee /etc/apt/sources.list.d/netbird.list
+
+  sudo apt-get update
+
+  # for CLI only
+  sudo apt-get install netbird
+  # for GUI package
+  sudo apt-get install netbird-ui
+fi
+
+if [[ ${workWorkstations[@]} =~ $HOSTNAME ]]; then
+  flatpak install -y flathub com.slack.Slack
+fi
