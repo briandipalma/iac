@@ -11,9 +11,7 @@ RUN pacman -Sq --noconfirm tealdeer yazi
 RUN pacman -Sq --noconfirm trash-cli
 
 # Complile nvim treesitter
-RUN pacman -Sq --noconfirm gcc
-# Complile telescope-fzf-native
-RUN pacman -Sq --noconfirm make
+RUN pacman -Sq --noconfirm gcc tree-sitter-cli
 
 # To allow copy/paste to/from host clipboard
 RUN pacman -Sq --noconfirm xsel wl-clipboard
