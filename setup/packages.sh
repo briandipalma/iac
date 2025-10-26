@@ -6,7 +6,7 @@ source inventory.sh
 flatpak install -y flathub com.github.tchx84.Flatseal
 flatpak install -y flathub com.google.Chrome
 # Image viewer
-flatpak install flathub io.github.woelper.Oculante
+flatpak install flathub org.kde.gwenview
 # Play video files
 flatpak install -y flathub info.smplayer.SMPlayer
 # Play audio files
@@ -39,7 +39,7 @@ xdg-mime default info.smplayer.SMPlayer.desktop video/vnd.avi
 xdg-mime default info.smplayer.SMPlayer.desktop video/mp2t
 xdg-mime default com.github.taiko2k.tauonmb.desktop audio/flac
 xdg-mime default info.smplayer.SMPlayer.desktop video/quicktime
-xdg-mime default io.github.woelper.Oculante.desktop image/webp
+xdg-mime default org.kde.gwenview.desktop image/webp
 
 ##
 ## Personal workstations
