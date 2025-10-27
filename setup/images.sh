@@ -2,34 +2,15 @@
 
 source inventory.sh
 
-distrobox rm base --force
-
-distrobox create --image docker.io/briandipalma/base:latest \
-	--name base \
-	--pull \
-	--pre-init-hooks "SHELL=/usr/bin/fish"
+podman image pull docker.io/briandipalma/base:latest
+distrobox assemble create --file ./base.ini
 
 if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
-	distrobox rm admin --force
-
-	distrobox create --image docker.io/briandipalma/admin:latest \
-		--name admin \
-		--pull \
-		--pre-init-hooks "SHELL=/usr/bin/fish"
-
-	distrobox enter admin
+  podman image pull docker.io/briandipalma/admin:latest
+  distrobox assemble create --file ./admin.ini
 fi
 
 if [[ ${workWorkstations[@]} =~ $HOSTNAME ]]; then
-	distrobox rm work --force
-
-	distrobox create --image docker.io/briandipalma/work:latest \
-		--name work \
-		--pull \
-		--additional-flags "--hostname ${HOSTNAME}" \
-		--pre-init-hooks "SHELL=/usr/bin/fish"
-
-	distrobox enter work
+  podman image pull docker.io/briandipalma/work:latest
+  distrobox assemble create --file ./work.ini
 fi
-
-distrobox enter base
