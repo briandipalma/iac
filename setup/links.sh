@@ -9,6 +9,7 @@ ln -sf ~/dev/iac/dotfiles/bottom ~/.config/
 rm -rf ~/.config/cosmic
 ln -sf ~/dev/iac/dotfiles/cosmic ~/.config/
 ln -sf ~/dev/iac/dotfiles/devilspie2 ~/.config/
+rm -rf ~/.config/fish
 ln -sf ~/dev/iac/dotfiles/fish ~/.config/
 ln -sf ~/dev/iac/dotfiles/git ~/.config/
 ln -sf ~/dev/iac/dotfiles/lazygit ~/.config/

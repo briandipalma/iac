@@ -10,27 +10,15 @@ Account name should be `brian` or `briand` for work machines.
 
 ## After install
 
-Verify the hostname if not change it e.g.
-
-```bash
-sudo hostnamectl set-hostname brians-infinitybookpro14-popos
-```
-
-Upgrade host OS with package manager. Reboot. Not required on CachyOS.
-Setup SSH key, verify you can connect to GitHub.
+Verify the hostname. Upgrade host OS with package manager. Reboot. Setup `.ssh` directory.
 
 ### Docker
 
-Install `docker` (via OS package manager). Set docker up to be run by a non root user i.e. create
-docker group and add user to docker group. Enable docker service.
-
-```bash
-sudo systemctl enable docker
-```
+Install `docker`. Verify it works without needing root.
 
 ### Distrobox
 
-Install `distrobox` (via OS package manager if up to date i.e. Arch linux or install script if not).
+Install `distrobox`, enter the `base` image.
 
 ```bash
 distrobox create --name base --image docker.io/briandipalma/base:latest
@@ -40,27 +28,28 @@ distrobox create --name base --image docker.io/briandipalma/base:latest
 distrobox enter base
 ```
 
-Create and `cd` into `~/dev/` directory.  
-Clone this repo into it.
+### Git
+
+Clone this repo to the `dev` directory.
 
 ```bash
 git clone git@github.com:briandipalma/iac.git
 ```
 
-Add the machine hostname to the `~/dev/iac/setup/inventory.sh` file if it's not there.
-Run `repos.sh` from the `~/dev/iac/setup` directory and `exit` the container.
+Add the machine hostname to the `inventory.sh` file if it's missing. Run `repos.sh`
 
-Create autostart, fish_history etc directories used in `links.sh` script for
-new hostname.
-Install `flatpak` (via OS package manager).
+### Link configuration
 
-Now in a **host** terminal and from the `~dev/iac/setup` directory run:
+Create host specific directories used in `links.sh` script for new hostnames. Run `links.sh`.
+`exit` the container.
 
-- `links.sh`
-- `packages.sh`
-- Start up SyncThingy and then shut it down, give it `Background` permission
+### Packages
+
+Install `flatpak` if it's missing. Now in a **host** terminal from the `setup` directory run
+`packages.sh`. Login to your browser account and into services installed by packages scripts.
+
 - `gnome.sh`
 
 Reboot.  
 In a host terminal and from the `~dev/iac/setup` directory run `images.sh`.  
-Login to your browser account and setup bookmarks/tabs/pinned tabs.
+Setup bookmarks/tabs/pinned tabs.

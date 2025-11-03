@@ -6,38 +6,25 @@ source inventory.sh
 flatpak install -y flathub com.github.tchx84.Flatseal
 flatpak install -y flathub com.google.Chrome
 # Image viewer
-flatpak install flathub org.kde.gwenview
+flatpak install -y flathub org.kde.gwenview
 # Play video files
 flatpak install -y flathub info.smplayer.SMPlayer
 # Play audio files
 flatpak install -y flathub com.github.taiko2k.tauonmb
 # Record desktop/webcam audio/video
-flatpak install -y flathub --system com.dec05eba.gpu_screen_recorder
 flatpak install -y flathub com.obsproject.Studio
 # Remote desktop access
 flatpak install -y flathub org.remmina.Remmina
 flatpak install -y flathub org.virt_manager.virt-viewer
-# Main terminal
-flatpak install -y flathub org.wezfurlong.wezterm
 # Graphics/screenshot editor
 flatpak install -y flathub org.kde.krita
 
-sudo apt-get update
-# Order programs onto workspaces in X11
-sudo apt -y install devilspie2
-# Drop down terminal for host
-sudo apt -y install yakuake
-# To easily install Linux/Windows/macOS VMs
-sudo apt-add-repository ppa:flexiondotorg/quickemu
-sudo apt update
-sudo apt install quickemu
-
 # File type handling
+xdg-mime default com.github.taiko2k.tauonmb.desktop audio/flac
 xdg-mime default info.smplayer.SMPlayer.desktop video/mp4
 xdg-mime default info.smplayer.SMPlayer.desktop video/x-matroska
 xdg-mime default info.smplayer.SMPlayer.desktop video/vnd.avi
 xdg-mime default info.smplayer.SMPlayer.desktop video/mp2t
-xdg-mime default com.github.taiko2k.tauonmb.desktop audio/flac
 xdg-mime default info.smplayer.SMPlayer.desktop video/quicktime
 xdg-mime default org.kde.gwenview.desktop image/webp
 
@@ -48,25 +35,11 @@ if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
   flatpak install -y flathub com.discordapp.Discord
   flatpak install -y flathub com.dropbox.Client
   flatpak install -y flathub com.github.zocker_160.SyncThingy
-  flatpak install -y flathub net.davidotek.pupgui2
-  flatpak install -y flathub com.heroicgameslauncher.hgl
-  flatpak install -y flathub com.valvesoftware.Steam
   flatpak install -y flathub org.darktable.Darktable
   flatpak install -y flathub org.kde.digikam
   flatpak install -y flathub org.mozilla.Thunderbird
-  flatpak install flathub org.musicbrainz.Picard
-  flatpak install flathub org.nicotine_plus.Nicotine
-  sudo apt -y install wireguard
-
-  if [ -d ~/wireguard/ ]; then
-    echo "Moving WireGuard config, invoking sudo"
-    sudo mv ~/wireguard /etc/
-    sudo chown -R root /etc/wireguard
-    sudo chgrp -R root /etc/wireguard
-    # Remove any group or others permissions, only owner (root) is able to read files
-    sudo chmod go= /etc/wireguard/private.key
-    sudo chmod go= /etc/wireguard/wg0.conf
-  fi
+  flatpak install -y flathub org.musicbrainz.Picard
+  flatpak install -y flathub org.nicotine_plus.Nicotine
 fi
 
 if [[ ! -e /usr/bin/kanata && ${personalWorkstations[@]} =~ $HOSTNAME || "$1" == "-kanata" ]]; then
@@ -88,19 +61,6 @@ fi
 ##
 ## Work workstations
 ##
-if [[ ! -e /usr/share/keyrings/netbird-archive-keyring.gpg && ${workWorkstations[@]} =~ $HOSTNAME ]]; then
-  sudo apt-get install ca-certificates curl gnupg -y
-  curl -sSL https://pkgs.netbird.io/debian/public.key | sudo gpg --dearmor --output /usr/share/keyrings/netbird-archive-keyring.gpg
-  echo 'deb [signed-by=/usr/share/keyrings/netbird-archive-keyring.gpg] https://pkgs.netbird.io/debian stable main' | sudo tee /etc/apt/sources.list.d/netbird.list
-
-  sudo apt-get update
-
-  # for CLI only
-  sudo apt-get install netbird
-  # for GUI package
-  sudo apt-get install netbird-ui
-fi
-
 if [[ ${workWorkstations[@]} =~ $HOSTNAME ]]; then
   flatpak install -y flathub com.slack.Slack
 fi
