@@ -7,9 +7,9 @@ gui:
   portraitMode: "always"
   showRootItemInFileTree: false
 git:
-  paging:
-    colorArg: always
-    pager: delta --paging=never
+  pagers:
+    - colorArg: always
+      pager: delta --paging=never
 customCommands:
   - key: "P"
     command: "git push --force-with-lease -u origin {{.CheckedOutBranch.Name}}"
