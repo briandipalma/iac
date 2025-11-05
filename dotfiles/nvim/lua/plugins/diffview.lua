@@ -53,15 +53,9 @@ return {
 			DiffviewOpen = { "--imply-local" },
 		},
 		hooks = {
-			diff_buf_read = function(bufnr)
-				-- Change local options in diff buffers
-				local winid = vim.fn.bufwinid(bufnr)
-
-				vim.api.nvim_set_option_value("relativenumber", false, { scope = "local", win = winid })
-			end,
-			view_leave = function()
-				-- Reset options
-				vim.opt.relativenumber = true
+			diff_buf_read = function()
+				vim.api.nvim_set_hl(0, "Folded", {})
+				vim.api.nvim_set_hl(0, "CursorLine", {})
 			end,
 		},
 		keymaps = {
