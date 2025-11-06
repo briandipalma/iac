@@ -47,7 +47,7 @@ if [[ ! -e /usr/bin/kanata && ${personalWorkstations[@]} =~ $HOSTNAME || "$1" ==
   sudo curl --location --output /usr/bin/kanata https://github.com/jtroo/kanata/releases/download/v1.9.0/kanata
   sudo chmod +x /usr/bin/kanata
 
-  sudo groupadd uinput
+  sudo groupadd --system uinput
   sudo useradd -g uinput -G input kanata
 
   sudo cp ~/dev/iac/dotfiles/udev/60-uinput.rules /lib/udev/rules.d/
