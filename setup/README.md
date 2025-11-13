@@ -46,10 +46,8 @@ Create host specific directories used in `links.sh` script for new hostnames. Ru
 ### Packages
 
 Install `flatpak` if it's missing. Now in a **host** terminal from the `setup` directory run
-`packages.sh`. Login to your browser account and into services installed by packages scripts.
+`packages.sh`, the desktop scripts e.g. `kde.sh` and `images.sh`.
 
-- `gnome.sh`
+### Login
 
-Reboot.  
-In a host terminal and from the `~dev/iac/setup` directory run `images.sh`.  
-Setup bookmarks/tabs/pinned tabs.
+Login to your browser account, setup bookmarks etc, and login to packages scripts apps.
