@@ -1,0 +1,8 @@
+[AC][Display]
+TurnOffDisplayIdleTimeoutWhenLockedSec=-2
+
+[AC][Performance]
+PowerProfile=performance
+
+[AC][SuspendAndShutdown]
+AutoSuspendAction=0

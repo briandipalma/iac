@@ -25,3 +25,13 @@ kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Switch to Desktop 9"
 kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Window Maximize" "Meta+M,Meta+PgUp,Maximise Window"
 kwriteconfig6 --file kglobalshortcutsrc --group plasmashell --key "manage activities" "none,Meta+Q,Show Activity Switcher"
 kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Window Close" "Meta+Q,Alt+F4,Close Window"
+
+# Host specific configuration
+
+if [ -f ~/dev/iac/dotfiles/$HOSTNAME/kscreenlockerrc ]; then
+  ln -sf ~/dev/iac/dotfiles/$HOSTNAME/kscreenlockerrc ~/.config/
+fi
+
+if [ -f ~/dev/iac/dotfiles/$HOSTNAME/powerdevilrc ]; then
+  ln -sf ~/dev/iac/dotfiles/$HOSTNAME/powerdevilrc ~/.config/
+fi
