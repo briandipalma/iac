@@ -19,15 +19,6 @@ flatpak install -y flathub org.virt_manager.virt-viewer
 # Graphics/screenshot editor
 flatpak install -y flathub org.kde.krita
 
-# File type handling
-xdg-mime default com.github.taiko2k.tauonmb.desktop audio/flac
-xdg-mime default info.smplayer.SMPlayer.desktop video/mp4
-xdg-mime default info.smplayer.SMPlayer.desktop video/x-matroska
-xdg-mime default info.smplayer.SMPlayer.desktop video/vnd.avi
-xdg-mime default info.smplayer.SMPlayer.desktop video/mp2t
-xdg-mime default info.smplayer.SMPlayer.desktop video/quicktime
-xdg-mime default org.kde.gwenview.desktop image/webp
-
 ##
 ## Personal workstations
 ##
