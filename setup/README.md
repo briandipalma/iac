@@ -12,9 +12,10 @@ Account name should be `brian` or `briand` for work machines.
 
 Verify the hostname. Upgrade host OS with package manager. Reboot. Setup `.ssh` directory.
 
-### Docker
+### Podman/Docker
 
-Install `docker`. Verify it works without needing root.
+Install `podman` for rootless distrobox containers.
+Install `docker` on work workstations for `docker-compose`. Verify it works without needing root.
 
 ### Distrobox
 
@@ -22,9 +23,6 @@ Install `distrobox`, enter the `base` image.
 
 ```bash
 distrobox create --name base --image docker.io/briandipalma/base:latest
-```
-
-```bash
 distrobox enter base
 ```
 
