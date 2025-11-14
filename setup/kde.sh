@@ -24,4 +24,4 @@ kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Switch to Desktop 9"
 
 kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Window Maximize" "Meta+M,Meta+PgUp,Maximise Window"
 kwriteconfig6 --file kglobalshortcutsrc --group plasmashell --key "manage activities" "none,Meta+Q,Show Activity Switcher"
-kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Window Close" "Alt+F4\tMeta+Q,Alt+F4,Close Window"
+kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Window Close" "Meta+Q,Alt+F4,Close Window"
