@@ -10,7 +10,9 @@ return {
 	},
 	lazy = false,
 	build = function()
-		require("gitlab.server").build(true)
+		if vim.fn.executable("go") == 1 then
+			require("gitlab.server").build(true)
+		end
 	end,
 	config = function()
 		local config = {
