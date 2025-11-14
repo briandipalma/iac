@@ -5,6 +5,8 @@ source inventory.sh
 # Main terminal
 sudo pacman -Sy kitty
 
+sudo pacman -Sy yay
+
 ##
 ## Personal workstations
 ##
@@ -20,4 +22,11 @@ if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
     sudo chmod go= /etc/wireguard/private.key
     sudo chmod go= /etc/wireguard/wg0.conf
   fi
+fi
+
+##
+## Work workstations
+##
+if [[ ${workWorkstations[@]} =~ $HOSTNAME ]]; then
+  yay -S netbird
 fi
