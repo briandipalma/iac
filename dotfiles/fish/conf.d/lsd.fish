@@ -1,6 +1,8 @@
-alias l="lsd --hyperlink=auto"
-alias ls="lsd --hyperlink=auto"
-alias la="lsd -A --hyperlink=auto"
-alias ll="lsd -l --hyperlink=auto"
-alias lla="lsd -Al --hyperlink=auto"
-alias lt="lsd --tree --hyperlink=auto"
+if type -q lsd
+    alias l="lsd --hyperlink=auto"
+    alias ls="lsd --hyperlink=auto"
+    alias la="lsd -A --hyperlink=auto"
+    alias ll="lsd -l --hyperlink=auto"
+    alias lla="lsd -Al --hyperlink=auto"
+    alias lt="lsd --tree --hyperlink=auto"
+end
