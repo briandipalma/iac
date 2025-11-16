@@ -1,0 +1,13 @@
+[Desktop Entry]
+Categories=Network;InstantMessaging;
+Comment=All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone.
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=com.discordapp.Discord --file-forwarding com.discordapp.Discord @@u %U @@
+GenericName=Internet Messenger
+Icon=com.discordapp.Discord
+MimeType=x-scheme-handler/discord;
+Name=Discord
+StartupWMClass=discord
+Type=Application
+X-Desktop-File-Install-Version=0.28
+X-Flatpak=com.discordapp.Discord
+X-Flatpak-Tags=proprietary;
