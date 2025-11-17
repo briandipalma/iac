@@ -16,8 +16,8 @@ return {
 	end,
 	config = function()
 		local config = {
-			config_path = "/home/brian/dev/my-data/",
-			attachment_dir = "/home/brian/Pictures/Screenshots",
+			config_path = "/home/briand/dev/my-data/",
+			attachment_dir = "/home/briand/Pictures/Screenshots",
 			reviewer_settings = {
 				diffview = {
 					imply_local = true,
