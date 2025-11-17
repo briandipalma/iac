@@ -14,3 +14,5 @@ RUN pacman -Sq --noconfirm jdk17-openjdk jdk21-openjdk
 
 # Web app servers and backend development
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+
+RUN npm install -g pnpm@8.6.7
