@@ -16,8 +16,8 @@ return {
 	end,
 	config = function()
 		local config = {
-			config_path = "/home/briand/dev/my-data/",
-			attachment_dir = "/home/briand/Pictures/Screenshots",
+			config_path = vim.env.HOME .. "/dev/my-data/",
+			attachment_dir = vim.env.HOME .. "/Pictures/Screenshots",
 			reviewer_settings = {
 				diffview = {
 					imply_local = true,
