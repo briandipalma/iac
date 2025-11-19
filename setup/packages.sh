@@ -33,20 +33,22 @@ if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
   flatpak install -y flathub org.nicotine_plus.Nicotine
 fi
 
-if [[ ! -e /usr/bin/kanata && ${personalWorkstations[@]} =~ $HOSTNAME || "$1" == "-kanata" ]]; then
-  sudo rm /usr/bin/kanata
-  sudo curl --location --output /usr/bin/kanata https://github.com/jtroo/kanata/releases/download/v1.9.0/kanata
-  sudo chmod +x /usr/bin/kanata
+if [[ ! -e /usr/bin/kanata && ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
+  install_kanata
 
   sudo groupadd --system uinput
-  sudo useradd -g uinput -G input kanata
+  sudo useradd --system --no-create-home --shell /bin/false -g uinput -G input kanata
 
   sudo cp ~/dev/iac/dotfiles/udev/60-uinput.rules /lib/udev/rules.d/
   sudo cp ~/dev/iac/dotfiles/kanata/kanata.kbd /etc/kanata.kbd
-
   sudo cp ~/dev/iac/dotfiles/systemd/kanata.service /etc/systemd/system
+
   sudo systemctl start kanata
   sudo systemctl enable kanata
+elif [[ "$1" == "-kanata" ]]; then
+  install_kanata
+
+  sudo systemctl restart kanata
 fi
 
 ##
@@ -55,3 +57,10 @@ fi
 if [[ ${workWorkstations[@]} =~ $HOSTNAME ]]; then
   flatpak install -y flathub com.slack.Slack
 fi
+
+install_kanata() {
+  curl --location --output /tmp/kanata.zip https://github.com/jtroo/kanata/releases/download/v1.10.0/linux-binaries-x64-v1.10.0.zip
+  unzip /tmp/kanata.zip -d /tmp/
+  sudo rm /usr/bin/kanata
+  sudo mv /tmp/kanata_linux_x64 /usr/bin/kanata
+}
