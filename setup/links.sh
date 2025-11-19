@@ -43,3 +43,9 @@ if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
   mkdir -p ~/.config/rclone
   ln -sf ~/dev/my-data/rclone.conf ~/.config/rclone/rclone.conf
 fi
+
+if [[ ${workWorkstations[@]} =~ $HOSTNAME ]]; then
+  ln -sf ~/dev/iac/dotfiles/kitty/work-session.conf ~/.config/kitty/host-session.conf
+else
+  ln -sf ~/dev/iac/dotfiles/kitty/personal-session.conf ~/.config/kitty/host-session.conf
+fi

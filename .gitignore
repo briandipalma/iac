@@ -1,3 +1,3 @@
-dotfiles/kitty/host-config.conf
+dotfiles/kitty/host-session.conf
 dotfiles/lazygit/state.yml
 dotfiles/systemd/user/default.target.wants/
