@@ -34,9 +34,9 @@ kwriteconfig6 --file kglobalshortcutsrc --group services --group "org.kde.krunne
 kwriteconfig6 --file kglobalshortcutsrc --group ksmserver --key "Lock Session" "Screensaver,Meta+L,Lock Session"
 
 kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Switch Window Down" "Meta+J,Meta+Alt+Down,Switch to Window Below"
-kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Switch Window Left" "Meta+H,Meta+Alt+Left,Switch to Window Left"
-kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Switch Window Right" "Meta+L,Meta+Alt+Right,Switch to Window Right"
-kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Switch Window Above" "Meta+K,Meta+Alt+Up,Switch to Window Above"
+kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Switch Window Left" "Meta+H,Meta+Alt+Left,Switch to Window to the Left"
+kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Switch Window Right" "Meta+L,Meta+Alt+Right,Switch to Window to the Right"
+kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Switch Window Up" "Meta+K,Meta+Alt+Up,Switch to Window Above"
 
 # Host specific configuration
 
