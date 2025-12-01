@@ -3,15 +3,16 @@
 source inventory.sh
 
 # Main terminal
-sudo pacman -Sy kitty
-
-sudo pacman -Sy yay
+sudo pacman -S kitty
+# AUR helper
+sudo pacman -S yay
 
 ##
 ## Personal workstations
 ##
 if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
-  sudo pacman -Sy wireguard-tools
+  yay -S winbox
+  sudo pacman -S wireguard-tools
 
   if [ -d ~/wireguard/ ]; then
     echo "Moving WireGuard config, invoking sudo"

@@ -18,7 +18,6 @@ flatpak install -y flathub org.remmina.Remmina
 flatpak install -y flathub org.virt_manager.virt-viewer
 # Graphics/screenshot editor
 flatpak install -y flathub org.kde.krita
-flatpak install -y flathub it.mijorus.gearlever
 
 ##
 ## Personal workstations
@@ -57,6 +56,7 @@ fi
 ##
 if [[ ${workWorkstations[@]} =~ $HOSTNAME ]]; then
   flatpak install -y flathub com.slack.Slack
+  flatpak install -y flathub it.mijorus.gearlever
 fi
 
 install_kanata() {
