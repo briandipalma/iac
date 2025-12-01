@@ -18,6 +18,7 @@ flatpak install -y flathub org.remmina.Remmina
 flatpak install -y flathub org.virt_manager.virt-viewer
 # Graphics/screenshot editor
 flatpak install -y flathub org.kde.krita
+flatpak install -y flathub it.mijorus.gearlever
 
 ##
 ## Personal workstations
