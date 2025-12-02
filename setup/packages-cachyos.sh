@@ -30,4 +30,5 @@ fi
 ##
 if [[ ${workWorkstations[@]} =~ $HOSTNAME ]]; then
   yay -S netbird
+  yay -S fleet-desktop
 fi
