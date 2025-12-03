@@ -32,3 +32,7 @@ if [[ ${workWorkstations[@]} =~ $HOSTNAME ]]; then
   yay -S netbird
   yay -S fleet-desktop
 fi
+
+if [[ $HOSTNAME =~ "infinitybookpro14" ]]; then
+  yay -S yt6801-dkms
+fi
