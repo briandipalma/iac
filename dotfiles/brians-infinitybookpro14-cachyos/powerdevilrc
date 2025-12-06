@@ -1,0 +1,8 @@
+[AC][Performance]
+PowerProfile=performance
+
+[AC][SuspendAndShutdown]
+AutoSuspendAction=0
+
+[Battery][Performance]
+PowerProfile=power-saver
