@@ -38,6 +38,8 @@ kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Switch Window Left" 
 kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Switch Window Right" "Meta+L,Meta+Alt+Right,Switch to Window to the Right"
 kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Switch Window Up" "Meta+K,Meta+Alt+Up,Switch to Window Above"
 
+kwriteconfig6 --file kwinrc --group NightColor --key Active true
+
 # Host specific configuration
 
 if [ -f ~/dev/iac/dotfiles/$HOSTNAME/kscreenlockerrc ]; then
