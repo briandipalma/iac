@@ -4,15 +4,13 @@ source inventory.sh
 
 # Main terminal
 sudo pacman -S kitty
-# AUR helper
-sudo pacman -S yay
 
 ##
 ## Personal workstations
 ##
 if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
-  yay -S winbox
-  yay -S kanata-bin
+  paru -S winbox
+  paru -S kanata-bin
   source kanata.sh
 fi
 
@@ -20,10 +18,10 @@ fi
 ## Work workstations
 ##
 if [[ ${workWorkstations[@]} =~ $HOSTNAME ]]; then
-  yay -S netbird
-  yay -S fleet-desktop
+  paru -S netbird
+  paru -S fleet-desktop
 fi
 
 if [[ $HOSTNAME =~ "infinitybookpro14" ]]; then
-  yay -S yt6801-dkms
+  paru -S yt6801-dkms
 fi
