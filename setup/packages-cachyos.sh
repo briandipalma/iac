@@ -12,6 +12,8 @@ sudo pacman -S yay
 ##
 if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
   yay -S winbox
+  yay -S kanata-bin
+  source kanata.sh
 fi
 
 ##

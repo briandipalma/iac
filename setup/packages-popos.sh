@@ -22,6 +22,12 @@ if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
   flatpak install -y flathub net.davidotek.pupgui2
   flatpak install -y flathub com.heroicgameslauncher.hgl
   flatpak install -y flathub com.valvesoftware.Steam
+
+  curl --location --output /tmp/kanata.zip https://github.com/jtroo/kanata/releases/download/v1.10.0/linux-binaries-x64-v1.10.0.zip
+  unzip /tmp/kanata.zip -d /tmp/
+  sudo rm /usr/bin/kanata
+  sudo mv /tmp/kanata_linux_x64 /usr/bin/kanata
+  source kanata.sh
 fi
 
 ##
