@@ -2,7 +2,7 @@
 
 ## Before install
 
-Backup SSH keys and WireGuard config file.
+Backup SSH keys.
 
 ## During install
 
