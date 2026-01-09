@@ -1,9 +1,5 @@
 local add = MiniDeps.add
 
-add("nvim-mini/mini.starter")
-
-require("mini.starter").setup()
-
 add("nvim-mini/mini.clue")
 
 require("mini.clue").setup()
