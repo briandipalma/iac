@@ -11,3 +11,5 @@ vim.o.undofile = true -- Enable undofiles
 vim.o.cursorline = true -- Enable current line highlighting
 vim.o.relativenumber = true -- Relative line numbers
 vim.o.signcolumn = "yes" -- Always show signcolumn (less flicker)
+vim.opt.updatetime = 200 -- Save swap file and trigger CursorHold
+vim.o.foldlevel = 10 -- Fold nothing by default; set to 0 or 1 to fold

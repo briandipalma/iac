@@ -33,7 +33,11 @@ miniclue.setup({
 	},
 
 	clues = {
-		-- Enhance this by adding descriptions for <Leader> mapping groups
+		{
+			{ mode = "n", keys = "<Leader>f", desc = "+Find" },
+			{ mode = "n", keys = "<Leader>s", desc = "+Search" },
+			{ mode = "n", keys = "<Leader>g", desc = "+Git" },
+		},
 		miniclue.gen_clues.square_brackets(),
 		miniclue.gen_clues.builtin_completion(),
 		miniclue.gen_clues.g(),
@@ -49,6 +53,6 @@ miniclue.setup({
 		config = { width = "auto" },
 
 		-- Delay before showing clue window
-		delay = 0,
+		delay = 100,
 	},
 })
