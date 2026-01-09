@@ -8,9 +8,19 @@ add("nvim-mini/mini.clue")
 
 require("mini.clue").setup()
 
-add("nvim-mini/mini.pick")
+add({
+	source = "ibhagwan/fzf-lua",
+	depends = { "nvim-tree/nvim-web-devicons" },
+})
 
-require("mini.pick").setup()
+require("nvim-web-devicons").setup()
+require("fzf-lua").setup({
+	winopts = {
+		height = 0.9,
+		width = 1,
+		preview = { layout = "vertical", vertical = "down:75%" },
+	},
+})
 
 add({
 	source = "nvim-treesitter/nvim-treesitter",
@@ -23,10 +33,11 @@ add({
 	},
 })
 
-require("nvim-treesitter").install({ "javascript", "typescript" })
+require("nvim-treesitter").install({ "javascript", "tsx", "typescript" })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "typescriptreact" },
+	-- lua print(vim.bo.filetype) to find out filetype
+	pattern = { "javascript", "tsx", "typescript" },
 	callback = function()
 		vim.treesitter.start()
 		vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
