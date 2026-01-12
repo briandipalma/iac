@@ -14,6 +14,7 @@ starter.setup({
 		new_section("Session restore", [[lua require("persistence").load()]], "Session"),
 		new_section("New file", "ene | startinsert", "Built-in"),
 		new_section("Quit", "qa", "Built-in"),
+		new_section("Dependencies update", [[lua require("my-config/utils").update_save()]], "Dependencies"),
 	},
 	content_hooks = {
 		starter.gen_hook.adding_bullet("░ ", false),

@@ -34,6 +34,7 @@ miniclue.setup({
 
 	clues = {
 		{
+			{ mode = "n", keys = "<Leader>d", desc = "+Dependencies" },
 			{ mode = "n", keys = "<Leader>f", desc = "+Find" },
 			{ mode = "n", keys = "<Leader>s", desc = "+Search" },
 			{ mode = "n", keys = "<Leader>g", desc = "+Git" },

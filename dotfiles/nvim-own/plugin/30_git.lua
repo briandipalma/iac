@@ -1,3 +1,5 @@
+local nmap_leader = require("my-config/utils").nmap_leader
+
 MiniDeps.add({
 	source = "harrisoncramer/gitlab.nvim",
 	depends = {
@@ -34,10 +36,6 @@ require("gitlab").setup({
 		skip_resolved_discussion = true,
 	},
 })
-
-local nmap_leader = function(suffix, rhs, desc)
-	vim.keymap.set("n", "<Leader>" .. suffix, rhs, { desc = desc })
-end
 
 nmap_leader("gm", function()
 	require("gitlab").review()
