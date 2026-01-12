@@ -1,4 +1,4 @@
-local nmap_leader = require("my-config/utils").nmap_leader
+local nml = require("my-config/utils").nml
 
 MiniDeps.add("neovim/nvim-lspconfig")
 MiniDeps.add("mason-org/mason.nvim")
@@ -9,11 +9,11 @@ require("mason").setup()
 -- To check an LSPs capabilities run
 -- :lua =vim.lsp.get_clients()[1].server_capabilities
 -- :LspInstall to select a server based on the current buffer's &filetype
-require("mason-lspconfig").setup({ ensure_installed = { "eslint", "html", "vtsls" } })
+-- require("mason-lspconfig").setup({ ensure_installed = { "eslint", "vtsls" } })
 -- LSP progress and `vim.notify` backend
 require("fidget").setup({ notification = { override_vim_notify = true } })
 
-nmap_leader("cm", "<Cmd>Mason<CR>", "Mason")
+nml("cm", "<Cmd>Mason<CR>", { desc = "Mason" })
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
@@ -37,16 +37,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
 				end,
 			})
 		end
-	end,
-})
-
-vim.lsp.config("vtsls", {
-	on_attach = function(_, bufnr)
-		vim.api.nvim_buf_create_user_command(bufnr, "OrganizeImports", function()
-			vim.lsp.buf.code_action({
-				context = { only = { "source.organizeImports" }, diagnostics = {} },
-				apply = true,
-			})
-		end, { desc = "Organize imports using vtsls" })
 	end,
 })

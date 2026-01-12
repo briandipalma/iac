@@ -12,14 +12,6 @@ function M.xml(suffix, rhs, opts)
 	vim.keymap.set("x", "<Leader>" .. suffix, rhs, opts)
 end
 
-function M.nmap_leader(suffix, rhs, desc)
-	vim.keymap.set("n", "<Leader>" .. suffix, rhs, { desc = desc })
-end
-
-function M.xmap_leader(suffix, rhs, desc)
-	vim.keymap.set("x", "<Leader>" .. suffix, rhs, { desc = desc })
-end
-
 function M.install_package(pkg_name)
 	local registry = require("mason-registry")
 

@@ -1,5 +1,5 @@
-local nmap_leader = require("my-config/utils").nmap_leader
-local xmap_leader = require("my-config/utils").xmap_leader
+local nml = require("my-config/utils").nml
+local xml = require("my-config/utils").xml
 
 MiniDeps.add("ibhagwan/fzf-lua")
 
@@ -11,8 +11,8 @@ require("fzf-lua").setup({
 	},
 })
 
-nmap_leader("<Leader>", "<Cmd>FzfLua files<CR>", "Find file (root dir)")
-nmap_leader(",", "<Cmd>FzfLua buffers<CR>", "Find buffer")
-nmap_leader("fr", "<Cmd>FzfLua oldfiles<CR>", "Find recent file")
-nmap_leader("sw", "<Cmd>FzfLua grep_cword<CR>", "Search for word under cursor")
-xmap_leader("sw", "<Cmd>FzfLua grep_visual<CR>", "Search for current selection")
+nml("<Leader>", "<Cmd>FzfLua files<CR>", { desc = "Find file (root dir)" })
+nml(",", "<Cmd>FzfLua buffers<CR>", { desc = "Find buffer" })
+nml("fr", "<Cmd>FzfLua oldfiles<CR>", { desc = "Find recent file" })
+nml("sw", "<Cmd>FzfLua grep_cword<CR>", { desc = "Search for word under cursor" })
+xml("sw", "<Cmd>FzfLua grep_visual<CR>", { desc = "Search for current selection" })
