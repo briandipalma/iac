@@ -1,3 +1,5 @@
+local nmap_leader = require("my-config/utils").nmap_leader
+
 MiniDeps.add("neovim/nvim-lspconfig")
 MiniDeps.add("mason-org/mason.nvim")
 MiniDeps.add("mason-org/mason-lspconfig.nvim")
@@ -5,7 +7,10 @@ MiniDeps.add("mason-org/mason-lspconfig.nvim")
 require("mason").setup()
 -- To check an LSPs capabilities run
 -- :lua =vim.lsp.get_clients()[1].server_capabilities
-require("mason-lspconfig").setup({ ensure_installed = { "vtsls", "eslint" } })
+-- :LspInstall to select a server based on the current buffer's &filetype
+require("mason-lspconfig").setup({ ensure_installed = { "eslint", "html", "vtsls" } })
+
+nmap_leader("cm", "<Cmd>Mason<CR>", "Mason")
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)

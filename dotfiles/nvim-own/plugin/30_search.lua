@@ -1,3 +1,6 @@
+local nmap_leader = require("my-config/utils").nmap_leader
+local xmap_leader = require("my-config/utils").xmap_leader
+
 MiniDeps.add("ibhagwan/fzf-lua")
 
 require("fzf-lua").setup({
@@ -8,11 +11,8 @@ require("fzf-lua").setup({
 	},
 })
 
-local nmap_leader = function(suffix, rhs, desc)
-	vim.keymap.set("n", "<Leader>" .. suffix, rhs, { desc = desc })
-end
-
 nmap_leader("<Leader>", "<Cmd>FzfLua files<CR>", "Find file (root dir)")
 nmap_leader(",", "<Cmd>FzfLua buffers<CR>", "Find buffer")
 nmap_leader("fr", "<Cmd>FzfLua oldfiles<CR>", "Find recent file")
 nmap_leader("sw", "<Cmd>FzfLua grep_cword<CR>", "Search for word under cursor")
+xmap_leader("sw", "<Cmd>FzfLua grep_visual<CR>", "Search for current selection")

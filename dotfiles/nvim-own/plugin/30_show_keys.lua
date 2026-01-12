@@ -34,9 +34,11 @@ miniclue.setup({
 
 	clues = {
 		{
+			{ mode = "n", keys = "<Leader>c", desc = "+Code" },
 			{ mode = "n", keys = "<Leader>d", desc = "+Dependencies" },
 			{ mode = "n", keys = "<Leader>f", desc = "+Find" },
 			{ mode = "n", keys = "<Leader>s", desc = "+Search" },
+			{ mode = "x", keys = "<Leader>s", desc = "+Search" },
 			{ mode = "n", keys = "<Leader>g", desc = "+Git" },
 		},
 		miniclue.gen_clues.square_brackets(),

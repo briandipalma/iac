@@ -8,7 +8,7 @@ MiniDeps.add({
 	},
 })
 
-require("nvim-treesitter").install({ "javascript", "tsx", "typescript" })
+require("nvim-treesitter").install({ "html", "javascript", "tsx", "typescript" })
 
 vim.api.nvim_create_autocmd("FileType", {
 	-- lua print(vim.bo.filetype) to find out filetype
