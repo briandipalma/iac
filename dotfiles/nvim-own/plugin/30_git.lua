@@ -1,6 +1,6 @@
-local nmap_leader = require("my-config/utils").nmap_leader
+local nm = require("my-config/utils").nm
 local nml = require("my-config/utils").nml
-local xmap_leader = require("my-config/utils").xmap_leader
+local xml = require("my-config/utils").xml
 
 MiniDeps.add("lewis6991/gitsigns.nvim")
 
@@ -10,24 +10,16 @@ require("gitsigns").setup({
 	word_diff = true,
 	on_attach = function(bufnr)
 		local gitsigns = require("gitsigns")
-		local m = vim.keymap.set
-
-		local function map(mode, l, r, opts)
-			opts = opts or {}
-			opts.buffer = bufnr
-			vim.keymap.set(mode, l, r, opts)
-		end
 
 		-- Navigation
-		m("n", "]c", function()
+		nm("]c", function()
 			if vim.wo.diff then
 				vim.cmd.normal({ "]c", bang = true })
 			else
 				gitsigns.nav_hunk("next")
 			end
 		end, { buffer = bufnr, desc = "Next change/hunk" })
-
-		m("n", "[c", function()
+		nm("[c", function()
 			if vim.wo.diff then
 				vim.cmd.normal({ "[c", bang = true })
 			else
@@ -37,41 +29,41 @@ require("gitsigns").setup({
 
 		-- Actions
 		nml("hs", gitsigns.stage_hunk, { buffer = bufnr, desc = "Stage hunk" })
-		xmap_leader("hs", function()
+		xml("hs", function()
 			gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-		end, "Stage hunk")
+		end, { buffer = bufnr, desc = "Stage hunk" })
 
-		nmap_leader("hr", gitsigns.reset_hunk, "Reset hunk")
-		map("v", "<leader>hr", function()
+		nml("hr", gitsigns.reset_hunk, { buffer = bufnr, desc = "Reset hunk" })
+		xml("hr", function()
 			gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
-		end)
+		end, { buffer = bufnr, desc = "Reset hunk" })
 
-		map("n", "<leader>hS", gitsigns.stage_buffer)
-		map("n", "<leader>hR", gitsigns.reset_buffer)
-		map("n", "<leader>hp", gitsigns.preview_hunk)
-		map("n", "<leader>hi", gitsigns.preview_hunk_inline)
+		nml("hS", gitsigns.stage_buffer, { buffer = bufnr, desc = "Stage buffer" })
+		nml("hR", gitsigns.reset_buffer, { buffer = bufnr, desc = "Reset buffer" })
+		nml("hp", gitsigns.preview_hunk, { buffer = bufnr, desc = "Preview hunk" })
+		nml("hi", gitsigns.preview_hunk_inline, { buffer = bufnr, desc = "Preview hunk inline" })
 
-		map("n", "<leader>hb", function()
+		nml("hb", function()
 			gitsigns.blame_line({ full = true })
-		end)
+		end, { buffer = bufnr, desc = "Blame line" })
 
-		map("n", "<leader>hd", gitsigns.diffthis)
+		nml("hd", gitsigns.diffthis, { buffer = bufnr, desc = "Diff this buffer with index" })
 
-		map("n", "<leader>hD", function()
+		nml("hD", function()
 			gitsigns.diffthis("~")
-		end)
+		end, { buffer = bufnr, desc = "Diff this buffer with ~" })
 
-		map("n", "<leader>hQ", function()
+		nml("hQ", function()
 			gitsigns.setqflist("all")
-		end)
-		map("n", "<leader>hq", gitsigns.setqflist)
+		end, { buffer = bufnr, desc = "Set quickfix list with all changes" })
+		nml("hq", gitsigns.setqflist, { buffer = bufnr, desc = "Set quickfix list with buffer changes" })
 
 		-- Toggles
-		map("n", "<leader>tb", gitsigns.toggle_current_line_blame)
-		map("n", "<leader>tw", gitsigns.toggle_word_diff)
+		nml("ub", gitsigns.toggle_current_line_blame, { buffer = bufnr, desc = "Toggle current line blame" })
+		nml("uw", gitsigns.toggle_word_diff, { buffer = bufnr, desc = "Toggle word diff" })
 
 		-- Text object
-		map({ "o", "x" }, "ih", gitsigns.select_hunk)
+		vim.keymap.set({ "o", "x" }, "ih", gitsigns.select_hunk, { buffer = bufnr, desc = "hunk" })
 	end,
 })
 
@@ -112,6 +104,6 @@ require("gitlab").setup({
 	},
 })
 
-nmap_leader("gm", function()
+nml("gm", function()
 	require("gitlab").review()
-end, "Git merge review")
+end, { desc = "Git merge review" })

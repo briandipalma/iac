@@ -1,12 +1,15 @@
 local M = {}
 
-function M.update_save()
-	require("mini.deps").update()
-	require("mini.deps").snap_save()
-end
-
 function M.nml(suffix, rhs, opts)
 	vim.keymap.set("n", "<Leader>" .. suffix, rhs, opts)
+end
+
+function M.nm(lhs, rhs, opts)
+	vim.keymap.set("n", lhs, rhs, opts)
+end
+
+function M.xml(suffix, rhs, opts)
+	vim.keymap.set("x", "<Leader>" .. suffix, rhs, opts)
 end
 
 function M.nmap_leader(suffix, rhs, desc)

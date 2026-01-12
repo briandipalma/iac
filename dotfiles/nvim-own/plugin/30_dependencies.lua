@@ -1,7 +1,7 @@
-local nmap_leader = require("my-config/utils").nmap_leader
+local nml = require("my-config/utils").nml
 
-nmap_leader("du", "<Cmd>DepsUpdate<CR>", "Dependencies update")
-nmap_leader("dl", "<Cmd>DepsShowLog<CR>", "Dependencies show log")
-nmap_leader("dc", "<Cmd>DepsClean<CR>", "Dependencies clean")
-nmap_leader("ds", "<Cmd>DepsSnapSave<CR>", "Dependencies save snapshot")
-nmap_leader("dr", "<Cmd>DepsSnapLoad<CR>", "Dependencies load snapshot")
+nml("du", "<Cmd>DepsUpdate<CR>", { desc = "Dependencies update" })
+nml("dl", "<Cmd>DepsShowLog<CR>", { desc = "Dependencies show log" })
+nml("dc", "<Cmd>DepsClean<CR>", { desc = "Dependencies clean" })
+nml("ds", "<Cmd>DepsSnapSave<CR>", { desc = "Dependencies save snapshot" })
+nml("dr", "<Cmd>DepsSnapLoad<CR>", { desc = "Dependencies load snapshot" })
