@@ -1,6 +1,7 @@
 return {
   ["diffview.nvim"] = "4516612fe98ff56ae0415a259ff6361a89419b0a",
   ["dressing.nvim"] = "2d7c2db2507fa3c4956142ee607431ddb2828639",
+  ["flash.nvim"] = "fcea7ff883235d9024dc41e638f164a450c14ca2",
   ["fzf-lua"] = "e7773d0c863a31bfc8ab72dd1adbec4611a35409",
   ["gitlab.nvim"] = "e29909cd1064a7b53c3150bff49449a548dadf8d",
   ["mason-lspconfig.nvim"] = "fe661093f4b05136437b531e7f959af2a2ae66c8",
@@ -9,11 +10,14 @@ return {
   ["mini.deps"] = "8f6f74a8b68dbad02f1813dff4ddae5afeee92df",
   ["mini.starter"] = "8ee6ce6a4c9be47682516908557cc062c4d595a2",
   ["mini.tabline"] = "caf23615b9b99bacc79ecd60f61c4e6a8ec18c84",
+  ["noice.nvim"] = "7bfd942445fb63089b59f97ca487d605e715f155",
   ["nui.nvim"] = "de740991c12411b663994b2860f1a4fd0937c130",
   ["nvim-lspconfig"] = "92ee7d42320edfbb81f3cad851314ab197fa324a",
+  ["nvim-notify"] = "8701bece920b38ea289b457f902e2ad184131a5d",
   ["nvim-treesitter"] = "5a7e5638e7d220575b1c22c8a2e099b52231886e",
   ["nvim-treesitter-context"] = "64dd4cf3f6fd0ab17622c5ce15c91fc539c3f24a",
   ["nvim-web-devicons"] = "803353450c374192393f5387b6a0176d0972b848",
   ["persistence.nvim"] = "b20b2a7887bd39c1a356980b45e03250f3dce49c",
-  ["plenary.nvim"] = "b9fd5226c2f76c951fc8ed5923d85e4de065e509"
+  ["plenary.nvim"] = "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
+  ["tiny-inline-diagnostic.nvim"] = "c7b1488ad0b389763c34bd17a6264424b3da5a52"
 }

@@ -3,12 +3,15 @@ local nmap_leader = require("my-config/utils").nmap_leader
 MiniDeps.add("neovim/nvim-lspconfig")
 MiniDeps.add("mason-org/mason.nvim")
 MiniDeps.add("mason-org/mason-lspconfig.nvim")
+MiniDeps.add("j-hui/fidget.nvim")
 
 require("mason").setup()
 -- To check an LSPs capabilities run
 -- :lua =vim.lsp.get_clients()[1].server_capabilities
 -- :LspInstall to select a server based on the current buffer's &filetype
 require("mason-lspconfig").setup({ ensure_installed = { "eslint", "html", "vtsls" } })
+-- LSP progress and `vim.notify` backend
+require("fidget").setup({ notification = { override_vim_notify = true } })
 
 nmap_leader("cm", "<Cmd>Mason<CR>", "Mason")
 
