@@ -141,21 +141,21 @@
   nca (macro ] c)
   prf (macro [ [)
   nrf (macro ] ])
-  phk (macro [ h)
-  nhk (macro ] h)
+  pis (macro [ i)
+  nis (macro ] i)
+  pbf (macro [ b)
+  nbf (macro ] b)
   pdg (macro [ d)
   ndg (macro ] d)
   pql (macro [ q)
   nql (macro ] q)
-  pis (macro [ i)
-  nis (macro ] i)
 )
 
 (deflayer vim-nav
   _    _    _    _    _    _          _    _    _    _    _    _
-  _    _    _    @pca @nca _          _    @nhk @phk _    _    _
-  _    _    _    @prf @nrf _          _    @ndg @pdg _    _    _
-  _    _    _    @pis @nis _          _    @nql @pql _    _    _
+  _    _    _    @pca @nca _          _    @pbf @nbf _    _    _
+  _    _    _    @prf @nrf _          _    @pdg @ndg _    _    _
+  _    _    _    @pis @nis _          _    @pql @nql _    _    _
             _                   _                    _
 )
 
