@@ -35,6 +35,7 @@ vim.o.relativenumber = true -- Relative line numbers
 vim.o.signcolumn = "yes" -- Always show signcolumn (less flicker)
 vim.opt.updatetime = 200 -- Save swap file and trigger CursorHold
 vim.o.foldlevel = 10 -- Fold nothing by default; set to 0 or 1 to fold
+vim.o.winborder = "rounded" -- Use rounded borders on all floating windows
 
 -- Editing
 vim.o.clipboard = "unnamedplus" -- Sync with system clipboard
