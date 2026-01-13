@@ -55,6 +55,16 @@ require("gitsigns").setup({
 			gitsigns.setqflist("all")
 		end, { buffer = bufnr, desc = "Set quickfix list with all changes" })
 		nml("hq", gitsigns.setqflist, { buffer = bufnr, desc = "Set quickfix list with buffer changes" })
+		vim.keymap.set("n", "q", function()
+			for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+				local buf = vim.api.nvim_win_get_buf(win)
+				local bufname = vim.api.nvim_buf_get_name(buf)
+
+				if bufname:find("^gitsigns://") then
+					vim.api.nvim_win_close(win, true)
+				end
+			end
+		end, { buffer = bufnr, desc = "Close gitsigns diff" })
 
 		-- Toggles
 		nml("ub", gitsigns.toggle_current_line_blame, { buffer = bufnr, desc = "Toggle current line blame" })
