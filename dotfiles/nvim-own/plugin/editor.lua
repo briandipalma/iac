@@ -14,3 +14,12 @@ end, { desc = "Remote flash" })
 vim.keymap.set({ "o", "x" }, "R", function()
 	require("flash").treesitter_search()
 end, { desc = "Treesitter Search" })
+
+require("snacks/words").enable()
+
+vim.keymap.set({ "n", "t" }, "]]", function()
+	Snacks.words.jump(vim.v.count1)
+end, { desc = "Next Reference" })
+vim.keymap.set({ "n", "t" }, "[[", function()
+	Snacks.words.jump(-vim.v.count1)
+end, { desc = "Prev Reference" })
