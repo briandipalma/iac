@@ -4,6 +4,7 @@ local treesitter = require("nvim-treesitter")
 
 install_package("html-lsp")
 install_package("prettier")
+
 treesitter.install({ "html" })
 
 vim.treesitter.start()
