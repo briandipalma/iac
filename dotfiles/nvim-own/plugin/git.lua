@@ -4,7 +4,6 @@ local xml = require("my-config/utils").xml
 
 require("gitsigns").setup({
 	numhl = true,
-	linehl = true,
 	word_diff = true,
 	on_attach = function(bufnr)
 		local gitsigns = require("gitsigns")
@@ -73,6 +72,15 @@ require("gitsigns").setup({
 		-- Text object
 		vim.keymap.set({ "o", "x" }, "ih", gitsigns.select_hunk, { buffer = bufnr, desc = "hunk" })
 	end,
+})
+
+require("codediff").setup({
+	diff = {
+		disable_inlay_hints = false,
+	},
+	explorer = {
+		position = "bottom",
+	},
 })
 
 require("gitlab").setup({

@@ -58,6 +58,7 @@ MiniDeps.add("rachartier/tiny-glimmer.nvim")
 MiniDeps.add("rachartier/tiny-inline-diagnostic.nvim")
 MiniDeps.add("rose-pine/neovim")
 MiniDeps.add("stevearc/conform.nvim")
+MiniDeps.add({ source = "esmuellert/codediff.nvim", depends = { "MunifTanjim/nui.nvim" } })
 MiniDeps.add({
 	source = "harrisoncramer/gitlab.nvim",
 	depends = {
