@@ -1,5 +1,3 @@
-MiniDeps.add("rachartier/tiny-inline-diagnostic.nvim")
-
 require("tiny-inline-diagnostic").setup({
 	options = { multilines = { enabled = true }, show_source = { enabled = true } },
 })

@@ -1,8 +1,6 @@
 local nml = require("my-config/utils").nml
 local xml = require("my-config/utils").xml
 
-MiniDeps.add("ibhagwan/fzf-lua")
-
 require("fzf-lua").setup({
 	winopts = {
 		height = 0.9,

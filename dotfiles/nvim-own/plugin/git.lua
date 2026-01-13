@@ -2,8 +2,6 @@ local nm = require("my-config/utils").nm
 local nml = require("my-config/utils").nml
 local xml = require("my-config/utils").xml
 
-MiniDeps.add("lewis6991/gitsigns.nvim")
-
 require("gitsigns").setup({
 	numhl = true,
 	linehl = true,
@@ -65,24 +63,6 @@ require("gitsigns").setup({
 		-- Text object
 		vim.keymap.set({ "o", "x" }, "ih", gitsigns.select_hunk, { buffer = bufnr, desc = "hunk" })
 	end,
-})
-
-MiniDeps.add({
-	source = "harrisoncramer/gitlab.nvim",
-	depends = {
-		"MunifTanjim/nui.nvim",
-		"nvim-lua/plenary.nvim",
-		"sindrets/diffview.nvim",
-		"stevearc/dressing.nvim",
-		"nvim-tree/nvim-web-devicons",
-	},
-	hooks = {
-		post_checkout = function()
-			if vim.fn.executable("go") == 1 then
-				require("gitlab.server").build(true)
-			end
-		end,
-	},
 })
 
 require("gitlab").setup({

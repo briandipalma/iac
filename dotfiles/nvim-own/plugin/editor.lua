@@ -1,8 +1,3 @@
-MiniDeps.add("folke/flash.nvim")
-MiniDeps.add("folke/persistence.nvim")
-MiniDeps.add("nvim-mini/mini.tabline")
-MiniDeps.add("nvim-tree/nvim-web-devicons")
-
 require("flash").setup({ modes = { search = { enabled = true } } })
 
 vim.keymap.set({ "n", "x", "o" }, "s", function()
@@ -19,7 +14,3 @@ end, { desc = "Remote flash" })
 vim.keymap.set({ "o", "x" }, "R", function()
 	require("flash").treesitter_search()
 end, { desc = "Treesitter Search" })
-
-require("mini.tabline").setup()
-require("nvim-web-devicons").setup()
-require("persistence").setup()
