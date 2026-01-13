@@ -39,6 +39,7 @@ miniclue.setup({
 			{ mode = "x", keys = "<Leader>s", desc = "+Search" },
 			{ mode = "n", keys = "<Leader>g", desc = "+Git" },
 			{ mode = "n", keys = "<Leader>h", desc = "+Hunks" },
+			{ mode = "x", keys = "<Leader>h", desc = "+Hunks" },
 			{ mode = "n", keys = "<Leader>u", desc = "+UI" },
 		},
 		miniclue.gen_clues.square_brackets(),

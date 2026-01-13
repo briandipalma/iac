@@ -36,6 +36,9 @@ vim.o.signcolumn = "yes" -- Always show signcolumn (less flicker)
 vim.opt.updatetime = 200 -- Save swap file and trigger CursorHold
 vim.o.foldlevel = 10 -- Fold nothing by default; set to 0 or 1 to fold
 
+-- Editing
+vim.o.clipboard = "unnamedplus" -- Sync with system clipboard
+
 MiniDeps.add("folke/flash.nvim")
 MiniDeps.add("folke/persistence.nvim")
 MiniDeps.add("ibhagwan/fzf-lua")
@@ -43,6 +46,7 @@ MiniDeps.add("j-hui/fidget.nvim")
 MiniDeps.add("lewis6991/gitsigns.nvim")
 MiniDeps.add("mason-org/mason.nvim")
 MiniDeps.add("neovim/nvim-lspconfig")
+MiniDeps.add("nvim-mini/mini.ai")
 MiniDeps.add("nvim-mini/mini.clue")
 MiniDeps.add("nvim-mini/mini.starter")
 MiniDeps.add("nvim-mini/mini.tabline")
@@ -77,6 +81,7 @@ MiniDeps.add({
 })
 
 require("mason").setup()
+require("mini.ai").setup()
 require("mini.tabline").setup()
 require("nvim-web-devicons").setup()
 require("persistence").setup()
