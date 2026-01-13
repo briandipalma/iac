@@ -52,7 +52,9 @@ MiniDeps.add("nvim-mini/mini.starter")
 MiniDeps.add("nvim-mini/mini.tabline")
 MiniDeps.add("nvim-tree/nvim-web-devicons")
 MiniDeps.add("nvim-treesitter/nvim-treesitter-context")
+MiniDeps.add("rachartier/tiny-glimmer.nvim")
 MiniDeps.add("rachartier/tiny-inline-diagnostic.nvim")
+MiniDeps.add("rose-pine/neovim")
 MiniDeps.add("stevearc/conform.nvim")
 MiniDeps.add({
 	source = "harrisoncramer/gitlab.nvim",
@@ -80,8 +82,11 @@ MiniDeps.add({
 	},
 })
 
+vim.cmd("colorscheme rose-pine")
+
 require("mason").setup()
 require("mini.ai").setup()
 require("mini.tabline").setup()
 require("nvim-web-devicons").setup()
 require("persistence").setup()
+require("tiny-glimmer").setup()
