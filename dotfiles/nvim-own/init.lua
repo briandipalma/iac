@@ -43,7 +43,6 @@ vim.o.clipboard = "unnamedplus" -- Sync with system clipboard
 MiniDeps.add("folke/flash.nvim")
 MiniDeps.add("folke/persistence.nvim")
 MiniDeps.add("folke/snacks.nvim")
-MiniDeps.add("ibhagwan/fzf-lua")
 MiniDeps.add("j-hui/fidget.nvim")
 MiniDeps.add("lewis6991/gitsigns.nvim")
 MiniDeps.add("mason-org/mason.nvim")
@@ -76,6 +75,7 @@ MiniDeps.add({
 		end,
 	},
 })
+MiniDeps.add({ source = "ibhagwan/fzf-lua", depends = { "nvim-tree/nvim-web-devicons" } })
 MiniDeps.add({
 	source = "nvim-treesitter/nvim-treesitter",
 	hooks = {
