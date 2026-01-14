@@ -36,6 +36,9 @@ vim.o.signcolumn = "yes" -- Always show signcolumn (less flicker)
 vim.o.updatetime = 200 -- Save swap file and trigger CursorHold
 vim.o.foldlevel = 10 -- Fold nothing by default; set to 0 or 1 to fold
 vim.o.winborder = "rounded" -- Use rounded borders on all floating windows
+vim.o.breakindentopt = "shift:2" -- Wrapped line's beginning will be shifted to emphasize line continuation
+vim.o.showbreak = "↳" -- String to put at start of wrapped lines
+vim.o.linebreak = true -- Wrap lines at 'breakat' (if 'wrap' is set)
 
 -- Editing
 vim.o.clipboard = "unnamedplus" -- Sync with system clipboard
@@ -59,23 +62,6 @@ MiniDeps.add("rachartier/tiny-inline-diagnostic.nvim")
 MiniDeps.add("rose-pine/neovim")
 MiniDeps.add("stevearc/conform.nvim")
 MiniDeps.add({ source = "esmuellert/codediff.nvim", depends = { "MunifTanjim/nui.nvim" } })
-MiniDeps.add({
-	source = "harrisoncramer/gitlab.nvim",
-	depends = {
-		"MunifTanjim/nui.nvim",
-		"nvim-lua/plenary.nvim",
-		"sindrets/diffview.nvim",
-		"stevearc/dressing.nvim",
-		"nvim-tree/nvim-web-devicons",
-	},
-	hooks = {
-		post_checkout = function()
-			if vim.fn.executable("go") == 1 then
-				require("gitlab.server").build(true)
-			end
-		end,
-	},
-})
 MiniDeps.add({ source = "ibhagwan/fzf-lua", depends = { "nvim-tree/nvim-web-devicons" } })
 MiniDeps.add({
 	source = "nvim-treesitter/nvim-treesitter",

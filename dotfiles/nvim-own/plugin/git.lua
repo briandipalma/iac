@@ -9,20 +9,18 @@ require("gitsigns").setup({
 		local gitsigns = require("gitsigns")
 
 		-- Navigation
-		nm("]c", function()
-			if vim.wo.diff then
-				vim.cmd.normal({ "]c", bang = true })
-			else
+		local lifecycle = require("codediff.ui.lifecycle")
+		local tabpage = lifecycle.find_tabpage_by_buffer(bufnr)
+
+		-- Don't add navigation keymaps to codediff/diff buffers, they have their own hunk navigation
+		if not tabpage and not vim.wo.diff then
+			nm("]c", function()
 				gitsigns.nav_hunk("next")
-			end
-		end, { buffer = bufnr, desc = "Next change/hunk" })
-		nm("[c", function()
-			if vim.wo.diff then
-				vim.cmd.normal({ "[c", bang = true })
-			else
+			end, { buffer = bufnr, desc = "Next hunk" })
+			nm("[c", function()
 				gitsigns.nav_hunk("prev")
-			end
-		end, { buffer = bufnr, desc = "Prev change/hunk" })
+			end, { buffer = bufnr, desc = "Prev hunk" })
+		end
 
 		-- Actions
 		nml("hs", gitsigns.stage_hunk, { buffer = bufnr, desc = "Stage hunk" })
@@ -54,20 +52,23 @@ require("gitsigns").setup({
 			gitsigns.setqflist("all")
 		end, { buffer = bufnr, desc = "Set quickfix list with all changes" })
 		nml("hq", gitsigns.setqflist, { buffer = bufnr, desc = "Set quickfix list with buffer changes" })
-		vim.keymap.set("n", "q", function()
-			for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
-				local buf = vim.api.nvim_win_get_buf(win)
-				local bufname = vim.api.nvim_buf_get_name(buf)
 
-				if bufname:find("^gitsigns://") then
-					vim.api.nvim_win_close(win, true)
+		local bufname = vim.api.nvim_buf_get_name(bufnr)
+
+		-- Only add `q` keymap in a `gitsigns` buffer
+		if bufname:find("^gitsigns://") then
+			vim.keymap.set("n", "q", function()
+				for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+					if vim.api.nvim_win_get_buf(win) == bufnr then
+						vim.api.nvim_win_close(win, true)
+					end
 				end
-			end
-		end, { buffer = bufnr, desc = "Close gitsigns diff" })
+			end, { buffer = bufnr, desc = "Close gitsigns diff" })
+		end
 
 		-- Toggles
 		nml("ub", gitsigns.toggle_current_line_blame, { buffer = bufnr, desc = "Toggle current line blame" })
-		nml("uw", gitsigns.toggle_word_diff, { buffer = bufnr, desc = "Toggle word diff" })
+		nml("ud", gitsigns.toggle_word_diff, { buffer = bufnr, desc = "Toggle word diff" })
 
 		-- Text object
 		vim.keymap.set({ "o", "x" }, "ih", gitsigns.select_hunk, { buffer = bufnr, desc = "hunk" })
@@ -75,33 +76,16 @@ require("gitsigns").setup({
 })
 
 require("codediff").setup({
-	diff = {
-		disable_inlay_hints = false,
-	},
-	explorer = {
-		position = "bottom",
-	},
-})
-
-require("gitlab").setup({
-	config_path = vim.env.HOME .. "/dev/my-data/",
-	attachment_dir = vim.env.HOME .. "/Pictures/Screenshots",
-	reviewer_settings = {
-		diffview = {
-			imply_local = true,
+	diff = { disable_inlay_hints = false },
+	explorer = { position = "bottom" },
+	keymaps = {
+		view = {
+			next_file = "<Tab>", -- Next file in explorer mode
+			prev_file = "<S-Tab>", -- Previous file in explorer mode
 		},
-	},
-	popup = {
-		width = "80%",
-		comment = { opacity = 0.8 },
-		temp_registers = { "+" },
-	},
-	discussion_tree = { position = "bottom" },
-	discussion_sign_and_diagnostic = {
-		skip_resolved_discussion = true,
 	},
 })
 
 nml("gm", function()
-	require("gitlab").review()
+	require("codediff/commands").vscode_diff({ fargs = { "master" } })
 end, { desc = "Git merge review" })
