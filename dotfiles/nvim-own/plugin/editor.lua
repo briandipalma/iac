@@ -1,3 +1,5 @@
+local nml = require("my-config/utils").nml
+
 require("flash").setup({ modes = { search = { enabled = true } } })
 
 vim.keymap.set({ "n", "x", "o" }, "s", function()
@@ -23,3 +25,7 @@ end, { desc = "Next Reference" })
 vim.keymap.set({ "n", "t" }, "[[", function()
 	Snacks.words.jump(-vim.v.count1)
 end, { desc = "Prev Reference" })
+
+nml("uw", function()
+	vim.o.wrap = not vim.o.wrap
+end, { desc = "Toggle word wrap" })
