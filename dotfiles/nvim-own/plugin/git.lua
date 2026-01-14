@@ -42,30 +42,6 @@ require("gitsigns").setup({
 			gitsigns.blame_line({ full = true })
 		end, { buffer = bufnr, desc = "Blame line" })
 
-		nml("hd", gitsigns.diffthis, { buffer = bufnr, desc = "Diff this buffer with index" })
-
-		nml("hD", function()
-			gitsigns.diffthis("~")
-		end, { buffer = bufnr, desc = "Diff this buffer with ~" })
-
-		nml("hQ", function()
-			gitsigns.setqflist("all")
-		end, { buffer = bufnr, desc = "Set quickfix list with all changes" })
-		nml("hq", gitsigns.setqflist, { buffer = bufnr, desc = "Set quickfix list with buffer changes" })
-
-		local bufname = vim.api.nvim_buf_get_name(bufnr)
-
-		-- Only add `q` keymap in a `gitsigns` buffer
-		if bufname:find("^gitsigns://") then
-			vim.keymap.set("n", "q", function()
-				for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
-					if vim.api.nvim_win_get_buf(win) == bufnr then
-						vim.api.nvim_win_close(win, true)
-					end
-				end
-			end, { buffer = bufnr, desc = "Close gitsigns diff" })
-		end
-
 		-- Toggles
 		nml("ub", gitsigns.toggle_current_line_blame, { buffer = bufnr, desc = "Toggle current line blame" })
 		nml("ud", gitsigns.toggle_word_diff, { buffer = bufnr, desc = "Toggle word diff" })
@@ -86,6 +62,9 @@ require("codediff").setup({
 	},
 })
 
+nml("gg", function()
+	require("codediff/commands").vscode_diff({ fargs = {} })
+end, { desc = "Git status diff" })
 nml("gm", function()
 	require("codediff/commands").vscode_diff({ fargs = { "master" } })
 end, { desc = "Git merge review" })
