@@ -34,6 +34,7 @@ miniclue.setup({
 		{
 			{ mode = "n", keys = "<Leader>c", desc = "+Code" },
 			{ mode = "n", keys = "<Leader>d", desc = "+Dependencies" },
+			{ mode = "n", keys = "<Leader>e", desc = "+Explorer" },
 			{ mode = "n", keys = "<Leader>f", desc = "+Find" },
 			{ mode = "n", keys = "<Leader>s", desc = "+Search" },
 			{ mode = "x", keys = "<Leader>s", desc = "+Search" },
