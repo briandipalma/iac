@@ -61,6 +61,7 @@ MiniDeps.add("rachartier/tiny-glimmer.nvim")
 MiniDeps.add("rachartier/tiny-inline-diagnostic.nvim")
 MiniDeps.add("rose-pine/neovim")
 MiniDeps.add("stevearc/conform.nvim")
+MiniDeps.add("stevearc/overseer.nvim")
 MiniDeps.add({ source = "esmuellert/codediff.nvim", depends = { "MunifTanjim/nui.nvim" } })
 MiniDeps.add({ source = "ibhagwan/fzf-lua", depends = { "nvim-tree/nvim-web-devicons" } })
 MiniDeps.add({
@@ -71,11 +72,10 @@ MiniDeps.add({
 		end,
 	},
 })
--- use a release tag to download pre-built binaries
 MiniDeps.add({
 	source = "saghen/blink.cmp",
 	depends = { "rafamadriz/friendly-snippets" },
-	checkout = "v1.8.0", -- check releases for latest tag
+	checkout = "v1.8.0", -- use a release tag to download binaries check releases for latest tag
 })
 
 vim.cmd("colorscheme rose-pine")
@@ -84,5 +84,6 @@ require("mason").setup()
 require("mini.ai").setup()
 require("mini.tabline").setup()
 require("nvim-web-devicons").setup()
+require("overseer").setup()
 require("persistence").setup()
 require("tiny-glimmer").setup()
