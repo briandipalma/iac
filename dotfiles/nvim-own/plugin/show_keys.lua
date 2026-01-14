@@ -32,6 +32,7 @@ miniclue.setup({
 
 	clues = {
 		{
+			{ mode = "n", keys = "<Leader>b", desc = "+Buffers" },
 			{ mode = "n", keys = "<Leader>c", desc = "+Code" },
 			{ mode = "n", keys = "<Leader>d", desc = "+Dependencies" },
 			{ mode = "n", keys = "<Leader>e", desc = "+Explorer" },

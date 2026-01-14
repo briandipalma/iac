@@ -11,6 +11,9 @@ require("fzf-lua").setup({
 
 nml("<Leader>", "<Cmd>FzfLua files<CR>", { desc = "Find file (root dir)" })
 nml(",", "<Cmd>FzfLua buffers<CR>", { desc = "Find buffer" })
+
 nml("fr", "<Cmd>FzfLua oldfiles<CR>", { desc = "Find recent file" })
+
+nml("sk", "<Cmd>FzfLua keymaps<CR>", { desc = "Search keymaps" })
 nml("sw", "<Cmd>FzfLua grep_cword<CR>", { desc = "Search for word under cursor" })
 xml("sw", "<Cmd>FzfLua grep_visual<CR>", { desc = "Search for current selection" })

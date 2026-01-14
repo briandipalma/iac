@@ -1,8 +1,5 @@
 require("tiny-inline-diagnostic").setup({
-	options = {
-		multilines = { enabled = true },
-		show_source = { enabled = true },
-	},
+	options = { multilines = { enabled = true }, show_source = { enabled = true } },
 })
 
 vim.diagnostic.config({

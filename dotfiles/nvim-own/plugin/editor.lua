@@ -1,5 +1,6 @@
 local nml = require("my-config/utils").nml
 
+-- Moving around a buffer
 require("flash").setup({ modes = { search = { enabled = true } } })
 
 vim.keymap.set({ "n", "x", "o" }, "s", function()
@@ -17,6 +18,7 @@ vim.keymap.set({ "o", "x" }, "R", function()
 	require("flash").treesitter_search()
 end, { desc = "Treesitter Search" })
 
+-- Moving between LSP references
 require("snacks/words").enable()
 
 vim.keymap.set({ "n", "t" }, "]]", function()
@@ -26,6 +28,12 @@ vim.keymap.set({ "n", "t" }, "[[", function()
 	Snacks.words.jump(-vim.v.count1)
 end, { desc = "Prev Reference" })
 
+-- Keymaps
+
 nml("uw", function()
 	vim.o.wrap = not vim.o.wrap
 end, { desc = "Toggle word wrap" })
+
+nml("bd", "<cmd>bdel<cr>", { desc = "Delete buffer" })
+
+vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
