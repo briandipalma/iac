@@ -44,6 +44,7 @@ vim.o.scrolloff = 4 -- Lines of context
 -- Editing
 vim.o.clipboard = "unnamedplus" -- Sync with system clipboard
 
+MiniDeps.add("b0o/schemastore.nvim")
 MiniDeps.add("folke/flash.nvim")
 MiniDeps.add("folke/persistence.nvim")
 MiniDeps.add("folke/snacks.nvim")
