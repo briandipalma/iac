@@ -65,6 +65,17 @@ require("codediff").setup({
 nml("gg", function()
 	require("codediff/commands").vscode_diff({ fargs = {} })
 end, { desc = "Git status diff" })
+
 nml("gm", function()
-	require("codediff/commands").vscode_diff({ fargs = { "master" } })
+	local on_exit = function(obj)
+		local mergeBase = string.sub(obj.stdout, 1, -2)
+		local fargs = { mergeBase, "HEAD" }
+
+		-- You need to schedule this or codediff throws "fast event context" errors
+		vim.schedule(function()
+			require("codediff/commands").vscode_diff({ fargs = fargs })
+		end)
+	end
+
+	vim.system({ "git", "merge-base", "origin/HEAD", "HEAD" }, { text = true }, on_exit)
 end, { desc = "Git merge review" })
