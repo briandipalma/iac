@@ -14,10 +14,12 @@ RUN pacman -Sq --noconfirm trash-cli
 RUN pacman -Sq --noconfirm gcc tree-sitter-cli
 
 # To allow copy/paste to/from host clipboard
-RUN pacman -Sq --noconfirm xsel wl-clipboard
+RUN pacman -Sq --noconfirm wl-clipboard
 
 # mason.nvim uses npm to update language-servers
 RUN pacman -Sq --noconfirm nodejs-lts-iron npm
+# Used by ltex-plus
+RUN pacman -Sq --noconfirm jdk21-openjdk
 
 # Link to host programs
 RUN ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/podman
