@@ -16,6 +16,7 @@ nml("fr", "<Cmd>FzfLua oldfiles<CR>", { desc = "Find recent file" })
 
 nml("sg", "<Cmd>FzfLua live_grep_native<CR>", { desc = "Search text (root dir)" })
 nml("sG", "<Cmd>FzfLua live_grep_native<CR>", { desc = "Search text (cwd)" })
+nml("ss", "<Cmd>FzfLua lsp_document_symbols<CR>", { desc = "Search document symbols" })
 nml("sk", "<Cmd>FzfLua keymaps<CR>", { desc = "Search keymaps" })
 nml("sw", "<Cmd>FzfLua grep_cword<CR>", { desc = "Search for word under cursor" })
 xml("sw", "<Cmd>FzfLua grep_visual<CR>", { desc = "Search for current selection" })
