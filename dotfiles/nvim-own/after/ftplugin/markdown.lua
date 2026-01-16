@@ -10,7 +10,6 @@ install_package("marksman")
 install_package("ltex-ls-plus")
 install_package("prettier")
 install_package("markdownlint-cli2")
-install_package("vale-ls")
 
 treesitter.install({ "markdown", "markdown_inline" })
 
@@ -21,7 +20,6 @@ vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 
 vim.lsp.enable("marksman")
 vim.lsp.enable("ltex_plus")
-vim.lsp.enable("vale_ls")
 
 conform.formatters_by_ft.markdown = { "prettier" }
 
