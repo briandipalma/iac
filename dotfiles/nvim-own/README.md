@@ -29,3 +29,6 @@ Add yaml filetype
 Add Dockerfile filetype
 Add comment filetype?
 Add fish filetype
+Configure markdownlint-cli2 to use 100 as max line length
+Configure vale_ls
+Add the `q` to close utility buffers keymap from LazyVim
