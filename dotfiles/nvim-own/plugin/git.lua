@@ -4,7 +4,6 @@ local xml = require("my-config/utils").xml
 
 require("gitsigns").setup({
 	numhl = true,
-	word_diff = true,
 	on_attach = function(bufnr)
 		local gitsigns = require("gitsigns")
 
