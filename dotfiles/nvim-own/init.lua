@@ -39,7 +39,7 @@ vim.o.winborder = "rounded" -- Use rounded borders on all floating windows
 vim.o.breakindentopt = "shift:2" -- Wrapped line's beginning will be shifted to emphasize line continuation
 vim.o.showbreak = "↳" -- String to put at start of wrapped lines
 vim.o.linebreak = true -- Wrap lines at 'breakat' (if 'wrap' is set)
-vim.o.scrolloff = 4 -- Lines of context
+vim.o.scrolloff = 8 -- Lines of context
 
 -- Editing
 vim.o.clipboard = "unnamedplus" -- Sync with system clipboard
@@ -51,6 +51,7 @@ MiniDeps.add("folke/snacks.nvim")
 MiniDeps.add("j-hui/fidget.nvim")
 MiniDeps.add("lewis6991/gitsigns.nvim")
 MiniDeps.add("mason-org/mason.nvim")
+MiniDeps.add("mfussenegger/nvim-lint")
 MiniDeps.add("neovim/nvim-lspconfig")
 MiniDeps.add("nvim-mini/mini.ai")
 MiniDeps.add("nvim-mini/mini.clue")
@@ -65,6 +66,7 @@ MiniDeps.add("rachartier/tiny-inline-diagnostic.nvim")
 MiniDeps.add("rose-pine/neovim")
 MiniDeps.add("stevearc/conform.nvim")
 MiniDeps.add("stevearc/overseer.nvim")
+MiniDeps.add({ source = "OXY2DEV/markview.nvim", depends = { "saghen/blink.cmp" } })
 MiniDeps.add({ source = "esmuellert/codediff.nvim", depends = { "MunifTanjim/nui.nvim" } })
 MiniDeps.add({ source = "ibhagwan/fzf-lua", depends = { "nvim-tree/nvim-web-devicons" } })
 MiniDeps.add({
