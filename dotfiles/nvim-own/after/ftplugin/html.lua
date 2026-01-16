@@ -3,6 +3,7 @@ local install_package = require("my-config/utils").install_package
 local treesitter = require("nvim-treesitter")
 
 install_package("html-lsp")
+install_package("htmlhint")
 install_package("prettier")
 
 treesitter.install({ "html" })
@@ -15,3 +16,5 @@ vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 vim.lsp.enable("html")
 
 conform.formatters_by_ft.html = { "prettier" }
+
+require("lint").try_lint("htmlhint")
