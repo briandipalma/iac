@@ -2,6 +2,7 @@ local nml = require("my-config/utils").nml
 local xml = require("my-config/utils").xml
 
 require("fzf-lua").setup({
+	ui_select = true, -- Register fzf-lua as the UI interface for `vim.ui.select`
 	winopts = {
 		height = 0.9,
 		width = 1,

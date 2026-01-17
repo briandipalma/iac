@@ -37,3 +37,16 @@ end, { desc = "Toggle word wrap" })
 nml("bd", "<cmd>bdel<cr>", { desc = "Delete buffer" })
 
 vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
+
+-- Yanky mappings
+
+vim.keymap.set({ "x", "n" }, "<leader>p", "<cmd>YankyRingHistory<cr>", { desc = "Open Yank History" })
+vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)") -- keeps cursor in the same position when yanking
+-- Set these Keymaps for yank rink usage
+vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
+-- After putting move forward and back in yank ring
+vim.keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
+vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)")
