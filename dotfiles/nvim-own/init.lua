@@ -31,6 +31,7 @@ vim.o.undofile = true -- Enable undofiles
 
 -- UI =========================================================================
 vim.o.cursorline = true -- Enable current line highlighting
+vim.o.number = true -- Print line number in front of lines
 vim.o.relativenumber = true -- Relative line numbers
 vim.o.signcolumn = "yes" -- Always show signcolumn (less flicker)
 vim.o.updatetime = 200 -- Save swap file and trigger CursorHold
