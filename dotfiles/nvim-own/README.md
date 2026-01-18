@@ -23,12 +23,10 @@ To check what formatters are enabled for a buffer use `:ConformInfo`
 
 ## To Do
 
-Implement `root dir` searching
 Add full ESLint support
 Add full vtsls support
 Add a way to see the difference between local git branch state and remote branch state (in statusline?)
 Read overseer documentation and maybe use it to rebase current branch to latest master?
-Add html filetype
 Add yaml filetype
 Add Dockerfile filetype
 Add comment filetype?
