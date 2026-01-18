@@ -17,6 +17,10 @@
 language for the filetype - you just need to know `typescriptreact` filetype means the `tsx`
 treesitter language.
 
+To check an LSPs capabilities run `:lua =vim.lsp.get_clients()[1].server_capabilities`
+
+To check what formatters are enabled for a buffer use `:ConformInfo`
+
 ## To Do
 
 Implement `root dir` searching
@@ -31,3 +35,4 @@ Add comment filetype?
 Add fish filetype
 Configure markdownlint-cli2 to use 100 as max line length
 Add the `q` to close utility buffers keymap from LazyVim
+Add stage keymap `-` to codediff code view, not just the file explorer view
