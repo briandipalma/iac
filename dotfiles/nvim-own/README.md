@@ -36,3 +36,4 @@ Add fish filetype
 Configure markdownlint-cli2 to use 100 as max line length
 Add the `q` to close utility buffers keymap from LazyVim
 Add stage keymap `-` to codediff code view, not just the file explorer view
+Add file preview to mini.files
