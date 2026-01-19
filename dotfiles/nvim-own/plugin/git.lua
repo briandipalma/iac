@@ -97,3 +97,8 @@ end, { desc = "Git merge review" })
 nml("gp", function()
 	vim.cmd("Git pull --rebase=true")
 end, { desc = "Git pull (--rebase=true)" })
+
+nml("gc", function()
+	vim.cmd("Git commit --verbose")
+end, { desc = "Git commit" })
+
