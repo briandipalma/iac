@@ -1,4 +1,6 @@
 local nml = require("my-config/utils").nml
+local close_callback = require("my-config/close").close_callback
+local close_group = require("my-config/close").close_group
 
 -- Moving around a buffer
 require("flash").setup({ modes = { search = { enabled = true } } })
@@ -37,6 +39,13 @@ end, { desc = "Toggle word wrap" })
 nml("bd", "<cmd>bdel<cr>", { desc = "Delete buffer" })
 
 vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
+
+-- close some filetypes with <q>
+vim.api.nvim_create_autocmd("FileType", {
+	group = close_group,
+	pattern = { "checkhealth", "lspinfo", "qf" },
+	callback = close_callback,
+})
 
 -- Yanky mappings
 
