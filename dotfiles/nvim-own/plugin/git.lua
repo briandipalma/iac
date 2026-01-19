@@ -62,7 +62,22 @@ require("codediff").setup({
 })
 
 nml("gg", function()
+	vim.cmd("Git fetch")
 	require("codediff/commands").vscode_diff({ fargs = {} })
+	vim.api.nvim_create_autocmd("User", {
+		pattern = "CodeDiffVirtualFileLoaded",
+		once = true,
+		callback = function()
+			local align_blame = function()
+				vim.fn.win_execute(vim.api.nvim_get_current_win(), "res 4")
+			end
+
+			local au_opts = { pattern = "MiniGitCommandSplit", once = true, callback = align_blame }
+			vim.api.nvim_create_autocmd("User", au_opts)
+
+			vim.cmd("topleft Git status")
+		end,
+	})
 end, { desc = "Git status diff" })
 
 nml("gm", function()
@@ -78,3 +93,7 @@ nml("gm", function()
 
 	vim.system({ "git", "merge-base", "origin/HEAD", "HEAD" }, { text = true }, on_exit)
 end, { desc = "Git merge review" })
+
+nml("gp", function()
+	vim.cmd("Git pull --rebase=true")
+end, { desc = "Git pull (--rebase=true)" })
