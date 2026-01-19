@@ -1,3 +1,5 @@
+local close_callback = require("my-config/close").close_callback
+local close_group = require("my-config/close").close_group
 local nm = require("my-config/utils").nm
 local nml = require("my-config/utils").nml
 local xml = require("my-config/utils").xml
@@ -61,6 +63,8 @@ require("codediff").setup({
 	},
 })
 
+vim.api.nvim_create_autocmd("User", { group = close_group, pattern = "MiniGitCommandSplit", callback = close_callback })
+
 nml("gg", function()
 	vim.cmd("Git fetch")
 	require("codediff/commands").vscode_diff({ fargs = {} })
@@ -101,4 +105,3 @@ end, { desc = "Git pull (--rebase=true)" })
 nml("gc", function()
 	vim.cmd("Git commit --verbose")
 end, { desc = "Git commit" })
-
