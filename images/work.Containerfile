@@ -2,6 +2,7 @@ FROM docker.io/briandipalma/base:latest
 
 # Web app development
 RUN pacman -Sq --noconfirm chromium
+RUN npm install -g pnpm@10.28.0
 
 # Required by karma chrome launcher
 ENV CHROME_BIN=/usr/sbin/chromium
