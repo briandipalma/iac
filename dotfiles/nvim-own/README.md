@@ -30,9 +30,7 @@ To check what formatters are enabled for a buffer use `:ConformInfo`
 - Add `yaml` file type
 - Add Dockerfile file type
 - Add comment file type?
-- Add fish file type
 - Configure markdownlint-cli2 to use 100 as max line length
-- Add the `q` to close utility buffers key map from `LazyVim`
 - Add stage key map `-` to `codediff` code view, not just the file explorer view
 - Add file preview to `mini.files`
 - Test Harper grammar checker
