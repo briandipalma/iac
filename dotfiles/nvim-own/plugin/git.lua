@@ -95,3 +95,5 @@ nml("gs", function()
 	vim.cmd("Git fetch")
 	vim.cmd("Git status")
 end, { desc = "Git commit" })
+
+nml("gf", "<CMD>FzfLua git_bcommits<CR>", { desc = "Git current file history" })
