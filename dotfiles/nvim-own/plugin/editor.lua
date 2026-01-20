@@ -42,8 +42,8 @@ vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Sav
 
 -- close some filetypes with <q>
 vim.api.nvim_create_autocmd("FileType", {
-	group = close_group,
 	pattern = { "checkhealth", "lspinfo", "qf" },
+	group = close_group,
 	callback = close_callback,
 })
 
