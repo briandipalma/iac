@@ -31,6 +31,5 @@ To check what formatters are enabled for a buffer use `:ConformInfo`
 - Add comment file type?
 - Configure markdownlint-cli2 to use 100 as max line length
 - Add stage key map `-` to `codediff` code view, not just the file explorer view
-- Add file preview to `mini.files`
 - Test Harper grammar checker
 - Add `undotree` plugin
