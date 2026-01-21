@@ -6,7 +6,7 @@ install_package("eslint-lsp")
 install_package("prettier")
 install_package("vtsls")
 
-treesitter.install({ "tsx" })
+treesitter.install({ "jsdoc", "regex", "tsx" })
 
 vim.treesitter.start()
 vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"

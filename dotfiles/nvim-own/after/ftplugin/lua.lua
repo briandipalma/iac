@@ -1,8 +1,11 @@
 local conform = require("conform")
 local install_package = require("my-config/utils").install_package
+local treesitter = require("nvim-treesitter")
 
 install_package("lua-language-server")
 install_package("stylua")
+
+treesitter.install({ "luadoc", "lua" })
 
 vim.treesitter.start()
 vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
