@@ -94,6 +94,15 @@ end, { desc = "Git commit" })
 nml("gs", function()
 	vim.cmd("Git fetch")
 	vim.cmd("Git status")
-end, { desc = "Git commit" })
+	vim.cmd("bo horizontal Git log -2")
+end, { desc = "Git status" })
+
+nml("ga", function()
+	vim.cmd("Git commit --amend --verbose")
+end, { desc = "Git amend" })
+
+nml("gu", function()
+	vim.cmd("Git push --force-with-lease --force-if-includes")
+end, { desc = "Git push --force-if-includes" })
 
 nml("gf", "<CMD>FzfLua git_bcommits<CR>", { desc = "Git current file history" })
