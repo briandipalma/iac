@@ -33,3 +33,14 @@ To check what formatters are enabled for a buffer use `:ConformInfo`
 - Add stage key map `-` to `codediff` code view, not just the file explorer view
 - Test Harper grammar checker
 - Add `undotree` plugin
+- Have fidget parse URLs when git pushing or mini.git open a URL or panel with the URL that can be clicked?
+
+```
+Wed 21 Jan 2026 16:57:05 Notifications | WARN
+(mini.git) remote:
+remote: To create a merge request for FE-3910-react18-api-15, visit:
+remote:   https://gitlab.caplin.com/front-end/mono/-/merge_requests/new?merge_request%5Bsource_branch%5D=FE-3910-react18-api-15
+remote:
+To https://gitlab.caplin.com/front-end/mono.git
+ * [new branch]              FE-3910-react18-api-15 -> FE-3910-react18-api-15
+```
