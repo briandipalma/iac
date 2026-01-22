@@ -23,7 +23,6 @@ To check what formatters are enabled for a buffer use `:ConformInfo`
 
 ## To Do
 
-- Add full `vtsls` support
 - Add a way to see the difference between local git branch state and remote branch state (in statusline?)
 - Read overseer documentation and maybe use it to rebase current branch to latest master?
 - Add `yaml` file type
@@ -34,6 +33,7 @@ To check what formatters are enabled for a buffer use `:ConformInfo`
 - Test Harper grammar checker
 - Add `undotree` plugin
 - Have fidget parse URLs when git pushing or mini.git open a URL or panel with the URL that can be clicked?
+- Add snippets support?
 
 ```
 Wed 21 Jan 2026 16:57:05 Notifications | WARN
