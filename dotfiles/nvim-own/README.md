@@ -32,7 +32,7 @@ To check what formatters are enabled for a buffer use `:ConformInfo`
 - Add stage key map `-` to `codediff` code view, not just the file explorer view
 - Test Harper grammar checker
 - Add `undotree` plugin
-- Have fidget parse URLs when git pushing or mini.git open a URL or panel with the URL that can be clicked?
+- Have mini.git parse URLs when git pushing or mini.git open a URL or panel with the URL that can be clicked?
 - Add snippets support?
 
 ```

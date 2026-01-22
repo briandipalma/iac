@@ -10,8 +10,10 @@ local ignored = {
 	["blink-cmp-menu"] = true,
 	["codediff-explorer"] = true,
 	["flash_prompt"] = true,
-	["fidget"] = true,
 	["fzf"] = true,
+	["qf"] = true,
+	["noice"] = true,
+	["notify"] = true,
 	["minideps-confirm"] = true,
 	["minifiles"] = true,
 }
