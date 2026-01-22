@@ -21,13 +21,15 @@ vim.keymap.set({ "o", "x" }, "R", function()
 end, { desc = "Treesitter Search" })
 
 -- Moving between LSP references
-require("snacks/words").enable()
+local snackWords = require("snacks/words")
+
+snackWords.enable()
 
 vim.keymap.set({ "n", "t" }, "]]", function()
-	Snacks.words.jump(vim.v.count1)
+	snackWords.jump(vim.v.count1)
 end, { desc = "Next Reference" })
 vim.keymap.set({ "n", "t" }, "[[", function()
-	Snacks.words.jump(-vim.v.count1)
+	snackWords.jump(-vim.v.count1)
 end, { desc = "Prev Reference" })
 
 -- Keymaps

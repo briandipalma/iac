@@ -18,7 +18,9 @@ if not vim.loop.fs_stat(mini_path) then
 	vim.cmd('echo "Installed [`mini.deps`](../doc/mini.deps.qmd#mini.deps)" | redraw')
 end
 
-require("mini.deps").setup()
+local MiniDeps = require("mini.deps")
+
+MiniDeps.setup()
 
 -- General ====================================================================
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)

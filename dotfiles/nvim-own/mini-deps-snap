@@ -1,6 +1,6 @@
 return {
   ["blink.cmp"] = "b19413d214068f316c78978b08264ed1c41830ec",
-  ["codediff.nvim"] = "33562f6cddb4bd595938e24095348d9f67a027e5",
+  ["codediff.nvim"] = "2f90f645f514955f1e7014b212598fff634bf467",
   ["conform.nvim"] = "c2526f1cde528a66e086ab1668e996d162c75f4f",
   ["fidget.nvim"] = "7fa433a83118a70fe24c1ce88d5f0bd3453c0970",
   ["flash.nvim"] = "fcea7ff883235d9024dc41e638f164a450c14ca2",
@@ -20,7 +20,7 @@ return {
   neovim = "cf2a288696b03d0934da713d66c6d71557b5c997",
   ["nui.nvim"] = "de740991c12411b663994b2860f1a4fd0937c130",
   ["nvim-lint"] = "ca6ea12daf0a4d92dc24c5c9ae22a1f0418ade37",
-  ["nvim-lspconfig"] = "92ee7d42320edfbb81f3cad851314ab197fa324a",
+  ["nvim-lspconfig"] = "419b082102fa813739588dd82e19a8b6b2442855",
   ["nvim-treesitter"] = "ec034813775d7e2974c7551c8c34499a828963f8",
   ["nvim-treesitter-context"] = "64dd4cf3f6fd0ab17622c5ce15c91fc539c3f24a",
   ["nvim-web-devicons"] = "803353450c374192393f5387b6a0176d0972b848",
