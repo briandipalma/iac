@@ -68,3 +68,6 @@ vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
 -- After putting move forward and back in yank ring
 vim.keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
 vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)")
+
+-- Undotree
+nml("U", "<cmd>lua require('undotree').toggle()<cr>", { desc = "Undotree toggle" })
