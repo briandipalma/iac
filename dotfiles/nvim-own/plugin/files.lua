@@ -9,7 +9,7 @@ require("mini.files").setup({
 		go_out = "H",
 		go_out_plus = "h",
 	},
-	windows = { preview = true, width_focus = 45, width_preview = 80 },
+	windows = { preview = true, width_focus = 45, width_preview = 90 },
 })
 
 nml("ee", function()
