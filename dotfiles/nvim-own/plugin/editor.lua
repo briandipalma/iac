@@ -2,6 +2,13 @@ local nml = require("my-config/utils").nml
 local close_callback = require("my-config/close").close_callback
 local close_group = require("my-config/close").close_group
 
+-- Move to window using the <ctrl> hjkl keys
+-- The default mappings are useless apart from `C-l` but window movement is far most useful
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window" }) -- Default `C-h` is just `h`
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window" }) -- Default just `j`
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window" }) -- No default ¯\_(ツ)_/¯
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window" }) -- Clears highlights
+
 -- Moving around a buffer
 require("flash").setup({ modes = { search = { enabled = true } } })
 
