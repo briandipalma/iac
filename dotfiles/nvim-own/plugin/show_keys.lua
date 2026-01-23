@@ -1,65 +1,19 @@
-local miniclue = require("mini.clue")
+local keys = require("which-key")
 
-miniclue.setup({
-	triggers = {
-		-- Leader triggers
-		{ mode = { "n", "x" }, keys = "<Leader>" },
-
-		-- `[` and `]` keys
-		{ mode = "n", keys = "[" },
-		{ mode = "n", keys = "]" },
-
-		-- Built-in completion
-		{ mode = "i", keys = "<C-x>" },
-
-		-- `g` key
-		{ mode = { "n", "x" }, keys = "g" },
-
-		-- Marks
-		{ mode = { "n", "x" }, keys = "'" },
-		{ mode = { "n", "x" }, keys = "`" },
-
-		-- Registers
-		{ mode = { "n", "x" }, keys = '"' },
-		{ mode = { "i", "c" }, keys = "<C-r>" },
-
-		-- Window commands
-		{ mode = "n", keys = "<C-w>" },
-
-		-- `z` key
-		{ mode = { "n", "x" }, keys = "z" },
-	},
-
-	clues = {
-		{
-			{ mode = "n", keys = "<Leader>b", desc = "+Buffers" },
-			{ mode = "n", keys = "<Leader>c", desc = "+Code" },
-			{ mode = "n", keys = "<Leader>d", desc = "+Dependencies" },
-			{ mode = "n", keys = "<Leader>e", desc = "+Explorer" },
-			{ mode = "n", keys = "<Leader>f", desc = "+Find" },
-			{ mode = "n", keys = "<Leader>s", desc = "+Search" },
-			{ mode = "x", keys = "<Leader>s", desc = "+Search" },
-			{ mode = "n", keys = "<Leader>g", desc = "+Git" },
-			{ mode = "n", keys = "<Leader>h", desc = "+Hunks" },
-			{ mode = "x", keys = "<Leader>h", desc = "+Hunks" },
-			{ mode = "n", keys = "<Leader>i", desc = "+Info" },
-			{ mode = "n", keys = "<Leader>u", desc = "+UI" },
-		},
-		miniclue.gen_clues.square_brackets(),
-		miniclue.gen_clues.builtin_completion(),
-		miniclue.gen_clues.g(),
-		miniclue.gen_clues.marks(),
-		miniclue.gen_clues.registers(),
-		miniclue.gen_clues.windows(),
-		miniclue.gen_clues.z(),
-	},
-
-	-- Clue window settings
-	window = {
-		--Floating window config
-		config = { width = "auto" },
-
-		-- Delay before showing clue window
-		delay = 100,
+keys.setup({
+	preset = "modern",
+	spec = {
+		{ "<Leader>b", group = "Buffers" },
+		{ "<Leader>c", group = "Code" },
+		{ "<Leader>d", group = "Dependencies" },
+		{ "<Leader>e", group = "Explorer" },
+		{ "<Leader>f", group = "Find" },
+		{ "<Leader>s", group = "Search" },
+		{ "<Leader>s", group = "Search" },
+		{ "<Leader>g", group = "Git" },
+		{ "<Leader>h", group = "Hunks" },
+		{ "<Leader>h", group = "Hunks" },
+		{ "<Leader>i", group = "Info" },
+		{ "<Leader>u", group = "UI" },
 	},
 })
