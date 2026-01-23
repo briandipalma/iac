@@ -7,11 +7,15 @@ nml("it", "<Cmd>InspectTree<CR>", { desc = "Treesitter tree" })
 nml("iT", "<Cmd>Inspect<CR>", { desc = "Treesitter node under cursor" })
 
 local ignored = {
+	[""] = true,
 	["blink-cmp-menu"] = true,
 	["codediff-explorer"] = true,
 	["flash_prompt"] = true,
 	["fzf"] = true,
+	["git"] = true,
 	["qf"] = true,
+	["mason"] = true,
+	["mason_backdrop"] = true,
 	["noice"] = true,
 	["notify"] = true,
 	["minideps-confirm"] = true,
