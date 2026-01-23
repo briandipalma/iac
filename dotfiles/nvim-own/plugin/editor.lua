@@ -12,10 +12,10 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window" }) -- Clear
 -- Moving around a buffer
 require("flash").setup({ modes = { search = { enabled = true } } })
 
-vim.keymap.set({ "n", "x", "o" }, "s", function()
+vim.keymap.set({ "n", "x", "o" }, "f", function()
 	require("flash").jump()
 end, { desc = "Flash" })
-vim.keymap.set({ "n", "x", "o" }, "S", function()
+vim.keymap.set({ "n", "x", "o" }, "F", function()
 	require("flash").treesitter()
 end, { desc = "Flash treesitter" })
 -- When in yank operator pending mode yank text that is remote from cursor e.g. `yr...`
