@@ -1,7 +1,7 @@
 FROM docker.io/briandipalma/base:latest
 
 # Web app development
-RUN pacman -Sq --noconfirm chromium
+RUN pacman -Sq --noconfirm chromium gitlab-ci-ls
 RUN npm install -g pnpm@10.28.0
 
 # Required by karma chrome launcher
