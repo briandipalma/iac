@@ -32,6 +32,7 @@ To check what formatters are enabled for a buffer use `:ConformInfo`
 - Add stage key map `-` to `codediff` code view, not just the file explorer view
 - Test Harper grammar checker
 - Have mini.git parse URLs when git pushing or mini.git open a URL or panel with the URL that can be clicked?
+- Change gitsigns on_attach so it can handle codediff closing the window that it was attached to
 - Add snippets support?
 
 ```
