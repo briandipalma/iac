@@ -30,13 +30,14 @@ vim.g.loaded_perl_provider = 0 -- Disable Perl remote plugins support
 vim.g.loaded_python3_provider = 0 -- Disable Python remote plugins support
 vim.g.loaded_ruby_provider = 0 -- Disable Ruby remote plugins support
 vim.o.undofile = true -- Enable undofiles
+vim.o.hidden = false -- Unload abandoned buffers, removes `[No Name]` buffers
+vim.o.updatetime = 200 -- Save swap file and trigger CursorHold
 
 -- UI =========================================================================
 vim.o.cursorline = true -- Enable current line highlighting
 vim.o.number = true -- Print line number in front of lines
 vim.o.relativenumber = true -- Relative line numbers
 vim.o.signcolumn = "yes" -- Always show signcolumn (less flicker)
-vim.o.updatetime = 200 -- Save swap file and trigger CursorHold
 vim.o.foldlevel = 10 -- Fold nothing by default; set to 0 or 1 to fold
 vim.o.winborder = "rounded" -- Use rounded borders on all floating windows
 vim.o.breakindentopt = "shift:2" -- Wrapped line's beginning will be shifted to emphasize line continuation
