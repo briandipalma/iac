@@ -18,6 +18,7 @@ RUN pacman -Sq --noconfirm wl-clipboard
 
 # mason.nvim uses npm to update language-servers
 RUN pacman -Sq --noconfirm nodejs-lts-iron npm
+RUN npm install zx -g
 # Used by ltex-plus
 RUN pacman -Sq --noconfirm jdk21-openjdk
 

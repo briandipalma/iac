@@ -3,7 +3,7 @@ local root = require("my-config/root")
 local nml = require("my-config/utils").nml
 local xml = require("my-config/utils").xml
 
-fzfLua.setup({
+FzfLua.setup({
 	ui_select = true, -- Register fzf-lua as the UI interface for `vim.ui.select`
 	winopts = { -- Portrait mode layout
 		height = 0.9,
