@@ -1,9 +1,10 @@
-local close_callback = require("my-config/close").close_callback
+local close_tab_callback = require("my-config/close").close_tab_callback
 local close_group = require("my-config/close").close_group
 local nm = require("my-config/utils").nm
 local nml = require("my-config/utils").nml
 local xml = require("my-config/utils").xml
 
+---- gitsigns
 require("gitsigns").setup({
 	numhl = true,
 	on_attach = function(bufnr)
@@ -44,14 +45,16 @@ require("gitsigns").setup({
 		end, { buffer = bufnr, desc = "Blame line" })
 
 		-- Toggles
-		nml("ub", gitsigns.toggle_current_line_blame, { buffer = bufnr, desc = "Toggle current line blame" })
-		nml("ud", gitsigns.toggle_word_diff, { buffer = bufnr, desc = "Toggle word diff" })
+		nml("gb", gitsigns.toggle_current_line_blame, { buffer = bufnr, desc = "Toggle current line blame" })
+		nml("hw", gitsigns.toggle_word_diff, { buffer = bufnr, desc = "Toggle word diff" })
 
 		-- Text object
 		vim.keymap.set({ "o", "x" }, "ih", gitsigns.select_hunk, { buffer = bufnr, desc = "hunk" })
 	end,
 })
+----
 
+---- codediff
 require("codediff").setup({
 	diff = { disable_inlay_hints = false },
 	explorer = { position = "bottom" },
@@ -62,9 +65,22 @@ require("codediff").setup({
 		},
 	},
 })
+----
 
-vim.api.nvim_create_autocmd("User", { group = close_group, pattern = "MiniGitCommandSplit", callback = close_callback })
+---- Utility
+-- close some ephemeral git filetypes/buffers with <q>
+vim.api.nvim_create_autocmd(
+	"User",
+	{ group = close_group, pattern = "MiniGitCommandSplit", callback = close_tab_callback }
+)
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "git", "gitcommit" },
+	group = close_group,
+	callback = close_tab_callback,
+})
+----
 
+---- Keymaps
 nml("gg", "<CMD>:CodeDiff<CR>", { desc = "Git status diff" })
 
 nml("gm", function()
