@@ -20,22 +20,29 @@ local ignored = {
 	["notify"] = true,
 	["minideps-confirm"] = true,
 	["minifiles"] = true,
+	["undotree"] = true,
+	["UndotreeDiff"] = true,
 }
 
 vim.api.nvim_create_autocmd("FileType", {
 	callback = function(_)
-		if vim.treesitter.language.add(_.match) then
-			return
-		end
+		-- This needs to be scheduled as `get_parser` errors can occur if treesitter hasn't been loaded
+		-- yet and they somehow cause issues when commenting out code in the buffer later on, this is
+		-- the case even with `error = false` ¯\_(ツ)_/¯
+		vim.schedule(function()
+			if vim.treesitter.language.add(_.match) then
+				return
+			end
 
-		if vim.treesitter.get_parser(nil, nil, { error = false }) then
-			return
-		end
+			if vim.treesitter.get_parser(nil, nil, { error = false }) then
+				return
+			end
 
-		if ignored[_.match] then
-			return
-		end
+			if ignored[_.match] then
+				return
+			end
 
-		vim.notify("No treesitter support for file type " .. _.match .. " in file " .. _.file, vim.log.levels.INFO)
+			vim.notify("No treesitter support for file type " .. _.match .. " in file " .. _.file, vim.log.levels.INFO)
+		end)
 	end,
 })
