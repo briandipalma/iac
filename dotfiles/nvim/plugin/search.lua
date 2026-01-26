@@ -10,6 +10,7 @@ FzfLua.setup({
 		width = 1,
 		preview = { layout = "vertical", vertical = "down:75%" },
 	},
+	keymap = { fzf = { ["ctrl-q"] = "select-all+accept" } },
 })
 
 nml("<Leader>", function()
