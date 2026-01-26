@@ -65,23 +65,10 @@ require("codediff").setup({
 		},
 	},
 })
-----
 
----- Utility
--- close some ephemeral git filetypes/buffers with <q>
-vim.api.nvim_create_autocmd(
-	"User",
-	{ group = close_group, pattern = "MiniGitCommandSplit", callback = close_tab_callback }
-)
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "git", "gitcommit" },
-	group = close_group,
-	callback = close_tab_callback,
-})
-----
-
----- Keymaps
 nml("gg", "<CMD>:CodeDiff<CR>", { desc = "Git status diff" })
+nml("gf", "<CMD>:CodeDiff history %<CR>", { desc = "Git current file log" })
+nml("gl", "<CMD>:CodeDiff history<CR>", { desc = "Git log" })
 
 nml("gm", function()
 	local on_exit = function(obj)
@@ -96,28 +83,30 @@ nml("gm", function()
 
 	vim.system({ "git", "merge-base", "origin/HEAD", "HEAD" }, { text = true }, on_exit)
 end, { desc = "Git merge review" })
+----
 
-nml("gp", function()
-	vim.cmd("Git pull --rebase=true")
-end, { desc = "Git pull (--rebase=true)" })
-
-nml("gc", function()
-	vim.cmd("Git commit --verbose")
-end, { desc = "Git commit" })
+---- mini.git
+nml("gp", "<CMD>:Git pull --rebase=true<CR>", { desc = "Git pull (--rebase=true)" })
+nml("gc", "<CMD>:Git commit --verbose<CR>", { desc = "Git commit" })
+nml("ga", "<CMD>:Git commit --amend --verbose<CR>", { desc = "Git amend" })
+nml("gu", "<CMD>:Git push --force-with-lease --force-if-includes<CR>", { desc = "Git push --force-if-includes" })
 
 nml("gs", function()
 	vim.cmd("Git fetch")
 	vim.cmd("Git status")
 	vim.cmd("bo horizontal Git log -5 --decorate=full --format=short")
 end, { desc = "Git status" })
+----
 
-nml("ga", function()
-	vim.cmd("Git commit --amend --verbose")
-end, { desc = "Git amend" })
-
-nml("gu", function()
-	vim.cmd("Git push --force-with-lease --force-if-includes")
-end, { desc = "Git push --force-if-includes" })
-
-nml("gf", "<CMD>:CodeDiff history %<CR>", { desc = "Git current file log" })
-nml("gl", "<CMD>:CodeDiff history<CR>", { desc = "Git log" })
+---- Utility
+-- close some ephemeral git filetypes/buffers with <q>
+vim.api.nvim_create_autocmd(
+	"User",
+	{ group = close_group, pattern = "MiniGitCommandSplit", callback = close_tab_callback }
+)
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "git", "gitcommit" },
+	group = close_group,
+	callback = close_tab_callback,
+})
+----
