@@ -65,9 +65,7 @@ require("codediff").setup({
 
 vim.api.nvim_create_autocmd("User", { group = close_group, pattern = "MiniGitCommandSplit", callback = close_callback })
 
-nml("gg", function()
-	require("codediff/commands").vscode_diff({ fargs = {} })
-end, { desc = "Git status diff" })
+nml("gg", "<CMD>:CodeDiff<CR>", { desc = "Git status diff" })
 
 nml("gm", function()
 	local on_exit = function(obj)
