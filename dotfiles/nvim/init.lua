@@ -32,6 +32,7 @@ vim.g.loaded_ruby_provider = 0 -- Disable Ruby remote plugins support
 vim.o.undofile = true -- Enable undofiles
 vim.o.hidden = false -- Unload abandoned buffers, removes `[No Name]` buffers
 vim.o.updatetime = 200 -- Save swap file and trigger CursorHold
+vim.o.autowrite = true -- Enable auto write, so you can make a change and switch buffer without "E37: ..."
 
 -- UI =========================================================================
 vim.o.cursorline = true -- Enable current line highlighting
