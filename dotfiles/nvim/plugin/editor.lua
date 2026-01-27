@@ -69,5 +69,8 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window" }) -- Clear
 
 vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 
-nml("bd", "<cmd>bdel<cr>", { desc = "Delete buffer" })
+nml("bd", function()
+	-- Delete buffers without disrupting window layout
+	require("snacks/bufdelete").delete()
+end, { desc = "Delete buffer" })
 ----
