@@ -26,6 +26,7 @@ nml("fR", function()
 	FzfLua.history({ cwd = vim.uv.cwd() })
 end, { desc = "Find recent buffers/files (cwd)" })
 nml("fF", "<Cmd>FzfLua files<CR>", { desc = "Find files (cwd)" })
+nml("fq", "<Cmd>FzfLua quickfix_stack<CR>", { desc = "Find quickfix list" })
 
 nml("sG", "<Cmd>FzfLua live_grep_native<CR>", { desc = "Search text (cwd)" })
 nml("sR", "<Cmd>FzfLua resume<CR>", { desc = "Resume last picker" })
