@@ -1,8 +1,11 @@
 local FzfLua = require("fzf-lua")
+local close_callback = require("my-config/close").close_callback
+local close_group = require("my-config/close").close_group
 local root = require("my-config/root")
 local nml = require("my-config/utils").nml
 local xml = require("my-config/utils").xml
 
+---- FzfLua
 FzfLua.setup({
 	ui_select = true, -- Register fzf-lua as the UI interface for `vim.ui.select`
 	winopts = { -- Portrait mode layout
@@ -43,3 +46,13 @@ end, { desc = "Search for current selection (root dir)" })
 xml("sW", "<Cmd>FzfLua grep_visual<CR>", { desc = "Search for current selection (cwd)" })
 nml("sc", "<CMD>FzfLua git_commits<CR>", { desc = "Git log" })
 nml("sC", "<CMD>FzfLua git_bcommits<CR>", { desc = "Git current file log" })
+----
+
+---- grug-far
+nml("sr", "<CMD>GrugFar<CR>", { desc = "Search and replace" })
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "grug-far" },
+	group = close_group,
+	callback = close_callback,
+})
+----

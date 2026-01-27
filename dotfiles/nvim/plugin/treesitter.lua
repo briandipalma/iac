@@ -14,6 +14,7 @@ local ignored = {
 	["flash_prompt"] = true,
 	["fzf"] = true,
 	["git"] = true,
+	["grug-far"] = true,
 	["qf"] = true,
 	["mason"] = true,
 	["mason_backdrop"] = true,

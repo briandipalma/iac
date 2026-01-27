@@ -49,6 +49,7 @@ vim.o.scrolloff = 12 -- Lines of context
 vim.o.clipboard = "unnamedplus" -- Sync with system clipboard
 vim.o.tabstop = 2 -- Number of spaces tabs show as
 
+MiniDeps.add("MagicDuck/grug-far.nvim")
 MiniDeps.add("b0o/schemastore.nvim")
 MiniDeps.add("folke/flash.nvim")
 MiniDeps.add("folke/persistence.nvim")
