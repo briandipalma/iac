@@ -1,6 +1,6 @@
 local M = {}
 
-M.close_group = vim.api.nvim_create_augroup("close_with_q", { clear = false })
+M.close_group = vim.api.nvim_create_augroup("close_with_q", { clear = true })
 
 local function close_on_q(event, isTab)
 	vim.bo[event.buf].buflisted = false -- buffer does not show up in buffer list
