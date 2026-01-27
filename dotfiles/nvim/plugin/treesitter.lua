@@ -10,6 +10,7 @@ local ignored = {
 	[""] = true,
 	["blink-cmp-menu"] = true,
 	["codediff-explorer"] = true,
+	["codediff-history"] = true,
 	["flash_prompt"] = true,
 	["fzf"] = true,
 	["git"] = true,
