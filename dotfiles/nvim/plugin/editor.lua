@@ -75,4 +75,7 @@ nml("bd", function()
 	-- Delete buffers without disrupting window layout
 	require("snacks/bufdelete").delete()
 end, { desc = "Delete buffer" })
+nml("bo", function()
+	require("snacks/bufdelete").other()
+end, { desc = "Delete other buffers" })
 ----
