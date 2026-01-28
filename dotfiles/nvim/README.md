@@ -24,23 +24,9 @@ To check what formatters are enabled for a buffer use `:ConformInfo`
 ## To Do
 
 - Add a way to see the difference between local git branch state and remote branch state (in statusline?)
+- Fix using autocomplete in git commit messages
 - Read overseer documentation and maybe use it to rebase current branch to latest master?
-- Add `yaml` file type
-- Add Dockerfile file type
-- Add comment file type?
 - Configure markdownlint-cli2 to use 100 as max line length
-- Add stage key map `-` to `codediff` code view, not just the file explorer view
 - Test Harper grammar checker
-- Have mini.git parse URLs when git pushing or mini.git open a URL or panel with the URL that can be clicked?
 - Change gitsigns on_attach so it can handle codediff closing the window that it was attached to
 - Add snippets support?
-
-```
-Wed 21 Jan 2026 16:57:05 Notifications | WARN
-(mini.git) remote:
-remote: To create a merge request for FE-3910-react18-api-15, visit:
-remote:   https://gitlab.caplin.com/front-end/mono/-/merge_requests/new?merge_request%5Bsource_branch%5D=FE-3910-react18-api-15
-remote:
-To https://gitlab.caplin.com/front-end/mono.git
- * [new branch]              FE-3910-react18-api-15 -> FE-3910-react18-api-15
-```

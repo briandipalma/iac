@@ -29,7 +29,7 @@ vim.g.loaded_node_provider = 0 -- Disable Node.js remote plugins support
 vim.g.loaded_perl_provider = 0 -- Disable Perl remote plugins support
 vim.g.loaded_python3_provider = 0 -- Disable Python remote plugins support
 vim.g.loaded_ruby_provider = 0 -- Disable Ruby remote plugins support
-vim.o.undofile = true -- Enable undofiles
+vim.o.undofile = true -- Enable undofiles for persistent undo
 vim.o.hidden = false -- Unload abandoned buffers, removes `[No Name]` buffers
 vim.o.updatetime = 200 -- Save swap file and trigger CursorHold
 vim.o.autowrite = true -- Enable auto write, so you can make a change and switch buffer without "E37: ..."
@@ -43,12 +43,14 @@ vim.o.foldlevel = 10 -- Fold nothing by default; set to 0 or 1 to fold
 vim.o.winborder = "rounded" -- Use rounded borders on all floating windows
 vim.o.breakindentopt = "shift:2" -- Wrapped line's beginning will be shifted to emphasize line continuation
 vim.o.showbreak = "↳" -- String to put at start of wrapped lines
-vim.o.linebreak = true -- Wrap lines at 'breakat' (if 'wrap' is set)
+vim.o.linebreak = true -- Wrap lines at characters in 'breakat' (if 'wrap' is set)
 vim.o.scrolloff = 12 -- Lines of context
 
--- Editing
+-- Editing =========================================================================
 vim.o.clipboard = "unnamedplus" -- Sync with system clipboard
 vim.o.tabstop = 2 -- Number of spaces tabs show as
+vim.o.ignorecase = true -- Ignore case during search
+vim.o.smartcase = true -- Respect case if search pattern has upper case
 
 MiniDeps.add("MagicDuck/grug-far.nvim")
 MiniDeps.add("b0o/schemastore.nvim")
