@@ -69,6 +69,8 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window" }) -- Clear
 
 vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
 
+nml("qq", "<cmd>qa<cr>", { desc = "Quit All/Exit Neovim" }) -- Exit vim unless there are modified buffers
+
 nml("bd", function()
 	-- Delete buffers without disrupting window layout
 	require("snacks/bufdelete").delete()
