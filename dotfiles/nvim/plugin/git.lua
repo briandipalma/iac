@@ -69,20 +69,10 @@ require("codediff").setup({
 nml("gg", "<CMD>:CodeDiff<CR>", { desc = "Git status diff" })
 nml("gf", "<CMD>:CodeDiff history %<CR>", { desc = "Git current file log" })
 nml("gl", "<CMD>:CodeDiff history<CR>", { desc = "Git log" })
-
-nml("gm", function()
-	local on_exit = function(obj)
-		local mergeBase = string.sub(obj.stdout, 1, -2)
-		local fargs = { mergeBase, "HEAD" }
-
-		-- You need to schedule this or codediff throws "fast event context" errors
-		vim.schedule(function()
-			require("codediff/commands").vscode_diff({ fargs = fargs })
-		end)
-	end
-
-	vim.system({ "git", "merge-base", "origin/HEAD", "HEAD" }, { text = true }, on_exit)
-end, { desc = "Git merge review" })
+-- No righthand side to the `...` operator means the current files are used on the right side and
+-- LSP/linting is active so you can spot type/linting errors and open the file with `gf` it also
+-- means your local changes will show up in the review.
+nml("gm", "<CMD>:CodeDiff origin/HEAD...<CR>", { desc = "Git merge review" })
 ----
 
 ---- mini.git
