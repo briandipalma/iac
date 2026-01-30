@@ -28,6 +28,4 @@ To check what formatters are enabled for a buffer use `:ConformInfo`
 - Read overseer documentation and maybe use it to rebase current branch to latest master?
 - Configure markdownlint-cli2 to use 100 as max line length
 - Test Harper grammar checker
-- Change gitsigns on_attach so it can handle codediff closing the window that it was attached to
 - Add snippets support?
-- Add code actions support?

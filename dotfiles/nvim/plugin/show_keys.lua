@@ -12,6 +12,7 @@ keys.setup({
 		{ "<Leader>h", group = "Hunks" },
 		{ "<Leader>i", group = "Info" },
 		{ "<Leader>q", group = "Quit" },
+		{ "<Leader>r", group = "Run" },
 		{ "<Leader>s", group = "Search" },
 		{ "<Leader>u", group = "UI" },
 	},
