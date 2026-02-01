@@ -62,31 +62,43 @@ MyWinbar = {}
 
 function MyWinbar.active()
 	-- `%P` shows the scroll percentage but says 'Bot', 'Top' and 'All' as well.
-	return " → " .. filepath() .. "%t " .. git() .. "%=" .. "%y [%P %l:%c]"
+	return " → " .. filepath() .. "%t %y"
 end
 
 function MyWinbar.inactive()
 	return " %t"
 end
 
-local group = vim.api.nvim_create_augroup("Winbar", { clear = true })
+MyStatusline = {}
+
+function MyStatusline.active()
+	-- `%P` shows the scroll percentage but says 'Bot', 'Top' and 'All' as well.
+	return " → " .. filepath() .. "%t " .. git() .. "%=" .. "%y [%P %l:%c]"
+end
+
+function MyStatusline.inactive()
+	return " %t"
+end
+
+local group = vim.api.nvim_create_augroup("MyBars", { clear = true })
 
 vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
 	group = group,
-	desc = "Activate winbar on focus",
+	desc = "Activate bars on focus",
 	callback = function()
 		vim.o.winbar = "%!v:lua.MyWinbar.active()"
+		vim.o.statusline = "%!v:lua.MyStatusline.active()"
 	end,
 })
 
 vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
 	group = group,
-	desc = "Deactivate winbar when unfocused",
+	desc = "Deactivate bars when unfocused",
 	callback = function()
 		vim.o.winbar = "%!v:lua.MyWinbar.inactive()"
+		vim.o.statusline = "%!v:lua.MyStatusline.inactive()"
 	end,
 })
-
 ----
 
 ---- Keymaps
