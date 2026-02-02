@@ -10,7 +10,22 @@ overseer.register_template({
 			cmd = { "pnpm", "lint", "--fix" },
 			cwd = fileDirectory,
 			components = {
-				{ "on_output_quickfix", close = true, open_on_match = true, set_diagnostics = true },
+				{
+					"on_output_quickfix",
+					close = true,
+					-- This is an example error:
+					--
+					-- /home/briand/dev/m/FE-3215-summary-grid/caplin/fx-margin-ticket/src/summary/SummaryPricingTable.tsx
+					--    7:8  error  'InformationHeader' is not defined        react/jsx-no-undef
+					--    8:8  error  'SummaryInformationTable' is not defined  react/jsx-no-undef
+					--    13:8  error  'Profit' is not defined                   react/jsx-no-undef
+					--
+					-- This was copied from https://github.com/vim/vim/blob/master/runtime/compiler/eslint.vim
+					--
+					errorformat = "%-P%f,%\\s%#%l:%c %# %trror  %m,%\\s%#%l:%c %# %tarning  %m,%-Q,%-G%.%#",
+					open_on_match = true,
+					set_diagnostics = true,
+				},
 				{ "on_result_diagnostics", remove_on_restart = true },
 				"default",
 			},
@@ -18,7 +33,7 @@ overseer.register_template({
 	end,
 	desc = "Run pnpm list --fix for current file package",
 	condition = {
-		filetype = { "typescript" },
+		filetype = { "typescript", "typescriptreact" },
 		dir = "/home/briand/dev/m",
 	},
 })
@@ -33,7 +48,32 @@ overseer.register_template({
 			cmd = { "pnpm", "type-check" },
 			cwd = project_root,
 			components = {
-				{ "on_output_quickfix", close = true, open_on_match = true, set_diagnostics = true },
+				{
+					"on_output_quickfix",
+					close = true,
+					-- This is an example error:
+					--
+					-- src/summary/SummaryPricingTable.tsx:10:30 - error TS2304: Cannot find name 'fields'.
+					--
+					-- 10         confirmationMessage={fields}
+					--                                 ~~~~~~
+					-- src/summary/SummaryPricingTable.tsx:11:29 - error TS2304: Cannot find name 'showAdjustedRates'.
+					--
+					-- 11         allowAdjustedRates={showAdjustedRates}
+					--                                ~~~~~~~~~~~~~~~~~
+					--
+					-- %f:%l:%c: Captures the filename, line, and column (e.g., src/summary/SummaryPricingTable.tsx:10:30).
+					-- \ -\ : Matches the literal space-dash-space separator.
+					-- %trror: Captures the "e" in "error" and tells Vim this is an Error type.
+					-- TS%n:: Captures the TypeScript error number (e.g., 2304) into the error number field.
+					-- %m: Captures the actual error message (e.g., Cannot find name 'fields').
+					-- %-G%.%#: This is the "greedy" ignore rule. Because the error information is self-contained
+					-- on one line, this tells Vim to discard every other line in the output (the code snippets,
+					-- the squiggles, and the "Found 4 errors" summary).
+					errorformat = "%f:%l:%c - %trror TS%n: %m, %-G%.%#",
+					open_on_match = true,
+					set_diagnostics = true,
+				},
 				{ "on_result_diagnostics", remove_on_restart = true },
 				"default",
 			},
@@ -41,7 +81,7 @@ overseer.register_template({
 	end,
 	desc = "Run pnpm type-check for current file package",
 	condition = {
-		filetype = { "typescript" },
+		filetype = { "typescript", "typescriptreact" },
 		dir = "/home/briand/dev/m",
 	},
 })
@@ -97,7 +137,7 @@ overseer.register_template({
 	end,
 	desc = "Run pnpm test for current file package",
 	condition = {
-		filetype = { "typescript" },
+		filetype = { "typescript", "typescriptreact" },
 		dir = "/home/briand/dev/m",
 	},
 })
