@@ -29,3 +29,4 @@ To check what formatters are enabled for a buffer use `:ConformInfo`
 - Configure markdownlint-cli2 to use 100 as max line length
 - Test Harper grammar checker
 - Add snippets support?
+- "on_result_diagnostics", remove_on_restart = true }, Isn't clearing down the diagnostics
