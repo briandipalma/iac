@@ -83,7 +83,7 @@ MiniDeps.add("rose-pine/neovim")
 MiniDeps.add("stevearc/conform.nvim")
 MiniDeps.add("stevearc/overseer.nvim")
 MiniDeps.add("windwp/nvim-ts-autotag")
-MiniDeps.add({ source = "OXY2DEV/markview.nvim", depends = { "saghen/blink.cmp" } })
+MiniDeps.add({ source = "OXY2DEV/markview.nvim" })
 MiniDeps.add({ source = "esmuellert/codediff.nvim", depends = { "MunifTanjim/nui.nvim" } })
 MiniDeps.add({ source = "folke/noice.nvim", depends = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" } })
 MiniDeps.add({ source = "ibhagwan/fzf-lua", depends = { "nvim-tree/nvim-web-devicons" } })
@@ -98,7 +98,7 @@ MiniDeps.add({
 MiniDeps.add({
 	source = "saghen/blink.cmp",
 	depends = { "rafamadriz/friendly-snippets" },
-	checkout = "v1.8.0", -- use a release tag to download binaries check releases for latest tag
+	checkout = "v1.9.0", -- use a release tag to download binaries check releases for latest tag
 })
 
 vim.cmd("colorscheme rose-pine")
