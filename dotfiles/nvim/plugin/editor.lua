@@ -21,6 +21,16 @@ vim.keymap.set({ "o", "x" }, "R", function()
 end, { desc = "Treesitter Search" })
 ----
 
+---- snacks/bufdelete - better buffer deletion
+nml("bd", function()
+	-- Delete buffers without disrupting window layout
+	require("snacks/bufdelete").delete()
+end, { desc = "Delete buffer" })
+nml("bo", function()
+	require("snacks/bufdelete").other()
+end, { desc = "Delete all other buffers" })
+----
+
 ---- snacks/words - moving between LSP references
 local snackWords = require("snacks/words")
 
@@ -49,6 +59,7 @@ vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)")
 
 ---- Undotree
 nml("U", "<cmd>lua require('undotree').toggle()<cr>", { desc = "Undotree toggle" })
+----
 
 ---- Utility
 -- close some ephemeral filetypes with <q>
@@ -57,6 +68,11 @@ vim.api.nvim_create_autocmd("FileType", {
 	group = close_group,
 	callback = close_callback,
 })
+
+vim.api.nvim_create_autocmd(
+	{ "FocusLost", "ModeChanged", "TextChanged", "BufEnter" },
+	{ desc = "autosave", pattern = "*", command = "update" }
+)
 ----
 
 ---- Keymaps
@@ -67,15 +83,9 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window" }) -- Defau
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window" }) -- No default ¯\_(ツ)_/¯
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window" }) -- Clears highlights
 
-vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
+-- Don't replace register value when pasting over text
+vim.keymap.set("x", "p", '"_dP')
 
 nml("qq", "<cmd>qa<cr>", { desc = "Quit All/Exit Neovim" }) -- Exit vim unless there are modified buffers
-
-nml("bd", function()
-	-- Delete buffers without disrupting window layout
-	require("snacks/bufdelete").delete()
-end, { desc = "Delete buffer" })
-nml("bo", function()
-	require("snacks/bufdelete").other()
-end, { desc = "Delete other buffers" })
+nml("a", "gg<S-v>G", { desc = "Select all" })
 ----
