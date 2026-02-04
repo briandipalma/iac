@@ -70,8 +70,10 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd(
-	{ "FocusLost", "ModeChanged", "TextChanged", "BufEnter" },
-	{ desc = "autosave", pattern = "*", command = "update" }
+	{ "InsertLeave" },
+	-- `nested = true` so that `BufWrite` autocommands are still executed as by default nvim doesn't
+	-- execute them if you `:w`, `:e` or `:up` in an autocommand
+	{ desc = "autosave", nested = true, pattern = "*", command = "update" }
 )
 ----
 
