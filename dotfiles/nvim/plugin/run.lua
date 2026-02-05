@@ -110,24 +110,28 @@ overseer.register_template({
 					--     at UserContext.<anonymous> (/home/briand/dev/m/FE-3870-quote-popout/caplin/fx-margin-ticket/src/@tests/toggle.test.ts:194:64 <- /tmp/ee25362db83d2b73301c2ac33610a6d0-bundle.js:209010:66)
 					--
 					-- The Start of an error. It looks for the word "Error:" and captures everything after it as
-					-- the message (%m). The \%# handles any leading whitespace.
+					-- the message (%m). The %.%# handles any leading space or/and characters e.g. **Type**Error.
 					--     Error: Expected object not to have properties
-					errorformat = "%E %#Error: %m,"
-						-- The End of the multi-line error. It finds the line starting with "at", captures the real 
-						-- file path (%f), the line number (%l), and the column (%c). It uses %s to consume the rest 
-						-- of the line (the temp bundle path) and throw it away.
+					--     or
+					--     TypeError: Expected object not to have properties
+					errorformat = [[%E%.%#Error: %m,]]
+						-- The End of the multi-line error. It finds the line starting with "at UserContext" captures 
+						-- the real file path (%f), the line number (%l), and the column (%c). It uses %s to consume 
+						-- the rest of the line (the temp bundle path) and throw it away.
 						--     at UserContext.<anonymous> (/home/briand/dev/m/FE-3870-quote-popout/caplin/fx-margin-ticket/src/@tests/toggle.test.ts:194:64 <- /tmp/ee25362db83d2b73301c2ac33610a6d0-bundle.js:209010:66)
-						.. " %Z %#at %.%# (%f:%l:%c <- %s,"
-						-- A Continuation line. If there are extra lines between the "Error" and the file path this 
-						-- captures them and appends them to the error message.
-						--     tradeState: 'Executable'
-						.. " %C %#%m,"
-						-- Ignore lines that just say <Jasmine>
-						--     at <Jasmine>
-						.. " %-G %#at <Jasmine>,"
-						-- A catch-all to ignore any other lines that don't match our specific pattern, keeping the 
+						.. [[%Z %#at UserContext.%.%# (%f:%l:%c %s,]]
+						-- A Continuation line. If there are extra stack trace lines between the "Error" and the file
+						-- path this filters them out
+						-- at verifySummaryTableRow (/home/briand/dev/m...
+						.. [[%C %#at %.%#,]]
+						-- The at lines above can be quite long so they wrap into another line, filter out those 
+						-- bundle lines
+						.. [[%C%.%#-bundle.js%.%#,]]
+						-- Anything else is probably part of the error message, add it to %m, consume leading white
+						.. [[%C %#%m,]]
+						-- A catch-all to ignore any other lines that don't match our specific pattern, keeping the
 						-- quickfix window clean.
-						.. " %-G%.%#",
+						.. [[%-G%.%#]],
 					open_on_match = true,
 					set_diagnostics = true,
 				},
@@ -143,3 +147,4 @@ overseer.register_template({
 })
 
 nml("rr", "<cmd>OverseerRun<cr>", { desc = "Run task" })
+nml("ra", "<cmd>OverseerTaskAction<cr>", { desc = "Run task action" })
