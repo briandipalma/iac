@@ -98,7 +98,7 @@ MiniDeps.add({
 MiniDeps.add({
 	source = "saghen/blink.cmp",
 	depends = { "rafamadriz/friendly-snippets" },
-	checkout = "v1.9.0", -- use a release tag to download binaries check releases for latest tag
+	checkout = "v1.9.1", -- use a release tag to download binaries check releases for latest tag
 })
 
 vim.cmd("colorscheme rose-pine")
