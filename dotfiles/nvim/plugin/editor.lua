@@ -70,7 +70,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd(
-	{ "InsertLeave" },
+	{ "InsertLeave", "TextChanged" },
 	-- `nested = true` so that `BufWrite` autocommands are still executed as by default nvim doesn't
 	-- execute them if you `:w`, `:e` or `:up` in an autocommand
 	{ desc = "autosave", nested = true, pattern = "*", command = "update" }
@@ -88,6 +88,7 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window" }) -- Clear
 -- Don't replace register value when pasting over text
 vim.keymap.set("x", "p", '"_dP')
 
+nml("w", "<cmd>write<cr>", { desc = "Write buffer" })
 nml("qq", "<cmd>qa<cr>", { desc = "Quit All/Exit Neovim" }) -- Exit vim unless there are modified buffers
 nml("q<Tab>", "<cmd>tabclose<cr>", { desc = "Quit current tab" }) -- No default keymap for this
 nml("a", "gg<S-v>G", { desc = "Select all" })
