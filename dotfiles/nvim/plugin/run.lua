@@ -1,6 +1,10 @@
 local nml = require("my-config/utils").nml
 local overseer = require("overseer")
 
+-- Turn off terminal use as long output lines wrap in neovim's terminal which breaks `errorformat`s
+-- https://github.com/stevearc/overseer.nvim/issues/202
+require("overseer").setup({ output = { use_terminal = false } })
+
 overseer.register_template({
 	name = "Lint package",
 	builder = function()
@@ -119,11 +123,11 @@ overseer.register_template({
 						-- the real file path (%f), the line number (%l), and the column (%c). It uses %s to consume 
 						-- the rest of the line (the temp bundle path) and throw it away.
 						--     at UserContext.<anonymous> (/home/briand/dev/m/FE-3870-quote-popout/caplin/fx-margin-ticket/src/@tests/toggle.test.ts:194:64 <- /tmp/ee25362db83d2b73301c2ac33610a6d0-bundle.js:209010:66)
-						.. [[%Z %#at UserContext.%.%# (%f:%l:%c %s,]]
+						.. [[%Z%.%#at UserContext.%.%# (%f:%l:%c %s,]]
 						-- A Continuation line. If there are extra stack trace lines between the "Error" and the file
 						-- path this filters them out
 						-- at verifySummaryTableRow (/home/briand/dev/m...
-						.. [[%C %#at %.%#,]]
+						.. [[%C%.%#at %.%#,]]
 						-- The at lines above can be quite long so they wrap into another line, filter out those 
 						-- bundle lines
 						.. [[%C%.%#-bundle.js%.%#,]]
