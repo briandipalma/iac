@@ -7,9 +7,7 @@ require("noice").setup({
 	},
 })
 
-nml("in", function()
-	require("noice").cmd("history")
-end, { desc = "Noice history" })
+nml("im", "<CMD>:Noice<CR>", { desc = "Message history" })
 ----
 
 ---- hipatterns
