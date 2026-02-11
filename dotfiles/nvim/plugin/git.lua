@@ -1,3 +1,4 @@
+local gitsigns = require("gitsigns")
 local close_tab_callback = require("my-config/close").close_tab_callback
 local close_group = require("my-config/close").close_group
 local nm = require("my-config/utils").nm
@@ -5,25 +6,9 @@ local nml = require("my-config/utils").nml
 local xml = require("my-config/utils").xml
 
 ---- gitsigns
-require("gitsigns").setup({
+gitsigns.setup({
 	numhl = true,
 	on_attach = function(bufnr)
-		local gitsigns = require("gitsigns")
-
-		-- Navigation
-		local lifecycle = require("codediff.ui.lifecycle")
-		local tabpage = lifecycle.find_tabpage_by_buffer(bufnr)
-
-		-- Don't add navigation keymaps to codediff/diff buffers, they have their own hunk navigation
-		if not tabpage and not vim.wo.diff then
-			nm("]c", function()
-				gitsigns.nav_hunk("next")
-			end, { buffer = bufnr, desc = "Next hunk" })
-			nm("[c", function()
-				gitsigns.nav_hunk("prev")
-			end, { buffer = bufnr, desc = "Prev hunk" })
-		end
-
 		-- Actions
 		nml("hs", gitsigns.stage_hunk, { buffer = bufnr, desc = "Stage hunk" })
 		xml("hs", function()
@@ -56,10 +41,12 @@ require("gitsigns").setup({
 
 ---- codediff
 require("codediff").setup({
-	diff = { disable_inlay_hints = false },
+	diff = { disable_inlay_hints = false, ignore_trim_whitespace = true },
 	explorer = { position = "bottom" },
 	keymaps = {
 		view = {
+			next_hunk = nil, -- Disable. gitsigns next hunks only works in codediff and normal buffers while
+			prev_hunk = nil, -- codediff next hunk only works in codediff and overwrites gitsigns one
 			next_file = "<Tab>", -- Next file in explorer mode
 			prev_file = "<S-Tab>", -- Previous file in explorer mode
 		},
@@ -102,4 +89,14 @@ vim.api.nvim_create_autocmd("FileType", {
 	group = close_group,
 	callback = close_tab_callback,
 })
+----
+
+---- Keymaps
+-- Navigation
+nm("]c", function()
+	gitsigns.nav_hunk("next")
+end, { desc = "Next hunk" })
+nm("[c", function()
+	gitsigns.nav_hunk("prev")
+end, { desc = "Prev hunk" })
 ----
