@@ -2,6 +2,7 @@ local keys = require("which-key")
 
 keys.setup({
 	preset = "modern",
+	delay = 0,
 	spec = {
 		{ "<Leader>b", group = "Buffers" },
 		{ "<Leader>c", group = "Code" },
