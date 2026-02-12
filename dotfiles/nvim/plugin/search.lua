@@ -13,7 +13,17 @@ FzfLua.setup({
 		width = 1,
 		preview = { layout = "vertical", vertical = "down:75%" },
 	},
-	keymap = { fzf = { ["ctrl-q"] = "select-all+accept" } },
+	keymap = {
+		builtin = {
+			true, -- To inherit the default keybinds as well as applying my ones below
+			["<C-f>"] = "preview-page-down", -- Use same keymaps as autocomplete hover docs/neovim scroll
+			["<C-b>"] = "preview-page-up", -- window forward/back keymap
+		},
+		fzf = {
+			true, -- To inherit the default keybinds as well as applying my ones below
+			["ctrl-q"] = "select-all+accept",
+		},
+	},
 })
 
 nml("<Leader>", function()
