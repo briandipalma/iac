@@ -5,9 +5,26 @@ require("noice").setup({
 	presets = {
 		lsp_doc_border = true, -- add a border to hover docs and signature help
 	},
+	routes = {
+		{
+			-- Minimize unimportant messages
+			filter = {
+				event = "notify",
+				any = {
+					{ find = " Downloaded update for " },
+					{ find = " Downloading %d+ updates" },
+					{ find = "(mini.deps) (%d+/%d+) Checked out " },
+				},
+			},
+			opts = { skip = true },
+		},
+		-- Show @recording messages
+		{ view = "notify", filter = { event = "msg_showmode", find = "recording" } },
+	},
 })
 
 nml("im", "<CMD>:Noice<CR>", { desc = "Message history" })
+nml("id", "<CMD>:Noice dismiss<CR>", { desc = "Dismiss all messages" })
 ----
 
 ---- hipatterns
