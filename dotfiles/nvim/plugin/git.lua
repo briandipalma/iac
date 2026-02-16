@@ -60,6 +60,7 @@ nml("gl", "<CMD>:CodeDiff history<CR>", { desc = "Git log" })
 -- LSP/linting is active so you can spot type/linting errors and open the file with `gf` it also
 -- means your local changes will show up in the review.
 nml("gm", "<CMD>:CodeDiff origin/HEAD...<CR>", { desc = "Git merge review" })
+xml("gv", "V:'<,'>CodeDiff history<CR>", { desc = "Git history of selection" })
 ----
 
 ---- mini.git
@@ -67,9 +68,6 @@ nml("gp", "<CMD>:Git pull --rebase=true<CR>", { desc = "Git pull (--rebase=true)
 nml("gc", "<CMD>:Git commit --verbose<CR>", { desc = "Git commit" })
 nml("ga", "<CMD>:Git commit --amend --verbose<CR>", { desc = "Git amend" })
 nml("gu", "<CMD>:Git push --force-with-lease --force-if-includes<CR>", { desc = "Git push --force-if-includes" })
-xml("gv", function()
-	require("mini.git").show_range_history()
-end, { desc = "Git history of selection" })
 
 nml("gs", function()
 	vim.cmd("Git fetch")
