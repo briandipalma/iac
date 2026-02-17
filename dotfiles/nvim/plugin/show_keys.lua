@@ -15,6 +15,7 @@ keys.setup({
 		{ "<Leader>q", group = "Quit" },
 		{ "<Leader>r", group = "Run" },
 		{ "<Leader>s", group = "Search" },
+		{ "<Leader>t", group = "Terminal" },
 		{ "<Leader>u", group = "UI" },
 	},
 })
