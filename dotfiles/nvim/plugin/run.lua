@@ -90,64 +90,81 @@ overseer.register_template({
 	},
 })
 
+local createdTestTasks = {}
+local testTasks = {}
+
 overseer.register_template({
-	name = "Test package",
-	builder = function()
+	name = "Test generator",
+	generator = function()
 		local fileDirectory = vim.fn.expand("%")
 		local project_root = string.gsub(fileDirectory, "/src/.*", "")
 
-		return {
-			cmd = { "pnpm", "test" },
-			cwd = project_root,
-			env = { CI = "true" },
-			components = {
-				"default",
-				{
-					"on_output_quickfix",
-					-- Close the quickfix on completion if no errorformat matches
-					close = true,
-					-- This is an example error:
-					--
-					-- Error: Expected object not to have properties
-					--     tradeState: 'Executable'
-					--     at <Jasmine>
-					--     at UserContext.<anonymous> (/home/briand/dev/m/FE-3870-quote-popout/caplin/fx-margin-ticket/src/@tests/toggle.test.ts:194:64 <- /tmp/ee25362db83d2b73301c2ac33610a6d0-bundle.js:209010:66)
-					--
-					-- The Start of an error. It looks for the word "Error:" and captures everything after it as
-					-- the message (%m). \\C is \C which makes the "Error" case sensitive. The %.%# handles any
-					-- leading space or/and characters e.g. **Type**Error or **Number**Error etc
-					--     Error: Expected object not to have properties
-					--     or
-					--     TypeError: Expected object not to have properties
-					errorformat = [[%E\\C%.%#Error: %m,]]
-						-- The End of the multi-line error. It finds the line starting with "at UserContext" captures 
-						-- the real file path (%f), the line number (%l), and the column (%c). It uses %s to consume 
-						-- the rest of the line (the temp bundle path) and throw it away.
-						--     at UserContext.<anonymous> (/home/briand/dev/m/FE-3870-quote-popout/caplin/fx-margin-ticket/src/@tests/toggle.test.ts:194:64 <- /tmp/ee25362db83d2b73301c2ac33610a6d0-bundle.js:209010:66)
-						--     at UserContext.eval (webpack:///./src/_test-at/inputtingAllocations.test.js?:175:95)
-						-- Some file paths/bundles are created by webpack so look for them first
-						.. [[%Z%.%#at UserContext.%.%# (webpack:///%f?:%l:%c%s,]]
-						.. [[%Z%.%#at UserContext.%.%# (%f:%l:%c %s,]]
-						-- A Continuation line. If there are extra stack trace lines between the "Error" and the file
-						-- path this filters them out
-						-- at verifySummaryTableRow (/home/briand/dev/m...
-						.. [[%C%.%#at %.%#,]]
-						-- The at lines above can be quite long so they wrap into another line, filter out those 
-						-- bundle lines
-						.. [[%C%.%#-bundle.js%.%#,]]
-						-- Anything else is probably part of the error message, add it to %m, consume leading white
-						.. [[%C %#%m,]]
-						-- A catch-all to ignore any other lines that don't match our specific pattern, keeping the
-						-- quickfix window clean.
-						.. [[%-G%.%#]],
-					open_on_match = true,
-					set_diagnostics = true,
-				},
-				{ "on_result_diagnostics", remove_on_restart = true },
-			},
+		if createdTestTasks[project_root] then
+			return testTasks
+		end
+
+		local templateDefinition = {
+			name = "Test " .. vim.fs.basename(project_root),
+			desc = "Run pnpm test for " .. vim.fs.basename(project_root),
+			builder = function()
+				return {
+					cmd = { "pnpm", "test" },
+					cwd = project_root,
+					env = { CI = "true" },
+					components = {
+						"default",
+						{
+							"on_output_quickfix",
+							-- Close the quickfix on completion if no errorformat matches
+							close = true,
+							-- This is an example error:
+							--
+							-- Error: Expected object not to have properties
+							--     tradeState: 'Executable'
+							--     at <Jasmine>
+							--     at UserContext.<anonymous> (/home/briand/dev/m/FE-3870-quote-popout/caplin/fx-margin-ticket/src/@tests/toggle.test.ts:194:64 <- /tmp/ee25362db83d2b73301c2ac33610a6d0-bundle.js:209010:66)
+							--
+							-- The Start of an error. It looks for the word "Error:" and captures everything after it as
+							-- the message (%m). \\C is \C which makes the "Error" case sensitive. The %.%# handles any
+							-- leading space or/and characters e.g. **Type**Error or **Number**Error etc
+							--     Error: Expected object not to have properties
+							--     or
+							--     TypeError: Expected object not to have properties
+							errorformat = [[%E\\C%.%#Error: %m,]]
+								-- The End of the multi-line error. It finds the line starting with "at UserContext" captures 
+								-- the real file path (%f), the line number (%l), and the column (%c). It uses %s to consume 
+								-- the rest of the line (the temp bundle path) and throw it away.
+								--     at UserContext.<anonymous> (/home/briand/dev/m/FE-3870-quote-popout/caplin/fx-margin-ticket/src/@tests/toggle.test.ts:194:64 <- /tmp/ee25362db83d2b73301c2ac33610a6d0-bundle.js:209010:66)
+								--     at UserContext.eval (webpack:///./src/_test-at/inputtingAllocations.test.js?:175:95)
+								-- Some file paths/bundles are created by webpack so look for them first
+								.. [[%Z%.%#at UserContext.%.%# (webpack:///%f?:%l:%c%s,]]
+								.. [[%Z%.%#at UserContext.%.%# (%f:%l:%c %s,]]
+								-- A Continuation line. If there are extra stack trace lines between the "Error" and the file
+								-- path this filters them out
+								-- at verifySummaryTableRow (/home/briand/dev/m...
+								.. [[%C%.%#at %.%#,]]
+								-- The at lines above can be quite long so they wrap into another line, filter out those 
+								-- bundle lines
+								.. [[%C%.%#-bundle.js%.%#,]]
+								-- Anything else is probably part of the error message, add it to %m, consume leading white
+								.. [[%C %#%m,]]
+								-- A catch-all to ignore any other lines that don't match our specific pattern, keeping the
+								-- quickfix window clean.
+								.. [[%-G%.%#]],
+							open_on_match = true,
+							set_diagnostics = true,
+						},
+						{ "on_result_diagnostics", remove_on_restart = true },
+					},
+				}
+			end,
 		}
+
+		table.insert(testTasks, templateDefinition)
+		createdTestTasks[project_root] = true
+
+		return testTasks
 	end,
-	desc = "Run pnpm test for current file package",
 	condition = {
 		filetype = { "javascript", "typescript", "typescriptreact" },
 		dir = "/home/briand/dev/m",
