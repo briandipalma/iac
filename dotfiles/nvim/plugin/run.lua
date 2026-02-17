@@ -155,6 +155,7 @@ overseer.register_template({
 							set_diagnostics = true,
 						},
 						{ "on_result_diagnostics", remove_on_restart = true },
+						{ "open_output", direction = "horizontal", on_start = "always" },
 					},
 				}
 			end,
