@@ -14,6 +14,7 @@ vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 
 vim.lsp.enable("jsonls")
 
+-- https://github.com/prettier/prettier/issues/15956
 conform.formatters.prettier_jsonc = {
 	inherit = "prettier",
 	append_args = { "--trailing-comma", "none" },
