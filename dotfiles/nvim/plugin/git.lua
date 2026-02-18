@@ -65,6 +65,7 @@ xml("gv", "V:'<,'>CodeDiff history<CR>", { desc = "Git history of selection" })
 
 ---- mini.git
 nml("gp", "<CMD>:Git pull --rebase=true<CR>", { desc = "Git pull (--rebase=true)" })
+nml("gj", "<CMD>:Git pull<CR>", { desc = "Git pull" })
 nml("gc", "<CMD>:Git commit --verbose<CR>", { desc = "Git commit" })
 nml("ga", "<CMD>:Git commit --amend --verbose<CR>", { desc = "Git amend" })
 nml("gu", "<CMD>:Git push --force-with-lease --force-if-includes<CR>", { desc = "Git push --force-if-includes" })
