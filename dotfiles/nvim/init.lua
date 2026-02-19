@@ -22,6 +22,7 @@ local MiniDeps = require("mini.deps")
 
 MiniDeps.setup()
 
+---- Options, some of these should be default in Neovim
 -- General ====================================================================
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = " " -- Use `<Space>` as <Leader> key
@@ -35,22 +36,56 @@ vim.o.updatetime = 200 -- Save swap file and trigger CursorHold
 vim.o.autowrite = true -- Enable auto write, so you can make a change and switch buffer without "E37: ..."
 
 -- UI =========================================================================
+vim.o.breakindentopt = "shift:2" -- Wrapped line's beginning will be shifted to emphasize line continuation
 vim.o.cursorline = true -- Enable current line highlighting
+vim.o.foldlevel = 10 -- Fold nothing by default; set to 0 or 1 to fold
+vim.o.laststatus = 3 -- global statusline, cleans up UI, shows what you are focused on
+vim.o.linebreak = true -- Wrap lines at characters in 'breakat' (if 'wrap' is set)
 vim.o.number = true -- Print line number in front of lines
 vim.o.relativenumber = true -- Relative line numbers
-vim.o.signcolumn = "yes" -- Always show signcolumn (less flicker)
-vim.o.foldlevel = 10 -- Fold nothing by default; set to 0 or 1 to fold
-vim.o.winborder = "rounded" -- Use rounded borders on all floating windows
-vim.o.breakindentopt = "shift:2" -- Wrapped line's beginning will be shifted to emphasize line continuation
-vim.o.showbreak = "↳" -- String to put at start of wrapped lines
-vim.o.linebreak = true -- Wrap lines at characters in 'breakat' (if 'wrap' is set)
 vim.o.scrolloff = 999 -- Lines of context
+vim.o.showbreak = "↳" -- String to put at start of wrapped lines
+vim.o.signcolumn = "yes" -- Always show signcolumn (less flicker)
+vim.o.winborder = "rounded" -- Use rounded borders on all floating windows
 
 -- Editing =========================================================================
 vim.o.clipboard = "unnamedplus" -- Sync with system clipboard
 vim.o.tabstop = 2 -- Number of spaces tabs show as
 vim.o.ignorecase = true -- Ignore case during search
 vim.o.smartcase = true -- Respect case if search pattern has upper case
+----
+
+---- Keymaps, again some should be default in Neovim
+-- Move to window using the <ctrl> hjkl keys
+-- The default mappings are useless apart from `C-l` but window movement is far most useful
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window" }) -- Default `C-h` is just `h`
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window" }) -- Default just `j`
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window" }) -- No default ¯\_(ツ)_/¯
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window" }) -- Clears highlights
+
+-- Resize window using <ctrl> arrow keys, nothing mapped to these shortcuts
+vim.keymap.set("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
+vim.keymap.set("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
+vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
+vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
+
+-- Move Lines, nothing mapped to these shortcuts
+vim.keymap.set("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
+vim.keymap.set("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
+vim.keymap.set("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
+vim.keymap.set("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
+vim.keymap.set("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
+vim.keymap.set("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
+
+-- better up/down, handles wrapped lines correctly
+vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+
+-- Don't replace register value when pasting over text
+vim.keymap.set("x", "p", '"_dP')
+----
 
 MiniDeps.add("MagicDuck/grug-far.nvim")
 MiniDeps.add("b0o/schemastore.nvim")
