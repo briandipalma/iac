@@ -69,10 +69,19 @@ vim.api.nvim_create_autocmd("FileType", {
 	callback = close_callback,
 })
 
+-- Check if we need to reload the file when it changed for e.g. git revert
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+	callback = function()
+		if vim.o.buftype ~= "nofile" then
+			vim.cmd("checktime")
+		end
+	end,
+})
+
 vim.api.nvim_create_autocmd(
-	{ "InsertLeave", "TextChanged" },
+	{ "BufLeave" },
 	-- `nested = true` so that `BufWrite` autocommands are still executed as by default nvim doesn't
-	-- execute them if you `:w`, `:e` or `:up` in an autocommand
+	-- execute them if you `:w`, `:e` or `:up` in an autocommand and BufWrite triggers formatters.
 	{ desc = "autosave", nested = true, pattern = "*", command = "update" }
 )
 ----
