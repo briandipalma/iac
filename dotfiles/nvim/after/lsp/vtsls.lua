@@ -4,7 +4,7 @@ return {
 	-- https://github.com/yioneko/vtsls/blob/main/packages/service/configuration.schema.json
 	settings = {
 		javascript = {
-			referencesCodeLens = { enabled = true, showOnAllFunctions = true },
+			-- referencesCodeLens = { enabled = true, showOnAllFunctions = true },
 			updateImportsOnFileMove = { enabled = "always" },
 			preferences = { importModuleSpecifier = "project-relative" },
 			format = { enable = false },
@@ -17,8 +17,8 @@ return {
 			},
 		},
 		typescript = {
-			referencesCodeLens = { enabled = true, showOnAllFunctions = true },
-			implementationsCodeLens = { enabled = true, showOnInterfaceMethods = true, showOnAllClassMethods = true },
+			-- referencesCodeLens = { enabled = true, showOnAllFunctions = true },
+			-- implementationsCodeLens = { enabled = true, showOnInterfaceMethods = true, showOnAllClassMethods = true },
 			updateImportsOnFileMove = { enabled = "always" },
 			preferences = { importModuleSpecifier = "project-relative", preferTypeOnlyAutoImports = true },
 			format = { enable = false },
@@ -36,7 +36,7 @@ return {
 	},
 	on_attach = function(client, bufnr)
 		vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-		vim.lsp.codelens.refresh()
+		-- vim.lsp.codelens.refresh()
 
 		vim.api.nvim_create_autocmd("User", {
 			pattern = { "MiniFilesActionMove", "MiniFilesActionRename" },
