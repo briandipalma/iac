@@ -34,6 +34,8 @@ vim.o.undofile = true -- Enable undofiles for persistent undo
 vim.o.hidden = false -- Unload abandoned buffers, removes `[No Name]` buffers
 vim.o.updatetime = 200 -- Save swap file and trigger CursorHold
 vim.o.autowriteall = true -- Enable auto write, so you can make a change and switch buffer without "E37: ..."
+-- Don't save blank/empty windows, help pages in sessions
+vim.o.sessionoptions = "buffers,curdir,folds,tabpages,winsize,terminal"
 
 -- UI =========================================================================
 vim.o.breakindentopt = "shift:2" -- Wrapped line's beginning will be shifted to emphasize line continuation
@@ -118,7 +120,7 @@ MiniDeps.add("stevearc/conform.nvim")
 MiniDeps.add("stevearc/overseer.nvim")
 MiniDeps.add("windwp/nvim-ts-autotag")
 MiniDeps.add({ source = "OXY2DEV/markview.nvim" })
-MiniDeps.add({ source = "esmuellert/codediff.nvim", depends = { "MunifTanjim/nui.nvim" } })
+MiniDeps.add({ source = "esmuellert/codediff.nvim" })
 MiniDeps.add({ source = "folke/noice.nvim", depends = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" } })
 MiniDeps.add({ source = "ibhagwan/fzf-lua", depends = { "nvim-tree/nvim-web-devicons" } })
 MiniDeps.add({
