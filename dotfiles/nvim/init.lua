@@ -36,6 +36,7 @@ vim.o.updatetime = 200 -- Save swap file and trigger CursorHold
 vim.o.autowriteall = true -- Enable auto write, so you can make a change and switch buffer without "E37: ..."
 -- Don't save blank/empty windows, help pages in sessions
 vim.o.sessionoptions = "buffers,curdir,folds,tabpages,winsize,terminal"
+vim.o.timeoutlen = 300 -- Lower than default (1000) to quickly trigger which-key
 
 -- UI =========================================================================
 vim.o.breakindentopt = "shift:2" -- Wrapped line's beginning will be shifted to emphasize line continuation
@@ -49,6 +50,7 @@ vim.o.scrolloff = 999 -- Lines of context
 vim.o.showbreak = "↳" -- String to put at start of wrapped lines
 vim.o.signcolumn = "yes" -- Always show signcolumn (less flicker)
 vim.o.winborder = "rounded" -- Use rounded borders on all floating windows
+vim.o.splitbelow = true -- Put new windows below current
 
 -- Editing =========================================================================
 vim.o.clipboard = "unnamedplus" -- Sync with system clipboard
@@ -87,6 +89,11 @@ vim.keymap.set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up",
 
 -- Don't replace register value when pasting over text
 vim.keymap.set("x", "p", '"_dP')
+-- Clear search on escape
+vim.keymap.set("n", "<esc>", function()
+	vim.cmd("noh")
+	return "<esc>"
+end, { expr = true, desc = "Escape and Clear hlsearch" })
 ----
 
 MiniDeps.add("MagicDuck/grug-far.nvim")
