@@ -79,7 +79,8 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 })
 
 vim.api.nvim_create_autocmd(
-	{ "BufLeave" },
+	-- FocusLost - when you move to another terminal window
+	{ "FocusLost" },
 	-- `nested = true` so that `BufWrite` autocommands are still executed as by default nvim doesn't
 	-- execute them if you `:w`, `:e` or `:up` in an autocommand and BufWrite triggers formatters.
 	{ desc = "autosave", nested = true, pattern = "*", command = "update" }
