@@ -48,4 +48,5 @@ hipatterns.setup({
 nml("uw", function()
 	vim.o.wrap = not vim.o.wrap
 end, { desc = "Toggle word wrap" })
+nml("ii", "<CMD>:Inspect<CR>", { desc = "Show all the items at buffer position" })
 ----

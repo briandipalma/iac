@@ -29,11 +29,19 @@ local function git()
 	})
 end
 
+local function recording()
+	if vim.fn.reg_recording() ~= "" then
+		return "%#ErrorMsg#Recording @" .. vim.fn.reg_recording() .. "%* "
+	else
+		return ""
+	end
+end
+
 MyStatusline = {}
 
 function MyStatusline.active()
 	-- `%P` shows the scroll percentage but says 'Bot', 'Top' and 'All' as well.
-	return "%#Question#" .. git() .. "%*%=" .. "%{mode()}" .. "%=" .. "[%P %l:%c]"
+	return "%#Question#" .. git() .. "%*%=" .. recording() .. "%{mode()}" .. "%=" .. "[%P %l:%c]"
 end
 ----
 
