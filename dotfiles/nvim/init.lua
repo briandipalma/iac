@@ -54,7 +54,6 @@ vim.o.splitbelow = true -- Put new windows below current
 
 -- Editing =========================================================================
 vim.o.clipboard = "unnamedplus" -- Sync with system clipboard
-vim.o.tabstop = 2 -- Number of spaces tabs show as
 vim.o.ignorecase = true -- Ignore case during search
 vim.o.smartcase = true -- Respect case if search pattern has upper case
 ----
