@@ -37,11 +37,31 @@ local function recording()
 	end
 end
 
+local ahead_behind = ""
+
+local after_fetch = function(obj)
+	if obj.stderr == nil then
+		local on_status = function(o)
+			local _, _, t = string.find(o.stdout, "# branch.ab (%+%d* %-%d*)\n")
+
+			if t ~= nil and t ~= "+0 -0" then
+				ahead_behind = "%#MiniHipatternsFixme# " .. t .. " %*"
+			else
+				ahead_behind = ""
+			end
+		end
+
+		vim.system({ "git", "status", "--porcelain=v2", "--branch" }, { text = true }, on_status)
+	end
+end
+
+vim.system({ "git", "fetch" }, { text = true }, after_fetch)
+
 MyStatusline = {}
 
 function MyStatusline.active()
 	-- `%P` shows the scroll percentage but says 'Bot', 'Top' and 'All' as well.
-	return "%#Question#" .. git() .. "%*%=" .. recording() .. "%{mode()}" .. "%=" .. "[%P %l:%c]"
+	return "%#Question#" .. git() .. "%*%=" .. recording() .. ahead_behind .. " %{mode()}" .. "%=" .. "[%P %l:%c]"
 end
 ----
 
