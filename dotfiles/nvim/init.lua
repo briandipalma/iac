@@ -36,7 +36,6 @@ vim.o.updatetime = 200 -- Save swap file and trigger CursorHold
 vim.o.autowriteall = true -- Enable auto write, so you can make a change and switch buffer without "E37: ..."
 -- Don't save blank/empty windows, help pages in sessions
 vim.o.sessionoptions = "buffers,curdir,folds,tabpages,winsize,terminal"
-vim.o.timeoutlen = 300 -- Lower than default (1000) to quickly trigger which-key
 
 -- UI =========================================================================
 vim.o.breakindentopt = "shift:2" -- Wrapped line's beginning will be shifted to emphasize line continuation
