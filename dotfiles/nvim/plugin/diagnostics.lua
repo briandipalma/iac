@@ -1,3 +1,5 @@
+local nml = require("my-config/utils").nml
+
 require("tiny-inline-diagnostic").setup({
 	options = { multilines = { enabled = true }, show_source = { enabled = true } },
 })
@@ -12,3 +14,7 @@ vim.diagnostic.config({
 		},
 	},
 })
+
+nml("ud", function()
+	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end, { desc = "Toggle diagnostics" })
