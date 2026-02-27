@@ -50,6 +50,7 @@ vim.o.showbreak = "↳" -- String to put at start of wrapped lines
 vim.o.signcolumn = "yes" -- Always show signcolumn (less flicker)
 vim.o.winborder = "rounded" -- Use rounded borders on all floating windows
 vim.o.splitbelow = true -- Put new windows below current
+vim.o.tabstop = 2 -- Number of spaces tabs show as, stylua uses tabs by default and 8 is too much
 
 -- Editing =========================================================================
 vim.o.clipboard = "unnamedplus" -- Sync with system clipboard
@@ -86,12 +87,12 @@ vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", ex
 vim.keymap.set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 
 -- Don't replace register value when pasting over text
-vim.keymap.set("x", "p", '"_dP')
+vim.keymap.set("x", "p", '"_dP', { desc = "Paste without replacing unnamed register value" })
 -- Clear search on escape
 vim.keymap.set("n", "<esc>", function()
-	vim.cmd("noh")
+	vim.cmd("nohlsearch")
 	return "<esc>"
-end, { expr = true, desc = "Escape and Clear hlsearch" })
+end, { expr = true, desc = "Clear hlsearch and Escape" })
 ----
 
 MiniDeps.add("MagicDuck/grug-far.nvim")
