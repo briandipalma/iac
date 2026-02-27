@@ -1,3 +1,4 @@
+local nml = require("my-config/utils").nml
 local overseer = require("overseer")
 
 -- Turn off terminal use as long output lines wrap in neovim's terminal which breaks `errorformat`s
@@ -215,4 +216,24 @@ overseer.register_template({
 	desc = "Run compileKotlin using Gradle",
 	condition = { filetype = { "kotlin" } },
 })
+
+overseer.register_template({
+	name = "test (Gradle)",
+	builder = function()
+		return {
+			cmd = { "./gradlew", "test" },
+			components = {
+				"default",
+				{ "open_output", direction = "horizontal", on_start = "always" },
+			},
+		}
+	end,
+	desc = "Run compileKotlin using Gradle",
+	condition = { filetype = { "kotlin" } },
+})
 ----
+
+---- Keymaps
+nml("rr", "<cmd>OverseerRun<cr>", { desc = "Run task" })
+nml("ra", "<cmd>OverseerTaskAction<cr>", { desc = "Run task action" })
+---
