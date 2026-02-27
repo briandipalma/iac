@@ -18,8 +18,6 @@ require("noice").setup({
 			},
 			opts = { skip = true },
 		},
-		-- Show @recording messages
-		{ view = "notify", filter = { event = "msg_showmode", find = "recording" } },
 	},
 })
 
