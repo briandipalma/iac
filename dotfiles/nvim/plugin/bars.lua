@@ -61,7 +61,7 @@ MyStatusline = {}
 
 function MyStatusline.active()
 	-- `%P` shows the scroll percentage but says 'Bot', 'Top' and 'All' as well.
-	return "%#Question#" .. git() .. "%*%=" .. recording() .. ahead_behind .. " %{mode()}" .. "%=" .. "[%P %l:%c]"
+	return "%#Question#" .. git() .. "%*%=" .. recording() .. ahead_behind .. "%=" .. "[%P %l:%c]"
 end
 ----
 
