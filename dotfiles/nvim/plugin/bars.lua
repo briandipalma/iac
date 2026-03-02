@@ -1,4 +1,5 @@
 ---- statusline
+--- git branch name and buffer git info
 local function git()
 	local git_info = vim.b.gitsigns_status_dict
 	if not git_info or git_info.head == "" then
@@ -28,7 +29,9 @@ local function git()
 		"]",
 	})
 end
+---
 
+--- macro recording info
 local function recording()
 	if vim.fn.reg_recording() ~= "" then
 		return "%#ErrorMsg#Recording @" .. vim.fn.reg_recording() .. "%* "
@@ -36,26 +39,55 @@ local function recording()
 		return ""
 	end
 end
+---
 
+--- git branch ahead/behind info
 local ahead_behind = ""
+local mini_git_updated_id
+local M = {}
 
-local after_fetch = function(obj)
-	if obj.stderr == nil then
-		local on_status = function(o)
-			local _, _, t = string.find(o.stdout, "# branch.ab (%+%d* %-%d*)\n")
+function M.listen_to_mini_git_updated()
+	local au_opts = { pattern = "MiniGitUpdated", callback = M.run_git_status_porcelain }
 
-			if t ~= nil and t ~= "+0 -0" then
-				ahead_behind = "%#MiniHipatternsFixme# " .. t .. " %*"
-			else
-				ahead_behind = ""
+	mini_git_updated_id = vim.api.nvim_create_autocmd("User", au_opts)
+end
+
+function M.on_git_status(o)
+	local _, _, ab_match = string.find(o.stdout, "# branch.ab (%+%d* %-%d*)\n")
+
+	if ab_match ~= nil and ab_match ~= "+0 -0" then
+		ahead_behind = "%#MiniHipatternsFixme# " .. ab_match .. " %*"
+		-- prevent E5560
+		vim.schedule(M.listen_to_mini_git_updated)
+	else
+		ahead_behind = ""
+		-- prevent E5560
+		vim.schedule(function()
+			if mini_git_updated_id then
+				vim.api.nvim_del_autocmd(mini_git_updated_id)
 			end
-		end
-
-		vim.system({ "git", "status", "--porcelain=v2", "--branch" }, { text = true }, on_status)
+		end)
 	end
 end
 
-vim.system({ "git", "fetch" }, { text = true }, after_fetch)
+function M.run_git_status_porcelain()
+	vim.system({ "git", "status", "--porcelain=v2", "--branch" }, { text = true }, M.on_git_status)
+end
+
+function M.on_git_fetch(obj)
+	if obj.stderr then
+		return
+	end
+
+	M.run_git_status_porcelain()
+end
+
+function M.run_git_fetch()
+	vim.system({ "git", "fetch" }, { text = true }, M.on_git_fetch)
+end
+
+M.run_git_fetch()
+---
 
 MyStatusline = {}
 
