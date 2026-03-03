@@ -9,6 +9,22 @@ local xml = require("my-config/utils").xml
 gitsigns.setup({
 	numhl = true,
 	on_attach = function(bufnr)
+		-- Navigation
+		nm("]c", function()
+			if vim.wo.diff then
+				vim.cmd.normal({ "]c", bang = true })
+			else
+				gitsigns.nav_hunk("next")
+			end
+		end, { desc = "Next hunk" })
+		nm("[c", function()
+			if vim.wo.diff then
+				vim.cmd.normal({ "[c", bang = true })
+			else
+				gitsigns.nav_hunk("prev")
+			end
+		end, { desc = "Prev hunk" })
+
 		-- Actions
 		nml("hs", gitsigns.stage_hunk, { buffer = bufnr, desc = "Stage hunk" })
 		xml("hs", function()
@@ -42,11 +58,9 @@ gitsigns.setup({
 ---- codediff
 require("codediff").setup({
 	diff = { layout = "inline", disable_inlay_hints = false, ignore_trim_whitespace = true },
-	explorer = { position = "bottom" },
+	explorer = { position = "bottom", initial_focus = "modified", view_mode = "tree" },
 	keymaps = {
 		view = {
-			next_hunk = nil, -- Disable. gitsigns next hunks only works in codediff and normal buffers while
-			prev_hunk = nil, -- codediff next hunk only works in codediff and overwrites gitsigns one
 			next_file = "<Tab>", -- Next file in explorer mode
 			prev_file = "<S-Tab>", -- Previous file in explorer mode
 		},
@@ -88,14 +102,4 @@ vim.api.nvim_create_autocmd("FileType", {
 	group = close_group,
 	callback = close_tab_callback,
 })
-----
-
----- Keymaps
--- Navigation
-nm("]c", function()
-	gitsigns.nav_hunk("next")
-end, { desc = "Next hunk" })
-nm("[c", function()
-	gitsigns.nav_hunk("prev")
-end, { desc = "Prev hunk" })
 ----
