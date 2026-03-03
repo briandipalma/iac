@@ -1,5 +1,10 @@
 local nml = require("my-config/utils").nml
 
+---- indentscope
+--- `try_as_border` placing cursor on function header will set scope to the function body
+require("mini.indentscope").setup({ options = { try_as_border = true } })
+----
+
 ---- noice
 require("noice").setup({
 	presets = {
