@@ -30,32 +30,28 @@ vim.g.loaded_node_provider = 0 -- Disable Node.js remote plugins support
 vim.g.loaded_perl_provider = 0 -- Disable Perl remote plugins support
 vim.g.loaded_python3_provider = 0 -- Disable Python remote plugins support
 vim.g.loaded_ruby_provider = 0 -- Disable Ruby remote plugins support
-vim.o.undofile = true -- Enable undofiles for persistent undo
-vim.o.hidden = false -- Unload abandoned buffers, removes `[No Name]` buffers
-vim.o.updatetime = 200 -- Save swap file and trigger CursorHold
-vim.o.autowriteall = true -- Enable auto write, so you can make a change and switch buffer without "E37: ..."
--- Don't save blank/empty windows, help pages in sessions
-vim.o.sessionoptions = "buffers,curdir,folds,tabpages,winsize,terminal"
 
--- UI =========================================================================
+vim.o.autowriteall = true -- Enable auto write, so you can make a change and switch buffer without "E37: ..."
 vim.o.breakindentopt = "shift:2" -- Wrapped line's beginning will be shifted to emphasize line continuation
+vim.o.clipboard = "unnamedplus" -- Sync with system clipboard
 vim.o.cursorline = true -- Enable current line highlighting
 vim.o.foldlevel = 10 -- Fold nothing by default; set to 0 or 1 to fold
+vim.o.hidden = false -- Unload abandoned buffers, removes `[No Name]` buffers
+vim.o.ignorecase = true -- Ignore case during search
 vim.o.laststatus = 3 -- global statusline, cleans up UI, shows what you are focused on
 vim.o.linebreak = true -- Wrap lines at characters in 'breakat' (if 'wrap' is set)
 vim.o.number = true -- Print line number in front of lines
 vim.o.relativenumber = true -- Relative line numbers
 vim.o.scrolloff = 999 -- Lines of context
+vim.o.sessionoptions = "buffers,curdir,folds,tabpages,winsize,terminal" -- Don't save blank/empty windows, help in sessions
 vim.o.showbreak = "↳" -- String to put at start of wrapped lines
 vim.o.signcolumn = "yes" -- Always show signcolumn (less flicker)
-vim.o.winborder = "rounded" -- Use rounded borders on all floating windows
+vim.o.smartcase = true -- Respect case if search pattern has upper case
 vim.o.splitbelow = true -- Put new windows below current
 vim.o.tabstop = 2 -- Number of spaces tabs show as, stylua uses tabs by default and 8 is too much
-
--- Editing =========================================================================
-vim.o.clipboard = "unnamedplus" -- Sync with system clipboard
-vim.o.ignorecase = true -- Ignore case during search
-vim.o.smartcase = true -- Respect case if search pattern has upper case
+vim.o.undofile = true -- Enable undofiles for persistent undo
+vim.o.updatetime = 200 -- Save swap file and trigger CursorHold
+vim.o.winborder = "rounded" -- Use rounded borders on all floating windows
 ----
 
 ---- Keymaps, again some should be default in Neovim
@@ -93,6 +89,16 @@ vim.keymap.set("n", "<esc>", function()
 	vim.cmd("nohlsearch")
 	return "<esc>"
 end, { expr = true, desc = "Clear hlsearch and Escape" })
+-- Copy relative file path to GUI selection register
+vim.keymap.set("n", "<leader>fc", function()
+	local path = vim.fn.expand("%")
+	vim.fn.setreg("+", path)
+end, { desc = "Copy relative file path" })
+-- Copy full file path to GUI selection register
+vim.keymap.set("n", "<leader>fC", function()
+	local path = vim.fn.expand("%:p")
+	vim.fn.setreg("+", path)
+end, { desc = "Copy full file path" })
 ----
 
 MiniDeps.add("MagicDuck/grug-far.nvim")
