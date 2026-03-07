@@ -42,29 +42,22 @@ end
 ---
 
 --- git branch ahead/behind info
+local M = {}
 local ahead_behind = ""
 local mini_git_updated_id
-local M = {}
-
-function M.listen_to_mini_git_updated()
-	local au_opts = { pattern = "MiniGitUpdated", callback = M.run_git_status_porcelain }
-
-	mini_git_updated_id = vim.api.nvim_create_autocmd("User", au_opts)
-end
 
 function M.on_git_status(o)
 	local _, _, ab_match = string.find(o.stdout, "# branch.ab (%+%d* %-%d*)\n")
 
 	if ab_match ~= nil and ab_match ~= "+0 -0" then
 		ahead_behind = "%#MiniHipatternsFixme# " .. ab_match .. " %*"
-		-- prevent E5560
-		vim.schedule(M.listen_to_mini_git_updated)
 	else
 		ahead_behind = ""
 		-- prevent E5560
 		vim.schedule(function()
 			if mini_git_updated_id then
 				vim.api.nvim_del_autocmd(mini_git_updated_id)
+				mini_git_updated_id = nil
 			end
 		end)
 	end
@@ -86,6 +79,9 @@ function M.run_git_fetch()
 	vim.system({ "git", "fetch" }, { text = true }, M.on_git_fetch)
 end
 
+local au_opts = { pattern = "MiniGitUpdated", callback = M.run_git_status_porcelain }
+
+mini_git_updated_id = vim.api.nvim_create_autocmd("User", au_opts)
 M.run_git_fetch()
 ---
 
