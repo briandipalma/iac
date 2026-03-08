@@ -20,7 +20,6 @@ sudo apt install quickemu
 ##
 if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
   flatpak install -y flathub net.davidotek.pupgui2
-  flatpak install -y flathub com.heroicgameslauncher.hgl
   flatpak install -y flathub com.valvesoftware.Steam
 
   curl --location --output /tmp/kanata.zip https://github.com/jtroo/kanata/releases/download/v1.10.0/linux-binaries-x64-v1.10.0.zip

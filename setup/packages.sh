@@ -26,6 +26,7 @@ if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
   flatpak install -y flathub com.discordapp.Discord
   flatpak install -y flathub com.dropbox.Client
   flatpak install -y flathub com.github.zocker_160.SyncThingy
+  flatpak install -y flathub com.heroicgameslauncher.hgl
   flatpak install -y flathub org.darktable.Darktable
   flatpak install -y flathub org.kde.digikam
   flatpak install -y flathub org.mozilla.Thunderbird
