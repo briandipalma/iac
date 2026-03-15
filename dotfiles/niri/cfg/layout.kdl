@@ -10,5 +10,8 @@
             proportion 0.66667
         }
 
-        struts {}
+        struts {
+            left 8
+            right 8
+        }
     }
