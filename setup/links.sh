@@ -18,6 +18,8 @@ ln -sf ~/dev/iac/dotfiles/lsd ~/.config/
 ln -sf ~/dev/iac/dotfiles/mimeapps.list ~/.config/
 rm -rf ~/.config/niri
 ln -sf ~/dev/iac/dotfiles/niri ~/.config/
+rm -rf ~/.config/noctalia
+ln -sf ~/dev/iac/dotfiles/noctalia ~/.config/
 ln -sf ~/dev/iac/dotfiles/nvim ~/.config/
 ln -sf ~/dev/iac/dotfiles/ssh/config ~/.ssh/config
 ln -sf ~/dev/iac/dotfiles/starship.toml ~/.config/
