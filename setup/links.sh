@@ -16,6 +16,8 @@ rm -rf ~/.config/lazygit
 ln -sf ~/dev/iac/dotfiles/lazygit ~/.config/
 ln -sf ~/dev/iac/dotfiles/lsd ~/.config/
 ln -sf ~/dev/iac/dotfiles/mimeapps.list ~/.config/
+rm -rf ~/.config/niri
+ln -sf ~/dev/iac/dotfiles/niri ~/.config/
 ln -sf ~/dev/iac/dotfiles/nvim ~/.config/
 ln -sf ~/dev/iac/dotfiles/ssh/config ~/.ssh/config
 ln -sf ~/dev/iac/dotfiles/starship.toml ~/.config/
