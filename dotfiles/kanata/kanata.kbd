@@ -130,7 +130,7 @@
 
 (deflayer function
   _    _    _    _    _    _          _    _    _    _    _    _
-  _    _    f7   f8   f9   f12        _    _    _    _    _    _
+  _    _    f7   f8   f9   f12        _    prev next pp   _    _
   _    prnt f4   f5   f6   f11        _    vold volu mute _    _
   _    _    f1   f2   f3   f10        _    brdn bru  _    _    _
             _                   _                    _
