@@ -1,10 +1,4 @@
 input {
-    keyboard {
-        xkb {
-        }
-        numlock // Enable numlock on startup
-    }
-
     touchpad {
         tap // Enable tap-to-click
         natural-scroll // Enable natural (macOS-style) scrolling

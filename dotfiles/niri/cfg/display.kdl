@@ -1,7 +1,0 @@
-// ────────────── Output Configuration ──────────────
-// You can run `niri msg outputs` to get the correct name for your displays.
-
-/- output "eDP-1" {
-    mode "2880x1800@120.000" // Set resolution and refresh rate
-    scale 1.8 // No scaling (use 2 for HiDPI)
-}

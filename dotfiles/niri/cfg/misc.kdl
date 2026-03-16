@@ -1,5 +1,4 @@
     prefer-no-csd
-    screenshot-path null
 
     environment {
         ELECTRON_OZONE_PLATFORM_HINT "auto"
