@@ -3,7 +3,9 @@
 source inventory.sh
 
 # Main terminal
-sudo pacman -S kitty
+paru -S kitty
+# zoom utility
+paru -S wooz
 
 ##
 ## Personal workstations
