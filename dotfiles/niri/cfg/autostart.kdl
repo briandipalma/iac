@@ -1,1 +1,4 @@
     spawn-sh-at-startup "qs -c noctalia-shell"
+    spawn-sh-at-startup "sleep 15s && flatpak run com.github.zocker_160.SyncThingy"
+    spawn-sh-at-startup "sleep 15s && flatpak run com.dropbox.Client start"
+    spawn-sh-at-startup "sleep 15s && flatpak run com.discordapp.Discord --start-minimized"
