@@ -7,6 +7,8 @@ flatpak install -y flathub com.github.tchx84.Flatseal
 flatpak install -y flathub com.google.Chrome
 # Image viewer
 flatpak install -y flathub org.kde.gwenview
+# PDF viewer
+flatpak install -y flathub org.kde.okular
 # Play video files
 flatpak install -y flathub info.smplayer.SMPlayer
 # Play audio files
