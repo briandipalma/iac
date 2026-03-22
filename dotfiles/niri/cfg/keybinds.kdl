@@ -2,7 +2,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+T           hotkey-overlay-title="Open Terminal: kitty" { spawn "kitty"; }
-    Mod+D           hotkey-overlay-title="Open App Launcher: noctalia launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Mod+D           hotkey-overlay-title="Open App Launcher: vicinae launcher" { spawn "vicinae" "toggle"; }
     Mod+B           hotkey-overlay-title="Open Browser: firefox" { spawn "firefox"; }
     Mod+ALT+L       hotkey-overlay-title="Lock Screen: noctalia lock" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
     Mod+Shift+Q     hotkey-overlay-title="Session Menu: noctalia sessionMenu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
