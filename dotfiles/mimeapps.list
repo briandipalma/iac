@@ -7,6 +7,7 @@ x-scheme-handler/https=firefox.desktop;
 application/pdf=org.kde.okular.desktop;
 audio/flac=com.github.taiko2k.tauonmb.desktop
 image/webp=org.kde.gwenview.desktop
+image/jpeg=org.kde.gwenview.desktop
 video/mp2t=info.smplayer.SMPlayer.desktop
 video/mp4=info.smplayer.SMPlayer.desktop
 video/quicktime=info.smplayer.SMPlayer.desktop
