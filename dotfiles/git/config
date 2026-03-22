@@ -74,7 +74,7 @@
     tabs = 4
 
 [merge]
-    conflictstyle = zdiff3
+    conflictStyle = zdiff3
 
 [diff]
     colorMoved = default
