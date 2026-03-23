@@ -52,34 +52,29 @@ overseer.register_template({
 			cmd = { "pnpm", "type-check" },
 			cwd = project_root,
 			components = {
+				"default",
 				{
 					"on_output_quickfix",
 					close = true,
 					-- This is an example error:
 					--
-					-- src/summary/SummaryPricingTable.tsx:10:30 - error TS2304: Cannot find name 'fields'.
+					-- src/FXChart.tsx(150,7): error TS2345: Argument of type '{ currencyPair: string; chartInterval: string; chartType: ChartType; zoomData: DataZoomStartEnd | undefined; }' is not assignable to parameter of type 'SerialisedData'.
+					--   Object literal may only specify known properties, and 'zoomData' does not exist in type 'SerialisedData'.
+					--  ELIFECYCLE  Command failed with exit code 1.
 					--
-					-- 10         confirmationMessage={fields}
-					--                                 ~~~~~~
-					-- src/summary/SummaryPricingTable.tsx:11:29 - error TS2304: Cannot find name 'showAdjustedRates'.
-					--
-					-- 11         allowAdjustedRates={showAdjustedRates}
-					--                                ~~~~~~~~~~~~~~~~~
-					--
-					-- %f:%l:%c: Captures the filename, line, and column (e.g., src/summary/SummaryPricingTable.tsx:10:30).
-					-- \ -\ : Matches the literal space-dash-space separator.
+					-- %-G%.%#ELIFECYCLE%.%# globally ignore lines that match this pattern
+					-- %f(%l\,%c) Captures the filename, line, and column (e.g., src/FXChart.tsx(10,30).
 					-- %trror: Captures the "e" in "error" and tells Vim this is an Error type.
 					-- TS%n:: Captures the TypeScript error number (e.g., 2304) into the error number field.
-					-- %m: Captures the actual error message (e.g., Cannot find name 'fields').
-					-- %-G%.%#: This is the "greedy" ignore rule. Because the error information is self-contained
-					-- on one line, this tells Vim to discard every other line in the output (the code snippets,
-					-- the squiggles, and the "Found 4 errors" summary).
-					errorformat = "%f:%l:%c - %trror TS%n: %m, %-G%.%#",
+					-- %m: Captures the actual error message.
+					errorformat = [[%-G%.%#ELIFECYCLE%.%#,]]
+						.. [[%E%f(%l\,%c): %trror TS%n: %m,]]
+						.. [[%C%m,]]
+						.. [[%-G%.%#]],
 					open_on_match = true,
 					set_diagnostics = true,
 				},
 				{ "on_result_diagnostics", remove_on_restart = true },
-				"default",
 			},
 		}
 	end,
