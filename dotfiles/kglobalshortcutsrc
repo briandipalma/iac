@@ -47,7 +47,7 @@ Activate Window Demanding Attention=Meta+Ctrl+A,Meta+Ctrl+A,Activate Window Dema
 Cycle Overview=none,none,Cycle through Overview and Grid View
 Cycle Overview Opposite=none,none,Cycle through Grid View and Overview
 Decrease Opacity=none,,Decrease Opacity of Active Window by 5%
-Edit Tiles=Meta+T,Meta+T,Toggle Tiles Editor
+Edit Tiles=none,Meta+T,Toggle Tiles Editor
 Expose=Ctrl+F9,Meta+F9\tCtrl+F9,Toggle Present Windows (Current desktop)
 ExposeAll=Ctrl+F10\tLaunch (C),Meta+F10\tLaunch (C)\tCtrl+F10,Toggle Present Windows (All desktops)
 ExposeClass=Ctrl+F7,Meta+F7\tCtrl+F7,Toggle Present Windows (Window class)
@@ -241,7 +241,7 @@ Sleep=Sleep,Sleep,Suspend
 Toggle Keyboard Backlight=Keyboard Light On/Off,Keyboard Light On/Off,Toggle Keyboard Backlight
 Turn Off Screen=none,none,Turn Off Screen
 _k_friendly_name=Power Management
-powerProfile=Battery\tMeta+B,Battery\tMeta+B,Switch Power Profile
+powerProfile=Battery,Battery\tMeta+B,Switch Power Profile
 
 [plasmashell]
 Slideshow Wallpaper Next Image=none,,Next Wallpaper Image
@@ -274,11 +274,24 @@ switch to next activity=none,,Switch to Next Activity
 switch to previous activity=none,,Switch to Previous Activity
 toggle do not disturb=none,,Toggle do not disturb
 
+[services][firefox.desktop]
+new-window=Meta+B
+
+[services][kitty.desktop]
+_launch=Meta+T
+
 [services][net.local.vicinae.desktop]
 _launch=Meta+D
 
 [services][org.kde.dolphin.desktop]
 _launch=Meta+F
 
+[services][org.kde.konsole.desktop]
+_launch=none
+
 [services][org.kde.krunner.desktop]
 _launch=Meta+Space
+
+[services][org.kde.spectacle.desktop]
+CurrentMonitorScreenShot=
+OpenWithoutScreenshot=
