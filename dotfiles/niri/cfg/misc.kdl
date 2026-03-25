@@ -11,6 +11,7 @@
 
     cursor {
         xcursor-theme "capitaine-cursors"
+        xcursor-size 28
     }
 
     debug {
