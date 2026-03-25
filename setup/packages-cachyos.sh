@@ -8,6 +8,8 @@ paru -S kitty
 paru -S vicinae-bin
 # zoom utility
 paru -S wooz
+# Day/night gamma adjustments for Wayland compositors
+paru -S wlsunset
 
 ##
 ## Personal workstations
