@@ -1,5 +1,5 @@
 binds {
-    Mod+Shift+Slash { show-hotkey-overlay; }
+    Mod+Shift+Slash { spawn-sh "qs -c noctalia-shell ipc call plugin:keybind-cheatsheet toggle"; }
 
     Mod+T           hotkey-overlay-title="Open Terminal: kitty" { spawn "kitty"; }
     Mod+D           hotkey-overlay-title="Open App Launcher: vicinae launcher" { spawn "vicinae" "toggle"; }

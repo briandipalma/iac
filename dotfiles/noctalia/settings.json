@@ -213,6 +213,9 @@
                 },
                 {
                     "id": "plugin:screen-recorder"
+                },
+                {
+                    "id": "plugin:keybind-cheatsheet"
                 }
             ]
         }
