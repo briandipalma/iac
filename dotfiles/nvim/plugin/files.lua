@@ -18,3 +18,14 @@ end, { desc = "Open mini.files (directory of current file)" })
 nml("eE", function()
 	require("mini.files").open(vim.uv.cwd(), true)
 end, { desc = "Open mini.files (cwd)" })
+
+-- Copy relative file path to GUI selection register
+nml("fc", function()
+	local path = vim.fn.expand("%")
+	vim.fn.setreg("+", path)
+end, { desc = "Copy relative file path" })
+-- Copy full file path to GUI selection register
+nml("fC", function()
+	local path = vim.fn.expand("%:p")
+	vim.fn.setreg("+", path)
+end, { desc = "Copy full file path" })

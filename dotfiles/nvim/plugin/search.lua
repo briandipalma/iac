@@ -31,15 +31,18 @@ nml("<Leader>", function()
 end, { desc = "Find files (root dir)" })
 nml(",", "<Cmd>FzfLua buffers<CR>", { desc = "Find buffer" })
 
-nml("fr", "<Cmd>FzfLua history<CR>", { desc = "Find recent buffers/files" })
+nml("fr", "<Cmd>FzfLua history<CR>", { desc = "Find recent files/buffers" })
 nml("fR", function()
 	FzfLua.history({ cwd = vim.uv.cwd() })
-end, { desc = "Find recent buffers/files (cwd)" })
+end, { desc = "Find recent files/buffers(cwd)" })
 nml("fF", "<Cmd>FzfLua files<CR>", { desc = "Find files (cwd)" })
-nml("fq", "<Cmd>FzfLua quickfix_stack<CR>", { desc = "Find quickfix list" })
+
+nml("lr", "<Cmd>FzfLua lsp_references<CR>", { desc = "Find LSP references" })
+
+nml("pq", "<Cmd>FzfLua quickfix_stack<CR>", { desc = "Find quickfix list" })
+nml("pr", "<Cmd>FzfLua resume<CR>", { desc = "Resume last picker" })
 
 nml("sG", "<Cmd>FzfLua live_grep_native<CR>", { desc = "Search text (cwd)" })
-nml("sR", "<Cmd>FzfLua resume<CR>", { desc = "Resume last picker" })
 nml("sb", "<Cmd>FzfLua lines<CR>", { desc = "Search open buffers lines" })
 nml("sg", function()
 	FzfLua.live_grep_native({ cwd = root() })

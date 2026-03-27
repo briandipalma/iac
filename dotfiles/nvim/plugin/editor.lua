@@ -45,7 +45,7 @@ end, { desc = "Prev Reference" })
 ----
 
 ---- Yanky - better yank/put
-vim.keymap.set({ "x", "n" }, "<leader>p", "<cmd>YankyRingHistory<cr>", { desc = "Open Yank History" })
+vim.keymap.set({ "x", "n" }, "<leader>pp", "<cmd>YankyRingHistory<cr>", { desc = "Open Yank History" })
 vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)") -- keeps cursor in the same position when yanking
 -- Set these Keymaps for yank rink usage
 vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")

@@ -81,16 +81,6 @@ vim.keymap.set("n", "<esc>", function()
 	vim.cmd("nohlsearch")
 	return "<esc>"
 end, { expr = true, desc = "Clear hlsearch and Escape" })
--- Copy relative file path to GUI selection register
-vim.keymap.set("n", "<leader>fc", function()
-	local path = vim.fn.expand("%")
-	vim.fn.setreg("+", path)
-end, { desc = "Copy relative file path" })
--- Copy full file path to GUI selection register
-vim.keymap.set("n", "<leader>fC", function()
-	local path = vim.fn.expand("%:p")
-	vim.fn.setreg("+", path)
-end, { desc = "Copy full file path" })
 ----
 
 MiniDeps.add("MagicDuck/grug-far.nvim")
