@@ -249,6 +249,9 @@
                         "windowWidth": 1400
                     },
                     "id": "plugin:keybind-cheatsheet"
+                },
+                {
+                    "id": "plugin:network-manager-vpn"
                 }
             ]
         }
