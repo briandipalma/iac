@@ -4,12 +4,16 @@
       "title": "Applications",
       "binds": [
         {
+          "keys": "Super + Shift + Slash",
+          "desc": "Show keybind overlay"
+        },
+        {
           "keys": "Super + T",
           "desc": "Open Terminal: kitty"
         },
         {
           "keys": "Super + D",
-          "desc": "Open App Launcher: vicinae launcher"
+          "desc": "Open App Launcher: vicinae"
         },
         {
           "keys": "Super + B",
@@ -21,7 +25,7 @@
         },
         {
           "keys": "Super + Shift + Q",
-          "desc": "Session Menu: noctalia sessionMenu"
+          "desc": "Session Menu: noctalia session"
         },
         {
           "keys": "Super + E",
@@ -33,43 +37,43 @@
         },
         {
           "keys": "Vol Up",
-          "desc": "Run: qs -c noctalia-shell ipc call volume increase"
+          "desc": "Volume Up"
         },
         {
           "keys": "Vol Down",
-          "desc": "Run: qs -c noctalia-shell ipc call volume decrease"
+          "desc": "Volume Down"
         },
         {
           "keys": "Mute",
-          "desc": "Run: qs -c noctalia-shell ipc call volume muteOutput"
+          "desc": "Mute"
         },
         {
           "keys": "Mic Mute",
-          "desc": "Run: qs -c noctalia-shell ipc call volume muteInput"
+          "desc": "Mic Mute"
         },
         {
           "keys": "Next",
-          "desc": "Run: qs -c noctalia-shell ipc call media next"
+          "desc": "Next"
         },
         {
           "keys": "Prev",
-          "desc": "Run: qs -c noctalia-shell ipc call media previous"
+          "desc": "Previous"
         },
         {
           "keys": "Play",
-          "desc": "Run: qs -c noctalia-shell ipc call media playPause"
+          "desc": "Play"
         },
         {
           "keys": "Pause",
-          "desc": "Run: qs -c noctalia-shell ipc call media playPause"
+          "desc": "Pause"
         },
         {
           "keys": "Bright Up",
-          "desc": "Run: qs -c noctalia-shell ipc call brightness increase"
+          "desc": "Increase brightness"
         },
         {
           "keys": "Bright Down",
-          "desc": "Run: qs -c noctalia-shell ipc call brightness decrease"
+          "desc": "Decrease brightness"
         }
       ]
     },
@@ -461,10 +465,6 @@
       "title": "Other",
       "binds": [
         {
-          "keys": "Super + Shift + Slash",
-          "desc": "Show Hotkey Overlay"
-        },
-        {
           "keys": "Super + O",
           "desc": "Toggle Overview"
         },
@@ -571,5 +571,11 @@
       ]
     }
   ],
-  "detectedCompositor": "niri"
+  "detectedCompositor": "niri",
+  "niriConfigPath": "~/.config/niri/config.kdl",
+  "hyprlandConfigPath": "~/.config/hypr/hyprland.conf",
+  "modKeyVariable": "$mod",
+  "windowHeight": 850,
+  "windowWidth": 1400,
+  "columnCount": 3
 }
