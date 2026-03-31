@@ -11,6 +11,8 @@ NIconButton {
   property ShellScreen screen
   property string widgetId: ""
   property string section: ""
+  property int sectionWidgetIndex: -1
+  property int sectionWidgetsCount: 0
 
   baseSize: Style.getCapsuleHeightForScreen(screen?.name)
   applyUiScale: false

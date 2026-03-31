@@ -251,6 +251,11 @@
                     "id": "plugin:keybind-cheatsheet"
                 },
                 {
+                    "defaultSettings": {
+                        "connectedColor": "primary",
+                        "disconnectedColor": "none",
+                        "displayMode": "onhover"
+                    },
                     "id": "plugin:network-manager-vpn"
                 }
             ]
