@@ -14,7 +14,7 @@ Verify the hostname. Upgrade host OS with package manager. Reboot. Setup `.ssh` 
 
 ### Podman/Docker
 
-Install `podman` for rootless distrobox containers.
+Install `podman` for rootless Distrobox containers.
 Install `docker` on work workstations for `docker-compose`. Verify it works without needing root.
 
 ### Distrobox

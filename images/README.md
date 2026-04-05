@@ -1,4 +1,4 @@
-# Images
+# Distrobox Images
 
 Remove the old Distrobox containers
 

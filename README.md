@@ -1,3 +1,3 @@
-# Infrastructure as code
+# Infrastructure as Code
 
-Personal infrastructure as code
+Personal IaC, dotfiles, setup scripts, container files
