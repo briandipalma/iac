@@ -1,5 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Discord autostart
-Exec=flatpak run com.discordapp.Discord
-Comment=Start Discord on desktop start

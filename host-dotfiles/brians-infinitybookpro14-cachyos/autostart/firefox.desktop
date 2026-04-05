@@ -1,0 +1,38 @@
+[Desktop Entry]
+Actions=new-window;new-private-window;open-profile-manager;
+Categories=GNOME;GTK;Network;WebBrowser;
+Comment[en_GB]=Browse the World Wide Web
+Comment=Browse the World Wide Web
+DBusActivatable=false
+Exec=/usr/lib/firefox/firefox %u
+GenericName[en_GB]=Web Browser
+GenericName=Web Browser
+Icon=firefox
+Keywords[en_GB]=Internet;WWW;Browser;Web;Explorer;
+Keywords=Internet;WWW;Browser;Web;Explorer;
+MimeType=application/json;application/pdf;application/rdf+xml;application/rss+xml;application/x-xpinstall;application/xhtml+xml;application/xml;audio/flac;audio/ogg;audio/webm;image/avif;image/gif;image/jpeg;image/png;image/svg+xml;image/webp;text/html;text/xml;video/ogg;video/webm;x-scheme-handler/chrome;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/mailto;
+Name[en_GB]=Firefox
+Name=Firefox
+StartupNotify=true
+StartupWMClass=firefox
+Terminal=false
+Type=Application
+Version=1.0
+X-GNOME-FullName[en_GB]=Firefox Web Browser
+X-GNOME-FullName=Firefox Web Browser
+X-MultipleArgs=false
+
+[Desktop Action new-private-window]
+Exec=/usr/lib/firefox/firefox --private-window %u
+Name[en_GB]=New Private Window
+Name=New Private Window
+
+[Desktop Action new-window]
+Exec=/usr/lib/firefox/firefox --new-window %u
+Name[en_GB]=New Window
+Name=New Window
+
+[Desktop Action open-profile-manager]
+Exec=/usr/lib/firefox/firefox --ProfileManager
+Name[en_GB]=Open Profile Manager
+Name=Open Profile Manager

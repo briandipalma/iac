@@ -44,7 +44,7 @@ Create host specific directories used in `links.sh` script for new hostnames. Ru
 ### Packages
 
 Install `flatpak` if it's missing. Now in a **host** terminal from the `setup` directory run
-`packages.sh`, the desktop scripts e.g. `kde.sh` and `images.sh`.
+`packages.sh` and `images.sh` from the `images` directory.
 
 ### Login
 

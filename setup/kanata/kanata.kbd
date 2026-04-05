@@ -1,0 +1,162 @@
+;; More easily spot misaligned keys/layers
+;; vim: cursorcolumn
+
+(defcfg
+  process-unmapped-keys yes
+  log-layer-changes no
+  ;; Don't crash if keyboard isn't connect on startup
+  linux-continue-if-no-devs-found yes
+  linux-dev-names-exclude (
+    "Keebart sofle_choc_pro"
+  )
+)
+
+;; Defines the order of keys that the `deflayer` entries below will operate on
+;;
+;; Aim to make a standard keyboard more like a split keyboard, where most 
+;; functionality is accessible using 6 columns, 4 rows and ~3 thumb 
+;; keys per hand, to reduce movement from the home row try to map keys outside 
+;; that limit into a layer
+;;
+;; Chop down a standard UK QWERTY keyboard to fit into that limit, all the
+;; layers take this as their template.
+(defsrc
+  grv  1    2    3    4    5          6    7    8    9    0    -
+  tab  q    w    e    r    t          y    u    i    o    p    [
+  caps a    s    d    f    g          h    j    k    l    ;    '
+  nubs z    x    c    v    b          n    m    ,    .    /    rsft
+            lalt                spc                  ralt
+)
+
+;; First defined layer is the starting layer
+(deflayer starting
+  grv  1    2    3    4    5          6    7    8    9    0    -
+  tab  q    w    e    r    t          y    u    i    o    p    del
+  @vin @a   @s   @d   @f   g          h    @j   @k   @l   @scn @fun
+  @cwr z    x    c    v    b          n    m    ,    .    /    @oss
+            @nav                @sym                 @num
+)
+
+(defvar
+  ;; tap-repress-timeout
+  tt 200
+  ;; hold-timeout
+  ht 230
+)
+
+(defalias
+  ;; Home row mods - left hand
+  a   (tap-hold $tt $ht a    lmet)
+  s   (tap-hold $tt $ht s    lalt)
+  d   (tap-hold $tt $ht d    lctl)
+  f   (tap-hold $tt $ht f    lsft)
+
+  ;; Home row mods - right hand
+  j   (tap-hold $tt $ht j    rsft)
+  k   (tap-hold $tt $ht k    rctl)
+  l   (tap-hold $tt $ht l    lalt)
+  scn (tap-hold $tt $ht scln lmet)
+
+  ;; Move useful keys closer and add layers
+  oss (one-shot-press 2000 lsft)
+  sym (tap-hold $tt $ht spc  (layer-while-held symbols))
+  num (tap-hold $tt $ht ret  (layer-while-held numbers))
+  nav (tap-hold $tt $ht bspc (layer-while-held nav))
+  fun (tap-hold $tt $ht '    (layer-while-held function))
+  vin (tap-hold $tt $ht esc  (layer-while-held vim-nav))
+  cwr (caps-word-toggle 10000)
+)
+
+(deflayer nav
+  _    _    _    _    _    _          _    _    _    _    _    _
+  _    _    _    _    _    _          _    _    _    _    _    _
+  _    @osm @osa @osc @oss @osg       left down up   rght _    _
+  _    _    _    _    _    _          home pgdn pgup end  _    _
+            _                   _                    _
+)
+
+(deflayer numbers
+  _    _    _    _    _    _          _    _    _    _    _    _
+  _    _    7    8    9    _          _    _    _    _    _    _
+  _    0    4    5    6    _          _    @oss @osc @osa @osm _
+  _    _    1    2    3    _          _    _    _    _    _    _
+            del                 @cwr                 _
+)
+
+(defalias
+  osm (one-shot-press 2000 lmet)
+  osa (one-shot-press 2000 lalt)
+  osc (one-shot-press 2000 lctl)
+  osg (one-shot-press 2000 ralt)
+)
+
+(defvar
+  rps S-0    ;; ) Right parenthesis
+  exc S-1    ;; ! Exclamation mark
+  dlr S-4    ;; $ Dollar
+  per S-5    ;; % Percent
+  crt S-6    ;; ^ Caret or circumflex
+  amp S-7    ;; & Ampersand
+  ask S-8    ;; * Asterisk
+  lps S-9    ;; ( Left parenthesis
+  pls S-=    ;; + Plus
+  lbc S-[    ;; { Left curly bracket
+  rbc S-]    ;; } Right curly bracket
+  uds S--    ;; _ Underscore
+  qtm S-/    ;; ? Question mark
+  tld S-\    ;; Tilda
+  vrb S-nubs ;; Vertical bar
+  num bksl   ;; # Number sign - on US keyboards it's where backslash is
+  dqm S-2    ;; Double quotation marks
+  eur RA-4   ;; Euro
+  gbp S-3    ;; £
+  ats S-'    ;; @
+  lst S-,    ;; <
+  grt S-.    ;; >
+  cln S-;    ;; :
+  mns -      ;; Minus
+)
+
+;; Symbols in the home row are placed based on their action in Neovim, 
+;; left/backward movement/operation symbols are on the left hand, right/forward 
+;; movement/operation symbols are on the right
+;; Other symbols are placed near their location on a default UK layout
+(deflayer symbols
+  _    _    _    _    _    _          _    _    _    _    _    _
+  _    $exc $dqm $gbp $eur $per       $crt $amp $mns eql  $pls _ 
+  $qtm $num [    $lbc $lps $uds       $dlr $rps $rbc ]    $ask /
+  _    nubs $vrb $ats grv  _          $tld '    $lst $grt $cln _
+            _                   _                    _
+)
+
+(deflayer function
+  _    _    _    _    _    _          _    _    _    _    _    _
+  _    _    f7   f8   f9   f12        _    prev next pp   _    _
+  _    prnt f4   f5   f6   f11        _    vold volu mute _    _
+  _    _    f1   f2   f3   f10        _    brdn bru  _    _    _
+            _                   _                    _
+)
+
+(defalias
+  pca (macro [ c)
+  nca (macro ] c)
+  prf (macro [ [)
+  nrf (macro ] ])
+  pis (macro [ i)
+  nis (macro ] i)
+  pbf (macro [ b)
+  nbf (macro ] b)
+  pdg (macro [ d)
+  ndg (macro ] d)
+  pql (macro [ q)
+  nql (macro ] q)
+)
+
+(deflayer vim-nav
+  _    _    _    _    _    _          _    _    _    _    _    _
+  _    _    _    @pca @nca _          _    @pbf @nbf _    _    _
+  _    _    _    @prf @nrf _          _    @pdg @ndg _    _    _
+  _    _    _    @pis @nis _          _    @pql @nql _    _    _
+            _                   _                    _
+)
+

@@ -1,5 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Slack autostart
-Exec=flatpak run com.slack.Slack
-Comment=Start Slack on desktop start
