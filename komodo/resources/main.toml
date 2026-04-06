@@ -35,7 +35,7 @@ tags = ["Syncable"]
 [stack.config]
 server = "PVE"
 poll_for_updates = true
-linked_repo = "my-data"
+linked_repo = "iac"
 run_directory = "komodo/stacks/pve/immich"
 environment = """
 IMMICH_URL=[[IMMICH_URL]]
@@ -195,6 +195,15 @@ run_directory = "komodo/stacks/rpi4/wireguard"
 environment = """
 WIREGUARD_SERVERURL=[[WIREGUARD_SERVERURL]]
 """
+
+##
+
+[[repo]]
+name = "iac"
+tags = ["Syncable"]
+[repo.config]
+git_account = "briandipalma"
+repo = "briandipalma/iac"
 
 ##
 
