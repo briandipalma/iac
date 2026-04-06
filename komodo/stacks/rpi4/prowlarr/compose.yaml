@@ -1,0 +1,24 @@
+---
+services:
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    user: 1000:1000
+    container_name: prowlarr
+    environment:
+      - TZ=Europe/Dublin
+    volumes:
+      - /mnt/storage/appdata/prowlarr/config:/config
+    ports:
+      - 9696:9696
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.prowlarr.rule=Host(`search.test`)
+      - traefik.http.services.prowlarr.loadbalancer.server.port=9696
+    networks:
+      - proxy_network
+
+networks:
+  proxy_network:
+    name: proxy_network
+    external: true
