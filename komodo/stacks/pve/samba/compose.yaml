@@ -1,0 +1,17 @@
+---
+services:
+  samba:
+    image: ghcr.io/servercontainers/samba:latest
+    container_name: samba
+    network_mode: host
+    restart: unless-stopped
+    cap_add:
+      - CAP_NET_ADMIN
+    environment:
+      GROUP_family: 1500
+      ACCOUNT_brian: ${BRIAN_SAMBA_PASSWD}
+      UID_brian: 1000
+      GROUPS_brian: family
+      SAMBA_VOLUME_CONFIG_downloads: "[torrents]; path=/torrents; valid users = @family; guest ok = no; writable = yes; read only = no; browsable = yes;"
+    volumes:
+      - /mnt/storage/data/torrents:/torrents
