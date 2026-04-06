@@ -17,8 +17,8 @@ services:
     # ports:
     #   - 27017:27017
     volumes:
-      - mongo-data:/data/db
-      - mongo-config:/data/configdb
+      - /mnt/storage/appdata/komodo/mongo_data:/data/db
+      - /mnt/storage/appdata/komodo/mongo_config:/data/configdb
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${KOMODO_DATABASE_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${KOMODO_DATABASE_PASSWORD}
@@ -75,8 +75,5 @@ services:
       # - /path/to/root_ca.crt:/usr/local/share/ca-certificates/root_ca.crt
 
 volumes:
-  # Mongo
-  mongo-data:
-  mongo-config:
   # Core / Periphery
   keys:
