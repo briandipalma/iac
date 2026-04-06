@@ -1,4 +1,6 @@
-# Workstation setup
+# Workstation/laptop setup
+
+Scripts to speed up and make setting up newly installed machines more consistent.
 
 ## Before install
 

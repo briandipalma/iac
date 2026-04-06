@@ -1,4 +1,9 @@
-# Distrobox Images
+# Images
+
+Containerfiles for personal/work CLI usage, to limit what's installed on the host/make my CLI
+environment more host independent.
+
+## Distrobox Commands
 
 Remove the old Distrobox containers
 
