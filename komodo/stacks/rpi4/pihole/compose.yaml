@@ -1,0 +1,33 @@
+---
+services:
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    ports:
+      # DNS Ports
+      - "53:53/tcp"
+      - "53:53/udp"
+    environment:
+      TZ: 'Europe/Dublin'
+      # Set a password to access the web interface. Not setting one will result in a random password being assigned
+      FTLCONF_webserver_api_password: ${PIHOLE_WEB_PASSWD}
+      # If using Docker's default `bridge` network setting the dns listening mode should be set to 'ALL'
+      FTLCONF_dns_listeningMode: 'ALL'
+    # Volumes store your data between container upgrades
+    volumes:
+      - /mnt/storage/appdata/pihole:/etc/pihole
+    cap_add:
+      # Optional, if Pi-hole should get some more processing time
+      - SYS_NICE
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.pihole.rule=Host(`dnstwo.test`)
+      - traefik.http.services.pihole.loadbalancer.server.port=80
+    networks:
+      - proxy_network
+
+networks:
+  proxy_network:
+    name: proxy_network
+    external: true
