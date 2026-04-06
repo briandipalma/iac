@@ -12,6 +12,6 @@ services:
       - TZ=Europe/Dublin
       - SUBDOMAINS=${DUCKDNS_SUBDOMAINS}
       - TOKEN=${DUCKDNS_TOKEN}
-      - UPDATE_IP=ipv4 #optional
-      - LOG_FILE=false #optional
+      - UPDATE_IP=ipv4 # optional
+      - LOG_FILE=false # optional
     restart: unless-stopped
