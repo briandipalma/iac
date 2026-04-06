@@ -1,0 +1,192 @@
+[[server]]
+name = "PVE"
+tags = ["Syncable"]
+[server.config]
+enabled = true
+
+##
+
+[[server]]
+name = "rpi4"
+tags = ["Syncable"]
+[server.config]
+enabled = true
+
+##
+
+[[stack]]
+name = "duckdns"
+tags = ["Syncable"]
+[stack.config]
+server = "rpi4"
+poll_for_updates = true
+linked_repo = "iac"
+run_directory = "komodo/stacks/rpi4/duckdns"
+environment = """
+DUCKDNS_TOKEN=[[DUCKDNS_TOKEN]]
+DUCKDNS_SUBDOMAINS=[[DUCKDNS_SUBDOMAINS]]
+"""
+
+##
+
+[[stack]]
+name = "immich"
+tags = ["Syncable"]
+[stack.config]
+server = "PVE"
+poll_for_updates = true
+linked_repo = "my-data"
+run_directory = "komodo/stacks/pve/immich"
+environment = """
+# You can find documentation for all the supported env variables at https://docs.immich.app/install/environment-variables
+
+# The location where your uploaded files are stored
+UPLOAD_LOCATION=/mnt/storage/data/pictures
+
+# The location where your database files are stored. Network shares are not supported for the database
+DB_DATA_LOCATION=/mnt/storage/appdata/immich/postgres
+
+# To set a timezone, uncomment the next line and change Etc/UTC to a TZ identifier from this list: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List
+TZ=Europe/Dublin
+
+# The Immich version to use. You can pin this to a specific version like "v2.1.0"
+IMMICH_VERSION=v2
+
+# Connection secret for postgres. You should change it to a random password
+# Please use only the characters `A-Za-z0-9`, without special characters or spaces
+DB_PASSWORD=postgres
+
+# The values below this line do not need to be changed
+###################################################################################
+DB_USERNAME=postgres
+DB_DATABASE_NAME=immich
+"""
+
+##
+
+[[stack]]
+name = "jellyfin"
+tags = ["Syncable"]
+[stack.config]
+server = "PVE"
+poll_for_updates = true
+linked_repo = "my-data"
+run_directory = "komodo/stacks/pve/jellyfin"
+
+##
+
+[[stack]]
+name = "pihole"
+tags = ["Syncable"]
+[stack.config]
+server = "PVE"
+poll_for_updates = true
+linked_repo = "iac"
+run_directory = "komodo/stacks/pve/pihole"
+environment = """
+PIHOLE_WEB_PASSWD=[[PIHOLE_WEB_PASSWD]]
+"""
+
+##
+
+[[stack]]
+name = "pihole-two"
+tags = ["Syncable"]
+[stack.config]
+server = "rpi4"
+poll_for_updates = true
+linked_repo = "iac"
+run_directory = "komodo/stacks/rpi4/pihole"
+environment = """
+PIHOLE_WEB_PASSWD=[[PIHOLE_WEB_PASSWD]]
+"""
+
+##
+
+[[stack]]
+name = "prowlarr"
+tags = ["Syncable"]
+[stack.config]
+server = "rpi4"
+poll_for_updates = true
+linked_repo = "iac"
+run_directory = "komodo/stacks/rpi4/prowlarr"
+
+##
+
+[[stack]]
+name = "qbittorrent"
+tags = ["Syncable"]
+[stack.config]
+server = "PVE"
+poll_for_updates = true
+linked_repo = "iac"
+run_directory = "komodo/stacks/pve/qbittorrent"
+
+##
+
+[[stack]]
+name = "samba"
+tags = ["Syncable"]
+[stack.config]
+server = "PVE"
+poll_for_updates = true
+linked_repo = "iac"
+run_directory = "komodo/stacks/pve/samba"
+environment = """
+BRIAN_SAMBA_PASSWD=[[BRIAN_SAMBA_PASSWD]]
+"""
+
+##
+
+[[stack]]
+name = "syncthing"
+tags = ["Syncable"]
+[stack.config]
+server = "PVE"
+poll_for_updates = true
+linked_repo = "iac"
+run_directory = "komodo/stacks/pve/syncthing"
+
+##
+
+[[stack]]
+name = "traefik"
+tags = ["Syncable"]
+[stack.config]
+server = "PVE"
+poll_for_updates = true
+linked_repo = "iac"
+run_directory = "komodo/stacks/pve/traefik"
+environment = """
+TRAEFIK_ENCRYPT_EMAIL=[[TRAEFIK_ENCRYPT_EMAIL]]
+TRAEFIK_USERS=[[TRAEFIK_USERS]]
+"""
+
+##
+
+[[stack]]
+name = "traefik-two"
+tags = ["Syncable"]
+[stack.config]
+server = "rpi4"
+poll_for_updates = true
+linked_repo = "iac"
+run_directory = "komodo/stacks/rpi4/traefik"
+environment = """
+TRAEFIK_USERS=[[TRAEFIK_USERS]]
+"""
+
+##
+
+[[stack]]
+name = "wireguard"
+tags = ["Syncable"]
+[stack.config]
+server = "rpi4"
+poll_for_updates = true
+linked_repo = "iac"
+run_directory = "komodo/stacks/rpi4/wireguard"
+environment = """
+WIREGUARD_SERVERURL=[[WIREGUARD_SERVERURL]]
+"""
