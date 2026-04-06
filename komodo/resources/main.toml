@@ -38,6 +38,8 @@ poll_for_updates = true
 linked_repo = "my-data"
 run_directory = "komodo/stacks/pve/immich"
 environment = """
+IMMICH_URL=[[IMMICH_URL]]
+
 # You can find documentation for all the supported env variables at https://docs.immich.app/install/environment-variables
 
 # The location where your uploaded files are stored
@@ -70,8 +72,11 @@ tags = ["Syncable"]
 [stack.config]
 server = "PVE"
 poll_for_updates = true
-linked_repo = "my-data"
+linked_repo = "iac"
 run_directory = "komodo/stacks/pve/jellyfin"
+environment = """
+JELLYFIN_URL=[[JELLYFIN_URL]]
+"""
 
 ##
 
