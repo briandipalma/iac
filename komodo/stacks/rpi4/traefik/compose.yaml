@@ -1,0 +1,48 @@
+---
+services:
+  traefik:
+    image: traefik:latest
+    security_opt:
+      - no-new-privileges:true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=512m
+    restart: unless-stopped
+    command:
+      - --api.dashboard=true
+      # Observability
+      - --log.level=DEBUG
+      - --accesslog=true
+      # Providers
+      - --providers.docker.network=proxy_network
+      - --providers.docker.exposedByDefault=false
+      # Attach tls.yaml file that contains the tls configuration settings
+      - --providers.file.directory=/etc/traefik/
+      # EntryPoints
+      - --entrypoints.web.address=:80
+      - --entrypoints.web.http.redirections.entrypoint.to=websecure
+      - --entryPoints.web.http.redirections.entrypoint.scheme=https
+      - --entrypoints.websecure.address=:443
+      - --entrypoints.websecure.asDefault=true
+      - --entrypoints.websecure.http.tls=true
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /mnt/storage/appdata/traefik:/etc/traefik/
+    labels:
+      - traefik.enable=true
+      # Basic‑auth middleware
+      - traefik.http.middlewares.proxy-auth.basicauth.users=${TRAEFIK_USERS}
+      # Middleware that makes a service only accessible by local IPs
+      - traefik.http.middlewares.local-ip-allowlist.ipallowlist.sourceRange=127.0.0.1/32,192.168.0.0/16,10.0.0.0/8
+      # Traefik router
+      - traefik.http.routers.proxy.rule=Host(`proxytwo.test`)
+      - traefik.http.routers.proxy.service=api@internal
+      - traefik.http.routers.proxy.middlewares=proxy-auth@docker,local-ip-allowlist
+    networks:
+      - proxy_network
+
+networks:
+  proxy_network:
+    name: proxy_network
