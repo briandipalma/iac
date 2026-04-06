@@ -190,3 +190,15 @@ run_directory = "komodo/stacks/rpi4/wireguard"
 environment = """
 WIREGUARD_SERVERURL=[[WIREGUARD_SERVERURL]]
 """
+
+##
+
+[[resource_sync]]
+name = "GitHubSync"
+tags = ["Syncable"]
+[resource_sync.config]
+linked_repo = "iac"
+resource_path = ["komodo/resources/main.toml"]
+managed = true
+delete = true
+match_tags = ["Syncable"]
