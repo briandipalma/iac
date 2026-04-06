@@ -14,14 +14,14 @@ services:
     ## 🦎 https://github.com/moghtech/komodo/blob/main/config/periphery.config.toml 🦎
     environment:
       ## The address of Komodo Core to connect to.
-      PERIPHERY_CORE_ADDRESS: komodo.example.com
+      PERIPHERY_CORE_ADDRESS: 192.168.1.2:9120
       ## The name of the Komodo Server to connect as.
       ## Must match existing server.
-      PERIPHERY_CONNECT_AS: server-name
+      PERIPHERY_CONNECT_AS: rpi4
       ## Optional. Create a Server Onboarding Key in the Komodo UI.
       ## This allows Periphery to create a new Server in the UI with the above name,
       ## and can be ommitted once the Server exists in Komodo.
-      PERIPHERY_ONBOARDING_KEY: <your-onboarding-key>
+      PERIPHERY_ONBOARDING_KEY: "O_5FxT5KsI6zyf5uZs7LtUTlRofDoY_O"
       ## List of accepted Core public keys.
       ## File will be auto written if doesn't exist to match first Core it connects to.
       PERIPHERY_CORE_PUBLIC_KEYS: file:/config/keys/core.pub
