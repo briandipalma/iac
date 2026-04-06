@@ -1,0 +1,17 @@
+---
+services:
+  duckdns:
+    image: lscr.io/linuxserver/duckdns:latest
+    container_name: duckdns
+    read_only: true
+    tmpfs:
+      - /run:exec
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      - TZ=Europe/Dublin
+      - SUBDOMAINS=${DUCKDNS_SUBDOMAINS}
+      - TOKEN=${DUCKDNS_TOKEN}
+      - UPDATE_IP=ipv4 #optional
+      - LOG_FILE=false #optional
+    restart: unless-stopped
