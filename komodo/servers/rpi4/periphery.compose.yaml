@@ -43,7 +43,7 @@ services:
       # PERIPHERY_EXCLUDE_DISK_MOUNTS: /snap,/etc/repos
     volumes:
       ## Mount private key storage volume
-      - keys:/config/keys
+      - /mnt/storage/appdata/komodo/keys/:/config/keys
       ## Mount external docker socket
       - /var/run/docker.sock:/var/run/docker.sock
       ## Allow Periphery to see processes outside of container
@@ -57,6 +57,3 @@ services:
       # - /path/to/periphery.config.toml:/config/config.toml
       ## Optionally mount custom root CA certificate to trust
       # - /path/to/root_ca.crt:/usr/local/share/ca-certificates/root_ca.crt
-
-volumes:
-  keys:
