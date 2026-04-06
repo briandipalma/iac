@@ -14,7 +14,7 @@ services:
       - PEERS=briansPhone,briansLaptop
       - PEERDNS=192.168.1.2,192.168.1.3
       - INTERNAL_SUBNET=10.13.13.0
-      - LOG_CONFS=true #optional
+      - LOG_CONFS=true # optional
     volumes:
       - /mnt/storage/appdata/wireguard/config:/config
     ports:
