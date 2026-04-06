@@ -1,0 +1,31 @@
+---
+services:
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Dublin
+      - WEBUI_PORT=8088
+      - TORRENTING_PORT=6881
+    volumes:
+      - /mnt/storage/appdata/qbittorrent:/config
+      - /mnt/storage/data/torrents:/data/torrents
+    ports:
+      - 8088:8088
+      - 6881:6881
+      - 6881:6881/udp
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.qbittorrent.rule=Host(`torrents.test`)
+      - traefik.http.services.qbittorrent.loadbalancer.server.port=8088
+      - traefik.http.routers.qbittorrent.middlewares=local-ip-allowlist
+    networks:
+      - proxy_network
+
+networks:
+  proxy_network:
+    name: proxy_network
+    external: true
