@@ -107,6 +107,7 @@ local test_components = {
 		--     or
 		--     TypeError: Expected object not to have properties
 		errorformat = [[%E\\C%.%#Error: %m,]]
+			.. [[%E\\C%.%#FAILED %m,]]
 			-- The End of the multi-line error. It finds the line starting with "at UserContext" captures 
 			-- the real file path (%f), the line number (%l), and the column (%c). It uses %s to consume 
 			-- the rest of the line (the temp bundle path) and throw it away.
