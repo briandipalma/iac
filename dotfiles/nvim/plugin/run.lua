@@ -38,7 +38,7 @@ overseer.register_template({
 	desc = "Run pnpm list --fix for current file package",
 	condition = {
 		filetype = { "typescript", "typescriptreact" },
-		dir = "/home/briand/dev/m",
+		dir = "/home/briand/dev/mono",
 	},
 })
 
@@ -81,7 +81,7 @@ overseer.register_template({
 	desc = "Run pnpm type-check for current file package",
 	condition = {
 		filetype = { "typescript", "typescriptreact" },
-		dir = "/home/briand/dev/m",
+		dir = "/home/briand/dev/mono",
 	},
 })
 
@@ -164,7 +164,7 @@ overseer.register_template({
 	end,
 	condition = {
 		filetype = { "javascript", "typescript", "typescriptreact" },
-		dir = "/home/briand/dev/m",
+		dir = "/home/briand/dev/mono",
 	},
 })
 
