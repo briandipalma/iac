@@ -3,7 +3,7 @@ FROM docker.io/archlinux/archlinux:latest
 RUN pacman --sync --refresh
 
 # CLI utilities
-RUN pacman -Sq --noconfirm bat bottom dust fd ffmpeg fish fzf
+RUN pacman -Sq --noconfirm bat bottom chafa dust fd ffmpeg fish fzf
 RUN pacman -Sq --noconfirm git git-delta lazygit
 RUN pacman -Sq --noconfirm lsd neovim opencode poppler ripgrep starship
 RUN pacman -Sq --noconfirm tealdeer yazi

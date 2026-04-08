@@ -7,6 +7,15 @@ local xml = require("my-config/utils").xml
 
 ---- FzfLua
 FzfLua.setup({
+	previewers = {
+		builtin = {
+			extensions = {
+				["jpg"] = { "chafa" },
+				["png"] = { "chafa" },
+				["svg"] = { "chafa" },
+			},
+		},
+	},
 	ui_select = true, -- Register fzf-lua as the UI interface for `vim.ui.select`
 	winopts = { -- Portrait mode layout
 		height = 0.9,
