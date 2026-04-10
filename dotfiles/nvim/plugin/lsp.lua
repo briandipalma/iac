@@ -20,8 +20,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 ----
 
 ---- Keymaps
-nml("il", "<Cmd>LspInfo<CR>", { desc = "LSP info" })
-nml("iL", "<Cmd>LspLog<CR>", { desc = "LSP log" })
+nml("il", "<Cmd>checkhealth vim.lsp<CR>", { desc = "LSP checkhealth" })
+nml("iL", function()
+	vim.cmd("tabnew " .. vim.lsp.log.get_filename())
+end, { desc = "LSP log" })
 
 nml("cm", "<Cmd>Mason<CR>", { desc = "Mason" })
 ----

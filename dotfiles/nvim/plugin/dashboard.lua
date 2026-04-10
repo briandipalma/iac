@@ -15,6 +15,8 @@ starter.setup({
 		new_section("Session restore", [[lua require("persistence").load()]], "Session"),
 		new_section("New file", "ene | startinsert", "Built-in"),
 		new_section("Quit", "qa", "Built-in"),
-		new_section("Dependencies update", "DepsUpdate", "Dependencies"),
+		new_section("Dependencies update", function()
+			vim.pack.update()
+		end, "Dependencies"),
 	},
 })

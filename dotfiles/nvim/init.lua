@@ -1,28 +1,4 @@
--- Clone 'mini.deps' in a way that it gets managed by 'mini.deps'
-local path_package = vim.fn.stdpath("data") .. "/site/"
-local mini_path = path_package .. "pack/deps/start/mini.deps"
-
-if not vim.loop.fs_stat(mini_path) then
-	vim.cmd('echo "Installing [`mini.deps`](../doc/mini.deps.qmd#mini.deps)" | redraw')
-
-	local clone_cmd = {
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/nvim-mini/mini.deps",
-		mini_path,
-	}
-
-	vim.fn.system(clone_cmd)
-	vim.cmd("packadd mini.deps | helptags ALL")
-	vim.cmd('echo "Installed [`mini.deps`](../doc/mini.deps.qmd#mini.deps)" | redraw')
-end
-
-local MiniDeps = require("mini.deps")
-
-MiniDeps.setup()
-
----- Options, some of these should be default in Neovim
+---- Options
 -- General ====================================================================
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = " " -- Use `<Space>` as <Leader> key
@@ -54,7 +30,7 @@ vim.o.updatetime = 200 -- Save swap file and trigger CursorHold
 vim.o.winborder = "rounded" -- Use rounded borders on all floating windows
 ----
 
----- Keymaps, again some should be default in Neovim
+---- Keymaps
 -- Move to window using the <ctrl> hjkl keys
 -- The default mappings are useless apart from `C-l` but window movement is far most useful
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window" }) -- Default `C-h` is just `h`
@@ -83,54 +59,61 @@ vim.keymap.set("n", "<esc>", function()
 end, { expr = true, desc = "Clear hlsearch and Escape" })
 ----
 
-MiniDeps.add("MagicDuck/grug-far.nvim")
-MiniDeps.add("b0o/schemastore.nvim")
-MiniDeps.add("folke/flash.nvim")
-MiniDeps.add("folke/persistence.nvim")
-MiniDeps.add("folke/snacks.nvim")
-MiniDeps.add("folke/ts-comments.nvim")
-MiniDeps.add("folke/which-key.nvim")
-MiniDeps.add("gbprod/yanky.nvim")
-MiniDeps.add("jiaoshijie/undotree")
-MiniDeps.add("lewis6991/gitsigns.nvim")
-MiniDeps.add("mason-org/mason.nvim")
-MiniDeps.add("mfussenegger/nvim-lint")
-MiniDeps.add("mfussenegger/nvim-dap")
-MiniDeps.add("neovim/nvim-lspconfig")
-MiniDeps.add("nvim-mini/mini-git")
-MiniDeps.add("nvim-mini/mini.ai")
-MiniDeps.add("nvim-mini/mini.files")
-MiniDeps.add("nvim-mini/mini.hipatterns")
-MiniDeps.add("nvim-mini/mini.indentscope")
-MiniDeps.add("nvim-mini/mini.move")
-MiniDeps.add("nvim-mini/mini.pairs")
-MiniDeps.add("nvim-mini/mini.starter")
-MiniDeps.add("nvim-mini/mini.surround")
-MiniDeps.add("nvim-mini/mini.tabline")
-MiniDeps.add("nvim-tree/nvim-web-devicons")
-MiniDeps.add("nvim-treesitter/nvim-treesitter-context")
-MiniDeps.add("rachartier/tiny-glimmer.nvim")
-MiniDeps.add("rachartier/tiny-inline-diagnostic.nvim")
-MiniDeps.add("rose-pine/neovim")
-MiniDeps.add("stevearc/conform.nvim")
-MiniDeps.add("stevearc/overseer.nvim")
-MiniDeps.add("windwp/nvim-ts-autotag")
-MiniDeps.add({ source = "OXY2DEV/markview.nvim" })
-MiniDeps.add({ source = "esmuellert/codediff.nvim" })
-MiniDeps.add({ source = "folke/noice.nvim", depends = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" } })
-MiniDeps.add({ source = "ibhagwan/fzf-lua", depends = { "nvim-tree/nvim-web-devicons" } })
-MiniDeps.add({
-	source = "nvim-treesitter/nvim-treesitter",
-	hooks = {
-		post_checkout = function()
+vim.api.nvim_create_autocmd("PackChanged", {
+	callback = function(ev)
+		local name, kind = ev.data.spec.name, ev.data.kind
+		if name == "nvim-treesitter" and kind == "update" then
+			if not ev.data.active then
+				vim.cmd.packadd("nvim-treesitter")
+			end
 			vim.cmd("TSUpdate")
-		end,
-	},
+		end
+	end,
 })
-MiniDeps.add({
-	source = "saghen/blink.cmp",
-	depends = { "rafamadriz/friendly-snippets" },
-	checkout = "v1.10.2", -- use a release tag to download binaries check releases for latest tag
+
+vim.pack.add({
+	"https://github.com/MagicDuck/grug-far.nvim",
+	"https://github.com/MunifTanjim/nui.nvim",
+	"https://github.com/OXY2DEV/markview.nvim",
+	"https://github.com/b0o/SchemaStore.nvim",
+	"https://github.com/esmuellert/codediff.nvim",
+	"https://github.com/folke/flash.nvim",
+	"https://github.com/folke/noice.nvim",
+	"https://github.com/folke/persistence.nvim",
+	"https://github.com/folke/snacks.nvim",
+	"https://github.com/folke/ts-comments.nvim",
+	"https://github.com/folke/which-key.nvim",
+	"https://github.com/gbprod/yanky.nvim",
+	"https://github.com/ibhagwan/fzf-lua",
+	"https://github.com/jiaoshijie/undotree",
+	"https://github.com/lewis6991/gitsigns.nvim",
+	"https://github.com/mason-org/mason.nvim",
+	"https://github.com/mfussenegger/nvim-dap",
+	"https://github.com/mfussenegger/nvim-lint",
+	"https://github.com/neovim/nvim-lspconfig",
+	"https://github.com/nvim-mini/mini-git",
+	"https://github.com/nvim-mini/mini.ai",
+	"https://github.com/nvim-mini/mini.files",
+	"https://github.com/nvim-mini/mini.hipatterns",
+	"https://github.com/nvim-mini/mini.indentscope",
+	"https://github.com/nvim-mini/mini.move",
+	"https://github.com/nvim-mini/mini.pairs",
+	"https://github.com/nvim-mini/mini.starter",
+	"https://github.com/nvim-mini/mini.surround",
+	"https://github.com/nvim-mini/mini.tabline",
+	"https://github.com/nvim-tree/nvim-web-devicons",
+	"https://github.com/nvim-tree/nvim-web-devicons",
+	"https://github.com/nvim-treesitter/nvim-treesitter",
+	"https://github.com/nvim-treesitter/nvim-treesitter-context",
+	"https://github.com/rachartier/tiny-glimmer.nvim",
+	"https://github.com/rachartier/tiny-inline-diagnostic.nvim",
+	"https://github.com/rafamadriz/friendly-snippets",
+	"https://github.com/rcarriga/nvim-notify",
+	"https://github.com/rose-pine/neovim",
+	"https://github.com/stevearc/conform.nvim",
+	"https://github.com/stevearc/overseer.nvim",
+	"https://github.com/windwp/nvim-ts-autotag",
+	{ src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.x") },
 })
 
 vim.cmd("colorscheme rose-pine")
@@ -145,6 +128,7 @@ require("mini.tabline").setup()
 require("nvim-ts-autotag").setup()
 require("nvim-web-devicons").setup()
 require("persistence").setup()
+require("snacks").setup()
 require("tiny-glimmer").setup()
 require("ts-comments").setup()
 require("yanky").setup()
