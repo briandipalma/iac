@@ -85,7 +85,6 @@ vim.pack.add({
 	"https://github.com/folke/which-key.nvim",
 	"https://github.com/gbprod/yanky.nvim",
 	"https://github.com/ibhagwan/fzf-lua",
-	"https://github.com/jiaoshijie/undotree",
 	"https://github.com/lewis6991/gitsigns.nvim",
 	"https://github.com/mason-org/mason.nvim",
 	"https://github.com/mfussenegger/nvim-dap",

@@ -58,7 +58,8 @@ vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)")
 ----
 
 ---- Undotree
-nml("U", "<cmd>lua require('undotree').toggle()<cr>", { desc = "Undotree toggle" })
+vim.cmd("packadd nvim.undotree")
+nml("U", require("undotree").open, { desc = "Undotree toggle" })
 ----
 
 ---- Utility
