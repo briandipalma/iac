@@ -31,10 +31,25 @@ local function git()
 end
 ---
 
+--- LSP status
+local function lsp()
+	local clients = vim.lsp.get_clients({ bufnr = vim.api.nvim_get_current_buf() })
+	local texts = {}
+
+	for _, server in pairs(clients) do
+		local status = server.name .. " " .. tostring(server.initialized)
+
+		table.insert(texts, status)
+	end
+
+	return table.concat(texts, " ")
+end
+---
+
 --- macro recording info
 local function recording()
 	if vim.fn.reg_recording() ~= "" then
-		return "%#ErrorMsg#Recording @" .. vim.fn.reg_recording() .. "%* "
+		return "%#ErrorMsg#● Recording @" .. vim.fn.reg_recording() .. "%* "
 	else
 		return ""
 	end
@@ -89,7 +104,17 @@ MyStatusline = {}
 
 function MyStatusline.active()
 	-- `%P` shows the scroll percentage but says 'Bot', 'Top' and 'All' as well.
-	return "%#Question#" .. git() .. "%*%=" .. recording() .. ahead_behind .. "%=" .. "[%P %l:%c]"
+	return "%#Question#"
+		.. git()
+		.. " "
+		.. vim.diagnostic.status()
+		.. " "
+		.. lsp()
+		.. "%*%="
+		.. recording()
+		.. ahead_behind
+		.. "%="
+		.. "[%P %l:%c]"
 end
 ----
 
