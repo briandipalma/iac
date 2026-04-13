@@ -21,6 +21,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 vim.api.nvim_create_autocmd("LspProgress", {
 	callback = function(ev)
 		local value = ev.data.params.value
+
+		-- Filter out messages for opening TS/JS files
+		if value.title:match("Analyzing '(.-)' and its dependencies") then
+			return
+		end
+
 		vim.api.nvim_echo({ { value.message or "done" } }, false, {
 			id = "lsp." .. ev.data.params.token,
 			kind = "progress",
