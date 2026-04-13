@@ -57,7 +57,7 @@ gitsigns.setup({
 
 ---- codediff
 require("codediff").setup({
-	diff = { layout = "inline", disable_inlay_hints = false, ignore_trim_whitespace = true },
+	diff = { disable_inlay_hints = false, ignore_trim_whitespace = true },
 	explorer = { position = "bottom", initial_focus = "modified", view_mode = "tree" },
 	keymaps = {
 		view = {
