@@ -6,7 +6,23 @@ require("mini.indentscope").setup({ options = { try_as_border = true } })
 ----
 
 ---- ui2
-require("vim._core.ui2").enable({})
+require("vim._core.ui2").enable({ msg = { targets = { [""] = "msg", confirm = "dialog" } } })
+
+local ui2 = require("vim._core.ui2")
+local msgs = require("vim._core.ui2.messages")
+local orig_set_pos = msgs.set_pos
+
+msgs.set_pos = function(target)
+	orig_set_pos(target)
+
+	if (target == "msg" or target == nil) and vim.api.nvim_win_is_valid(ui2.wins.msg) then
+		vim.api.nvim_win_set_config(ui2.wins.msg, {
+			relative = "editor",
+			row = 1,
+			col = vim.o.columns - 1,
+		})
+	end
+end
 ----
 
 ---- tiny-cmdline
