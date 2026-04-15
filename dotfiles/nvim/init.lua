@@ -10,7 +10,6 @@ vim.g.loaded_ruby_provider = 0 -- Disable Ruby remote plugins support
 vim.o.autowriteall = true -- Enable auto write, so you can make a change and switch buffer without "E37: ..."
 vim.o.breakindentopt = "shift:2" -- Wrapped line's beginning will be shifted to emphasize line continuation
 vim.o.clipboard = "unnamedplus" -- Sync with system clipboard
-vim.o.cmdheight = 0 -- Hide the command line `ui2` is enabled so we have a centered command line instead
 vim.o.cursorline = true -- Enable current line highlighting
 vim.o.foldlevel = 10 -- Fold nothing by default; set to 0 or 1 to fold
 vim.o.hidden = false -- Unload abandoned buffers, removes `[No Name]` buffers

@@ -6,7 +6,7 @@ require("mini.indentscope").setup({ options = { try_as_border = true } })
 ----
 
 ---- ui2
-require("vim._core.ui2").enable({ msg = { targets = { [""] = "msg", confirm = "dialog" } } })
+require("vim._core.ui2").enable({ msg = { targets = { [""] = "cmd", confirm = "dialog" } } })
 
 local ui2 = require("vim._core.ui2")
 local msgs = require("vim._core.ui2.messages")
