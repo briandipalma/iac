@@ -2,3 +2,4 @@ dotfiles/kitty/host-session.conf
 dotfiles/lazygit/state.yml
 dotfiles/systemd/user/default.target.wants/
 .git-credentials
+komodo_db_pass.txt

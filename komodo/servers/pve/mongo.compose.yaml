@@ -21,7 +21,9 @@ services:
       - /mnt/storage/appdata/komodo/mongo_config:/data/configdb
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${KOMODO_DATABASE_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${KOMODO_DATABASE_PASSWORD}
+      MONGO_INITDB_ROOT_PASSWORD_FILE: ${KOMODO_DATABASE_PASSWORD_FILE}
+    secrets:
+      - komodo_db_pass
 
   core:
     image: ghcr.io/moghtech/komodo-core:${COMPOSE_KOMODO_IMAGE_TAG:-2}
@@ -45,6 +47,8 @@ services:
       # - /path/to/core.config.toml:/config/config.toml
       ## Optionally mount custom root CA certificate to trust
       # - /path/to/root_ca.crt:/usr/local/share/ca-certificates/root_ca.crt
+    secrets:
+      - komodo_db_pass
 
   ## Deploy Periphery container using this block,
   ## or deploy the Periphery binary with systemd using
@@ -73,3 +77,7 @@ services:
       # - /path/to/periphery.config.toml:/config/config.toml
       ## Optionally mount custom root CA certificate to trust
       # - /path/to/root_ca.crt:/usr/local/share/ca-certificates/root_ca.crt
+
+secrets:
+  komodo_db_pass:
+    file: ./komodo_db_pass.txt
