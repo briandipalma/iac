@@ -47,6 +47,7 @@ end, { desc = "Find recent files/buffers(cwd)" })
 nml("fF", "<Cmd>FzfLua files<CR>", { desc = "Find files (cwd)" })
 
 nml("lr", "<Cmd>FzfLua lsp_references<CR>", { desc = "Find LSP references" })
+nml("ld", "<Cmd>FzfLua diagnostics_document<CR>", { desc = "Show document diagnostics" })
 
 nml("pq", "<Cmd>FzfLua quickfix_stack<CR>", { desc = "Find quickfix list" })
 nml("pr", "<Cmd>FzfLua resume<CR>", { desc = "Resume last picker" })
