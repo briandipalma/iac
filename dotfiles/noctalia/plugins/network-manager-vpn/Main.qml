@@ -6,10 +6,15 @@ import qs.Services.UI
 QtObject {
     id: root
 
+    readonly property var pluginSettings: pluginApi?.pluginSettings ?? ({})
+
+    readonly property var toast: root.pluginSettings?.disableToastNotifications ? null : ToastService
+
     property var pluginApi: null
 
     property var vpnList: []
     property real connectedCount: 0
+    readonly property bool isLoading: Object.keys(root._pending).length > 0
 
     property var _pending: ({})
 
@@ -77,9 +82,11 @@ QtObject {
         command: ["nmcli", "connection", "up", "uuid", targetUuid]
         onExited: (exitCode) => {
             if (exitCode === 0)
-                ToastService.showNotice(t("toast.connectedTo", { name: targetName }))
-            else
-                ToastService.showError(t("toast.connectionError", { name: targetName }))
+                toast?.showNotice(t("toast.connectedTo", { name: targetName }))
+            else {
+                root.stopLoading(targetUuid)
+                toast?.showError(t("toast.connectionError", { name: targetName }))
+            }
             root.refresh()
         }
     }
@@ -90,9 +97,11 @@ QtObject {
         command: ["nmcli", "connection", "down", "uuid", targetUuid]
         onExited: (exitCode) => {
             if (exitCode === 0)
-                ToastService.showNotice(t("toast.disconnectedFrom", { name: targetName }))
-            else
-                ToastService.showError(t("toast.disconnectionError", { name: targetName }))
+                toast?.showNotice(t("toast.disconnectedFrom", { name: targetName }))
+            else {
+                root.stopLoading(targetUuid)
+                toast?.showError(t("toast.disconnectionError", { name: targetName }))
+            }
             root.refresh()
         }
     }
@@ -123,9 +132,9 @@ QtObject {
         command: ["nmcli", "connection", "delete", "uuid", targetUuid]
         onExited: (exitCode) => {
             if (exitCode === 0)
-                ToastService.showNotice(t("toast.vpnRemoved", { "name": targetName }));
+                toast?.showNotice(t("toast.vpnRemoved", { "name": targetName }));
             else
-                ToastService.showError(t("toast.vpnRemoveError", { "name": targetName }));
+                toast?.showError(t("toast.vpnRemoveError", { "name": targetName }));
             root.refresh();
         }
     }
@@ -139,6 +148,22 @@ QtObject {
 
     function refresh() {
         _listProc.running = true
+    }
+
+    function stopLoading(uuid) {
+        if (uuid && _pending[uuid]) {
+            const p = Object.assign({}, _pending)
+            delete p[uuid]
+            _pending = p
+        }
+
+        vpnList = vpnList.map(v => {
+            if (v.uuid !== uuid) {
+                return v
+            }
+
+            return Object.assign({}, v, { isLoading: false })
+        })
     }
 
     function connectTo(uuid) {

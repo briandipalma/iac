@@ -47,7 +47,7 @@ You can specify your custom Super key variable (e.g., $mainMod) in the plugin se
 Add to your config:
 ```kdl
 binds {
-    Mod+F1 { spawn "qs -c noctalia-shell ipc call plugin:keybind-cheatsheet toggle"; }
+    Mod+F1 { spawn-sh "qs -c noctalia-shell ipc call plugin:keybind-cheatsheet toggle"; }
 }
 ```
 

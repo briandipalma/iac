@@ -53,20 +53,20 @@ Item {
   function getUnsupportedCompositorMessage(compositor) {
     var messages = {
       "sway": {
-        short: pluginApi?.tr("keybind-cheatsheet.error.sway-not-supported") || "Sway is not yet supported",
-        detail: pluginApi?.tr("keybind-cheatsheet.error.sway-detail") || "Sway support may be added in a future update (similar format to Hyprland)"
+        short: pluginApi?.tr("error.sway-not-supported"),
+        detail: pluginApi?.tr("error.sway-detail")
       },
       "labwc": {
-        short: pluginApi?.tr("keybind-cheatsheet.error.labwc-not-supported") || "LabWC is not supported",
-        detail: pluginApi?.tr("keybind-cheatsheet.error.labwc-detail") || "LabWC uses XML config format which is incompatible with this plugin"
+        short: pluginApi?.tr("error.labwc-not-supported"),
+        detail: pluginApi?.tr("error.labwc-detail")
       },
       "mango": {
-        short: pluginApi?.tr("keybind-cheatsheet.error.mango-not-supported") || "MangoWC is not supported",
-        detail: pluginApi?.tr("keybind-cheatsheet.error.mango-detail") || "MangoWC config format is not compatible with this plugin"
+        short: pluginApi?.tr("error.mango-not-supported"),
+        detail: pluginApi?.tr("error.mango-detail")
       },
       "unknown": {
-        short: pluginApi?.tr("keybind-cheatsheet.error.unknown-compositor") || "Unknown compositor detected",
-        detail: pluginApi?.tr("keybind-cheatsheet.error.unknown-detail") || "This plugin only supports Hyprland and Niri compositors"
+        short: pluginApi?.tr("error.unknown-compositor"),
+        detail: pluginApi?.tr("error.unknown-detail")
       }
     };
 
@@ -144,7 +144,7 @@ Item {
 
       var unsupportedMsg = getUnsupportedCompositorMessage(compositorName);
       saveToDb([{
-        "title": pluginApi?.tr("keybind-cheatsheet.error.unsupported-compositor") || "Unsupported Compositor",
+        "title": pluginApi?.tr("error.unsupported-compositor"),
         "binds": [
           { "keys": compositorName.toUpperCase(), "desc": unsupportedMsg.short },
           { "keys": "INFO", "desc": unsupportedMsg.detail }
@@ -222,7 +222,7 @@ Item {
     // Handle glob patterns
     if (isGlobPattern(nextFile)) {
       niriGlobProcess.expandedFiles = []; // Clear previous results
-      niriGlobProcess.command = ["sh", "-c", "for f in " + nextFile + "; do [ -f \"$f\" ] && echo \"$f\"; done"];
+      niriGlobProcess.command = ["sh", "-c", 'for f in $1; do [ -f "$f" ] && echo "$f"; done', "sh", nextFile];
       niriGlobProcess.running = true;
       return;
     }
@@ -450,7 +450,7 @@ Item {
 
   function finalizeNiriBinds() {
     var categoryOrder = [
-      "Applications", "Window Management", "Column Navigation",
+      "Noctalia", "Applications", "Window Management", "Column Navigation",
       "Window Focus", "Workspace Navigation", "Workspace Management",
       "Move Columns", "Move Windows", "Column Management", "Column Width",
       "Window Size", "Screenshots", "Power", "System", "Animations"
@@ -499,7 +499,7 @@ Item {
     // Handle glob patterns
     if (isGlobPattern(nextFile)) {
       hyprGlobProcess.expandedFiles = []; // Clear previous results
-      hyprGlobProcess.command = ["sh", "-c", "for f in " + nextFile + "; do [ -f \"$f\" ] && echo \"$f\"; done"];
+      hyprGlobProcess.command = ["sh", "-c", 'for f in $1; do [ -f "$f" ] && echo "$f"; done', "sh", nextFile];
       hyprGlobProcess.running = true;
       return;
     }
@@ -588,7 +588,6 @@ Item {
     var currentCategory = null;
     var hasCategories = false; // Track if we found any category headers
 
-    // TUTAJ ZMIANA: Pobierz ustawioną zmienną (domyślnie $mod) i zamień na wielkie litery
     var modVar = pluginApi?.pluginSettings?.modKeyVariable || "$mod";
     var modVarUpper = modVar.toUpperCase();
 
@@ -608,7 +607,7 @@ Item {
       else if (line.includes("bind") && line.includes('#"')) {
         // If no categories found yet, create default category
         if (!currentCategory && !hasCategories) {
-          var defaultCategoryName = pluginApi?.tr("keybind-cheatsheet.default-category") || "Keybinds";
+          var defaultCategoryName = pluginApi?.tr("default-category");
           currentCategory = { "title": defaultCategoryName, "binds": [] };
         }
 
@@ -624,7 +623,6 @@ Item {
 
             // Build modifiers list properly
             var mods = [];
-            // TUTAJ ZMIANA: Sprawdzamy czy to ustawiony mod (np. $MAINMOD) albo SUPER
             if (modPart.includes(modVarUpper) || modPart.includes("SUPER")) mods.push("Super");
 
             if (modPart.includes("SHIFT")) mods.push("Shift");
@@ -655,123 +653,6 @@ Item {
     saveToDb(categories);
     isCurrentlyParsing = false;
     clearParsingData();
-  }
-
-  // ========== NIRI PARSER ==========
-  function parseNiriConfig(text) {
-    var lines = text.split('\n');
-    var inBindsBlock = false;
-    var braceDepth = 0;
-    var currentCategory = null;
-
-    var actionCategories = {
-      "spawn": "Applications",
-      "focus-column": "Column Navigation",
-      "focus-window": "Window Focus",
-      "focus-workspace": "Workspace Navigation",
-      "move-column": "Move Columns",
-      "move-window": "Move Windows",
-      "consume-window": "Window Management",
-      "expel-window": "Window Management",
-      "close-window": "Window Management",
-      "fullscreen-window": "Window Management",
-      "maximize-column": "Column Management",
-      "set-column-width": "Column Width",
-      "switch-preset-column-width": "Column Width",
-      "reset-window-height": "Window Size",
-      "screenshot": "Screenshots",
-      "power-off-monitors": "Power",
-      "quit": "System",
-      "toggle-animation": "Animations"
-    };
-
-    var categorizedBinds = {};
-
-    for (var i = 0; i < lines.length; i++) {
-      var line = lines[i].trim();
-
-      // Find binds block
-      if (line.startsWith("binds") && line.includes("{")) {
-        inBindsBlock = true;
-        braceDepth = 1;
-        continue;
-      }
-
-      if (!inBindsBlock) continue;
-
-      // Track brace depth
-      for (var j = 0; j < line.length; j++) {
-        if (line[j] === '{') braceDepth++;
-        else if (line[j] === '}') braceDepth--;
-      }
-
-      if (braceDepth <= 0) {
-        inBindsBlock = false;
-        break;
-      }
-
-      // Category markers: // #"Category Name" - only these create categories
-      if (line.startsWith("//")) {
-        var categoryMatch = line.match(/\/\/\s*#"([^"]+)"/);
-        if (categoryMatch) {
-          currentCategory = categoryMatch[1];
-        }
-        continue;
-      }
-
-      if (line.length === 0) continue;
-
-      // Parse: Mod+Key { action; }
-      var bindMatch = line.match(/^([A-Za-z0-9_+]+)\s*(?:[a-z\-]+=\S+\s*)*\{\s*([^}]+)\s*\}/);
-
-      if (bindMatch) {
-        var keyCombo = bindMatch[1];
-        var action = bindMatch[2].trim().replace(/;$/, '');
-
-        var formattedKeys = formatNiriKeyCombo(keyCombo);
-        var category = currentCategory || getNiriCategory(action, actionCategories);
-
-        if (!categorizedBinds[category]) {
-          categorizedBinds[category] = [];
-        }
-
-        categorizedBinds[category].push({
-          "keys": formattedKeys,
-          "desc": formatNiriAction(action)
-        });
-      }
-    }
-
-    // Convert to array
-    var categoryOrder = [
-      "Applications", "Window Management", "Column Navigation",
-      "Window Focus", "Workspace Navigation", "Move Columns",
-      "Move Windows", "Column Management", "Column Width",
-      "Window Size", "Screenshots", "Power", "System", "Animations"
-    ];
-
-    var categories = [];
-    for (var k = 0; k < categoryOrder.length; k++) {
-      var catName = categoryOrder[k];
-      if (categorizedBinds[catName] && categorizedBinds[catName].length > 0) {
-        categories.push({
-          "title": catName,
-          "binds": categorizedBinds[catName]
-        });
-      }
-    }
-
-    // Add remaining categories
-    for (var cat in categorizedBinds) {
-      if (categoryOrder.indexOf(cat) === -1 && categorizedBinds[cat].length > 0) {
-        categories.push({
-          "title": cat,
-          "binds": categorizedBinds[cat]
-        });
-      }
-    }
-
-    saveToDb(categories);
   }
 
   function formatSpecialKey(key) {
@@ -859,17 +740,89 @@ Item {
     return formattedParts.join(" + ");
   }
 
+  // Map Noctalia IPC target+function to human-readable descriptions
+  property var noctaliaIpcLabels: ({
+    "launcher toggle": "Launcher",
+    "launcher clipboard": "Clipboard History",
+    "launcher command": "Command Palette",
+    "launcher emoji": "Emoji Picker",
+    "launcher windows": "Window Switcher",
+    "launcher settings": "Launcher Settings",
+    "controlCenter toggle": "Control Center",
+    "settings toggle": "Settings",
+    "settings open": "Open Settings",
+    "sessionMenu toggle": "Session Menu",
+    "sessionMenu lock": "Lock & Session Menu",
+    "lockScreen lock": "Lock Screen",
+    "volume increase": "Volume Up",
+    "volume decrease": "Volume Down",
+    "volume muteOutput": "Mute Output",
+    "volume muteInput": "Mute Input",
+    "volume increaseInput": "Input Volume Up",
+    "volume decreaseInput": "Input Volume Down",
+    "brightness increase": "Brightness Up",
+    "brightness decrease": "Brightness Down",
+    "media playPause": "Play / Pause",
+    "media next": "Next Track",
+    "media previous": "Previous Track",
+    "media play": "Play",
+    "media pause": "Pause",
+    "media stop": "Stop",
+    "media toggle": "Media Panel",
+    "notifications toggleDND": "Do Not Disturb",
+    "notifications toggleHistory": "Notification History",
+    "notifications clear": "Clear Notifications",
+    "notifications dismissAll": "Dismiss All",
+    "wallpaper refresh": "Refresh Wallpaper",
+    "wallpaper toggle": "Wallpaper Panel",
+    "wallpaper toggleAutomation": "Toggle Wallpaper Automation",
+    "darkMode toggle": "Toggle Dark Mode",
+    "darkMode setDark": "Dark Mode",
+    "darkMode setLight": "Light Mode",
+    "nightLight toggle": "Toggle Night Light",
+    "dock toggle": "Toggle Dock",
+    "bar toggle": "Toggle Bar",
+    "desktopWidgets toggle": "Toggle Desktop Widgets",
+    "desktopWidgets edit": "Edit Desktop Widgets",
+    "calendar toggle": "Calendar",
+    "systemMonitor toggle": "System Monitor",
+    "idleInhibitor toggle": "Toggle Idle Inhibitor",
+    "monitors off": "Monitors Off",
+    "monitors on": "Monitors On",
+    "wifi toggle": "Toggle WiFi",
+    "bluetooth toggle": "Toggle Bluetooth",
+    "airplaneMode toggle": "Toggle Airplane Mode",
+    "powerProfile cycle": "Cycle Power Profile",
+    "battery togglePanel": "Battery Panel",
+    "network togglePanel": "Network Panel"
+  })
+
   function formatNiriAction(action) {
+    // Detect Noctalia IPC commands in two formats:
+    // 1. spawn-sh "qs -c noctalia-shell ipc call target function"
+    // 2. spawn "qs" "-c" "noctalia-shell" "ipc" "call" "target" "function"
+    if (action.indexOf("noctalia-shell") !== -1 && action.indexOf("ipc") !== -1) {
+      // Extract target and function from either format:
+      // spawn-sh: ipc call target function (words separated by spaces)
+      // spawn multi-arg: "ipc" "call" "target" "function" (words wrapped in quotes)
+      var ipcMatch = action.match(/ipc\s+call\s+(\w+)\s+(\w+)/) ||
+                     action.match(/"ipc"\s+"call"\s+"(\w+)"\s+"(\w+)"/);
+      if (ipcMatch) {
+        var ipcKey = ipcMatch[1] + " " + ipcMatch[2];
+        if (noctaliaIpcLabels[ipcKey]) {
+          return noctaliaIpcLabels[ipcKey];
+        }
+        // Fallback: format target + function nicely
+        return ipcMatch[1].replace(/([A-Z])/g, ' $1').trim() + ": " +
+               ipcMatch[2].replace(/([A-Z])/g, ' $1').trim();
+      }
+    }
+
     // Handle spawn and spawn-sh commands
     if (action.startsWith("spawn")) {
       var spawnMatch = action.match(/spawn(?:-sh)?\s+"([^"]+)"/);
       if (spawnMatch) {
         return "Run: " + spawnMatch[1];
-      }
-      // Handle spawn with multiple arguments: spawn "cmd" "arg1" "arg2"
-      var multiArgMatch = action.match(/spawn(?:-sh)?\s+"([^"]+)"/);
-      if (multiArgMatch) {
-        return "Run: " + multiArgMatch[1];
       }
       return action;
     }
@@ -878,6 +831,10 @@ Item {
   }
 
   function getNiriCategory(action, actionCategories) {
+    // Noctalia IPC commands get their own category
+    if (action.indexOf("noctalia-shell") !== -1 && action.indexOf("ipc") !== -1) {
+      return "Noctalia";
+    }
     for (var prefix in actionCategories) {
       if (action.startsWith(prefix)) {
         return actionCategories[prefix];

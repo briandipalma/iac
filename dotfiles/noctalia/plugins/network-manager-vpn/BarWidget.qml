@@ -15,20 +15,10 @@ Item {
     property string section: ""
     property int sectionWidgetIndex: -1
     property int sectionWidgetsCount: 0
-    readonly property var pluginSettings: {
-        return pluginApi && pluginApi.pluginSettings ? pluginApi.pluginSettings : {
-        };
-    }
-    readonly property var main: {
-        return pluginApi && pluginApi.mainInstance ? pluginApi.mainInstance : {
-        };
-    }
-    readonly property var tr: {
-        return pluginApi && pluginApi.tr ? pluginApi.tr : (key) => {
-            return key;
-        };
-    }
-    readonly property string screenName: screen && screen.name ? screen.name : ""
+    readonly property var pluginSettings: pluginApi?.pluginSettings ?? ({})
+    readonly property var main: pluginApi?.mainInstance ?? ({})
+    
+    readonly property string screenName: screen?.name ?? ""
     readonly property string barPosition: Settings.getBarPositionForScreen(screenName)
     readonly property bool isBarVertical: barPosition === "left" || barPosition === "right"
     readonly property real capsuleHeight: Style.getCapsuleHeightForScreen(screenName)
@@ -36,9 +26,9 @@ Item {
     readonly property string displayMode: root.pluginSettings.displayMode ?? "onhover"
     readonly property string connectedColor: root.pluginSettings.connectedColor
     readonly property string disconnectedColor: root.pluginSettings.disconnectedColor
-    readonly property var vpnList: root.main.vpnList ? root.main.vpnList : []
-    readonly property real connectedCount: root.main.connectedCount ? root.main.connectedCount : 0
-    readonly property bool isLoading: root.main.isLoading ? root.main.isLoading : false
+    readonly property var vpnList: root.main.vpnList ?? []
+    readonly property real connectedCount: root.main.connectedCount ?? 0
+    readonly property bool isLoading: root.main.isLoading ?? false
 
     implicitWidth: pill.width
     implicitHeight: pill.height
@@ -50,7 +40,7 @@ Item {
         id: contextMenu
 
         model: [{
-            "label": root.tr("settings.pluginSettings"),
+            "label": pluginApi?.tr("settings.pluginSettings"),
             "action": "plugin-settings",
             "icon": "settings"
         }]
@@ -69,7 +59,7 @@ Item {
         screen: root.screen
         oppositeDirection: BarService.getPillDirection(root)
         autoHide: false
-        text: root.connectedCount > 0 ? root.tr("common.connected") : root.tr("common.disconnected")
+        text: root.connectedCount > 0 ? pluginApi?.tr("common.connected") : pluginApi?.tr("common.disconnected")
         icon: root.isLoading ? "reload" : root.connectedCount > 0 ? "shield-lock" : "shield"
         onClicked: {
             if (pluginApi)
@@ -77,6 +67,8 @@ Item {
 
         }
         onRightClicked: {
+            if (pluginApi)
+                pluginApi.closePanel(root.screen);
             PanelService.showContextMenu(contextMenu, pill, screen);
         }
         customIconColor: Color.resolveColorKeyOptional(root.connectedCount > 0 ? root.connectedColor : root.disconnectedColor)

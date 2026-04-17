@@ -20,7 +20,9 @@
     "vpnConnections": "VPN Connections",
     "noVpnConnections": "No VPN connections configured.",
     "addVpn": "Add VPN",
-    "addWireguard": "Add WireGuard"
+    "addWireguard": "Add WireGuard",
+    "disableToastNotifications": "Disable toast notifications",
+    "disableToastNotificationsDescription": "Do not show toast notifications when a VPN connects or disconnects"
   },
   "common": {
     "vpn": "VPN",

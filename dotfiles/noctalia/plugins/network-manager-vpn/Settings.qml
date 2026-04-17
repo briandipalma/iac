@@ -9,26 +9,18 @@ ColumnLayout {
     id: root
 
     property var pluginApi: null
-    readonly property var pluginSettings: {
-        return pluginApi && pluginApi.pluginSettings ? pluginApi.pluginSettings : pluginApi && pluginApi.manifest && pluginApi.manifest.metadata && pluginApi.manifest.metadata.defaultSettings ? pluginApi.manifest.metadata.defaultSettings : {
-        };
-    }
-    readonly property var main: pluginApi && pluginApi.mainInstance ? pluginApi.mainInstance : null
+    readonly property var pluginSettings: pluginApi?.pluginSettings ?? pluginApi?.manifest?.metadata?.defaultSettings ?? ({})
+
+    readonly property var main: pluginApi?.mainInstance ?? null
     readonly property var vpnList: main ? main.vpnList : []
     // Local state
     property string editDisplayMode: root.pluginSettings.displayMode ?? ""
     property string editConnectedColor: root.pluginSettings.connectedColor ?? ""
     property string editDisconnectedColor: root.pluginSettings.disconnectedColor ?? ""
+    property bool disableToastNotifications: root.pluginSettings?.disableToastNotifications ?? false
 
     property string pendingDeleteUuid: ""
     property string pendingDeleteName: ""
-
-    function t(key: string, data) : string {
-        if (!pluginApi)
-            return "";
-
-        return pluginApi.tr(key, data);
-    }
 
     readonly property var displayModeModel: [{
         "key": "onhover",
@@ -45,6 +37,7 @@ ColumnLayout {
         pluginApi.pluginSettings.displayMode = root.editDisplayMode;
         pluginApi.pluginSettings.connectedColor = root.editConnectedColor;
         pluginApi.pluginSettings.disconnectedColor = root.editDisconnectedColor;
+        pluginApi.pluginSettings.disableToastNotifications = root.disableToastNotifications;
         pluginApi.saveSettings();
 
         Logger.i("NetworkManagerVpn", "Settings saved successfully");
@@ -62,8 +55,8 @@ ColumnLayout {
     }
 
     NColorChoice {
-        label: t("settings.connectedColor")
-        description: t("settings.connectedColorDescription")
+        label: pluginApi?.tr("settings.connectedColor")
+        description: pluginApi?.tr("settings.connectedColorDescription")
         currentKey: root.editConnectedColor
         onSelected: (key) => {
             root.editConnectedColor = key;
@@ -71,11 +64,21 @@ ColumnLayout {
     }
 
     NColorChoice {
-        label: t("settings.disconnectedColor")
-        description: t("settings.disconnectedColorDescription")
+        label: pluginApi?.tr("settings.disconnectedColor")
+        description: pluginApi?.tr("settings.disconnectedColorDescription")
         currentKey: root.editDisconnectedColor
         onSelected: (key) => {
             root.editDisconnectedColor = key;
+        }
+    }
+
+    NToggle {
+        Layout.fillWidth: true
+        label: pluginApi?.tr("settings.disableToastNotifications")
+        description: pluginApi?.tr("settings.disableToastNotificationsDescription")
+        checked: root.disableToastNotifications
+        onToggled: checked => {
+            root.disableToastNotifications = checked;
         }
     }
 
@@ -92,13 +95,13 @@ ColumnLayout {
             spacing: Style.marginM
 
             NLabel {
-                label: t("settings.vpnConnections")
+                label: pluginApi?.tr("settings.vpnConnections")
                 Layout.fillWidth: true
             }
 
             NText {
                 visible: root.vpnList.length === 0
-                text: t("settings.noVpnConnections")
+                text: pluginApi?.tr("settings.noVpnConnections")
                 pointSize: Style.fontSizeS
                 color: Color.mOnSurfaceVariant
                 Layout.leftMargin: Style.marginXS
@@ -162,7 +165,7 @@ ColumnLayout {
                             NIconButton {
                                 visible: !vpnRow.confirmingDelete
                                 icon: "edit"
-                                tooltipText: t("common.edit")
+                                tooltipText: pluginApi?.tr("common.edit")
                                 baseSize: Style.baseWidgetSize * 0.75
                                 onClicked: {
                                     main.editConnection(modelData.uuid);
@@ -173,7 +176,7 @@ ColumnLayout {
                             NIconButton {
                                 visible: !vpnRow.confirmingDelete
                                 icon: "trash-x"
-                                tooltipText: t("common.delete")
+                                tooltipText: pluginApi?.tr("common.delete")
                                 baseSize: Style.baseWidgetSize * 0.75
                                 onClicked: {
                                     root.pendingDeleteUuid = modelData.uuid;
@@ -183,7 +186,7 @@ ColumnLayout {
 
                             NButton {
                                 visible: vpnRow.confirmingDelete
-                                text: t("common.delete")
+                                text: pluginApi?.tr("common.delete")
                                 fontSize: Style.fontSizeXS
                                 backgroundColor: Color.mError
                                 outlined: false
@@ -196,7 +199,7 @@ ColumnLayout {
 
                             NButton {
                                 visible: vpnRow.confirmingDelete
-                                text: t("common.cancel")
+                                text: pluginApi?.tr("common.cancel")
                                 fontSize: Style.fontSizeXS
                                 outlined: true
                                 onClicked: {
@@ -223,7 +226,7 @@ ColumnLayout {
                 }
 
                 NButton {
-                    text: t("settings.addVpn")
+                    text: pluginApi?.tr("settings.addVpn")
                     icon: "add"
                     fontSize: Style.fontSizeS
                     outlined: true
@@ -234,7 +237,7 @@ ColumnLayout {
                 }
 
                 NButton {
-                    text: t("settings.addWireguard")
+                    text: pluginApi?.tr("settings.addWireguard")
                     icon: "add"
                     fontSize: Style.fontSizeS
                     outlined: true

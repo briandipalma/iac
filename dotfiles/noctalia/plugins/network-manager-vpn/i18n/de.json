@@ -20,7 +20,9 @@
     "vpnConnections": "VPN Verbindungen",
     "noVpnConnections": "Keine VPN Verbindungen konfiguriert",
     "addVpn": "VPN hinzufügen",
-    "addWireguard": "WireGuard hinzufügen"
+    "addWireguard": "WireGuard hinzufügen",
+    "disableToastNotifications": "Toast-Benachrichtigungen deaktivieren",
+    "disableToastNotificationsDescription": "Keine Toast-Benachrichtigungen anzeigen, wenn eine VPN-Verbindung hergestellt oder getrennt wird"
   },
   "common": {
     "vpn": "VPN",

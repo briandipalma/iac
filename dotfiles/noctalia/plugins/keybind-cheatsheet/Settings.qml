@@ -22,12 +22,12 @@ Item {
     repeat: false
     running: false
     onTriggered: {
-      // Find the Popup parent by walking up the tree
-      var obj = rootItem;
+      // Find the QML Popup ancestor (identified by the `modal` bool property
+      // which is unique to QML Popup and its subclasses) and set its width.
+      var obj = rootItem.parent;
       var depth = 0;
       while (obj && depth < 10) {
-        if (obj.toString().indexOf("Popup_QMLTYPE") !== -1 ||
-            obj.toString().indexOf("NPluginSettingsPopup") !== -1) {
+        if (typeof obj.modal === "boolean") {
           obj.width = 640; // 600px content + 2*20px padding
           break;
         }
@@ -62,22 +62,19 @@ Item {
   property var cfg: rootItem.pluginApi?.pluginSettings || ({})
   property var defaults: rootItem.pluginApi?.manifest?.metadata?.defaultSettings || ({})
 
-  // Settings values
-  property int windowWidth: cfg.windowWidth ?? defaults.windowWidth ?? 1400
-  property int windowHeight: cfg.windowHeight ?? defaults.windowHeight ?? 0
-  property bool autoHeight: cfg.autoHeight ?? defaults.autoHeight ?? true
-  property int columnCount: cfg.columnCount ?? defaults.columnCount ?? 3
-  // NOWA ZMIENNA TUTAJ:
-  property string modKeyVariable: cfg.modKeyVariable || defaults.modKeyVariable || "$mod"
-  property string hyprlandConfigPath: cfg.hyprlandConfigPath || defaults.hyprlandConfigPath || "~/.config/hypr/hyprland.conf"
-  property string niriConfigPath: cfg.niriConfigPath || defaults.niriConfigPath || "~/.config/niri/config.kdl"
-
-
+  // Edit-copy properties — initialized from saved settings, saved only in saveSettings()
+  property int editWindowWidth: cfg.windowWidth ?? defaults.windowWidth ?? 1400
+  property int editWindowHeight: cfg.windowHeight ?? defaults.windowHeight ?? 0
+  property bool editAutoHeight: cfg.autoHeight ?? defaults.autoHeight ?? true
+  property int editColumnCount: cfg.columnCount ?? defaults.columnCount ?? 3
+  property string editModKeyVariable: cfg.modKeyVariable || defaults.modKeyVariable || "$mod"
+  property string editHyprlandConfigPath: cfg.hyprlandConfigPath || defaults.hyprlandConfigPath || "~/.config/hypr/hyprland.conf"
+  property string editNiriConfigPath: cfg.niriConfigPath || defaults.niriConfigPath || "~/.config/niri/config.kdl"
 
   // Header
   NText {
     Layout.fillWidth: true
-    text: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.title") || "Keybind Cheatsheet Settings"
+    text: rootItem.pluginApi?.tr("settings.title")
     pointSize: Style.fontSizeXXL
     font.weight: Style.fontWeightBold
     color: Color.mOnSurface
@@ -85,8 +82,7 @@ Item {
 
   NText {
     Layout.fillWidth: true
-    text: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.description") ||
-      "Configure the appearance and keybind sources for the cheatsheet panel."
+    text: rootItem.pluginApi?.tr("settings.description")
     color: Color.mOnSurfaceVariant
     pointSize: Style.fontSizeM
     wrapMode: Text.WordWrap
@@ -105,8 +101,8 @@ Item {
       spacing: Style.marginS
 
       NText {
-    Layout.fillWidth: true
-        text: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.window-size") || "Window Size"
+        Layout.fillWidth: true
+        text: rootItem.pluginApi?.tr("settings.window-size")
         pointSize: Style.fontSizeL
         font.weight: Style.fontWeightBold
         color: Color.mOnSurface
@@ -117,7 +113,7 @@ Item {
         spacing: Style.marginM
 
         NText {
-          text: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.width") || "Width:"
+          text: rootItem.pluginApi?.tr("settings.width")
           color: Color.mOnSurface
           pointSize: Style.fontSizeM
           Layout.preferredWidth: 120
@@ -127,20 +123,18 @@ Item {
           id: widthInput
           Layout.preferredWidth: 100 * Style.uiScaleRatio
           Layout.preferredHeight: Style.baseWidgetSize
-          text: root.windowWidth.toString()
+          text: root.editWindowWidth.toString()
 
           onTextChanged: {
             var val = parseInt(text);
             if (!isNaN(val) && val >= 400 && val <= 3000) {
-              if (rootItem.pluginApi && rootItem.pluginApi.pluginSettings) {
-                rootItem.pluginApi.pluginSettings.windowWidth = val;
-              }
+              root.editWindowWidth = val;
             }
           }
         }
 
         NText {
-          text: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.width-range") || "px (400-3000)"
+          text: rootItem.pluginApi?.tr("settings.width-range")
           color: Color.mOnSurfaceVariant
           pointSize: Style.fontSizeS
         }
@@ -151,7 +145,7 @@ Item {
         spacing: Style.marginM
 
         NText {
-          text: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.height") || "Height:"
+          text: rootItem.pluginApi?.tr("settings.height")
           color: Color.mOnSurface
           pointSize: Style.fontSizeM
           Layout.preferredWidth: 120
@@ -159,13 +153,10 @@ Item {
 
         NToggle {
           id: autoHeightToggle
-          label: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.auto-height") || "Auto"
-          checked: root.autoHeight
+          label: rootItem.pluginApi?.tr("settings.auto-height")
+          checked: root.editAutoHeight
           onToggled: function(checked) {
-            root.autoHeight = checked;
-            if (rootItem.pluginApi && rootItem.pluginApi.pluginSettings) {
-              rootItem.pluginApi.pluginSettings.autoHeight = checked;
-            }
+            root.editAutoHeight = checked;
           }
         }
 
@@ -173,22 +164,20 @@ Item {
           id: heightInput
           Layout.preferredWidth: 100 * Style.uiScaleRatio
           Layout.preferredHeight: Style.baseWidgetSize
-          text: root.windowHeight > 0 ? root.windowHeight.toString() : "850"
+          text: root.editWindowHeight > 0 ? root.editWindowHeight.toString() : "850"
           enabled: !autoHeightToggle.checked
           opacity: enabled ? 1.0 : 0.5
 
           onTextChanged: {
             var val = parseInt(text);
             if (!isNaN(val) && val >= 300 && val <= 2000) {
-              if (rootItem.pluginApi && rootItem.pluginApi.pluginSettings) {
-                rootItem.pluginApi.pluginSettings.windowHeight = val;
-              }
+              root.editWindowHeight = val;
             }
           }
         }
 
         NText {
-          text: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.height-range") || "px (300-2000)"
+          text: rootItem.pluginApi?.tr("settings.height-range")
           color: Color.mOnSurfaceVariant
           pointSize: Style.fontSizeS
           opacity: autoHeightToggle.checked ? 0.5 : 1.0
@@ -196,9 +185,8 @@ Item {
       }
 
       NText {
-    Layout.fillWidth: true
-        text: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.auto-height-hint") ||
-          "When 'Auto' is enabled, height adjusts automatically based on content."
+        Layout.fillWidth: true
+        text: rootItem.pluginApi?.tr("settings.auto-height-hint")
         color: Color.mOnSurfaceVariant
         pointSize: Style.fontSizeS
         wrapMode: Text.WordWrap
@@ -219,8 +207,8 @@ Item {
       spacing: Style.marginS
 
       NText {
-    Layout.fillWidth: true
-        text: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.layout") || "Layout"
+        Layout.fillWidth: true
+        text: rootItem.pluginApi?.tr("settings.layout")
         pointSize: Style.fontSizeL
         font.weight: Style.fontWeightBold
         color: Color.mOnSurface
@@ -230,7 +218,7 @@ Item {
         spacing: Style.marginM
 
         NText {
-          text: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.columns") || "Number of columns:"
+          text: rootItem.pluginApi?.tr("settings.columns")
           color: Color.mOnSurface
           pointSize: Style.fontSizeM
         }
@@ -245,19 +233,16 @@ Item {
             ListElement { name: "3"; key: "3" }
             ListElement { name: "4"; key: "4" }
           }
-          currentKey: root.columnCount.toString()
+          currentKey: root.editColumnCount.toString()
           onSelected: key => {
-            if (rootItem.pluginApi && rootItem.pluginApi.pluginSettings) {
-              rootItem.pluginApi.pluginSettings.columnCount = parseInt(key);
-            }
+            root.editColumnCount = parseInt(key);
           }
         }
       }
 
       NText {
-    Layout.fillWidth: true
-        text: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.columns-hint") ||
-          "More columns work better with wider windows."
+        Layout.fillWidth: true
+        text: rootItem.pluginApi?.tr("settings.columns-hint")
         color: Color.mOnSurfaceVariant
         pointSize: Style.fontSizeS
         wrapMode: Text.WordWrap
@@ -278,62 +263,58 @@ Item {
       spacing: Style.marginM
 
       NText {
-    Layout.fillWidth: true
-        text: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.config-paths") || "Configuration Files"
+        Layout.fillWidth: true
+        text: rootItem.pluginApi?.tr("settings.config-paths")
         pointSize: Style.fontSizeL
         font.weight: Style.fontWeightBold
         color: Color.mOnSurface
       }
 
       NText {
-    Layout.fillWidth: true
-        text: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.config-paths-description") ||
-          "Specify custom paths and variables for your keybinds."
+        Layout.fillWidth: true
+        text: rootItem.pluginApi?.tr("settings.config-paths-description")
         color: Color.mOnSurfaceVariant
         pointSize: Style.fontSizeS
         wrapMode: Text.WordWrap
       }
 
-      // NOWA SEKCJA: Mod Variable Setting
+      // Mod key variable
       ColumnLayout {
         spacing: Style.marginXS
 
         RowLayout {
-            spacing: Style.marginS
-            NIcon {
-                icon: "keyboard"
-                pointSize: Style.fontSizeM
-                color: Color.mOnSurface
-            }
-            NText {
-                text: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.mod-var") || "Mod Key Variable"
-                color: Color.mOnSurface
-                pointSize: Style.fontSizeM
-                font.weight: Style.fontWeightBold
-            }
+          spacing: Style.marginS
+          NIcon {
+            icon: "keyboard"
+            pointSize: Style.fontSizeM
+            color: Color.mOnSurface
+          }
+          NText {
+            text: rootItem.pluginApi?.tr("settings.mod-var")
+            color: Color.mOnSurface
+            pointSize: Style.fontSizeM
+            font.weight: Style.fontWeightBold
+          }
         }
 
         NTextInput {
-            id: modVarInput
-            Layout.fillWidth: true
-            Layout.preferredHeight: Style.baseWidgetSize
-            text: root.modKeyVariable
-            placeholderText: "$mod"
+          id: modVarInput
+          Layout.fillWidth: true
+          Layout.preferredHeight: Style.baseWidgetSize
+          text: root.editModKeyVariable
+          placeholderText: "$mod"
 
-            onTextChanged: {
-                if (text.length > 0 && pluginApi && pluginApi.pluginSettings) {
-                    rootItem.pluginApi.pluginSettings.modKeyVariable = text;
-                }
-            }
+          onTextChanged: {
+            if (text.length > 0) root.editModKeyVariable = text;
+          }
         }
 
         NText {
-            Layout.fillWidth: true
-            text: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.mod-var-hint") ||
-                "The variable name used for your Super key (e.g., $mod or $mainMod)."
-            color: Color.mOnSurfaceVariant
-            pointSize: Style.fontSizeXS
-            wrapMode: Text.WordWrap
+          Layout.fillWidth: true
+          text: rootItem.pluginApi?.tr("settings.mod-var-hint")
+          color: Color.mOnSurfaceVariant
+          pointSize: Style.fontSizeXS
+          wrapMode: Text.WordWrap
         }
       }
 
@@ -355,7 +336,7 @@ Item {
             color: Color.mPrimary
           }
           NText {
-            text: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.hyprland-path") || "Hyprland Path"
+            text: rootItem.pluginApi?.tr("settings.hyprland-path")
             color: Color.mOnSurface
             pointSize: Style.fontSizeM
             font.weight: Style.fontWeightBold
@@ -366,20 +347,17 @@ Item {
           id: hyprlandPathInput
           Layout.fillWidth: true
           Layout.preferredHeight: Style.baseWidgetSize
-          text: root.hyprlandConfigPath
+          text: root.editHyprlandConfigPath
           placeholderText: "~/.config/hypr/hyprland.conf"
 
           onTextChanged: {
-            if (text.length > 0 && pluginApi && pluginApi.pluginSettings) {
-              rootItem.pluginApi.pluginSettings.hyprlandConfigPath = text;
-            }
+            if (text.length > 0) root.editHyprlandConfigPath = text;
           }
         }
 
         NText {
           Layout.fillWidth: true
-          text: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.hyprland-format-hint") ||
-            "Expected format: bind = $mod, KEY, action #\"description\"\nCategories: # 1. CATEGORY NAME"
+          text: rootItem.pluginApi?.tr("settings.hyprland-format-hint")
           color: Color.mOnSurfaceVariant
           pointSize: Style.fontSizeXS
           wrapMode: Text.WordWrap
@@ -404,7 +382,7 @@ Item {
             color: Color.mSecondary
           }
           NText {
-            text: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.niri-path") || "Niri Path"
+            text: rootItem.pluginApi?.tr("settings.niri-path")
             color: Color.mOnSurface
             pointSize: Style.fontSizeM
             font.weight: Style.fontWeightBold
@@ -415,20 +393,17 @@ Item {
           id: niriPathInput
           Layout.fillWidth: true
           Layout.preferredHeight: Style.baseWidgetSize
-          text: root.niriConfigPath
+          text: root.editNiriConfigPath
           placeholderText: "~/.config/niri/config.kdl"
 
           onTextChanged: {
-            if (text.length > 0 && pluginApi && pluginApi.pluginSettings) {
-              rootItem.pluginApi.pluginSettings.niriConfigPath = text;
-            }
+            if (text.length > 0) root.editNiriConfigPath = text;
           }
         }
 
         NText {
           Layout.fillWidth: true
-          text: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.niri-format-hint") ||
-            "The plugin will find and parse the 'binds { }' block automatically."
+          text: rootItem.pluginApi?.tr("settings.niri-format-hint")
           color: Color.mOnSurfaceVariant
           pointSize: Style.fontSizeXS
           wrapMode: Text.WordWrap
@@ -450,8 +425,8 @@ Item {
       spacing: Style.marginM
 
       NText {
-    Layout.fillWidth: true
-        text: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.actions") || "Actions"
+        Layout.fillWidth: true
+        text: rootItem.pluginApi?.tr("settings.actions")
         pointSize: Style.fontSizeL
         font.weight: Style.fontWeightBold
         color: Color.mOnSurface
@@ -461,48 +436,42 @@ Item {
         spacing: Style.marginM
 
         NButton {
-          text: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.refresh-keybinds") || "Refresh Keybinds"
+          text: rootItem.pluginApi?.tr("settings.refresh-keybinds")
           icon: "refresh"
           onClicked: {
             rootItem.pluginApi?.mainInstance?.refresh();
             ToastService.showNotice(
-              rootItem.pluginApi?.tr("keybind-cheatsheet.settings.refresh-message") ||
-              "Refreshing keybinds..."
+              rootItem.pluginApi?.tr("settings.refresh-message")
             );
           }
         }
 
         NButton {
-          text: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.reset-defaults") || "Reset to Defaults"
+          text: rootItem.pluginApi?.tr("settings.reset-defaults")
           icon: "rotate"
           onClicked: {
+            root.editWindowWidth = defaults.windowWidth || 1400;
+            root.editWindowHeight = defaults.windowHeight || 0;
+            root.editAutoHeight = defaults.autoHeight ?? true;
+            root.editColumnCount = defaults.columnCount || 3;
+            root.editModKeyVariable = defaults.modKeyVariable || "$mod";
+            root.editHyprlandConfigPath = defaults.hyprlandConfigPath || "~/.config/hypr/hyprland.conf";
+            root.editNiriConfigPath = defaults.niriConfigPath || "~/.config/niri/config.kdl";
+
+            widthInput.text = root.editWindowWidth.toString();
+            heightInput.text = "850";
+            modVarInput.text = root.editModKeyVariable;
+            hyprlandPathInput.text = root.editHyprlandConfigPath;
+            niriPathInput.text = root.editNiriConfigPath;
+
             if (rootItem.pluginApi && rootItem.pluginApi.pluginSettings) {
-              rootItem.pluginApi.pluginSettings.windowWidth = defaults.windowWidth || 1400;
-              rootItem.pluginApi.pluginSettings.windowHeight = defaults.windowHeight || 0;
-              rootItem.pluginApi.pluginSettings.autoHeight = defaults.autoHeight ?? true;
-              rootItem.pluginApi.pluginSettings.columnCount = defaults.columnCount || 3;
-              // RESET DLA NOWEJ ZMIENNEJ:
-              rootItem.pluginApi.pluginSettings.modKeyVariable = defaults.modKeyVariable || "$mod";
-              rootItem.pluginApi.pluginSettings.hyprlandConfigPath = defaults.hyprlandConfigPath || "~/.config/hypr/hyprland.conf";
-              rootItem.pluginApi.pluginSettings.niriConfigPath = defaults.niriConfigPath || "~/.config/niri/config.kdl";
               rootItem.pluginApi.pluginSettings.cheatsheetData = [];
               rootItem.pluginApi.saveSettings();
-
-              // Update UI
-              widthInput.text = (defaults.windowWidth || 1400).toString();
-              heightInput.text = "850";
-              autoHeightToggle.checked = true;
-              columnCombo.currentKey = "3";
-              // AKTUALIZACJA UI DLA NOWEJ ZMIENNEJ:
-              modVarInput.text = defaults.modKeyVariable || "$mod";
-              hyprlandPathInput.text = defaults.hyprlandConfigPath || "~/.config/hypr/hyprland.conf";
-              niriPathInput.text = defaults.niriConfigPath || "~/.config/niri/config.kdl";
-
-              ToastService.showNotice(
-                rootItem.pluginApi?.tr("keybind-cheatsheet.settings.reset-message") ||
-                "Settings have been reset to defaults."
-              );
             }
+
+            ToastService.showNotice(
+              rootItem.pluginApi?.tr("settings.reset-message")
+            );
           }
         }
       }
@@ -522,17 +491,16 @@ Item {
       spacing: Style.marginS
 
       NText {
-    Layout.fillWidth: true
-        text: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.keybind-setup") || "Keybind Setup"
+        Layout.fillWidth: true
+        text: rootItem.pluginApi?.tr("settings.keybind-setup")
         pointSize: Style.fontSizeL
         font.weight: Style.fontWeightBold
         color: Color.mOnSurface
       }
 
       NText {
-    Layout.fillWidth: true
-        text: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.keybind-setup-description") ||
-          "To open the cheatsheet with a keyboard shortcut, add this bind to your compositor config:"
+        Layout.fillWidth: true
+        text: rootItem.pluginApi?.tr("settings.keybind-setup-description")
         color: Color.mOnSurfaceVariant
         pointSize: Style.fontSizeS
         wrapMode: Text.WordWrap
@@ -558,8 +526,7 @@ Item {
 
       NText {
         Layout.fillWidth: true
-        text: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.keybind-example-hyprland") ||
-          "Hyprland example: bind = $mod, F1, exec, qs -c \"noctalia-shell\" ipc call plugin:keybind-cheatsheet toggle"
+        text: rootItem.pluginApi?.tr("settings.keybind-example-hyprland")
         color: Color.mOnSurfaceVariant
         pointSize: Style.fontSizeXS
         wrapMode: Text.WordWrap
@@ -567,8 +534,7 @@ Item {
 
       NText {
         Layout.fillWidth: true
-        text: rootItem.pluginApi?.tr("keybind-cheatsheet.settings.keybind-example-niri") ||
-          "Niri example: Super+F1 { spawn \"qs\" \"-c\" \"noctalia-shell\" \"ipc\" \"call\" \"plugin:keybind-cheatsheet\" \"toggle\"; }"
+        text: rootItem.pluginApi?.tr("settings.keybind-example-niri")
         color: Color.mOnSurfaceVariant
         pointSize: Style.fontSizeXS
         wrapMode: Text.WordWrap
@@ -580,14 +546,22 @@ Item {
   Item {
     Layout.preferredHeight: Style.marginL
   }
-  // Save function called by settings dialog
+
+  }  // end ColumnLayout
+
+  // Save function on rootItem so the shell can call component.saveSettings()
   function saveSettings() {
-    if (!rootItem.pluginApi) return;
-    rootItem.pluginApi.saveSettings();
+    if (!pluginApi) return;
+    pluginApi.pluginSettings.windowWidth = root.editWindowWidth;
+    pluginApi.pluginSettings.windowHeight = root.editWindowHeight;
+    pluginApi.pluginSettings.autoHeight = root.editAutoHeight;
+    pluginApi.pluginSettings.columnCount = root.editColumnCount;
+    pluginApi.pluginSettings.modKeyVariable = root.editModKeyVariable;
+    pluginApi.pluginSettings.hyprlandConfigPath = root.editHyprlandConfigPath;
+    pluginApi.pluginSettings.niriConfigPath = root.editNiriConfigPath;
+    pluginApi.saveSettings();
     ToastService.showNotice(
-      rootItem.pluginApi?.tr("keybind-cheatsheet.settings.saved") ||
-      "Settings saved successfully."
+      pluginApi?.tr("settings.saved")
     );
-  }
   }
 }

@@ -1,11 +1,13 @@
 {
   "id": "keybind-cheatsheet",
   "name": "Keybind Cheatsheet",
-  "version": "3.2.4",
+  "version": "3.4.0",
   "minNoctaliaVersion": "3.6.0",
   "author": "blacku",
   "license": "MIT",
+  "repository": "https://github.com/noctalia-dev/noctalia-plugins",
   "description": "Universal keyboard shortcuts keymap that automatically detects and displays keybindings for Hyprland or Niri compositors.",
+  "tags": ["Bar", "Panel", "System", "Indicator"],
   "entryPoints": {
     "main": "Main.qml",
     "barWidget": "BarWidget.qml",
