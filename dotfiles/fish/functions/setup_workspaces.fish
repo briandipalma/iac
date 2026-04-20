@@ -2,7 +2,7 @@
 
 # --- 1. Move Slack to Workspace 2 ---
 # We fetch the ID for Slack and move it specifically to index 2
-set slack_id (niri msg -j windows | jq -r '.[] | select(.app_id == "Slack" or .app_id == "slack") | .id' | head -n 1)
+set slack_id (niri msg -j windows | jq -r '.[] | select(.app_id == "com.slack.Slack") | .id' | head -n 1)
 
 if test -n "$slack_id"
     echo "Moving Slack (ID: $slack_id) to workspace 2..."
