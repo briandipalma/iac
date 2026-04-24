@@ -1,0 +1,9 @@
+# 1. Ignore everything
+*
+
+# 2. But do not ignore the .gitignore file itself
+!.gitignore
+
+# 3. Allow specific files
+!settings.json
+!trustedFolders.json

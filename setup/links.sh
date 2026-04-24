@@ -8,6 +8,7 @@ ln -sf ~/dev/iac/dotfiles/bat ~/.config/
 ln -sf ~/dev/iac/dotfiles/bottom ~/.config/
 rm -rf ~/.config/fish
 ln -sf ~/dev/iac/dotfiles/fish ~/.config/
+ln -sf ~/dev/iac/dotfiles/.gemini ~/
 ln -sf ~/dev/iac/dotfiles/git ~/.config/
 ln -sf ~/dev/iac/dotfiles/kitty ~/.config/
 ln -sf ~/dev/iac/dotfiles/lazygit ~/.config/

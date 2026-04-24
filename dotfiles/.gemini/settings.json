@@ -1,0 +1,12 @@
+{
+  "general": {
+    "defaultApprovalMode": "auto_edit"
+  },
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    },
+    "autoAddToPolicyByDefault": true,
+    "enablePermanentToolApproval": true
+  }
+}
