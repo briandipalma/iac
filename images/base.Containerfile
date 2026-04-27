@@ -17,7 +17,7 @@ RUN pacman -Sq --noconfirm gcc tree-sitter-cli
 RUN pacman -Sq --noconfirm wl-clipboard
 
 # mason.nvim uses npm to update language-servers
-RUN pacman -Sq --noconfirm nodejs-lts-iron npm
+RUN pacman -Sq --noconfirm nodejs-lts-krypton npm
 # Used by ltex-plus
 RUN pacman -Sq --noconfirm jdk21-openjdk
 

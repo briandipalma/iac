@@ -3,6 +3,7 @@ FROM docker.io/briandipalma/base:latest
 # Web app development
 RUN pacman -Sq --noconfirm chromium gitlab-ci-ls
 RUN npm install -g pnpm@10.28.0
+RUN npm install -g @google/gemini-cli
 
 # Required by karma chrome launcher
 ENV CHROME_BIN=/usr/sbin/chromium
