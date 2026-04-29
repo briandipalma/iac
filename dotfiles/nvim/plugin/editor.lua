@@ -57,6 +57,10 @@ vim.keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
 vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)")
 ----
 
+----
+vim.cmd("packadd nvim.difftool")
+----
+
 ---- Undotree
 vim.cmd("packadd nvim.undotree")
 nml("U", require("undotree").open, { desc = "Undotree toggle" })
