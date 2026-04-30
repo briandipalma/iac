@@ -1,7 +1,7 @@
 {
   "plugins": {
     "SchemaStore.nvim": {
-      "rev": "20d4e9970798123e6197acb1c85c4b1e897efd29",
+      "rev": "8092a4212b66b4ff2c392080ff4186ff0b7d4945",
       "src": "https://github.com/b0o/SchemaStore.nvim"
     },
     "blink.cmp": {
@@ -26,7 +26,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
-      "rev": "2e29d5f233defe3c5587df0e4dd29af2bd95a5a7",
+      "rev": "b437bafc981a180d609bb4092c56ce8999f7a2c4",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
@@ -38,7 +38,7 @@
       "src": "https://github.com/MagicDuck/grug-far.nvim"
     },
     "markview.nvim": {
-      "rev": "86cf4bcede58e88497f7e5214efb281d4a6f633d",
+      "rev": "e3829d35674fa0537ed2a3aceffb6f79b412d52b",
       "src": "https://github.com/OXY2DEV/markview.nvim"
     },
     "mason.nvim": {
@@ -86,7 +86,7 @@
       "src": "https://github.com/nvim-mini/mini.tabline"
     },
     "neovim": {
-      "rev": "9504524e5ed0e326534698f637f9d038ba4cd0ee",
+      "rev": "6a961effd67f6130d36df6d1c05c48c739796dd2",
       "src": "https://github.com/rose-pine/neovim"
     },
     "nui.nvim": {
@@ -102,7 +102,7 @@
       "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "bf5abe69c1874531f359a822d0cff4d73e26113f",
+      "rev": "f7e89f3d19fb436e1fbeff3bf4291eef35da94e3",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-notify": {
