@@ -6,5 +6,33 @@
 
     layer-rule {
         match namespace="^noctalia-wallpaper*"
+
         place-within-backdrop true
+    }
+
+    layer-rule {
+        match namespace="^noctalia-(background|launcher-overlay|dock)-.*$"
+
+        background-effect {
+            blur true
+            xray false
+        }
+    }
+
+    window-rule {
+        match app-id="vicinae"
+
+        background-effect {
+            blur true
+            xray false
+        }
+    }
+
+    layer-rule {
+        match namespace="vicinae"
+
+        background-effect {
+            blur true
+            xray false
+        }
     }
