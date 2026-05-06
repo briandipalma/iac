@@ -13,4 +13,4 @@ services:
       - /mnt/storage/data/pictures/:/data
     ports:
       - 5572:5572
-    command: rcd --rc-web-gui --rc-addr :5572 --rc-user admin --rc-pass yourpassword --rc-serve
+    command: rcd --rc-web-gui --rc-web-gui-no-open-browser --rc-addr :5572 --rc-user admin --rc-pass yourpassword --rc-serve
