@@ -10,7 +10,7 @@ services:
       - PGID=1000
     volumes:
       - /mnt/storage/appdata/rclone:/config/rclone
-      - /mnt/storage/data/pictures/:/data
+      - /mnt/storage/data/pictures/:/data/pictures
     ports:
       - 5572:5572
     command: rcd --rc-web-gui --rc-web-gui-no-open-browser --rc-addr :5572 --rc-user admin --rc-pass yourpassword --rc-serve
