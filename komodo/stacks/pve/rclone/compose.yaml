@@ -5,7 +5,7 @@ services:
     container_name: rclone
     restart: unless-stopped
     environment:
-      - PHP_TZ=Europe/Dublin
+      - TZ=Europe/Dublin
       - PUID=1000
       - PGID=1000
     volumes:
