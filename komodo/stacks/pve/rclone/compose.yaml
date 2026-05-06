@@ -1,16 +1,16 @@
-## Add your compose file here
+---
 services:
-  hello_world:
-    image: hello-world
-    # networks:
-    #   - default
-    # ports:
-    #   - 3000:3000
-    # volumes:
-    #   - data:/data
-
-# networks:
-#   default: {}
-
-# volumes:
-#   data:
+  rclone:
+    image: rclone/rclone:latest
+    container_name: rclone
+    restart: unless-stopped
+    environment:
+      - PHP_TZ=Europe/Dublin
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - /mnt/storage/appdata/rclone:/config/rclone
+      - /mnt/storage/data/pictures/:/data
+    ports:
+      - 5572:5572
+    command: rcd --rc-web-gui --rc-addr :5572 --rc-user admin --rc-pass yourpassword --rc-serve
