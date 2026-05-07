@@ -131,6 +131,17 @@ run_directory = "komodo/stacks/pve/qbittorrent"
 ##
 
 [[stack]]
+name = "rclone-one"
+tags = ["Syncable"]
+[stack.config]
+server = "PVE"
+poll_for_updates = true
+linked_repo = "iac"
+run_directory = "komodo/stacks/pve/rclone"
+
+##
+
+[[stack]]
 name = "samba"
 tags = ["Syncable"]
 [stack.config]
