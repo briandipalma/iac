@@ -1,7 +1,7 @@
 {
   "plugins": {
     "SchemaStore.nvim": {
-      "rev": "7127911cc824a1d2f600492edd9667b476cf3eda",
+      "rev": "950e45a2e49ab9355f7ed87e426ae2b9047eca53",
       "src": "https://github.com/b0o/SchemaStore.nvim"
     },
     "blink.cmp": {
@@ -26,7 +26,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
-      "rev": "44816af2465bb0a17ae0f1f2d8a4f9c3df524fcd",
+      "rev": "97376e364f51f1b5ae3efaa3eb2e929430ca8419",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
