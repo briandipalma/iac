@@ -48,6 +48,9 @@ binds {
     Mod+Ctrl+Home { move-column-to-first; }
     Mod+Ctrl+End  { move-column-to-last; }
 
+    Mod+Shift+Ctrl+Equal hotkey-overlay-title="Scale Up" { spawn "~/dev/iac/dotfiles/fish/functions/change_scale.fish"; }
+    Mod+Shift+Ctrl+Minus hotkey-overlay-title="Scale Down" { spawn "~/dev/iac/dotfiles/fish/functions/change_scale.fish" "down"; }
+
     Mod+Shift+Left  { focus-monitor-left; }
     Mod+Shift+Down  { focus-monitor-down; }
     Mod+Shift+Up    { focus-monitor-up; }
