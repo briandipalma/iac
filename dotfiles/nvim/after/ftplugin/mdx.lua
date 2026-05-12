@@ -20,6 +20,6 @@ vim.lsp.enable("mdx_analyzer")
 vim.lsp.enable("marksman")
 vim.lsp.enable("ltex_plus")
 
-conform.formatters_by_ft.markdown = { "prettier" }
+conform.formatters_by_ft.mdx = { "prettier" }
 
 require("lint").try_lint("markdownlint-cli2")
