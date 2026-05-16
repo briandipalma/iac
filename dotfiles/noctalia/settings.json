@@ -87,7 +87,7 @@
                     "followFocusedScreen": false,
                     "fontWeight": "bold",
                     "groupedBorderOpacity": 1,
-                    "hideUnoccupied": true,
+                    "hideUnoccupied": false,
                     "iconScale": 1,
                     "id": "Workspace",
                     "labelMode": "index+name",
