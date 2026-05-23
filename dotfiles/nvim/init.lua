@@ -59,22 +59,11 @@ vim.keymap.set("n", "<esc>", function()
 end, { expr = true, desc = "Clear hlsearch and Escape" })
 ----
 
-vim.api.nvim_create_autocmd("PackChanged", {
-	callback = function(ev)
-		local name, kind = ev.data.spec.name, ev.data.kind
-		if name == "nvim-treesitter" and kind == "update" then
-			if not ev.data.active then
-				vim.cmd.packadd("nvim-treesitter")
-			end
-			vim.cmd("TSUpdate")
-		end
-	end,
-})
-
 vim.pack.add({
 	"https://github.com/MagicDuck/grug-far.nvim",
 	"https://github.com/MunifTanjim/nui.nvim",
 	"https://github.com/OXY2DEV/markview.nvim",
+	"https://github.com/arborist-ts/arborist.nvim",
 	"https://github.com/b0o/SchemaStore.nvim",
 	"https://github.com/esmuellert/codediff.nvim",
 	"https://github.com/folke/flash.nvim",
@@ -101,7 +90,6 @@ vim.pack.add({
 	"https://github.com/nvim-mini/mini.tabline",
 	"https://github.com/nvim-tree/nvim-web-devicons",
 	"https://github.com/nvim-tree/nvim-web-devicons",
-	"https://github.com/nvim-treesitter/nvim-treesitter",
 	"https://github.com/nvim-treesitter/nvim-treesitter-context",
 	"https://github.com/rachartier/tiny-cmdline.nvim",
 	"https://github.com/rachartier/tiny-glimmer.nvim",
