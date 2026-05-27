@@ -73,7 +73,7 @@ nml("sC", "<CMD>FzfLua git_bcommits<CR>", { desc = "Git current file log" })
 ----
 
 ---- grug-far
-nml("sr", "<CMD>GrugFar<CR>", { desc = "Search and replace" })
+nml("sr", "<CMD>tab GrugFar<CR>", { desc = "Search and replace" })
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "grug-far" },
 	group = close_group,
