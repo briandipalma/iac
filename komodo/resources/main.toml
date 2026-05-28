@@ -218,6 +218,22 @@ repo = "briandipalma/iac"
 
 ##
 
+[[action]]
+name = "sync_pictures"
+tags = ["Syncable"]
+[action.config]
+file_contents = """
+await komodo.execute_container_terminal({
+  server: "PVE",
+  container: "rclone-one",
+  terminal: "sync_pictures",
+  command: "ls /config/rclone",
+  init: { command: "sh", mode: Types.ContainerTerminalMode.Exec, recreate: Types.TerminalRecreateMode.Never },
+});
+"""
+
+##
+
 [[resource_sync]]
 name = "GitHubSync"
 tags = ["Syncable"]
