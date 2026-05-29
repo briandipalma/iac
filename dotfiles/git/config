@@ -80,4 +80,4 @@
     colorMoved = default
     algorithm = histogram
     renames = copies
-    renameLimit = 500
+    renameLimit = 20000
