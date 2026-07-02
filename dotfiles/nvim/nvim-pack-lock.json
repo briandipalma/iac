@@ -1,7 +1,7 @@
 {
   "plugins": {
     "SchemaStore.nvim": {
-      "rev": "490afbd7fd3b316330550405ac74758a971104a4",
+      "rev": "6ff1f21b2e2b77ec59f7433ce2d9fbc052d908ac",
       "src": "https://github.com/b0o/SchemaStore.nvim"
     },
     "arborist.nvim": {
@@ -34,7 +34,7 @@
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
-      "rev": "2038c666bd9d8a0b7349a0b6ee00dc83104b9ecf",
+      "rev": "eb60cc7b94c46005237fd34170d76f3a089a90aa",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "grug-far.nvim": {
@@ -54,11 +54,11 @@
       "src": "https://github.com/nvim-mini/mini-git"
     },
     "mini.ai": {
-      "rev": "d73c36349aa7b0bab5f77ad71701a1d42211a1df",
+      "rev": "cb20f298ebf5ae91924cd0c6c310712de2ef4086",
       "src": "https://github.com/nvim-mini/mini.ai"
     },
     "mini.files": {
-      "rev": "0da2aa91bd89418671cde22a9d4a8a4f3035bb2d",
+      "rev": "4b3db6f1bf76fc67582e8fe7b2fd04b971707b3f",
       "src": "https://github.com/nvim-mini/mini.files"
     },
     "mini.hipatterns": {
@@ -106,7 +106,7 @@
       "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "3371bf298c1f56efc26771ee961f461176958fb5",
+      "rev": "292f44408498103c47996ff5c18fd366293840d8",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-notify": {
@@ -122,7 +122,7 @@
       "src": "https://github.com/windwp/nvim-ts-autotag"
     },
     "nvim-web-devicons": {
-      "rev": "dfbfaa967a6f7ec50789bead7ef87e336c1fa63c",
+      "rev": "dad71387de386a946b123079d0e53f23028f3abd",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "overseer.nvim": {
@@ -150,7 +150,7 @@
       "src": "https://github.com/rachartier/tiny-inline-diagnostic.nvim"
     },
     "ts-comments.nvim": {
-      "rev": "426303d38d8c9168737b9b8763a97d84b692978f",
+      "rev": "a59d6092213447450191122c9346f309161504cb",
       "src": "https://github.com/folke/ts-comments.nvim"
     },
     "which-key.nvim": {
