@@ -4,6 +4,8 @@ source inventory.sh
 
 # Main terminal
 paru -S kitty
+# File manager
+paru -S yazi
 # Launcher
 paru -S vicinae-bin
 # zoom utility

@@ -17,3 +17,4 @@ x-scheme-handler/http=firefox.desktop;
 x-scheme-handler/https=firefox.desktop;
 x-scheme-handler/terminal=kitty.desktop
 x-scheme-handler/claude-cli=claude-code-url-handler.desktop
+inode/directory=yazi.desktop
