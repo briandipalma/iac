@@ -12,7 +12,7 @@ flatpak install -y flathub org.kde.okular
 # Play video files
 flatpak install -y flathub info.smplayer.SMPlayer
 # Play audio files
-flatpak install -y flathub com.github.taiko2k.tauonmb
+flatpak install -y flathub org.strawberrymusicplayer.strawberry
 # Record desktop/webcam audio/video
 flatpak install -y flathub com.obsproject.Studio
 # Remote desktop access
