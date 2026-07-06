@@ -16,7 +16,7 @@ FzfLua.setup({
 			},
 		},
 	},
-	ui_select = true, -- Register fzf-lua as the UI interface for `vim.ui.select`
+	ui_select = {}, -- Register fzf-lua as the UI interface for `vim.ui.select`
 	winopts = { -- Portrait mode layout
 		height = 0.9,
 		width = 1,
