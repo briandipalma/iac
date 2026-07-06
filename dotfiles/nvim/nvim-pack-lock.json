@@ -30,7 +30,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
-      "rev": "39da6060d53659acf3ec118200bc48721b29b8fd",
+      "rev": "774150bc05f774af1df614f55d156b3318c6decd",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
@@ -42,7 +42,7 @@
       "src": "https://github.com/MagicDuck/grug-far.nvim"
     },
     "markview.nvim": {
-      "rev": "301e431c7b618235f5447d54465c70934bd33668",
+      "rev": "a2a07154b495367e4d609dd83c73120f1d058c75",
       "src": "https://github.com/OXY2DEV/markview.nvim"
     },
     "mason.nvim": {
@@ -58,7 +58,7 @@
       "src": "https://github.com/nvim-mini/mini.ai"
     },
     "mini.files": {
-      "rev": "4b3db6f1bf76fc67582e8fe7b2fd04b971707b3f",
+      "rev": "057c16f0cafe59c9e1bf9d894723d6ae074b76fd",
       "src": "https://github.com/nvim-mini/mini.files"
     },
     "mini.hipatterns": {
@@ -74,7 +74,7 @@
       "src": "https://github.com/nvim-mini/mini.move"
     },
     "mini.pairs": {
-      "rev": "db0fac0a25884183650352ccf92b362a41ed2e9c",
+      "rev": "fd150ac39b78e6a2286f5138e472b7dc7eba43b9",
       "src": "https://github.com/nvim-mini/mini.pairs"
     },
     "mini.starter": {
@@ -106,7 +106,7 @@
       "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "292f44408498103c47996ff5c18fd366293840d8",
+      "rev": "d224a1920728ba129880efc700d4a0180ac4ecbb",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-notify": {
@@ -142,11 +142,11 @@
       "src": "https://github.com/rachartier/tiny-cmdline.nvim"
     },
     "tiny-glimmer.nvim": {
-      "rev": "f26728abf811324d7ed6b035a11d7b76a27c06c3",
+      "rev": "9a48d8a7436231cb16d47c88f924702e5602870a",
       "src": "https://github.com/rachartier/tiny-glimmer.nvim"
     },
     "tiny-inline-diagnostic.nvim": {
-      "rev": "e930d0a46031645040d5492595b46cdf6ab3514f",
+      "rev": "6264451f14119d63a52580e5198d6baf8518b0b2",
       "src": "https://github.com/rachartier/tiny-inline-diagnostic.nvim"
     },
     "ts-comments.nvim": {
