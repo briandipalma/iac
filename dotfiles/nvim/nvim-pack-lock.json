@@ -1,7 +1,7 @@
 {
   "plugins": {
     "SchemaStore.nvim": {
-      "rev": "6ff1f21b2e2b77ec59f7433ce2d9fbc052d908ac",
+      "rev": "19adbfb1c4d4049b691be0d840936b109de0f5ea",
       "src": "https://github.com/b0o/SchemaStore.nvim"
     },
     "arborist.nvim": {
@@ -42,7 +42,7 @@
       "src": "https://github.com/MagicDuck/grug-far.nvim"
     },
     "markview.nvim": {
-      "rev": "a2a07154b495367e4d609dd83c73120f1d058c75",
+      "rev": "092c0872fd2437b3b862d253910981142d2465aa",
       "src": "https://github.com/OXY2DEV/markview.nvim"
     },
     "mason.nvim": {
@@ -50,43 +50,43 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini-git": {
-      "rev": "96db7676696e53add56726e9e80f92dff9f63d17",
+      "rev": "19ecaa5b1eea1edb291178412a77f29dee487406",
       "src": "https://github.com/nvim-mini/mini-git"
     },
     "mini.ai": {
-      "rev": "cb20f298ebf5ae91924cd0c6c310712de2ef4086",
+      "rev": "2f763720771e192bdf9d2e25bfae339930ba4231",
       "src": "https://github.com/nvim-mini/mini.ai"
     },
     "mini.files": {
-      "rev": "057c16f0cafe59c9e1bf9d894723d6ae074b76fd",
+      "rev": "0765a2502d3577b2b00d21f8f607f9bd7c8d89fc",
       "src": "https://github.com/nvim-mini/mini.files"
     },
     "mini.hipatterns": {
-      "rev": "607d604e650cdf21d71f863d040c496a1d0cb320",
+      "rev": "7c840c71d6a91f53d734cab2b6fe2290d285ec3b",
       "src": "https://github.com/nvim-mini/mini.hipatterns"
     },
     "mini.indentscope": {
-      "rev": "942bc13ccc624c825b086373b8bd6787b98245c8",
+      "rev": "92fbaf895f83c59575ec599df532b297ebf62b14",
       "src": "https://github.com/nvim-mini/mini.indentscope"
     },
     "mini.move": {
-      "rev": "b9e452f9c83565a1520e14f7531632160f3b0170",
+      "rev": "48fcaac289a19b8eff2fd5fe203267d478a8abdc",
       "src": "https://github.com/nvim-mini/mini.move"
     },
     "mini.pairs": {
-      "rev": "fd150ac39b78e6a2286f5138e472b7dc7eba43b9",
+      "rev": "b1fd9df3bb4a41c8f45778a3859ee80ef6b367e3",
       "src": "https://github.com/nvim-mini/mini.pairs"
     },
     "mini.starter": {
-      "rev": "a1c26c1c4acd08beb5b0057c663acb6e5f5b7042",
+      "rev": "25de4998197d59673f1918968a8f4060195edca0",
       "src": "https://github.com/nvim-mini/mini.starter"
     },
     "mini.surround": {
-      "rev": "a2f644f3759edd3d3f8b6a6d55378408bfe6d290",
+      "rev": "19b44c1bbe4eecaf191896b8bec657d5fdd549e4",
       "src": "https://github.com/nvim-mini/mini.surround"
     },
     "mini.tabline": {
-      "rev": "7e8584a06b86902c64227e4abd0c39ae74061101",
+      "rev": "525b27e98de7cd2a6012d99f45b4fc10676e00e5",
       "src": "https://github.com/nvim-mini/mini.tabline"
     },
     "neovim": {
