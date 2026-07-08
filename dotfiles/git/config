@@ -13,7 +13,7 @@
   pl = pull
   pu = push
   puf = push --force-with-lease
-  rbm = rebase master
+  rbm = rebase main
   rbc = rebase --continue
   s = status
   sp = stash pop
