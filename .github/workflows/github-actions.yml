@@ -42,25 +42,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
-      - name: Build admin image
-        id: build-admin-image
-        uses: redhat-actions/buildah-build@v2
-        with:
-          image: admin
-          tags: latest ${{ steps.date.outputs.time }}-${{ github.sha }}
-          containerfiles: |
-            ./images/admin.Containerfile
-
-      - name: Push admin to Docker
-        id: push-admin-to-docker
-        uses: redhat-actions/push-to-registry@v2
-        with:
-          image: ${{ steps.build-admin-image.outputs.image }}
-          tags: ${{ steps.build-admin-image.outputs.tags }}
-          registry: docker.io/${{ github.actor }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.REGISTRY_PASSWORD }}
-
       - name: Build work image
         id: build-work-image
         uses: redhat-actions/buildah-build@v2
