@@ -4,7 +4,7 @@ FROM docker.io/briandipalma/base:latest
 RUN pacman -Sq --noconfirm chromium gitlab-ci-ls
 RUN npm install -g pnpm@10.28.0
 RUN npm install -g @google/gemini-cli
-RUN npm install --allow-scripts=@anthropic-ai/claude-code
+RUN npm install -g  @anthropic-ai/claude-code
 
 # Required by karma chrome launcher
 ENV CHROME_BIN=/usr/sbin/chromium
