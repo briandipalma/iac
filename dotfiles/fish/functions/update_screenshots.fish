@@ -5,7 +5,7 @@ function update_screenshots
         set file_parts (string split \/ $actual_screenshot)
         set application $file_parts[6]
         set variant_browser (string split - $file_parts[9])
-        set variant $variant_browser[1]
+        set variant (string split - $file_parts[8])[-1]
         set browser $variant_browser[-1]
         set current_screenshot (string replace -r "\-actual" _$browser-ci $file_parts[10])
         set current_filepath (string join / apps $application pw-tests/tests $variant screenshots $current_screenshot)
