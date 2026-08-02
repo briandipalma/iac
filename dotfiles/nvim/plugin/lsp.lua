@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd("LspProgress", {
 		local value = ev.data.params.value
 
 		-- Filter out messages for opening TS/JS files
-		if value.title:match("Analyzing '(.-)' and its dependencies") then
+		if value.title ~= nil and value.title:match("Analyzing '(.-)' and its dependencies") then
 			return
 		end
 
