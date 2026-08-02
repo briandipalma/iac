@@ -32,6 +32,7 @@ if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
   flatpak install -y flathub com.heroicgameslauncher.hgl
   flatpak install -y flathub org.darktable.Darktable
   flatpak install -y flathub org.kde.digikam
+  flatpak install -y flathub org.kde.skanpage
   flatpak install -y flathub org.mozilla.Thunderbird
   flatpak install -y flathub org.musicbrainz.Picard
   flatpak install -y flathub org.nicotine_plus.Nicotine
