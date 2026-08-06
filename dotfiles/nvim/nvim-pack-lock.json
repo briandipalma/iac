@@ -1,7 +1,7 @@
 {
   "plugins": {
     "SchemaStore.nvim": {
-      "rev": "19e40cef03a380bfb578793a08222826118664dd",
+      "rev": "a652fcc01bf03946ab94b815be8c80ee157cbe1a",
       "src": "https://github.com/b0o/SchemaStore.nvim"
     },
     "arborist.nvim": {
@@ -14,7 +14,7 @@
       "version": "1.0.0 - 2.0.0"
     },
     "codediff.nvim": {
-      "rev": "dc38f0b8a2ba8cc198cc024f3abe887341788820",
+      "rev": "31510a9b34c032b6fe98fc158d4066702f68cff2",
       "src": "https://github.com/esmuellert/codediff.nvim"
     },
     "conform.nvim": {
@@ -30,7 +30,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
-      "rev": "28440c741e927592877514fba3db21eb188caec8",
+      "rev": "8671012a7b2a1648595952c655039d51fb301c14",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
@@ -106,7 +106,7 @@
       "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "9ae2b3b63b924b1329724dae76e9d2c5c40b389c",
+      "rev": "43ed3797b266e1ee8d222e491379ad471c9d3146",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-notify": {
@@ -114,7 +114,7 @@
       "src": "https://github.com/rcarriga/nvim-notify"
     },
     "nvim-treesitter-context": {
-      "rev": "b311b30818951d01f7b4bf650521b868b3fece16",
+      "rev": "f3061339b8eaf9fda873600bc425b8d2d8502533",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-context"
     },
     "nvim-ts-autotag": {
