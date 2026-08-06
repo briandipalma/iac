@@ -1,6 +1,7 @@
+.git-credentials
+dotfiles/fish/fish_variables
 dotfiles/kitty/host-session.conf
 dotfiles/lazygit/state.yml
-dotfiles/systemd/user/default.target.wants/
 dotfiles/niri/workspace-state.json
-.git-credentials
+dotfiles/systemd/user/default.target.wants/
 komodo_db_pass.txt
