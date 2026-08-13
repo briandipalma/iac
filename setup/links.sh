@@ -45,6 +45,7 @@ if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
 fi
 
 if [[ ${workWorkstations[@]} =~ $HOSTNAME ]]; then
+  ln -sf ~/dev/iac/dotfiles/fish/functions/bootstrap_cli.fish ~/.local/bin/
   ln -sf ~/dev/iac/dotfiles/kitty/work-session.conf ~/.config/kitty/host-session.conf
 else
   ln -sf ~/dev/iac/dotfiles/kitty/personal-session.conf ~/.config/kitty/host-session.conf
