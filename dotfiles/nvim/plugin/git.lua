@@ -62,7 +62,6 @@ require("codediff").setup({
 		ignore_trim_whitespace = true,
 		compact = true,
 		compact_context_lines = 10,
-		layout = "inline",
 	},
 	explorer = { position = "bottom", initial_focus = "modified", view_mode = "tree" },
 	keymaps = {

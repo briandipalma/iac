@@ -1,3 +1,2 @@
 output "Dell Inc. DELL U2713HM 7JNY53CN642L" {
-    transform "90"
 }
