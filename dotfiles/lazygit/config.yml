@@ -1,15 +1,8 @@
-gui:
-  expandFocusedSidePanel: true
-  enlargedSideViewLocation: top
-  showCommandLog: false
-  nerdFontsVersion: "3"
-  screenMode: "half"
-  portraitMode: "always"
-  showRootItemInFileTree: false
+---
 git:
-  pagers:
+  diffRenderers:
     - colorArg: always
-      pager: delta --paging=never
+      command: delta --paging=never --side-by-side --line-numbers
 customCommands:
   - key: "P"
     command: "git push --force-with-lease -u origin {{.CheckedOutBranch.Name}}"

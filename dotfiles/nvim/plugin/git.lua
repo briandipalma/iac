@@ -72,7 +72,9 @@ require("codediff").setup({
 	},
 })
 
-nml("gg", "<CMD>:CodeDiff<CR>", { desc = "Git status diff" })
+nml("gg", function()
+	require("snacks").lazygit({ win = { width = 0.99, height = 0.99 } })
+end, { desc = "Lazygit" })
 nml("gf", "<CMD>:CodeDiff history %<CR>", { desc = "Git current file log" })
 nml("gl", "<CMD>:CodeDiff history<CR>", { desc = "Git log" })
 -- No righthand side to the `...` operator means the current files are used on the right side and
