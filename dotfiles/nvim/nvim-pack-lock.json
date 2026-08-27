@@ -1,7 +1,7 @@
 {
   "plugins": {
     "SchemaStore.nvim": {
-      "rev": "5f2a3b5dc13f3622000cb488c9af505b933152e3",
+      "rev": "77d734dac7aa4f64a5b6b1062052be8f5aa7ff2f",
       "src": "https://github.com/b0o/SchemaStore.nvim"
     },
     "arborist.nvim": {
