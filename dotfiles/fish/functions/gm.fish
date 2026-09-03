@@ -1,3 +1,3 @@
 function gm --description 'alias gemini --yolo'
-    gemini --yolo $argv
+    gemini --model gemini-3.7-flash --yolo $argv
 end
