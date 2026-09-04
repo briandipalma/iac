@@ -4,10 +4,6 @@
       "rev": "4a0e1b74096937d366031bc1e2b244546af39f8e",
       "src": "https://github.com/b0o/SchemaStore.nvim"
     },
-    "arborist.nvim": {
-      "rev": "fdeef56c2840c6772b9f68c5774ed87e9340ec7d",
-      "src": "https://github.com/arborist-ts/arborist.nvim"
-    },
     "blink.cmp": {
       "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
       "src": "https://github.com/saghen/blink.cmp",
@@ -106,12 +102,16 @@
       "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "85e732c62ac59ab7c12df71ddd020baa87948390",
+      "rev": "84252f9832fb5b9024fe9f7258e7c2aff915e6fb",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-notify": {
       "rev": "8701bece920b38ea289b457f902e2ad184131a5d",
       "src": "https://github.com/rcarriga/nvim-notify"
+    },
+    "nvim-treesitter": {
+      "rev": "df7489eeea351bece7fd0f9c825be5cb6a1438f0",
+      "src": "https://github.com/neovim-treesitter/nvim-treesitter"
     },
     "nvim-treesitter-context": {
       "rev": "f3061339b8eaf9fda873600bc425b8d2d8502533",
@@ -148,6 +148,10 @@
     "tiny-inline-diagnostic.nvim": {
       "rev": "6264451f14119d63a52580e5198d6baf8518b0b2",
       "src": "https://github.com/rachartier/tiny-inline-diagnostic.nvim"
+    },
+    "treesitter-parser-registry": {
+      "rev": "6eb15358bb9fc88f0d3401d8538d56652e9bdf3c",
+      "src": "https://github.com/neovim-treesitter/treesitter-parser-registry"
     },
     "ts-comments.nvim": {
       "rev": "a59d6092213447450191122c9346f309161504cb",
