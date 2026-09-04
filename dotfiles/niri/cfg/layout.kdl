@@ -3,7 +3,7 @@
             width 2 // Smaller than the default 4
         }
 
-        background-color "transparent" // <- needed for noctalia-shell to set wallpaper
+        background-color "#1B2A4A" // <- needed for noctalia-shell to set wallpaper
 
         struts {
             left 10
