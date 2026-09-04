@@ -16,9 +16,6 @@ function M.install_package(pkg_name)
 	local registry = require("mason-registry")
 
 	if not registry.is_installed(pkg_name) then
-		local pkgs_to_install = {}
-		table.insert(pkgs_to_install, pkg_name)
-
 		vim.cmd("MasonInstall " .. pkg_name)
 	end
 end

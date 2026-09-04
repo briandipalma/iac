@@ -3,7 +3,7 @@ local install_package = require("my-config/utils").install_package
 local lint = require("lint")
 local treesitter = require("nvim-treesitter")
 
-treesitter.install({ "html" })
+treesitter.install({ "html_tags", "html" })
 vim.treesitter.start()
 vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.wo[0][0].foldmethod = "expr"

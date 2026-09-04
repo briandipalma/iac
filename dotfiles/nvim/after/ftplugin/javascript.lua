@@ -2,7 +2,7 @@ local conform = require("conform")
 local install_package = require("my-config/utils").install_package
 local treesitter = require("nvim-treesitter")
 
-treesitter.install({ "javascript" })
+treesitter.install({ "jsx", "javascript" })
 vim.treesitter.start()
 vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.wo[0][0].foldmethod = "expr"
