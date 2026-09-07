@@ -1,0 +1,42 @@
+[bar]
+order = [ "default" ]
+
+    [bar.default]
+    center = [ "workspaces", "taskbar", "notifications" ]
+    end = [ "media", "tray", "network", "bluetooth", "volume", "brightness", "battery", "control-center", "session" ]
+    start = [ "clock" ]
+
+[hooks]
+started = "restore_niri_state"
+
+[location]
+address = "Dublin, Ireland"
+
+[nightlight]
+enabled = true
+
+[plugins]
+enabled = [ "kenn/keybind-cheatsheet" ]
+
+[wallpaper]
+enabled = false
+
+    [wallpaper.default]
+    path = "/usr/share/noctalia/assets/noctalia-wallpaper.png"
+
+    [wallpaper.last]
+    path = "/usr/share/noctalia/assets/noctalia-wallpaper.png"
+
+[widget.notifications]
+scale = 1.5
+
+[widget.taskbar]
+group_by_workspace = true
+icon_scale = 1.5
+only_active_workspace = true
+workspace_group_capsule = false
+
+[widget.workspaces]
+label_source = "name"
+max_label_chars = 8
+scale = 1.5
