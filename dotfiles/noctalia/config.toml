@@ -2,12 +2,16 @@
 order = [ "default" ]
 
     [bar.default]
+    background_opacity = 0.19999999552965164
     center = [ "workspaces", "taskbar", "notifications" ]
-    end = [ "media", "tray", "network", "bluetooth", "volume", "brightness", "battery", "control-center", "session" ]
-    start = [ "clock" ]
+    end = [ "media", "tray", "network", "bluetooth", "volume", "brightness", "battery", "session" ]
+    margin_ends = 0
+    radius = 0
+    scale = 1.4500000141561031
+    start = [ "control-center", "clock" ]
 
 [hooks]
-started = "restore_niri_state"
+started = "restore_niri_state.fish"
 
 [location]
 address = "Dublin, Ireland"
@@ -27,16 +31,14 @@ enabled = false
     [wallpaper.last]
     path = "/usr/share/noctalia/assets/noctalia-wallpaper.png"
 
-[widget.notifications]
-scale = 1.5
+[widget.media]
+hide_when_no_media = true
 
 [widget.taskbar]
 group_by_workspace = true
-icon_scale = 1.5
 only_active_workspace = true
 workspace_group_capsule = false
 
 [widget.workspaces]
 label_source = "name"
 max_label_chars = 8
-scale = 1.5
