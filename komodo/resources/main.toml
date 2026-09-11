@@ -81,6 +81,20 @@ JELLYFIN_URL=[[JELLYFIN_URL]]
 ##
 
 [[stack]]
+name = "paperless-ngx"
+tags = ["Syncable"]
+[stack.config]
+server = "rpi4"
+poll_for_updates = true
+linked_repo = "iac"
+run_directory = "komodo/stacks/rpi4/paperless-ngx"
+environment = """
+COMPOSE_PROJECT_NAME=paperless
+"""
+
+##
+
+[[stack]]
 name = "pihole"
 tags = ["Syncable"]
 [stack.config]
