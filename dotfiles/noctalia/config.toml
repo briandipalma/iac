@@ -3,15 +3,12 @@ order = [ "default" ]
 
     [bar.default]
     background_opacity = 0.19999999552965164
-    center = [ "workspaces", "taskbar", "notifications" ]
+    center = [ "taskbar", "notifications" ]
     end = [ "media", "tray", "network", "bluetooth", "volume", "brightness", "battery", "session" ]
     margin_ends = 0
     radius = 0
     scale = 1.4500000141561031
     start = [ "control-center", "clock" ]
-
-[hooks]
-started = "restore_niri_state.fish"
 
 [location]
 address = "Dublin, Ireland"
@@ -35,9 +32,11 @@ enabled = false
 hide_when_no_media = true
 
 [widget.taskbar]
+anchor = true
 group_by_workspace = true
-only_active_workspace = true
-workspace_group_capsule = false
+inactive_opacity = 0.65000000000000002
+only_active_workspace = false
+workspace_group_capsule = true
 
 [widget.workspaces]
 label_source = "name"
