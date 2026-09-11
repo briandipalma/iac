@@ -3,6 +3,12 @@
             width 2 // Smaller than the default 4
         }
 
+        preset-column-widths {
+            proportion 0.5
+            proportion 0.66667
+            proportion 0.33333
+        }
+
         struts {
             left 10
             right 10
