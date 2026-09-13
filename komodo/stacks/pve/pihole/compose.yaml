@@ -27,8 +27,7 @@ services:
       - traefik.http.routers.pihole.rule=Host(`dnsone.test`)
       - traefik.http.services.pihole.loadbalancer.server.port=80
       - traefik.http.routers.pihole.middlewares=local-ip-allowlist
-      - docker-volume-backup.archive-pre=/bin/sh -c 'cd /etc/pihole && pihole-FTL --teleporter'
-      - docker-volume-backup.archive-post=/bin/sh -c 'cd /etc/pihole && rm *.zip'
+      - docker-volume-backup.archive-pre=/bin/sh -c 'pihole-FTL --teleporter && mv *.zip /etc/pihole/backup.zip'
     networks:
       - proxy_network
 
