@@ -27,7 +27,7 @@ services:
       - traefik.http.routers.pihole.rule=Host(`dnsone.test`)
       - traefik.http.services.pihole.loadbalancer.server.port=80
       - traefik.http.routers.pihole.middlewares=local-ip-allowlist
-      - "docker-volume-backup.stop-during-backup=true"
+      - "docker-volume-backup.exec-pre=pihole-FTL --teleporter"
     networks:
       - proxy_network
 
