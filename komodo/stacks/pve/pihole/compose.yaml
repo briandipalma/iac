@@ -46,7 +46,7 @@ services:
       - AWS_ACCESS_KEY_ID=${DOCKER_BACKUPS_AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${DOCKER_BACKUPS_AWS_SECRET_ACCESS_KEY}
     volumes:
-      - /mnt/storage/appdata/pihole/:/backup/pihole-one:ro
+      - /mnt/storage/appdata/pihole/backup.zip:/backup/pihole-one:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
 networks:
