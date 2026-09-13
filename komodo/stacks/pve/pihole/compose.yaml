@@ -27,8 +27,26 @@ services:
       - traefik.http.routers.pihole.rule=Host(`dnsone.test`)
       - traefik.http.services.pihole.loadbalancer.server.port=80
       - traefik.http.routers.pihole.middlewares=local-ip-allowlist
+      - "docker-volume-backup.stop-during-backup=true"
     networks:
       - proxy_network
+
+  backup:
+    image: offen/docker-volume-backup:v2
+    restart: always
+    environment:
+      - BACKUP_CRON_EXPRESSION=0 2 * * * # Runs daily at 2:00 AM UTC
+      - BACKUP_RETENTION_DAYS=7
+      - BACKUP_FILENAME=pihole-backup-%Y-%m-%dT%H-%M-%S.tar.gz
+      - BACKUP_PRUNING_PREFIX=pihole-backup-
+
+      - AWS_S3_BUCKET_NAME=dipalma-docker-backups
+      - AWS_ENDPOINT=s3.eu-central-003.backblazeb2.com
+      - AWS_ACCESS_KEY_ID=${DOCKER_BACKUPS_AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${DOCKER_BACKUPS_AWS_SECRET_ACCESS_KEY}
+    volumes:
+      - /mnt/storage/appdata/pihole:/pihole-one:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
 
 networks:
   proxy_network:
