@@ -37,8 +37,8 @@ services:
     environment:
       - BACKUP_CRON_EXPRESSION=0 2 * * * # Runs daily at 2:00 AM UTC
       - BACKUP_RETENTION_DAYS=7
-      - BACKUP_FILENAME=pihole-backup-%Y-%m-%dT%H-%M-%S.tar.gz
-      - BACKUP_PRUNING_PREFIX=pihole-backup-
+      - BACKUP_FILENAME=pihole-one-backup-%Y-%m-%dT%H-%M-%S.tar.gz
+      - BACKUP_PRUNING_PREFIX=pihole-one-backup-
 
       - AWS_S3_BUCKET_NAME=dipalma-docker-backups
       - AWS_ENDPOINT=s3.eu-central-003.backblazeb2.com
