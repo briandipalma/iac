@@ -27,7 +27,8 @@ services:
       - traefik.http.routers.pihole.rule=Host(`dnsone.test`)
       - traefik.http.services.pihole.loadbalancer.server.port=80
       - traefik.http.routers.pihole.middlewares=local-ip-allowlist
-      - docker-volume-backup.archive-pre=/bin/sh -c 'cd /etc/pihole && pihole-FTL --teleporter && mv pi-hole_*.zip backup.zip'
+      - docker-volume-backup.archive-pre=/bin/sh -c 'cd /etc/pihole && pihole-FTL --teleporter && mv *.zip backup.zip'
+      - docker-volume-backup.archive-post=/bin/sh -c 'cd /etc/pihole && rm *.zip'
     networks:
       - proxy_network
 
@@ -39,7 +40,7 @@ services:
       - BACKUP_RETENTION_DAYS=7
       - BACKUP_FILENAME=pihole-one-backup-%Y-%m-%dT%H-%M-%S.tar.gz
       - BACKUP_PRUNING_PREFIX=pihole-one-backup-
-      - BACKUP_EXCLUDE_REGEXP=".*[^\.][^z][^i][^p]$"
+      # - BACKUP_EXCLUDE_REGEXP=".*[^\.][^z][^i][^p]$"
 
       - AWS_S3_BUCKET_NAME=dipalma-docker-backups
       - AWS_ENDPOINT=s3.eu-central-003.backblazeb2.com
