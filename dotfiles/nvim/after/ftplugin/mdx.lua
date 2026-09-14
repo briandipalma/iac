@@ -20,4 +20,5 @@ vim.lsp.enable("ltex_plus")
 install_package("prettier")
 conform.formatters_by_ft.mdx = { "prettier" }
 
-require("lint").try_lint("markdownlint-cli2")
+install_package("markdownlint-cli2")
+lint.try_lint("markdownlint-cli2")
