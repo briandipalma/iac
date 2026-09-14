@@ -37,16 +37,21 @@ services:
     environment:
       - BACKUP_CRON_EXPRESSION=0 2 * * * # Runs daily at 2:00 AM UTC
       - BACKUP_RETENTION_DAYS=7
-      - BACKUP_FILENAME=pihole-one-backup-%Y-%m-%dT%H-%M-%S.tar.gz
+      - BACKUP_FILENAME=pihole-one-backup-%Y-%m-%dT%H-%M-%S.zip
       - BACKUP_PRUNING_PREFIX=pihole-one-backup-
-      # - BACKUP_EXCLUDE_REGEXP=".*[^\.][^z][^i][^p]$"
+      # Disable tar archive compression completely
+      - BACKUP_ARCHIVE="false"
+      # Include ONLY the specific target file
+      - BACKUP_INCLUDE_GLOBS="backup.zip"
+      # Ignore everything else in the mounted folder
+      - BACKUP_EXCLUDE_GLOBS="*"
 
       - AWS_S3_BUCKET_NAME=dipalma-docker-backups
       - AWS_ENDPOINT=s3.eu-central-003.backblazeb2.com
       - AWS_ACCESS_KEY_ID=${DOCKER_BACKUPS_AWS_ACCESS_KEY_ID}
       - AWS_SECRET_ACCESS_KEY=${DOCKER_BACKUPS_AWS_SECRET_ACCESS_KEY}
     volumes:
-      - /mnt/storage/appdata/pihole/backup.zip:/backup/pihole-one:ro
+      - /mnt/storage/appdata/pihole/:/backup/pihole-one:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
 
 networks:
