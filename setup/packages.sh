@@ -6,7 +6,7 @@ source inventory.sh
 flatpak install -y flathub com.github.tchx84.Flatseal
 flatpak install -y flathub com.google.Chrome
 # Image viewer
-flatpak install -y flathub org.kde.gwenview
+flatpak install -y flathub org.kde.koko
 # PDF viewer
 flatpak install -y flathub org.kde.okular
 # Play video files
