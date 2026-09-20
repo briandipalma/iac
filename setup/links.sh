@@ -19,6 +19,7 @@ rm -rf ~/.config/noctalia
 ln -sf ~/dev/iac/dotfiles/noctalia ~/.config/
 ln -sf ~/dev/iac/dotfiles/nvim ~/.config/
 ln -sf ~/dev/iac/dotfiles/opencode ~/.config/
+ln -sf ~/dev/iac/dotfiles/satty ~/.config/
 ln -sf ~/dev/iac/dotfiles/starship.toml ~/.config/
 
 ln -sf ~/dev/iac/dotfiles/.gemini ~/

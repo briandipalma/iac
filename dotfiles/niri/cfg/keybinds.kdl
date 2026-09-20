@@ -152,9 +152,9 @@ binds {
 
     Mod+W { toggle-column-tabbed-display; }
 
-    Print { screenshot; }
-    Ctrl+Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
+    Print { spawn "screenshot.sh" "region"; }
+    Ctrl+Print { spawn "screenshot.sh" "monitor-focused"; }
+    Alt+Print { spawn "screenshot.sh" "window"; }
 
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 

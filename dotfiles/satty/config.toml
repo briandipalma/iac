@@ -1,0 +1,6 @@
+[general]
+# Exit directly after copy / save action.
+early-exit = true
+
+# Ensure clipboard contents persist after satty closes, without the type it fails...
+copy-command = "wl-copy --type image/png"

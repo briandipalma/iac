@@ -12,6 +12,8 @@ paru -S vicinae-bin
 paru -S wooz
 # Day/night gamma adjustments for Wayland compositors
 paru -S wlsunset
+# Grab screenshots of screen area and annotate them
+paru -S slurp grim satty
 
 ##
 ## Personal workstations
