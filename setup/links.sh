@@ -8,7 +8,6 @@ ln -sf ~/dev/iac/dotfiles/bat ~/.config/
 ln -sf ~/dev/iac/dotfiles/bottom ~/.config/
 rm -rf ~/.config/fish
 ln -sf ~/dev/iac/dotfiles/fish ~/.config/
-ln -sf ~/dev/iac/dotfiles/.gemini ~/
 ln -sf ~/dev/iac/dotfiles/git ~/.config/
 ln -sf ~/dev/iac/dotfiles/kitty ~/.config/
 ln -sf ~/dev/iac/dotfiles/lazygit ~/.config/
@@ -20,8 +19,11 @@ rm -rf ~/.config/noctalia
 ln -sf ~/dev/iac/dotfiles/noctalia ~/.config/
 ln -sf ~/dev/iac/dotfiles/nvim ~/.config/
 ln -sf ~/dev/iac/dotfiles/opencode ~/.config/
-ln -sf ~/dev/iac/dotfiles/ssh/config ~/.ssh/config
 ln -sf ~/dev/iac/dotfiles/starship.toml ~/.config/
+
+ln -sf ~/dev/iac/dotfiles/.gemini ~/
+ln -sf ~/dev/iac/dotfiles/ssh/config ~/.ssh/config
+ln -sf ~/dev/iac/dotfiles/bin ~/.local/
 
 # Host specific configuration
 
@@ -45,7 +47,6 @@ if [[ ${personalWorkstations[@]} =~ $HOSTNAME ]]; then
 fi
 
 if [[ ${workWorkstations[@]} =~ $HOSTNAME ]]; then
-  ln -sf ~/dev/iac/dotfiles/fish/functions/bootstrap_cli.fish ~/.local/bin/
   ln -sf ~/dev/iac/dotfiles/kitty/work-session.conf ~/.config/kitty/host-session.conf
 else
   ln -sf ~/dev/iac/dotfiles/kitty/personal-session.conf ~/.config/kitty/host-session.conf
