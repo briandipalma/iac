@@ -95,7 +95,7 @@ COMPOSE_PROJECT_NAME=paperless
 ##
 
 [[stack]]
-name = "pihole"
+name = "pihole-one"
 tags = ["Syncable"]
 [stack.config]
 server = "PVE"
@@ -239,13 +239,17 @@ name = "sync_pictures"
 tags = ["Syncable"]
 [action.config]
 file_contents = """
-await komodo.execute_container_terminal({
+await komodo.execute_container_exec({
   server: "PVE",
-  container: "rclone-one",
-  terminal: "sync_pictures",
-  command: "ls /config/rclone",
-  init: { command: "sh", mode: Types.ContainerTerminalMode.Exec, recreate: Types.TerminalRecreateMode.Never },
-});
+  container: "rclone",
+  command: '/config/rclone/sync_pictures.sh',
+  shell: "sh",
+  terminal: "name",
+  recreate: Types.TerminalRecreateMode.Always,
+  },
+  {
+    onLine: (line) => {console.log(line)},
+  });
 """
 
 ##
