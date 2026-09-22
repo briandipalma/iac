@@ -59,12 +59,26 @@ vim.keymap.set("n", "<esc>", function()
 end, { expr = true, desc = "Clear hlsearch and Escape" })
 ----
 
+vim.api.nvim_create_autocmd("PackChanged", {
+	callback = function(ev)
+		if ev.data.spec.name ~= "nvim-treesitter" then
+			return
+		end
+
+		local kind = ev.data.kind
+
+		if kind == "update" or kind == "install" then
+			vim.cmd("TSUpdate")
+		end
+	end,
+})
+
 vim.pack.add({
 	"https://github.com/MagicDuck/grug-far.nvim",
 	"https://github.com/MunifTanjim/nui.nvim",
 	"https://github.com/OXY2DEV/markview.nvim",
-	"https://github.com/neovim-treesitter/nvim-treesitter",
-	"https://github.com/neovim-treesitter/treesitter-parser-registry",
+	"https://github.com/nvim-treesitter/nvim-treesitter",
+	"https://github.com/nvim-treesitter/nvim-treesitter-context",
 	"https://github.com/b0o/SchemaStore.nvim",
 	"https://github.com/esmuellert/codediff.nvim",
 	"https://github.com/folke/flash.nvim",
@@ -90,7 +104,6 @@ vim.pack.add({
 	"https://github.com/nvim-mini/mini.surround",
 	"https://github.com/nvim-mini/mini.tabline",
 	"https://github.com/nvim-tree/nvim-web-devicons",
-	"https://github.com/nvim-treesitter/nvim-treesitter-context",
 	"https://github.com/rachartier/tiny-cmdline.nvim",
 	"https://github.com/rachartier/tiny-glimmer.nvim",
 	"https://github.com/rachartier/tiny-inline-diagnostic.nvim",
