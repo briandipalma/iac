@@ -4,11 +4,11 @@ order = [ "default" ]
     [bar.default]
     background_opacity = 0.19999999552965164
     center = [ "taskbar", "notifications" ]
-    end = [ "media", "tray", "network", "bluetooth", "volume", "brightness", "battery", "session" ]
+    end = [ "tray", "network", "bluetooth", "volume", "brightness", "battery", "session" ]
     margin_ends = 0
     radius = 0
     scale = 1.4500000141561031
-    start = [ "control-center", "clock" ]
+    start = [ "control-center", "clock", "media" ]
 
 [location]
 address = "Dublin, Ireland"
@@ -18,6 +18,9 @@ enabled = true
 
 [plugins]
 enabled = [ "kenn/keybind-cheatsheet" ]
+
+[shell]
+polkit_agent = true
 
 [wallpaper]
 enabled = false
