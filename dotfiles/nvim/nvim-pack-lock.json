@@ -1,7 +1,7 @@
 {
   "plugins": {
     "SchemaStore.nvim": {
-      "rev": "be687d17e4a9443e918c48c3c915b1f2ffd0f718",
+      "rev": "76faabd8d091e4316ec8e1e90aa9371210b574b3",
       "src": "https://github.com/b0o/SchemaStore.nvim"
     },
     "blink.cmp": {
@@ -30,7 +30,7 @@
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
-      "rev": "8d79f2410c76e62b92e51c28c82e28c1c5a3daeb",
+      "rev": "070a5d7b985546cc57e1fc61e5bc507fecac6045",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "grug-far.nvim": {
@@ -78,7 +78,7 @@
       "src": "https://github.com/nvim-mini/mini.starter"
     },
     "mini.surround": {
-      "rev": "8d5d0c5aa92449368ac251e85451d79d8f69d296",
+      "rev": "33a2ebe5df8eb4751828fcba133e18ed0fbbdfab",
       "src": "https://github.com/nvim-mini/mini.surround"
     },
     "mini.tabline": {
