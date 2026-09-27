@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "**.Containerfile"
+      - ".github"
   schedule:
     # At 5:15 on a Sunday
     - cron: "15 5 * * 0"
