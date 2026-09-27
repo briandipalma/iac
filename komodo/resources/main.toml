@@ -235,6 +235,31 @@ repo = "briandipalma/iac"
 ##
 
 [[action]]
+name = "pi-hole-one"
+tags = ["Syncable"]
+[action.config]
+file_contents = """
+const lines = [];
+
+await komodo.execute_container_exec(
+  {
+    server: "PVE",
+    container: "pihole",
+    command: 'pihole-FTL --teleporter',
+    shell: "bash",
+    terminal: "name",
+    recreate: Types.TerminalRecreateMode.Always,
+  },
+  {
+    onLine: (line) => {if(line.endsWith(".zip")){lines.push(line)}},
+    onFinish: () => {console.log(lines.pop())},
+  }
+);
+"""
+
+##
+
+[[action]]
 name = "sync_pictures"
 tags = ["Syncable"]
 [action.config]
