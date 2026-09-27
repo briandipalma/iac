@@ -35,7 +35,7 @@ jobs:
 
       - name: Push base to Docker
         id: push-base-to-docker
-        uses: redhat-actions/push-to-registry@v2
+        uses: redhat-actions/push-to-registry@v3
         with:
           image: ${{ steps.build-base-image.outputs.image }}
           tags: ${{ steps.build-base-image.outputs.tags }}
@@ -54,7 +54,7 @@ jobs:
 
       - name: Push work to Docker
         id: push-work-to-docker
-        uses: redhat-actions/push-to-registry@v2
+        uses: redhat-actions/push-to-registry@v3
         with:
           image: ${{ steps.build-work-image.outputs.image }}
           tags: ${{ steps.build-work-image.outputs.tags }}
