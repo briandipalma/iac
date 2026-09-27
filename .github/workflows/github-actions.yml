@@ -25,7 +25,7 @@ jobs:
 
       - name: Build base image
         id: build-base-image
-        uses: redhat-actions/buildah-build@v2
+        uses: redhat-actions/buildah-build@v3
         with:
           image: base
           tags: latest ${{ steps.date.outputs.time }}-${{ github.sha }}
@@ -44,7 +44,7 @@ jobs:
 
       - name: Build work image
         id: build-work-image
-        uses: redhat-actions/buildah-build@v2
+        uses: redhat-actions/buildah-build@v3
         with:
           image: work
           tags: latest ${{ steps.date.outputs.time }}-${{ github.sha }}
