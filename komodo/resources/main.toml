@@ -239,7 +239,7 @@ name = "pi-hole-one"
 tags = ["Syncable"]
 [action.config]
 file_contents = """
-const lines = [];
+let zip;
 
 await komodo.execute_container_exec(
   {
@@ -251,10 +251,28 @@ await komodo.execute_container_exec(
     recreate: Types.TerminalRecreateMode.Always,
   },
   {
-    onLine: (line) => {if(line.endsWith(".zip")){lines.push(line)}},
-    onFinish: () => {console.log(lines.pop())},
+    // The teleporter prints the path of the archive it created, so grab it from the output.
+    onLine: (line) => {if(line.trim().endsWith(".zip")){zip = line.trim()}},
   }
 );
+
+if (zip) {
+  await komodo.execute_container_exec(
+    {
+      server: "PVE",
+      container: "pihole",
+      command: `mv "${zip}" /etc/pihole/`,
+      shell: "bash",
+      terminal: "name",
+      recreate: Types.TerminalRecreateMode.Always,
+    },
+    {
+      onLine: (line) => {console.log(line)},
+    }
+  );
+} else {
+  console.error("Failed to find the path of the pihole teleporter archive.");
+}
 """
 
 ##
