@@ -23,6 +23,7 @@ ln -sf ~/dev/iac/dotfiles/satty ~/.config/
 ln -sf ~/dev/iac/dotfiles/starship.toml ~/.config/
 
 ln -sf ~/dev/iac/dotfiles/.gemini ~/
+ln -sf ~/dev/iac/dotfiles/.pi ~/
 ln -sf ~/dev/iac/dotfiles/ssh/config ~/.ssh/config
 ln -sf ~/dev/iac/dotfiles/bin ~/.local/
 
