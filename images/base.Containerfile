@@ -5,7 +5,7 @@ RUN pacman --sync --refresh
 # CLI utilities
 RUN pacman -Sq --noconfirm bat bottom chafa dust fd ffmpeg fish fzf
 RUN pacman -Sq --noconfirm git git-delta lazygit
-RUN pacman -Sq --noconfirm lsd neovim opencode poppler ripgrep starship
+RUN pacman -Sq --noconfirm lsd neovim poppler ripgrep starship
 RUN pacman -Sq --noconfirm tealdeer yazi zoxide
 # Safer rm
 RUN pacman -Sq --noconfirm trash-cli
@@ -20,6 +20,8 @@ RUN pacman -Sq --noconfirm wl-clipboard
 RUN pacman -Sq --noconfirm nodejs-lts-krypton npm
 # Used by ltex-plus
 RUN pacman -Sq --noconfirm jdk21-openjdk
+
+RUN npm install -g --ignore-scripts @earendil-works/pi-coding-agent
 
 # Link to host programs
 RUN ln -sf /usr/bin/distrobox-host-exec /usr/local/bin/podman
