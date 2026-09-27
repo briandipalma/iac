@@ -263,6 +263,11 @@ await komodo.execute_container_exec(
 name = "sync_pictures"
 tags = ["Syncable"]
 [action.config]
+## Run every night at 3 AM.
+## Uses the Core timezone (TZ in komodo/servers/pve/compose.env).
+## CRON fields: (second, minute, hour, day of month, month, day of week).
+schedule_format = "Cron"
+schedule = "0 0 3 * * *"
 file_contents = """
 await komodo.execute_container_exec({
   server: "PVE",
