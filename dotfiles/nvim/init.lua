@@ -20,12 +20,14 @@ vim.o.number = true -- Print line number in front of lines
 vim.o.relativenumber = true -- Relative line numbers
 vim.o.scrolloff = 999 -- Lines of context
 vim.o.sessionoptions = "buffers,curdir,folds,tabpages,winsize,terminal" -- Don't save blank/empty windows, help in sessions
+vim.o.shada = vim.o.shada:gsub("'%d+", "'10000") -- Increase recent (oldfiles) limit to 10000, keep other defaults
 vim.o.showbreak = "↳" -- String to put at start of wrapped lines
 vim.o.signcolumn = "yes" -- Always show signcolumn (less flicker)
 vim.o.smartcase = true -- Respect case if search pattern has upper case
 vim.o.splitbelow = true -- Put new windows below current
 vim.o.tabstop = 2 -- Number of spaces tabs show as, stylua uses tabs by default and 8 is too much
 vim.o.undofile = true -- Enable undofiles for persistent undo
+vim.o.undolevels = 10000 -- Increase undo levels (maximum number of changes that can be undone)
 vim.o.updatetime = 200 -- Save swap file and trigger CursorHold
 vim.o.winborder = "rounded" -- Use rounded borders on all floating windows
 ----
