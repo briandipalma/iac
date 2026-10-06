@@ -242,57 +242,22 @@ tags = ["Syncable"]
 schedule_format = "Cron"
 schedule = "0 0 2 * * *"
 file_contents = """
-let zip;
-
-// Remove the previous archive(s) first so only the newest one is kept.
-// /etc/pihole inside the container is /mnt/storage/appdata/pihole on the host,
-// which is the directory backup.sh syncs to the b2_backups remote.
-await komodo.execute_container_exec(
+const log = (line) => {console.log(line)};
+const exec = (command, onLine = log) => komodo.execute_container_exec(
   {
     server: "PVE",
     container: "pihole",
-    command: 'rm -f /etc/pihole/*.zip',
+    command,
     shell: "bash",
     terminal: "name",
     recreate: Types.TerminalRecreateMode.Always,
   },
-  {
-    onLine: (line) => {console.log(line)},
-  }
+  {onLine}
 );
 
-await komodo.execute_container_exec(
-  {
-    server: "PVE",
-    container: "pihole",
-    command: 'pihole-FTL --teleporter',
-    shell: "bash",
-    terminal: "name",
-    recreate: Types.TerminalRecreateMode.Always,
-  },
-  {
-    // The teleporter prints the path of the archive it created, so grab it from the output.
-    onLine: (line) => {if(line.trim().endsWith(".zip")){zip = line.trim()}},
-  }
-);
-
-if (zip) {
-  await komodo.execute_container_exec(
-    {
-      server: "PVE",
-      container: "pihole",
-      command: `mv "${zip}" /etc/pihole/`,
-      shell: "bash",
-      terminal: "name",
-      recreate: Types.TerminalRecreateMode.Always,
-    },
-    {
-      onLine: (line) => {console.log(line)},
-    }
-  );
-} else {
-  console.error("Failed to find the path of the pihole teleporter archive.");
-}
+await exec('mkdir -p /etc/pihole/backups');
+await exec('cd /etc/pihole/backups && pihole-FTL --teleporter');
+await exec('cd /etc/pihole/backups && ls -1t | tail -n +4 | while read -r f; do rm -- "$f"; done');
 """
 
 ##

@@ -53,8 +53,7 @@ rclone sync \
   --metadata \
   --progress \
   --stats 10000h \
-  /mnt/storage/appdata/pihole/ \
-  --include="**.zip" \
+  /mnt/storage/appdata/pihole/backups \
   b2_backups:dipalma-docker-backups/pve/pihole
 
 echo "Backing up qBittorrent"
