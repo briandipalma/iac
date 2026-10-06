@@ -1,11 +1,6 @@
-[Added Associations]
-application/pdf=org.kde.okular.desktop;
-x-scheme-handler/http=firefox.desktop;
-x-scheme-handler/https=firefox.desktop;
-
 [Default Applications]
 application/pdf=org.kde.okular.desktop;
-audio/flac=com.github.taiko2k.tauonmb.desktop
+audio/flac=org.strawberrymusicplayer.strawberry.desktop
 image/png=org.kde.koko.desktop
 image/webp=org.kde.koko.desktop
 image/jpeg=org.kde.koko.desktop
@@ -20,3 +15,4 @@ x-scheme-handler/terminal=kitty.desktop
 x-scheme-handler/claude-cli=claude-code-url-handler.desktop
 inode/directory=yazi.desktop
 text/csv=org.kde.kate.desktop
+text/plain=org.kde.kate.desktop
