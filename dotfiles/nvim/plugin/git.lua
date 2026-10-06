@@ -58,7 +58,7 @@ gitsigns.setup({
 ---- codediff
 require("codediff").setup({
 	diff = { compact_context_lines = 10, disable_inlay_hints = false, ignore_trim_whitespace = true },
-	explorer = { auto_refresh = false, position = "bottom", initial_focus = "modified", view_mode = "tree" },
+	explorer = { position = "bottom", initial_focus = "modified", view_mode = "tree" },
 	keymaps = {
 		view = {
 			next_file = "<Tab>", -- Next file in explorer mode
