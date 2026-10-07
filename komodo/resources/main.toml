@@ -274,13 +274,17 @@ tags = ["Syncable"]
 schedule_format = "Cron"
 schedule = "0 0 3 * * *"
 file_contents = """
-await komodo.execute_server_action({
-  server: "PVE",
-}, {
-  shell: "sh",
-  script: "/home/data/iac/ubuntu-docker/backup.sh",
-  onLine: (line) => {console.log(line)},
-  });
+await komodo.execute_container_exec(
+  {
+    server: "PVE",
+    container: "rclone",
+    command: "sh /config/rclone/backup.sh",
+    shell: "sh",
+    terminal: "name",
+    recreate: Types.TerminalRecreateMode.Always,
+  },
+  { onLine: console.log },
+);
 """
 
 ##

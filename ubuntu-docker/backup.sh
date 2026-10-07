@@ -2,10 +2,6 @@
 
 set -eu
 
-# Periphery runs as root, so rclone would look for /root/.config/rclone/rclone.conf
-# Override by exporting RCLONE_CONFIG.
-export RCLONE_CONFIG=${RCLONE_CONFIG:-/home/data/.config/rclone/rclone.conf}
-
 echo "Backing up pictures"
 
 rclone sync \
