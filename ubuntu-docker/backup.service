@@ -1,0 +1,6 @@
+[Unit]
+Description=Backup Task
+
+[Service]
+Type=oneshot
+ExecStart=/home/data/iac/ubuntu-docker/backup.sh
