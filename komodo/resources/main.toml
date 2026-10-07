@@ -242,22 +242,24 @@ tags = ["Syncable"]
 schedule_format = "Cron"
 schedule = "0 0 2 * * *"
 file_contents = """
-const log = (line) => {console.log(line)};
-const exec = (command, onLine = log) => komodo.execute_container_exec(
-  {
-    server: "PVE",
-    container: "pihole",
-    command,
-    shell: "bash",
-    terminal: "name",
-    recreate: Types.TerminalRecreateMode.Always,
-  },
-  {onLine}
-);
+const exec = (command) =>
+  komodo.execute_container_exec(
+    {
+      server: "PVE",
+      container: "pihole",
+      command,
+      shell: "bash",
+      terminal: "name",
+      recreate: Types.TerminalRecreateMode.Always,
+    },
+    { onLine: console.log },
+  );
 
-await exec('mkdir -p /etc/pihole/backups');
-await exec('cd /etc/pihole/backups && pihole-FTL --teleporter');
-await exec('cd /etc/pihole/backups && ls -1t | tail -n +4 | while read -r f; do rm -- "$f"; done');
+await exec("mkdir -p /etc/pihole/backups");
+await exec("cd /etc/pihole/backups && pihole-FTL --teleporter");
+await exec(
+  'cd /etc/pihole/backups && ls -1t | tail -n +4 | while read -r f; do rm -- "$f"; done',
+);
 """
 
 ##
