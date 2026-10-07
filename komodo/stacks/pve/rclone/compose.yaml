@@ -9,4 +9,4 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - /mnt/storage/appdata/rclone:/config/rclone:ro
+      - /mnt/storage/appdata/rclone:/config/rclone
