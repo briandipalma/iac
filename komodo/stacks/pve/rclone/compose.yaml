@@ -9,4 +9,6 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - /mnt/storage/appdata/rclone:/config/rclone
+      - /mnt/storage/appdata/rclone:/config/rclone:ro
+      - /mnt/storage:/mnt/storage:ro
+    command: rcd --rc-web-gui --rc-web-gui-no-open-browser --rc-addr :5572 --rc-user admin --rc-pass yourpassword --rc-serve
