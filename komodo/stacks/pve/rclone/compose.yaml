@@ -10,4 +10,3 @@ services:
       - PGID=1000
     volumes:
       - /mnt/storage/appdata/rclone:/config/rclone:ro
-      - /mnt/storage:/mnt/storage:ro
