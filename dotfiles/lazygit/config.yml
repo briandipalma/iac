@@ -1,4 +1,6 @@
 ---
+gui:
+  sidePanelWidth: 0.15
 git:
   diffRenderers:
     - colorArg: always
