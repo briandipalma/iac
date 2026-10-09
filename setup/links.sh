@@ -29,8 +29,8 @@ ln -sf ~/dev/iac/dotfiles/bin ~/.local/
 
 # Host specific configuration
 
-if [ -d ~/dev/iac/host-dotfiles/$HOSTNAME/autostart/ ]; then
-  ln -sf ~/dev/iac/host-dotfiles/$HOSTNAME/autostart ~/.config/
+if [ -d ~/dev/iac/hosts/$HOSTNAME/autostart/ ]; then
+  ln -sf ~/dev/iac/hosts/$HOSTNAME/autostart ~/.config/
 fi
 
 if [ -f ~/dev/my-data/$HOSTNAME/fish_history ]; then

@@ -1,6 +1,6 @@
 #! /bin/bash
 
-ln -sf ~/iac/rpi4/authorized_keys ~/.ssh/authorized_keys
+ln -sf ~/iac/hosts/rpi4/authorized_keys ~/.ssh/authorized_keys
 
 hostnamectl hostname rpi4.test
 
