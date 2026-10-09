@@ -2,7 +2,7 @@
 
 git clone git@github.com:briandipalma/my-data.git $HOME/dev/my-data
 
-pacman -Sq --noconfirm chromium git-delta glab lazygit lsd neovim nodejs-lts-krypton npm starship trash-cli tree-sitter-cli yazi zoxide
+pacman -Sq --noconfirm chromium git-delta glab jdk17-openjdk lazygit lsd neovim nodejs-lts-krypton npm starship trash-cli tree-sitter-cli yazi zoxide
 
 npm install -g pnpm@10.28.0
 
