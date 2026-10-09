@@ -1,5 +1,7 @@
 #! /bin/bash
 
+ln -sf ~/dev/iac/hosts/briands-cachyos-vm/authorized_keys ~/.ssh/authorized_keys
+
 git clone git@github.com:briandipalma/my-data.git $HOME/dev/my-data
 
 pacman -Sq --noconfirm chromium git-delta glab jdk17-openjdk lazygit lsd neovim nodejs-lts-krypton npm starship trash-cli tree-sitter-cli yazi zoxide
