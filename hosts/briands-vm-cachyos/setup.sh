@@ -56,9 +56,10 @@ ln -sf ~/dev/iac/hosts/briands-vm-cachyos/authorized_keys ~/.ssh/authorized_keys
 # sshd uses the first value it reads, a low number prefix makes this win over later drop-ins
 echo "PasswordAuthentication no" | sudo tee /etc/ssh/sshd_config.d/10-no-password.conf >/dev/null
 
-sudo sshd -t
+sudo sshd -t # Test SSH daemon configuration file
 sudo systemctl enable sshd
 sudo systemctl reload-or-restart sshd
+sudo ufw allow ssh
 
 printf '\nNext steps:\n'
 printf '  1. Log out and back in (docker group)\n'
