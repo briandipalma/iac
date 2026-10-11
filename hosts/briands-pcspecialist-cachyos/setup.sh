@@ -28,7 +28,7 @@ ln -sf ~/dev/iac/dotfiles/kitty/work-session.conf ~/.config/kitty/host-session.c
 printf '\nInstalling workstation GUI programs\n'
 
 # Fleet tray app, the orbit agent comes from the Fleet server
-paru -S --needed --noconfirm fleet-desktop
+shelly install aur --needed --no-confirm fleet-desktop
 flatpak install -y flathub com.slack.Slack
 # utility to manage AppImages, for Vial (keyboard configuration)
 flatpak install -y flathub it.mijorus.gearlever

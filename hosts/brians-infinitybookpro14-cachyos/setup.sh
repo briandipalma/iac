@@ -42,8 +42,8 @@ flatpak install -y flathub org.musicbrainz.Picard
 flatpak install -y flathub org.nicotine_plus.Nicotine
 flatpak install -y flathub org.strawberrymusicplayer.strawberry
 
-paru -S --needed --noconfirm winbox
-paru -S --needed --noconfirm kanata-bin
+shelly install aur --needed --no-confirm winbox
+shelly install aur --needed --no-confirm kanata-bin
 source ~/dev/iac/hosts/brians-infinitybookpro14-cachyos/kanata.sh
 # Network driver
-paru -S --needed --noconfirm yt6801-dkms
+shelly install aur --needed --no-confirm yt6801-dkms
