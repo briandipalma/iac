@@ -42,7 +42,7 @@ sudo pacman -S --needed --noconfirm \
 	trash-cli \
 	tree-sitter-cli \
 	zoxide
-paru -S --needed --noconfirm claude-code
+shelly install aur --needed claude-code
 sudo npm install -g pnpm@10.28.0
 
 printf '\nSetting up Docker\n'

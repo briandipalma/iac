@@ -2,5 +2,5 @@
 
 printf '\nInstalling work packages from AUR\n'
 
-paru -S --needed --noconfirm netbird
+shelly install aur --needed netbird
 sudo systemctl enable --now netbird@main
