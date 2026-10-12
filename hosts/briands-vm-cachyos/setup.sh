@@ -25,6 +25,7 @@ sudo pacman -S --needed --noconfirm \
 	bat \
 	chromium \
 	docker \
+	docker-buildx \
 	docker-compose \
 	fd \
 	fzf \
