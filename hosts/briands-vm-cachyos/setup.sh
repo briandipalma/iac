@@ -28,6 +28,7 @@ sudo pacman -S --needed --noconfirm \
 	docker-compose \
 	fd \
 	fzf \
+	gemini-cli \
 	git-delta \
 	glab \
 	jdk17-openjdk \
