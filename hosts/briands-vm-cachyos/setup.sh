@@ -31,6 +31,7 @@ sudo pacman -S --needed --noconfirm \
 	git-delta \
 	glab \
 	jdk17-openjdk \
+	jdk21-openjdk \
 	kitty-terminfo \
 	lazygit \
 	lsd \
