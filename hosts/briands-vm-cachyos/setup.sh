@@ -60,7 +60,7 @@ sudo sshd -t # Test SSH daemon configuration file
 
 printf '\nNext steps:\n'
 printf '  1. Log out and back in (docker group)\n'
-printf '  2. Log in to NetBird (sudo netbird up)\n'
+printf '  2. Log in to NetBird (netbird up)\n'
 printf '  3. ~/dev/iac/hosts/common/clone-work-repos.sh\n'
 printf '  4. Log in to glab and Claude\n'
 printf '  5. Install the Fleet agent (orbit) package from the Fleet server and check enrolment\n'
