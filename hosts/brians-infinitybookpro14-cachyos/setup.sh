@@ -20,9 +20,9 @@ source ~/dev/iac/hosts/common/install-gui-packages-flatpak.sh
 
 # Host unique setup steps, can only run after common steps
 
-if [ -d ~/dev/my-data/brians-infinitybookpro14-cachyos/syncthing/ ]; then
+if [ -d ~/dev/my-data/hosts/brians-infinitybookpro14-cachyos/syncthing/ ]; then
   mkdir -p ~/.var/app/com.github.zocker_160.SyncThingy/config
-  ln -sf ~/dev/my-data/brians-infinitybookpro14-cachyos/syncthing ~/.var/app/com.github.zocker_160.SyncThingy/config/
+  ln -sf ~/dev/my-data/hosts/brians-infinitybookpro14-cachyos/syncthing ~/.var/app/com.github.zocker_160.SyncThingy/config/
 fi
 
 mkdir -p ~/.config/rclone
