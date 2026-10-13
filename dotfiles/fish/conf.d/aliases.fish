@@ -1,3 +1,4 @@
+alias c=claude
 alias cat=bat
 alias d="delta"
 alias g=git
