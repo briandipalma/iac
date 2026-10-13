@@ -61,6 +61,10 @@ echo "PasswordAuthentication no" | sudo tee /etc/ssh/sshd_config.d/10-no-passwor
 
 sudo sshd -t # Test SSH daemon configuration file
 
+printf '\nOpening development ports\n'
+
+sudo ufw allow 8080
+
 printf '\nNext steps:\n'
 printf '  1. Log out and back in (docker group)\n'
 printf '  2. Log in to NetBird (netbird up)\n'
