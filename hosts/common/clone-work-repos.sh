@@ -19,3 +19,7 @@ fi
 if [[ ! -d $DEV_DIR/fx-integration-api/main ]]; then
   git clone https://gitlab.caplin.com/integration/fx-integration-api.git $DEV_DIR/fx-integration-api/main
 fi
+
+if [[ ! -d $DEV_DIR/WallStreetAdapter/main ]]; then
+  git clone https://gitlab.caplin.com/integration/WallStreetAdapter.git $DEV_DIR/WallStreetAdapter/main
+fi
