@@ -23,6 +23,7 @@ printf '\nInstalling VM CLI programs\n'
 
 sudo pacman -S --needed --noconfirm \
 	bat \
+	chafa \
 	chromium \
 	docker \
 	docker-buildx \
