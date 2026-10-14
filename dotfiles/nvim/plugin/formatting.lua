@@ -7,8 +7,8 @@ conform.setup({
 			return
 		end
 
-		-- ktfmt needs 1 second timeout to format
-		return { lsp_format = "fallback", timeout_ms = 1000 }
+		-- ktfmt starts a fresh JVM on every run, which takes ~1 second
+		return { lsp_format = "fallback", timeout_ms = 5000 }
 	end,
 })
 
