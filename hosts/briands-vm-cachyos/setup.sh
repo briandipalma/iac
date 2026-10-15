@@ -62,6 +62,10 @@ echo "PasswordAuthentication no" | sudo tee /etc/ssh/sshd_config.d/10-no-passwor
 
 sudo sshd -t # Test SSH daemon configuration file
 
+printf '\nMaking directories e.g. Downloads\n'
+
+mkdir -p ~/Downloads
+
 printf '\nOpening development ports\n'
 
 sudo ufw allow 8080
