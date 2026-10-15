@@ -1,7 +1,7 @@
 {
   "plugins": {
     "SchemaStore.nvim": {
-      "rev": "1c6d5e0b721c877c4c8061d2361f8fc20adaf896",
+      "rev": "9485dacfff2828f06c4678b059e382e49ec54aeb",
       "src": "https://github.com/b0o/SchemaStore.nvim"
     },
     "blink.cmp": {
@@ -26,7 +26,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
-      "rev": "71b6d3667c4846ab2f0bab06e68d196d2eea016c",
+      "rev": "3868dcc78d2c2766c9510ab18b6d3815071b389e",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
@@ -110,7 +110,7 @@
       "src": "https://github.com/rcarriga/nvim-notify"
     },
     "nvim-treesitter": {
-      "rev": "1a4f47b03dfe92d28de7d5654c67327ef008c9e6",
+      "rev": "ca581c3436fc2b236847f5b739ebc263739e5ca6",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-treesitter-context": {
