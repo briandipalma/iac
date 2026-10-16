@@ -14,3 +14,8 @@ else
 end
 alias y=yazi
 alias vim=nvim
+if type -q shelly
+    alias update="sudo cachyos-rate-mirrors && shelly upgrade all"
+else if type -q pacman
+    alias update="sudo pacman -Syu"
+end
