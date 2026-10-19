@@ -1,6 +1,12 @@
 #! /bin/bash
 
-ln -sf ~/iac/hosts/rpi4/authorized_keys ~/.ssh/authorized_keys
+# Set bash options to make the script stop at first error:
+# `-e` errexit (unexpected command failure i.e. not a test)
+# `-u` fail on unset variable use
+# `-o pipefail` pipeline fails if any command in it fails
+set -euo pipefail
+
+source ~/dev/iac/hosts/common/setup-ssh.sh rpi4
 
 hostnamectl hostname rpi4.test
 

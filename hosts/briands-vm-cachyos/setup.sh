@@ -54,13 +54,7 @@ printf '\nSetting up Docker\n'
 sudo usermod -aG docker "$USER" # For non root use, Arch creates docker group, no need to create it
 sudo systemctl enable --now docker
 
-printf '\nSetting up SSH\n'
-
-ln -sf ~/dev/iac/hosts/briands-vm-cachyos/authorized_keys ~/.ssh/authorized_keys
-# sshd uses the first value it reads, a low number prefix makes this win over later drop-ins
-echo "PasswordAuthentication no" | sudo tee /etc/ssh/sshd_config.d/10-no-password.conf >/dev/null
-
-sudo sshd -t # Test SSH daemon configuration file
+source ~/dev/iac/hosts/common/setup-ssh.sh briands-vm-cachyos
 
 printf '\nMaking directories e.g. Downloads\n'
 
