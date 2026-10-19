@@ -10,5 +10,7 @@ mkdir -p ~/.config
 ln -sf ~/dev/iac/dotfiles/ssh/config ~/.ssh/config
 ln -sf ~/dev/iac/dotfiles/git ~/.config/
 ln -sf ~/dev/iac/dotfiles/bash/bashrc ~/.bashrc
+ln -sf ~/dev/iac/hosts/brians-xiaomi15/bash_local.bash ~/.bash_local.bash
 
-[ -d ~/dev/my-data ] || git clone git@github.com:briandipalma/my-data.git ~/dev/my-data
+# App don't have access to Termux home directory
+[ -d ~/storage/downloads/my-data ] || git clone git@github.com:briandipalma/my-data.git ~/storage/downloads
