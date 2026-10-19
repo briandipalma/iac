@@ -69,6 +69,7 @@ mkdir -p ~/Downloads
 printf '\nOpening development ports\n'
 
 sudo ufw allow 8080
+sudo ufw allow 8099
 
 printf '\nNext steps:\n'
 printf '  1. Log out and back in (docker group)\n'
