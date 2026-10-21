@@ -4,11 +4,13 @@ printf '\nLinking shell config\n'
 
 mkdir -p -m 700 ~/.ssh # Doesn't exist in fresh install
 mkdir -p ~/.local
+mkdir -p ~/.config/herdr
 
 ln -sf ~/dev/iac/dotfiles/bat ~/.config/
 rm -rf ~/.config/fish
 ln -sf ~/dev/iac/dotfiles/fish ~/.config/
 ln -sf ~/dev/iac/dotfiles/git ~/.config/
+ln -sf ~/dev/iac/dotfiles/herdr/config.toml ~/.config/herdr/config.toml
 ln -sf ~/dev/iac/dotfiles/lazygit ~/.config/
 ln -sf ~/dev/iac/dotfiles/lsd ~/.config/
 ln -sf ~/dev/iac/dotfiles/nvim ~/.config/
