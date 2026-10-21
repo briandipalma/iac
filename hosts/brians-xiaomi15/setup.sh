@@ -13,4 +13,4 @@ ln -sf ~/dev/iac/dotfiles/bash/bashrc ~/.bashrc
 ln -sf ~/dev/iac/hosts/brians-xiaomi15/bash_local.bash ~/.bash_local.bash
 
 # App don't have access to Termux home directory
-[ -d ~/storage/downloads/my-data ] || git clone git@github.com:briandipalma/my-data.git ~/storage/downloads
+[ -d ~/storage/downloads/my-data ] || git clone git@github.com:briandipalma/my-data.git ~/storage/downloads/my-data
