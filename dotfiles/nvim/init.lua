@@ -89,7 +89,6 @@ vim.pack.add({
 	"https://github.com/folke/snacks.nvim",
 	"https://github.com/folke/ts-comments.nvim",
 	"https://github.com/folke/which-key.nvim",
-	"https://github.com/gbprod/yanky.nvim",
 	"https://github.com/ibhagwan/fzf-lua",
 	"https://github.com/lewis6991/gitsigns.nvim",
 	"https://github.com/mason-org/mason.nvim",
@@ -140,4 +139,3 @@ require("persistence").setup()
 require("snacks").setup({ image = { enabled = true } })
 require("tiny-glimmer").setup()
 require("ts-comments").setup()
-require("yanky").setup()
