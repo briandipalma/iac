@@ -1,9 +1,7 @@
 Host work
-  HostName 192.168.1.120
   User briand
 
 Host rpi4
-  HostName rpi4.test
   User data
 
 Host *
