@@ -8,6 +8,9 @@ set -euo pipefail
 
 sudo hostnamectl set-hostname rpi4
 
+ln -sf ~/dev/iac/dotfiles/bash/bash_aliases.bash ~/.bash_aliases
+ln -sf ~/dev/iac/dotfiles/git ~/.config/
+
 source ~/dev/iac/hosts/common/setup-ssh.sh rpi4
 
 mkdir -p /mnt/storage
