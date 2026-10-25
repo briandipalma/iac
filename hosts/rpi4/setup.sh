@@ -6,6 +6,8 @@
 # `-o pipefail` pipeline fails if any command in it fails
 set -euo pipefail
 
+printf '\nSetting hostname\n'
+
 sudo hostnamectl set-hostname rpi4
 
 mkdir -p ~/.config

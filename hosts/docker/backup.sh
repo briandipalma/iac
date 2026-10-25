@@ -85,13 +85,3 @@ rclone sync \
   --stats 10000h \
   /mnt/storage/appdata/traefik \
   b2_backups:dipalma-docker-backups/pve/traefik
-
-echo "Backing up wireguard"
-
-rclone sync \
-  --checksum \
-  --metadata \
-  --progress \
-  --stats 10000h \
-  /mnt/storage/appdata/wireguard/config \
-  b2_backups:dipalma-docker-backups/pve/wireguard
