@@ -1,7 +1,11 @@
-mkdir -p ~/.config/systemd/user
+#! /bin/bash
 
-ln -sf ~/iac/hosts/ubuntu-docker/backup.service ~/.config/systemd/user/backup.service
-ln -sf ~/iac/hosts/ubuntu-docker/backup.timer ~/.config/systemd/user/backup.timer
+# Set bash options to make the script stop at first error:
+# `-e` errexit (unexpected command failure i.e. not a test)
+# `-u` fail on unset variable use
+# `-o pipefail` pipeline fails if any command in it fails
+set -euo pipefail
 
-systemctl --user daemon-reload
-systemctl --user enable --now backup.timer
+printf '\nSetting hostname\n'
+
+sudo hostnamectl set-hostname pve-docker-host
