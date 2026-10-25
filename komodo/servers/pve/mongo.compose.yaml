@@ -9,7 +9,7 @@
 
 services:
   mongo:
-    image: mongo:9.0
+    image: mongo
     labels:
       komodo.skip: # Prevent Komodo from stopping with StopAllContainers
     command: --quiet --wiredTigerCacheSizeGB 0.25
