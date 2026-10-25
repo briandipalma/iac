@@ -1,3 +1,11 @@
+# Common aliases
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# Termux specific bash config
+
+alias s="ssh"
 alias update="pkg upgrade"
 
 pl() (
