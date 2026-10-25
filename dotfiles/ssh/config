@@ -4,6 +4,9 @@ Host work
 Host rpi4
   User data
 
+Host docker
+  User data
+
 Host *
   StrictHostKeyChecking accept-new
 

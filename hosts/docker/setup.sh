@@ -8,4 +8,6 @@ set -euo pipefail
 
 printf '\nSetting hostname\n'
 
-sudo hostnamectl set-hostname pve-docker-host
+sudo hostnamectl set-hostname docker
+
+source ~/dev/iac/hosts/common/setup-ssh.sh docker
