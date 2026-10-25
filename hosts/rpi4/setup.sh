@@ -8,6 +8,8 @@ set -euo pipefail
 
 sudo hostnamectl set-hostname rpi4
 
+mkdir -p ~/.config
+
 ln -sf ~/dev/iac/dotfiles/bash/bash_aliases.bash ~/.bash_aliases
 ln -sf ~/dev/iac/dotfiles/git ~/.config/
 
