@@ -6,9 +6,9 @@
 # `-o pipefail` pipeline fails if any command in it fails
 set -euo pipefail
 
-source ~/dev/iac/hosts/common/setup-ssh.sh rpi4
+sudo hostnamectl set-hostname rpi4
 
-hostnamectl hostname rpi4.test
+source ~/dev/iac/hosts/common/setup-ssh.sh rpi4
 
 mkdir -p /mnt/storage
 sudo chown data:data /mnt/storage/
