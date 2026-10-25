@@ -63,10 +63,11 @@
 ## Delta/diffing config
 
 [core]
-    pager = delta
+    # Use delta when available, otherwise fall back to git's default pager
+    pager = command -v delta >/dev/null 2>&1 && exec delta || exec less -FRX
 
 [interactive]
-    diffFilter = delta --color-only
+    diffFilter = command -v delta >/dev/null 2>&1 && exec delta --color-only || exec cat
 
 [delta]
     navigate = true    # use n and N to move between diff sections
