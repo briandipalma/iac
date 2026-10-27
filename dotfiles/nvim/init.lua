@@ -120,13 +120,7 @@ vim.pack.add({
 
 vim.cmd("colorscheme rose-pine")
 
-require("mason").setup({
-	registries = {
-		-- Local overrides take precedence, see https://github.com/mason-org/mason-registry/pull/17323
-		"lua:my-config.mason-registry",
-		"github:mason-org/mason-registry",
-	},
-})
+require("mason").setup()
 require("mini.ai").setup()
 require("mini.git").setup()
 require("mini.move").setup()
