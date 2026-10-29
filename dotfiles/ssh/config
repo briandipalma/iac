@@ -1,7 +1,12 @@
 Host work
   User briand
-	LocalForward 5173 localhost:5173
-	LocalForward 5174 localhost:5174
+  ControlMaster auto
+  ControlPath ~/.ssh/cm-%r@%h:%p
+  ControlPersist 10m
+  LocalForward 5173 localhost:5173
+  LocalForward 5174 localhost:5174
+  LocalForward 8080 localhost:8080
+  LocalForward 8099 localhost:8099
 
 Host rpi4
   User data
