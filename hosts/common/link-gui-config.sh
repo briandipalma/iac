@@ -2,10 +2,10 @@
 
 printf '\nLinking GUI config\n'
 
-ln -sf ~/dev/iac/dotfiles/kitty ~/.config/
+ln -sfn ~/dev/iac/dotfiles/kitty ~/.config/kitty
 ln -sf ~/dev/iac/dotfiles/mimeapps.list ~/.config/
 rm -rf ~/.config/niri
-ln -sf ~/dev/iac/dotfiles/niri ~/.config/
+ln -sfn ~/dev/iac/dotfiles/niri ~/.config/niri
 rm -rf ~/.config/noctalia
-ln -sf ~/dev/iac/dotfiles/noctalia ~/.config/
-ln -sf ~/dev/iac/dotfiles/satty ~/.config/
+ln -sfn ~/dev/iac/dotfiles/noctalia ~/.config/noctalia
+ln -sfn ~/dev/iac/dotfiles/satty ~/.config/satty

@@ -13,7 +13,7 @@ sudo hostnamectl set-hostname rpi4
 mkdir -p ~/.config
 
 ln -sf ~/dev/iac/dotfiles/bash/bash_aliases.bash ~/.bash_aliases
-ln -sf ~/dev/iac/dotfiles/git ~/.config/
+ln -sfn ~/dev/iac/dotfiles/git ~/.config/git
 
 source ~/dev/iac/hosts/common/setup-ssh.sh rpi4
 

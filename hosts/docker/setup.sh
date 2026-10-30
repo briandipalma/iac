@@ -11,7 +11,7 @@ printf '\nSetting hostname\n'
 sudo hostnamectl set-hostname docker
 
 ln -sf ~/dev/iac/dotfiles/bash/bash_aliases.bash ~/.bash_aliases
-ln -sf ~/dev/iac/dotfiles/git ~/.config/
+ln -sfn ~/dev/iac/dotfiles/git ~/.config/git
 cp ~/dev/iac/hosts/docker/backup.sh /mnt/storage/appdata/rclone
 
 source ~/dev/iac/hosts/common/setup-ssh.sh docker

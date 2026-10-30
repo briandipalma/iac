@@ -8,7 +8,7 @@ set -euo pipefail
 
 mkdir -p ~/.config
 ln -sf ~/dev/iac/dotfiles/ssh/config ~/.ssh/config
-ln -sf ~/dev/iac/dotfiles/git ~/.config/
+ln -sfn ~/dev/iac/dotfiles/git ~/.config/git
 # Termux doesn't ship a user .bashrc
 ln -sf ~/dev/iac/dotfiles/bash/bashrc ~/.bashrc
 
