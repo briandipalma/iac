@@ -5,6 +5,7 @@ alias g=git
 alias l="ls --hyperlink=auto"
 alias la="ls -A --hyperlink=auto"
 alias ll="ls -l --hyperlink=auto"
+alias lla="ls -Al --hyperlink=auto"
 
 # Host specific bash config
 if [ -e "$HOME/.bash_local.bash" ]; then
