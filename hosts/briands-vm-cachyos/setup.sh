@@ -37,7 +37,6 @@ sudo pacman -S --needed --noconfirm \
 	jdk21-openjdk \
 	kitty-terminfo \
 	lazygit \
-	lsd \
 	neovim \
 	nodejs-lts-krypton \
 	npm \
