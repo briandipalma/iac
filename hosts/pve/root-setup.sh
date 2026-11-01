@@ -7,3 +7,6 @@
 set -euo pipefail
 
 adduser brian
+
+apt update && apt install sudo
+usermod -aG sudo brian
