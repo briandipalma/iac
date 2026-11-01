@@ -6,4 +6,7 @@
 # `-o pipefail` pipeline fails if any command in it fails
 set -euo pipefail
 
+ln -sf ~/dev/iac/dotfiles/bash/bash_aliases.bash ~/.bash_aliases
+ln -sf ~/dev/iac/hosts/pve/bash_local.bash ~/.bash_local.bash
+
 source ~/dev/iac/hosts/common/setup-ssh.sh pve
