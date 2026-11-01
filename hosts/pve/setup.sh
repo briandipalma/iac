@@ -6,6 +6,8 @@
 # `-o pipefail` pipeline fails if any command in it fails
 set -euo pipefail
 
+mkdir -p ~/.config
+
 ln -sf ~/dev/iac/dotfiles/bash/bash_aliases.bash ~/.bash_aliases
 ln -sf ~/dev/iac/hosts/pve/bash_local.bash ~/.bash_local.bash
 ln -sfn ~/dev/iac/dotfiles/git ~/.config/git
