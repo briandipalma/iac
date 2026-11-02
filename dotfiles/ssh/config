@@ -4,7 +4,7 @@ Host docker
 Host rpi4
   User data
 
-Host work
+Host work work.test
   User briand
   ControlMaster auto
   ControlPath ~/.ssh/cm-%r@%h:%p
