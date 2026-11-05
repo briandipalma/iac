@@ -9,7 +9,8 @@ Host work work.test
   ControlMaster auto
   ControlPath ~/.ssh/cm-%r@%h:%p
   ControlPersist 10m
-  LocalForward 8080 localhost:8080 # Local app servers
+  LocalForward 8080 localhost:8080 # App server
+  LocalForward 18080 localhost:18080 # Liberator
 
 Host ion
   HostName ion.sftp.iongroup.com
