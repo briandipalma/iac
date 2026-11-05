@@ -58,10 +58,6 @@ sudo systemctl enable --now docker
 
 source ~/dev/iac/hosts/common/setup-ssh.sh briands-vm-cachyos
 
-printf '\nMaking directories e.g. Downloads\n'
-
-mkdir -p ~/Downloads
-
 printf '\nNext steps:\n'
 printf '  1. Log out and back in (docker group)\n'
 printf '  2. Log in to NetBird (netbird up)\n'
