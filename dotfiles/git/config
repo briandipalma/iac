@@ -57,6 +57,9 @@
   name = Brian Di Palma
   email = 1597820+briandipalma@users.noreply.github.com
 
+[includeIf "gitdir:~/dev/runtime/"]
+  path = ~/dev/my-data/git/gitconfig-work
+
 [pull]
   ff = only
 
