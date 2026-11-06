@@ -10,7 +10,17 @@ function h --description 'attach to a herdr session, picking with fzf if none gi
         return
     end
 
-    set -l session (herdr session list | tail -n +2 | fzf --header 'herdr sessions' | awk '{print $1}')
-    test -n "$session"; or return 1
-    herdr session attach $session
+    set -l create_entry 'Create session for working directory'
+    set -l choice (begin
+            echo $create_entry
+            herdr session list | tail -n +2
+        end | fzf --header 'herdr sessions')
+    test -n "$choice"; or return 1
+
+    if test "$choice" = $create_entry
+        herdr --session $cwd_session
+        return
+    end
+
+    herdr session attach (string split -f1 ' ' -- $choice)
 end
