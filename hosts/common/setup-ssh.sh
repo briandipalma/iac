@@ -20,6 +20,8 @@ ln -sf ~/dev/iac/hosts/"$HOST"/authorized_keys ~/.ssh/authorized_keys
 # sshd uses the first value it reads, a low number prefix makes this win over later drop-ins
 echo "PasswordAuthentication no" | "${SUDO[@]}" tee /etc/ssh/sshd_config.d/10-no-password.conf >/dev/null
 echo "PermitRootLogin no" | "${SUDO[@]}" tee /etc/ssh/sshd_config.d/10-no-root-login.conf >/dev/null
+# Every kitty window/split shares one multiplexed connection (ControlMaster), the default of 10 is too low
+echo "MaxSessions 50" | "${SUDO[@]}" tee /etc/ssh/sshd_config.d/10-max-sessions.conf >/dev/null
 
 "${SUDO[@]}" sshd -t # Test SSH daemon configuration file
 
