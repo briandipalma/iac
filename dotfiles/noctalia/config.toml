@@ -4,11 +4,14 @@ order = [ "default" ]
     [bar.default]
     background_opacity = 0.19999999552965164
     center = [ "taskbar", "notifications" ]
-    end = [ "tray", "network", "bluetooth", "volume", "brightness", "battery", "session" ]
+    end = [ "media", "tray", "network", "bluetooth", "volume", "brightness", "battery", "session" ]
     margin_ends = 0
     radius = 0
     scale = 1.4500000141561031
-    start = [ "control-center", "clock", "media" ]
+    start = [ "control-center", "clock" ]
+
+[hooks]
+started = ""
 
 [location]
 address = "Dublin, Ireland"
@@ -31,12 +34,19 @@ enabled = false
     [wallpaper.last]
     path = "/usr/share/noctalia/assets/noctalia-wallpaper.png"
 
+[widget.clock]
+format = "{:%F %R}"
+
 [widget.media]
 hide_when_no_media = true
+
+[widget.notifications]
+scale = 1.0
 
 [widget.taskbar]
 anchor = true
 group_by_workspace = true
+icon_scale = 1.0
 inactive_opacity = 0.65000000000000002
 only_active_workspace = false
 workspace_group_capsule = true
