@@ -2,13 +2,13 @@
 order = [ "default" ]
 
     [bar.default]
-    background_opacity = 0.19999999552965164
-    center = [ "taskbar", "notifications" ]
-    end = [ "media", "tray", "network", "bluetooth", "volume", "brightness", "battery", "session" ]
+    background_opacity = 0.0
+    center = []
+    end = [ "notifications", "media", "tray", "network", "bluetooth", "volume", "brightness", "battery", "clock" ]
     margin_ends = 0
     radius = 0
     scale = 1.4500000141561031
-    start = [ "control-center", "clock" ]
+    start = [ "control-center", "taskbar" ]
 
 [hooks]
 started = ""
@@ -39,6 +39,9 @@ format = "{:%F %R}"
 
 [widget.media]
 hide_when_no_media = true
+
+[widget.network]
+vpn_status = "both"
 
 [widget.notifications]
 scale = 1.0
